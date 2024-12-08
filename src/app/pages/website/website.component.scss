@@ -433,18 +433,73 @@ section.blue-gradient {
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: var(--Numbers-Spacing-9XL, 6.25rem);
+  height: 100vh;
 
   .content-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Large, 1rem);
-    background: url(../../../assets/tricycle-prize.jpg) lightgray 50% / cover no-repeat;
-    // background-image: url();
-    background-size: cover;
+    background-color: lightgray;
+    background-image: url(../../../assets/tricycle-prize.jpg);
     background-position: center;
+    background-size: cover;
     background-repeat: no-repeat;
     width: 36.125rem;
     height: 25rem;
+  }
+
+  .content-1-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+
+    button.pseudo-btn {
+      color: var(--Colors-White-White, #FFF);
+      /* Body Text Regular/Body Text - Regular */
+      font-family: "DM Sans";
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      display: flex;
+      padding: var(--Numbers-Spacing-S, 0.375rem) var(--Numbers-Spacing-XL, 1rem);
+      justify-content: center;
+      align-items: center;
+      gap: var(--Numbers-Spacing-S, 0.375rem);
+      border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Small, 0.25rem);
+      border: 1px solid var(--colors-boarders-strokes-boarders-strokes-hard, #C4C4C4);
+      background: rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(25px);
+    }
+
+    .switch-cta-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--Numbers-Spacing-S, 0.375rem);
+
+      img {
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  .content-1-bottom {
+    padding: 1.5rem;
+    color: var(--Colors-White-White, #FFF);
+    text-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+
+    /* Header or Display Text/Header Text 5 */
+    font-family: "Big Shoulders Display";
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
   }
 
   .content-2 {
