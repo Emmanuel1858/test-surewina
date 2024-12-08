@@ -1,4 +1,6 @@
 header {
+  position: fixed;
+    width: 100%;
   border-top: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
   border-bottom: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
   background: var(--white, #FFF);
@@ -42,7 +44,6 @@ header {
   padding: var(--Numbers-Spacing-XS, 4px) var(--Numbers-Spacing-XXL, 20px);
   flex-shrink: 0;
   border-radius: 400px;
-  // border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Full, 1000px);/z
   border: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
 
   &.outline-blue {
@@ -92,21 +93,17 @@ header {
   }
 }
 
-// section
+// ################## SECTION 1 ##################
 
 section.add-gradient {
-  // background: linear-gradient(358deg, #DCE9FA -12.63%, rgba(239, 246, 255, 0.00) 61.81%);
-  // background-image: url(../../../assets/wavy-patter-bg.png);
+  height: 100vh;
   background:
     linear-gradient(358deg, #DCE9FA -12.63%, rgba(239, 246, 255, 0.00) 61.81%),
     url(../../../assets/wavy-patter-bg.png);
   background-position: cover;
-  // height: 100vh;
-  // border: 1px solid red;
 }
 
 .section-1 {
-  // border: 1px solid red;
   display: flex;
   align-items: center;
   gap: 140px;
@@ -123,12 +120,7 @@ section.add-gradient {
 }
 
 h1 {
-  // display: flex;
   max-width: 609.751px;
-  // height: 233.391px;
-  // transform: rotate(0.01deg);
-  // flex-direction: column;
-  // justify-content: center;
 
   color: var(--Colors-Typography-Colors-Header-or-Display-Text, #000);
   font-family: "DM Sans";
@@ -136,7 +128,6 @@ h1 {
   font-style: normal;
   font-weight: 800;
   line-height: 106%;
-  /* 76.32px */
 }
 
 .support-text {
@@ -212,7 +203,6 @@ img.gift-icon {
   flex-direction: column;
   gap: 31.704px;
   min-width: 241.176px;
-  // height: 120.022px;
   flex-shrink: 0;
   border-radius: var(--Numbers-Numbers-6, 16px);
   border: 1.644px solid var(--colors-black-tetiary-color-b-700, #434343);
@@ -316,8 +306,8 @@ img.gift-icon {
   }
 }
 
+// ################## SECTION 2 ##################
 section.blue-gradient {
-  // border: 1px solid red;
   background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
   background-position: cover;
   height: 100vh;
@@ -389,7 +379,6 @@ section.blue-gradient {
   text-align: center;
   gap: var(--Numbers-Spacing-M, 0.5rem);
   max-width: 12.5rem;
-  // max-height: 13.5rem;
   border-radius: 1.073rem;
   border: 0.858px solid var(--colors-blue-secondary-color-s-500, #3148E4);
   background: var(--colors-blue-secondary-color-s-900, #0009B0);
@@ -430,5 +419,77 @@ section.blue-gradient {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+  }
+}
+// ################## SECTION 3 ##################
+
+.section-3 {
+  height: 100vh;
+  background: var(--Colors-White-White, #FFF);
+}
+
+.section-3-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--Numbers-Spacing-9XL, 6.25rem);
+
+  .content-1 {
+    border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Large, 1rem);
+    background: url(../../../assets/tricycle-prize.jpg) lightgray 50% / cover no-repeat;
+    // background-image: url();
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 36.125rem;
+    height: 25rem;
+  }
+
+  .content-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.31rem;
+    max-width: 29.09663rem;
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      gap: .63rem;
+      align-items: flex-start;
+
+      p {
+        color: var(--Colors-Typography-Colors-Header-or-Display-Text, #000);
+        font-family: "DM Sans";
+        font-size: 2.25rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+
+        span {
+          color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+          font-family: "DM Sans";
+          font-size: 3rem;
+          font-style: normal;
+          font-weight: 900;
+          line-height: normal;
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .63rem;
+      max-width: 20.9375rem;
+      color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+      /* Body Text Regular/Body Text - Regular - 3 */
+      font-family: "DM Sans";
+      font-size: 1.25rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
   }
 }
