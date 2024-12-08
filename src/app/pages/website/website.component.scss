@@ -1,0 +1,434 @@
+header {
+  border-top: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+  border-bottom: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+  background: var(--white, #FFF);
+  box-shadow: 0px 4px 20px 0px rgba(49, 72, 228, 0.04);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-inline: 3rem;
+  padding-block: 1rem;
+}
+
+.links {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+
+  a {
+    cursor: pointer;
+    /* Body Text - Medium/Body Text - Medium - 4 */
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    &:hover {
+      color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    }
+  }
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-flex;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  padding: var(--Numbers-Spacing-XS, 4px) var(--Numbers-Spacing-XXL, 20px);
+  flex-shrink: 0;
+  border-radius: 400px;
+  // border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Full, 1000px);/z
+  border: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+
+  &.outline-blue {
+    border: 1px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    background: #FFF;
+    color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+
+    /* Button Text/Button Text - Small */
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.btn-full {
+  cursor: pointer;
+
+  &.blue {
+    padding: var(--Numbers-Spacing-XL, 16px) 20px;
+    align-items: center;
+    border-radius: 400px;
+    background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+  }
+
+  a {
+    color: var(--Colors-White-White, #FFF);
+    /* Button Text/Button Text - Large */
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    gap: 5px;
+
+  }
+}
+
+// section
+
+section.add-gradient {
+  // background: linear-gradient(358deg, #DCE9FA -12.63%, rgba(239, 246, 255, 0.00) 61.81%);
+  // background-image: url(../../../assets/wavy-patter-bg.png);
+  background:
+    linear-gradient(358deg, #DCE9FA -12.63%, rgba(239, 246, 255, 0.00) 61.81%),
+    url(../../../assets/wavy-patter-bg.png);
+  background-position: cover;
+  // height: 100vh;
+  // border: 1px solid red;
+}
+
+.section-1 {
+  // border: 1px solid red;
+  display: flex;
+  align-items: center;
+  gap: 140px;
+  padding: var(--container);
+  justify-content: space-between;
+}
+
+.left-side {
+  display: flex;
+  align-items: self-start;
+  flex-direction: column;
+  gap: var(--Numbers-Spacing-3XL, 1.5rem);
+  ;
+}
+
+h1 {
+  // display: flex;
+  max-width: 609.751px;
+  // height: 233.391px;
+  // transform: rotate(0.01deg);
+  // flex-direction: column;
+  // justify-content: center;
+
+  color: var(--Colors-Typography-Colors-Header-or-Display-Text, #000);
+  font-family: "DM Sans";
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 106%;
+  /* 76.32px */
+}
+
+.support-text {
+  display: flex;
+  max-width: 607px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Numbers-Spacing-3XL, 24px);
+
+  p {
+    color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+    /* Body Text Regular/Body Text - Regular - 3 */
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-width: 610px;
+  }
+}
+
+.headshot-container {
+  display: flex;
+  max-width: 339px;
+  align-items: center;
+  gap: var(--Numbers-Spacing-S, 10px);
+
+  p {
+    color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+    /* Body Text Regular/Supporting Text - 1 */
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 22.646px;
+}
+
+.right-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.prize-collection,
+.ticket-collection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: .5rem;
+}
+
+img.gift-icon {
+  width: 4.68313rem;
+  height: 4.75rem;
+}
+
+.ticket-collection {
+  justify-content: flex-start;
+}
+
+.prize-details-medium {
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 31.704px;
+  min-width: 241.176px;
+  // height: 120.022px;
+  flex-shrink: 0;
+  border-radius: var(--Numbers-Numbers-6, 16px);
+  border: 1.644px solid var(--colors-black-tetiary-color-b-700, #434343);
+  background: var(--colors-black-tetiary-color-b-900, #000);
+}
+
+.prize-earnings {
+  p {
+    color: var(--colors-black-tetiary-color-b-300, #C4C4C4);
+    font-family: var(--body-font);
+    font-size: 13.148px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  h2 {
+    color: var(--Colors-White-White, #FFF);
+    font-family: var(--body-font);
+    font-size: 26.296px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    span {
+      color: var(--Colors-Brand-Colors-WinAPrize---Green---Primary-Color, #FFB951);
+      text-align: center;
+      font-family: var(--body-font);
+      font-size: 26.296px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+
+}
+
+.right-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.prize-details-small {
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.42344rem;
+  border-radius: var(--Numbers-Numbers-5, 0.625rem);
+  border: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+  background: var(--Colors-White-White, #FFF);
+}
+
+.prize-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16938rem;
+  padding-right: .4rem;
+
+  p.date {
+    color: var(--Colors-Typography-Colors-Supporting-Text-3, #9D9D9D);
+    font-family: var(--body-font);
+    font-size: 0.50813rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  p.lottery-name {
+    color: var(--Colors-Typography-Colors-Body-Text-1, #262626);
+    font-family: var(--body-font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.ticket-btn-details {
+  display: flex;
+  align-items: center;
+  gap: 0.16938rem;
+  align-self: stretch;
+
+  .ticket-btn {
+    padding: 0.16938rem 0.42344rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.42344rem;
+    border-radius: 42.34425rem;
+    border: 0.678px solid var(--colors-boarders-strokes-boarders-strokes-soft, #E9E9E9);
+
+    color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+    text-overflow: ellipsis;
+    font-family: Satoshi;
+    font-size: 0.59281rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+section.blue-gradient {
+  // border: 1px solid red;
+  background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+  background-position: cover;
+  height: 100vh;
+
+
+}
+
+.section-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(18, 40, 193, 0) -23.58%, rgba(18, 40, 193, 0.639918) 3.57%, #1228C1 89.94%), url(../../../assets/many-icons.png);
+
+
+  h2 {
+    color: var(--Colors-White-White, #FFF);
+    text-align: center;
+    /* Header or Display Text/Header Text 3 */
+    font-family: "DM Sans";
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  button.btn-white-bg {
+    cursor: pointer;
+    display: flex;
+    padding: var(--Numbers-Spacing-XL, 1rem) 1.25rem;
+    border-radius: 25rem;
+    border: 1px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    background: #FFF;
+    color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+
+    /* Button Text/Button Text - Large */
+    font-family: "DM Sans";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.3125rem;
+    }
+  }
+}
+
+.section-2-content {
+  max-width: 40.5rem;
+}
+
+.how-to-container {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-to-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--Numbers-Spacing-M, 0.5rem);
+  max-width: 12.5rem;
+  // max-height: 13.5rem;
+  border-radius: 1.073rem;
+  border: 0.858px solid var(--colors-blue-secondary-color-s-500, #3148E4);
+  background: var(--colors-blue-secondary-color-s-900, #0009B0);
+  padding-block: 1.72rem;
+  padding-inline: 1.16rem;
+
+  h3 {
+    border: 8px solid #3148E4;
+    color: var(--Colors-Brand-Colors-WinAPrize---Green---Primary-Color, #FFB951);
+    font-family: Mulish;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105.5%;
+    padding-block: 0.7rem;
+    padding-inline: 1.1rem;
+    border-radius: 50%;
+    /* 1.5825rem */
+  }
+
+  h4 {
+    color: var(--Colors-White-White, #FFF);
+    text-align: center;
+    /* Body Text - Medium/Body Text - Medium - 4 */
+    font-family: "DM Sans";
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  p {
+    color: #C3DCE9;
+    text-align: center;
+    /* Body Text Regular/Supporting Text - 1 */
+    font-family: "DM Sans";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
