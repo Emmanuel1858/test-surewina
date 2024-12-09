@@ -313,8 +313,6 @@ section.blue-gradient {
   background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
   background-position: cover;
   height: 100vh;
-
-
 }
 
 .section-2 {
@@ -666,5 +664,51 @@ section.blue-gradient {
         }
       }
     }
+  }
+}
+
+
+// ################## SECTION 5 ##################
+
+.section-5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(18, 40, 193, 0) -23.58%, rgba(18, 40, 193, 0.639918) 3.57%, #1228C1 89.94%), url(../../../assets/many-icons.png);
+
+  h2 {
+    color: var(--Colors-White-White, #FFF);
+    text-align: center;
+    /* Header or Display Text/Header Text 3 */
+    font-family: "DM Sans";
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    max-width: 34.10175rem;
+  }
+
+  p {
+    color: var(--colors-blue-secondary-color-s-100, #C7C9F8);
+    text-align: center;
+    /* Body Text Regular/Body Text - Regular - 3 */
+    font-family: "DM Sans";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+}
+
+.video-testimonies {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  img {
+    cursor: pointer;
   }
 }
