@@ -712,3 +712,109 @@ section.blue-gradient {
     cursor: pointer;
   }
 }
+
+// ################## SECTION 6 ##################
+
+.section-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #EEF8FF;
+  width: 100%;
+  height: 80vh;
+
+  .text-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.27813rem;
+
+    .btn {
+      color: var(--Blacks-Black-300, #434343);
+      text-align: center;
+      /* Body Text - Medium/Body Text - Medium - 5 */
+      font-family: "DM Sans";
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      display: flex;
+      padding: var(--Numbers-Spacing-M, 0.5rem) 1rem;
+      align-items: flex-start;
+      gap: 0.625rem;
+      border-radius: 6.25rem;
+      background: var(--colors-blue-secondary-color-s-50, #E9EAFC);
+    }
+
+    h2 {
+      color: var(--Kovarly-Black, #000);
+      text-align: center;
+      /* Body Text - Medium/Body Text - Medium - 1 */
+      font-family: "DM Sans";
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}
+
+.card-slides-container {
+  display: flex;
+  align-items: center;
+  width: clamp(15rem, 58vw, 55rem);
+  gap: 1rem;
+  padding-block: 2rem;
+  overflow: scroll;
+}
+
+.card-slides {
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+  gap: 2rem;
+  background: #FFF;
+  border: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+  padding-block: 2.5rem;
+  padding-left: 2.5rem;
+  padding-right: 1.5rem;
+  border-radius: 1.06513rem;
+
+  h3 {
+    color: var(--Blacks-Body-Text-Color---Black-400, #555);
+    /* Body Text Regular/Body Text - Regular */
+    font-family: "DM Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+
+    .user-details {
+      h3 {
+        color: var(--Kovarly-Black, #000);
+        /* Body Text - Medium/Body Text - Medium - 4 */
+        font-family: "DM Sans";
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+
+      p {
+        color: var(--Blacks-Black-500, #7B7B7B);
+        font-family: Manrope;
+        font-size: 0.74556rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.17163rem; /* 157.143% */
+      }
+    }
+  }
+}
