@@ -1,0 +1,492 @@
+.container {
+    max-height: 85vh;
+    overflow: auto;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 40px 20px;
+
+    // width: 90%;
+}
+.first-card {
+    background-color: #000;
+    width: 400px;
+    height: 70vh;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+}
+
+.first-card-text span {
+    font-family: var(--cta-alt);
+    font-weight: var(--fw-400);
+}
+
+.first-card-prize {
+    border: 2px solid #434343;
+    margin-top: 190px;
+    border-radius: 2px;
+    padding: 20px;
+
+}
+
+.first-card-prize-div {
+    display: flex;
+    flex-direction: column;
+    // gap: 3px;
+}
+
+.first-card-prize-text {
+    font-family: var(--cta-alt);
+    font-weight: var(--fw-400);
+    color: #C4C4C4;
+}
+
+.first-card-prize-amount-div {
+    display: flex;
+    gap: 15px;
+}
+
+.first-card-prize-amount {
+    font-weight: var(--fw-500);
+    font-family: var(--cta-alt);
+    font-size: 32px;
+    // font-size: var(--fs-32);
+}
+
+.first-card-prize-sign {
+    font-size: 30px;
+    color: #FFB951;
+    font-weight: var(--fw-700);
+    font-family: var(--cta-alt);
+}
+
+.first-card-prize-img {
+    display: flex;
+    gap: var(--NumbersSpacingS);
+}
+
+.first-card-balance {
+    display: flex;
+    gap: 18px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    // justify-content: space-between;
+    background-color: #434343;
+    margin-top: var(--NumbersSpacingXL);
+}
+
+.first-card-balance-wallet {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-card-balance-text {
+    font-weight: var(--fw-400);
+    font-family: var(--cta-alt);
+    font-size: 14px;
+    color: #C4C4C4;
+}
+
+.first-card-balance-amount {
+    font-weight: var(--fw-500);
+    font-family: var(--cta-alt);
+    font-size: 18px;
+}
+
+.first-card-balance-referal {
+    display: flex;
+    flex-direction: column;
+}
+
+.second-card {
+    display: flex;
+    // background-color: #ffd;
+    // width: 248px;
+    height: 70vh;
+    // border-radius: 20px;
+
+
+}
+
+.second-card-right {
+    background-color: #000;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 255px;
+}
+
+.second-card-right-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 26px;
+    // width:   170px;
+}
+
+.second-card-game-text {
+    color: #fff;
+    font-size: 24px;
+}
+
+.second-card-jolly-text {
+    color: #FF9B0F;
+    font-size: 24px;
+    font-weight: var(--fw-700);
+}
+
+.second-card-text {
+    color: #D9D9D9;
+    font-family: var(--fw-400);
+    size: 14px;
+    // width: 200px;
+}
+
+.button-section {
+    position: relative;
+    top: 190px;
+    left: 24px;
+}
+
+.btn-buy-ticket {
+    position: absolute;
+    top: 90px;
+    display: flex;
+    gap: 5px;
+    background-color: #000;
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: #fff;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.btn-buy-ticket:hover {
+    background-color: #1228C1;
+}
+
+.second-card-prize {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    // justify-content: space-between;
+    // background-image: url(../../../assets/samsung-tv.svg);
+    // background-image: url(../../../assets/yellow-paper.svg);
+    // background-image: url(../../../assets/white-jeep.svg);
+    width: 425px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+
+.second-card-prize-text {
+    border: 1px solid #C4C4C4;
+    backdrop-filter: blur(2px);
+    padding: 2px 30px;
+    color: #fff;
+    border-radius: 20px;
+    outline: none;
+    margin-top: 15px;
+
+
+}
+
+.arrow-section {
+    margin-top: 15px;
+    position: absolute;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.arrow {
+    display: block;
+    background-color: #fff;
+    color: #000;
+    // padding: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.arrow span {
+    position: relative;
+    left: 6px;
+    top: -3px;
+}
+
+.arrow:hover {
+    background-color: #000;
+    color: #fff;
+    // font-size: 22px;
+    // font-weight: 800;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+.bar {
+    display: block;
+    border: 2px solid #fff;
+    width: 4.5rem;
+    padding: 2px;
+    background-color: white;
+    border-radius: 20px;
+    transition: all .5s ease-in-out;
+}
+
+.third-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #1228C1;
+    color: #fff;
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.third-card-profile-text {
+    font-family: var(--cta-alt);
+    font-weight: var(--fw-400);
+}
+
+.third-card-complete {
+    margin-top: 130px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.third-card-progress {
+    border: 3px solid #000896;
+    border-radius: 10px;
+    background-color: #000896;
+    width: 100%;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.third-card-progress-bar {
+    border: 4px solid #fff;
+    border-radius: 10px;
+    // background-color: #000896;
+    width: 50%;
+}
+
+.third-card-profile {
+    display: flex;
+    gap: 8px;
+    background-color: #fff;
+    color: #000;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    color: #262626;
+}
+
+.profile-number {
+    color: #555555;
+}
+
+.location-details {
+    display: flex;
+    gap: 8px;
+    background-color: #3148E4;
+    color: #000;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.nin-details {
+    display: flex;
+    gap: 8px;
+    background-color: #3148E4;
+    color: #000;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.ticket-winner-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1px 40px 50px;
+    
+}
+
+.winner-body-name {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.ticket-table {
+    border: 1px solid #D9D9D9;
+    width: 650px;
+    padding: 20px;
+    border-radius: 4px;
+
+}
+
+.ticket-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-btn-text {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px;
+}
+
+.ticket-btn-view {
+    color: #3B82F6;
+    cursor: pointer;
+}
+
+.ticket-details {
+    background-color: #FCFCFC;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.ticket-details-all {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-date {
+    font-size: 12px;
+    font-weight: var(--fw-400);
+    color: #9D9D9D;
+}
+
+.ticket-name {
+    font-size: 18px;
+    font-weight: var(--fw-400);
+    color: #262626;
+}
+
+.ticket-won {
+    font-size: 14px;
+    font-weight: var(--fw-400);
+    display: flex;
+    gap: 5px;
+}
+
+.ticket-won span {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px;   
+}
+
+.winner-table {
+    border: 1px solid #D9D9D9;
+    width: 650px;
+    // padding: 20px;
+    border-radius: 4px;
+
+}
+
+.winner-button {
+    display: flex;
+    justify-content: space-between;
+    padding:  10px 20px;
+}
+
+
+.winner-btn-text {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px;
+}
+
+.winner-btn-view {
+    color: #3B82F6;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.winner-table-head {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #E9E9E9;
+    background-color: #EEF8FF;
+    font-size: 14px;
+    width: 100%;
+    padding: 5px 20px ;
+}
+.thead-active {
+    border-bottom: 4px solid #262626;
+    border-radius: 4px;
+}
+
+.thead {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+
+}
+
+.winner-jolly-number {
+    border: 1px solid #D9D9D9;
+    color: #1228C1;
+    padding: 1px 8px;
+    border-radius: 20px;
+}
+
+.winner-jolly-num {
+    border: 1px solid #D9D9D9;
+    color: #555555;
+    padding: 1px 8px;
+    border-radius: 20px; 
+}
+
+.winner-table-body {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+.winner-body {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px 0; 
+}
+

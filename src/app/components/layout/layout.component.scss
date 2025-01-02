@@ -1,0 +1,113 @@
+* {
+    font-family: var(--cta-alt);
+}
+
+.container {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    margin: 5px auto 0;
+    // border: 1px solid;
+
+}
+
+
+.header-left {
+    width: 7%;
+    // height: 30%;
+}
+
+.header-right {
+    display: flex;
+    gap: 8px;
+
+}
+
+.header-initials {
+    border: 1px solid var(--color-boarder-stroke-hard);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    padding: 7px 8px;
+    color: #262626;
+    background-color: var(--clr-dark-20);
+    font-family: var(--cta-alt);
+    font-weight: var(--fw-700) 
+        // margin: 0 auto;
+}
+
+.head-border {
+    margin: 10px 0;
+    border: 1px solid var(--color-boarder-stroke);
+}
+
+.header-sub-left {
+    display: flex;
+    gap: 8px;
+}
+
+.header-sub {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    padding: 12px 0;
+    margin: 0 auto;
+}
+
+.header-dashboard {
+    // border: 1px solid;
+    width: 9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--clr-blue-500);
+    font-size: var(--fs-18);
+    border-radius: var(--rounded-sm);
+    color: #fff;
+    padding: 7px 12px;
+    cursor: pointer;
+}
+
+.header-ticket {
+    width: 11rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: transparent;
+    border: 1px solid var(--clr-dark-75);
+    font-size: var(--fs-18);
+    border-radius: var(--rounded-sm);
+    color: #7B7B7B;
+    padding: 7px 12px; 
+    cursor: pointer;
+}
+
+.header-board {
+    width: 11rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: transparent;
+    border: 1px solid var(--clr-dark-75);
+    font-size: var(--fs-18);
+    border-radius: var(--rounded-sm);
+    color: #7B7B7B;
+    padding: 7px 12px; 
+    cursor: pointer;
+}
+
+.header-note {
+    color: var(--clr-blue-450);
+}
+
+.header-note-bold {
+    color: var(--clr-blue-450);
+    font-weight: var(--fw-700);
+}
+

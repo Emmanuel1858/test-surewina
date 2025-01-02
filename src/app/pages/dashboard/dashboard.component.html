@@ -1,0 +1,214 @@
+<div class="container">
+
+
+<div class="card-container">
+    <div class="first-card">
+        <div class="th">
+            <div class="first-card-text">
+                <span>Your Insight</span>
+            </div>
+            <div class="first-card-prize">
+                <div class="first-card-prize-div">
+                    <div>
+                        <span class="first-card-prize-text">Prize Won</span>
+                    </div>
+                    <div class="first-card-prize-amount-div">
+                        <span class="first-card-prize-amount">₦ 738k</span>
+                        <span class="first-card-prize-sign">~</span>
+                    </div>
+                </div>
+                <div class="first-card-prize-img">
+                    <img src="../../../assets/Rectangle 4579.svg" alt="">
+                    <img src="../../../assets/Rectangle 4580.svg" alt="">
+                    <img src="../../../assets/Rectangle 4581.svg" alt="">
+                    <img src="../../../assets/Rectangle 4582.svg" alt="">
+                    <img src="../../../assets/Rectangle 4583.svg" alt="">
+                </div>
+            </div>
+            <div class="first-card-balance">
+                <div class="first-card-balance-wallet">
+                    <span class="first-card-balance-text">Wallet Balance</span>
+                    <span class="first-card-balance-amount">₦12,000</span>
+                </div>
+                <div class="first-card-balance-referal">
+                    <span class="first-card-balance-text">Referal Balance</span>
+                    <span class="first-card-balance-amount">₦1,000</span>
+                </div>
+            </div>
+
+
+        </div>
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div class="second-card">
+        <div class="second-card-right">
+            <div class="second-card-right-text">
+                <span class="second-card-game-text">
+                    Today’s game
+                </span>
+                <span class="second-card-jolly-text">
+                    JOLLY JACKPOT
+                </span>
+                <span class="second-card-text">
+                    <div>Buy Jolly tickets and</div>
+                    <div>win lots of great prizes</div>
+                    
+                    
+                </span>
+            </div>
+            <div class="button-section">
+                <img src="../../../assets/dashboard-icon.svg" alt="">
+                <button class="btn-buy-ticket">
+                    <span>BUY TICKETS</span>
+                    <span>></span>
+                </button>
+            </div>
+        </div>
+        <div class="second-card-prize"
+        [style.background-image]="'url(' + currentBackgroundImage + ')'"
+        [class.fade]="true">
+            <!-- <img src="../../../assets/Property 1=Samsung HD Monitor - 4th Gen - Default.svg" alt=""> -->
+            <div class="" >
+               <button class="second-card-prize-text">Prizes</button> 
+            </div>
+            <div class="arrow-section">
+                <span class="arrow" (click)="goNext()">
+                    <span>></span>
+                </span>
+                <span class="arrow" (click)="goPrev()">
+                    <span><</span>    
+                </span>
+            </div>
+            <div class="progress-bar">
+                <span class="bar" *ngFor="let bar of bars; let i = index"
+                [style.backgroundColor]="bar ? 'white' : 'transparent'">
+                     
+                </span>
+
+                
+            </div>
+        </div>
+    </div>
+    <div class="third-card">
+        <div class="third-card-profile-text">
+            Profile summary
+        </div>
+        <div class="third-card-complete">
+            <span>Complete your profile</span>
+            <span>50%</span>
+
+        </div>
+        <div class="third-card-progress">
+            <div class="third-card-progress-bar">
+
+            </div>
+        </div>
+        <div class="details-container">
+            <div class="third-card-profile">
+                <div class="profile-pic">
+                    <img src="../../../assets/avatar.svg" alt="">
+                </div>
+                <div class="profile-details">
+                    <div class="profile-name">Dasola Awoye</div>
+                    <div class="profile-number">0813 456 7829</div>
+                </div>
+            </div>
+            <div class="location-details">
+                <div class="location-pic">
+                    <img src="../../../assets/location.svg" alt="">
+                </div>
+                <div>
+                    <div>Update Your</div>
+                    <div>location details</div>
+                </div>
+            </div>
+            <div class="nin-details">
+                <div class="nin-pic">
+                    <img src="../../../assets/gallery.svg" alt="">
+                </div>
+                <div>
+                    <div>Provide your NIN</div>
+                    <div>for verification</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="ticket-winner-container">
+    <div class="ticket-table">
+        <div class="ticket-button">
+            <button class="ticket-btn-text">Your Ticket History</button>
+            <button class="ticket-btn-view">
+                <span>VIEW ALL</span>
+                <span> > </span> 
+            </button>
+        </div>
+        <div>
+            <div class="ticket-details">
+                <div>
+                    <img src="../../../assets/Rectangle 4585.svg" alt="">
+                </div>
+                <div class="ticket-details-all">
+                    <span class="ticket-date">05th Sept, 2024</span>
+                    <span class="ticket-name">Jolly Jackpot Lottery</span>
+                    <span class="ticket-won">
+                        <span>12 Ticket</span>
+                        <span>₦ 12,000</span>
+                        <span>Cars, bikes, laptop, Monitor, Smartphones</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="winner-table">
+        <div class="winner-button">
+            <button class="winner-btn-text">Lottery Winners Board</button>
+            <button class="winner-btn-view">
+                <span>VIEW ALL</span>
+                <span> > </span>
+            </button>
+        </div>
+        <div>
+            <div class="winner-table-head">
+                <div class="thead-active">
+                    <span>Jolly Jackpot</span>
+                    <span class="winner-jolly-number">32</span>
+                </div>
+                <div class="thead">
+                    <span>Jolly Jumbo</span>
+                    <span class="winner-jolly-num">32</span>
+                </div>
+                <div class="thead">
+                    <span>Jolly Boom</span>
+                    <span class="winner-jolly-num">32</span>
+                </div>
+                <div class="thead">
+                    <span>Jolly Geluu</span>
+                    <span class="winner-jolly-num">32</span>
+                </div>
+            </div>
+            <div class="winner-table-body">
+                <div class="winner-body-name">
+                    <span><img src="../../../assets/Property 1=Variant5.svg" alt=""></span>
+                    <span>Irene</span>
+                </div>
+                <div class="winner-body">
+                    From Yaba
+                </div>
+                <div class="winner-body">
+                    Played ₦ 12,000
+                </div>
+                <div class="winner-body">
+                    Won Jeep Cheroke SUV 2024
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

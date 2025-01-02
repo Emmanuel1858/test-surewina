@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="container-img">
+        <img
+        class="img"
+        *ngFor="let image of images; let i = index"
+        [class.active]="i === activeIndex"
+        [src]="image"
+        alt="Carousel Image"
+      />
+
+    </div>
+
+    <div class="login-details">
+        <div class="login-details-container">
+            <div class="first-details">
+                <div class="container-step">
+                    <span>STEP 1</span>
+                </div>
+                <div>
+                    <h1 class="heading">Lets Get Started</h1>
+                    <span class="heading-sub">Please provide your personal information</span>
+                    <div class="icons">
+                        <span>
+                            <img class="google-icon" src="../../../assets/Google Logos.svg" alt="">
+                        </span>
+                        <span>
+                            <img class="facebook-icon" src="../../../assets/logos_facebook.svg" alt="">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="all-inputs">
+                <input type="text" placeholder="Full name">
+                <input type="text" placeholder="Email Address ">
+                <input type="text" placeholder="Who referred you?">
+            </div>
+            <div class="footer">
+                <div class="all-text">
+                    <span class="have-account">Already have an account?</span>
+                    <span class="log-in">Log in</span>
+                </div>
+                <div class="buttons">
+                    <button class="btn-back" (click)="navigateBack()">Go Back</button>
+                    <button class="btn-cont" (click)="navigateToPassword()">Continue <img src="../../../assets/grommet-icons_form-next.svg"
+                            alt=""></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

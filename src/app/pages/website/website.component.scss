@@ -1,0 +1,879 @@
+header {
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  border-top: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+  border-bottom: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+  background: var(--white, #FFF);
+  box-shadow: 0px 4px 20px 0px rgba(49, 72, 228, 0.04);
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-inline: 3rem;
+  padding-block: 1rem;
+}
+
+.links {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+
+  a {
+    cursor: pointer;
+    /* Body Text - Medium/Body Text - Medium - 4 */
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    &:hover {
+      color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    }
+  }
+}
+
+.btn {
+  cursor: pointer;
+  display: inline-flex;
+  height: 32px;
+  justify-content: center;
+  align-items: center;
+  padding: var(--Numbers-Spacing-XS, 4px) var(--Numbers-Spacing-XXL, 20px);
+  flex-shrink: 0;
+  border-radius: 400px;
+  border: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+
+  &.outline-blue {
+    border: 1px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    background: #FFF;
+    color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+
+    /* Button Text/Button Text - Small */
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+.btn-full {
+  cursor: pointer;
+
+  &.blue {
+    padding: var(--Numbers-Spacing-XL, 16px) 20px;
+    align-items: center;
+    border-radius: 400px;
+    background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+  }
+
+  a {
+    color: var(--Colors-White-White, #FFF);
+    /* Button Text/Button Text - Large */
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    gap: 5px;
+
+  }
+}
+
+// ################## SECTION 1 ##################
+
+section.add-gradient {
+  height: 100vh;
+  background:
+    linear-gradient(358deg, #DCE9FA -12.63%, rgba(239, 246, 255, 0.00) 61.81%),
+    url(../../../assets/wavy-patter-bg.png);
+  background-position: cover;
+}
+
+.section-1 {
+  display: flex;
+  align-items: center;
+  gap: 140px;
+  padding: var(--container);
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.left-side {
+  display: flex;
+  align-items: self-start;
+  flex-direction: column;
+  gap: var(--Numbers-Spacing-3XL, 1.5rem);
+  ;
+}
+
+h1 {
+  max-width: 609.751px;
+
+  color: var(--Colors-Typography-Colors-Header-or-Display-Text, #000);
+  font-family: "DM Sans";
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 106%;
+}
+
+.support-text {
+  display: flex;
+  max-width: 607px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--Numbers-Spacing-3XL, 24px);
+
+  p {
+    color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+    /* Body Text Regular/Body Text - Regular - 3 */
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    max-width: 610px;
+  }
+}
+
+.headshot-container {
+  display: flex;
+  max-width: 339px;
+  align-items: center;
+  gap: var(--Numbers-Spacing-S, 10px);
+
+  p {
+    color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+    /* Body Text Regular/Supporting Text - 1 */
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  gap: 22.646px;
+}
+
+.right-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.prize-collection,
+.ticket-collection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: .5rem;
+}
+
+img.gift-icon {
+  width: 4.68313rem;
+  height: 4.75rem;
+}
+
+.ticket-collection {
+  justify-content: flex-start;
+}
+
+.prize-details-medium {
+  padding-block: 1rem;
+  padding-inline: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 31.704px;
+  min-width: 241.176px;
+  flex-shrink: 0;
+  border-radius: var(--Numbers-Numbers-6, 16px);
+  border: 1.644px solid var(--colors-black-tetiary-color-b-700, #434343);
+  background: var(--colors-black-tetiary-color-b-900, #000);
+}
+
+.prize-earnings {
+  p {
+    color: var(--colors-black-tetiary-color-b-300, #C4C4C4);
+    font-family: var(--body-font);
+    font-size: 13.148px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  h2 {
+    color: var(--Colors-White-White, #FFF);
+    font-family: var(--body-font);
+    font-size: 26.296px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    span {
+      color: var(--Colors-Brand-Colors-WinAPrize---Green---Primary-Color, #FFB951);
+      text-align: center;
+      font-family: var(--body-font);
+      font-size: 26.296px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+
+}
+
+.right-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.prize-details-small {
+  padding: .5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.42344rem;
+  border-radius: var(--Numbers-Numbers-5, 0.625rem);
+  border: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+  background: var(--Colors-White-White, #FFF);
+}
+
+.prize-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.16938rem;
+  padding-right: .4rem;
+
+  p.date {
+    color: var(--Colors-Typography-Colors-Supporting-Text-3, #9D9D9D);
+    font-family: var(--body-font);
+    font-size: 0.50813rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  p.lottery-name {
+    color: var(--Colors-Typography-Colors-Body-Text-1, #262626);
+    font-family: var(--body-font);
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.ticket-btn-details {
+  display: flex;
+  align-items: center;
+  gap: 0.16938rem;
+  align-self: stretch;
+
+  .ticket-btn {
+    padding: 0.16938rem 0.42344rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.42344rem;
+    border-radius: 42.34425rem;
+    border: 0.678px solid var(--colors-boarders-strokes-boarders-strokes-soft, #E9E9E9);
+
+    color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+    text-overflow: ellipsis;
+    font-family: Satoshi;
+    font-size: 0.59281rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+// ################## SECTION 2 ##################
+section.blue-gradient {
+  background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+  background-position: cover;
+  height: 100vh;
+}
+
+.section-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(18, 40, 193, 0) -23.58%, rgba(18, 40, 193, 0.639918) 3.57%, #1228C1 89.94%), url(../../../assets/many-icons.png);
+
+
+  h2 {
+    color: var(--Colors-White-White, #FFF);
+    text-align: center;
+    /* Header or Display Text/Header Text 3 */
+    font-family: "DM Sans";
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  button.btn-white-bg {
+    cursor: pointer;
+    display: flex;
+    padding: var(--Numbers-Spacing-XL, 1rem) 1.25rem;
+    border-radius: 25rem;
+    border: 1px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    background: #FFF;
+    color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+
+    /* Button Text/Button Text - Large */
+    font-family: "DM Sans";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 0.3125rem;
+    }
+  }
+}
+
+.section-2-content {
+  max-width: 40.5rem;
+}
+
+.how-to-container {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-to-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--Numbers-Spacing-M, 0.5rem);
+  max-width: 12.5rem;
+  border-radius: 1.073rem;
+  border: 0.858px solid var(--colors-blue-secondary-color-s-500, #3148E4);
+  background: var(--colors-blue-secondary-color-s-900, #0009B0);
+  padding-block: 1.72rem;
+  padding-inline: 1.16rem;
+
+  h3 {
+    border: 8px solid #3148E4;
+    color: var(--Colors-Brand-Colors-WinAPrize---Green---Primary-Color, #FFB951);
+    font-family: Mulish;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 105.5%;
+    padding-block: 0.7rem;
+    padding-inline: 1.1rem;
+    border-radius: 50%;
+    /* 1.5825rem */
+  }
+
+  h4 {
+    color: var(--Colors-White-White, #FFF);
+    text-align: center;
+    /* Body Text - Medium/Body Text - Medium - 4 */
+    font-family: "DM Sans";
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  p {
+    color: #C3DCE9;
+    text-align: center;
+    /* Body Text Regular/Supporting Text - 1 */
+    font-family: "DM Sans";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+// ################## SECTION 3 ##################
+
+.section-3 {
+  position: relative;
+  height: 100vh;
+  background: var(--Colors-White-White, #FFF);
+}
+
+.half-gift {
+  position: absolute;
+  right: 0;
+  width: 17rem;
+  top: 56px;
+}
+
+.section-3-content {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: var(--container);
+  gap: var(--Numbers-Spacing-9XL, 6.25rem);
+  height: 100vh;
+
+  .content-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Large, 1rem);
+    background-color: lightgray;
+    background-image: url(../../../assets/tricycle-prize.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 36.125rem;
+    height: 25rem;
+  }
+
+  .content-1-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+
+    button.pseudo-btn {
+      color: var(--Colors-White-White, #FFF);
+      /* Body Text Regular/Body Text - Regular */
+      font-family: "DM Sans";
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      display: flex;
+      padding: var(--Numbers-Spacing-S, 0.375rem) var(--Numbers-Spacing-XL, 1rem);
+      justify-content: center;
+      align-items: center;
+      gap: var(--Numbers-Spacing-S, 0.375rem);
+      border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Small, 0.25rem);
+      border: 1px solid var(--colors-boarders-strokes-boarders-strokes-hard, #C4C4C4);
+      background: rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(25px);
+    }
+
+    .switch-cta-btn {
+      display: flex;
+      align-items: center;
+      gap: var(--Numbers-Spacing-S, 0.375rem);
+
+      img {
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  .content-1-bottom {
+    padding: 1.5rem;
+    color: var(--Colors-White-White, #FFF);
+    text-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
+
+    /* Header or Display Text/Header Text 5 */
+    font-family: "Big Shoulders Display";
+    font-size: 1.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  .content-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 1.31rem;
+    max-width: 29.09663rem;
+    z-index: 200;
+
+    .top {
+      display: flex;
+      flex-direction: column;
+      gap: .63rem;
+      align-items: flex-start;
+
+      p {
+        color: var(--Colors-Typography-Colors-Header-or-Display-Text, #000);
+        font-family: "DM Sans";
+        font-size: 2.25rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+
+        span {
+          color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+          font-family: "DM Sans";
+          font-size: 3rem;
+          font-style: normal;
+          font-weight: 900;
+          line-height: normal;
+        }
+      }
+    }
+
+    .bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: .63rem;
+      max-width: 20.9375rem;
+      color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+      /* Body Text Regular/Body Text - Regular - 3 */
+      font-family: "DM Sans";
+      font-size: 1.25rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+  }
+}
+
+// ################## SECTION 4 ##################
+
+.draw-details {
+  position: absolute;
+  background-color: rgba(18, 40, 193, 1);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  z-index: 20;
+  right: 120px;
+
+  .draw-top {
+    padding-inline: 1.53rem;
+    padding-top: .2rem;
+    padding-bottom: .5rem;
+
+    p {
+      color: var(--Colors-White-White, #FFF);
+      text-align: center;
+      font-family: "DM Sans";
+      font-size: 0.58688rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 1.17369rem; /* 200% */
+      letter-spacing: 0.01763rem;
+    }
+
+    h2 {
+      color: var(--Colors-White-White, #FFF);
+      text-align: center;
+      font-family: "DM Sans";
+      font-size: 1.56494rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 1.17369rem; /* 75% */
+    }
+  }
+
+  .draw-bottom {
+    border-top: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+    padding-inline: 1rem;
+
+    p {
+      color: var(--Colors-White-White, #FFF);
+      text-align: center;
+      font-family: "DM Sans";
+      font-size: 0.58688rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 1.17369rem; /* 200% */
+      text-transform: uppercase;
+      padding-block: .1rem;
+    }
+  }
+}
+
+.section-4 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.97806rem;
+  background: #EEF8FF;
+  margin: var(--container);
+  
+  .top {
+    padding-top: 2.4rem;
+  }
+
+  .bottom {
+    width: 100%;
+    border-top: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3.125rem;
+    padding: 2.5rem;
+
+    .details-container {
+      display: flex;
+      gap: var(--Numbers-Numbers-11, 3rem);
+
+      .details {
+        p {
+          color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+          /* Body Text Regular/Body Text - Regular */
+          font-family: "DM Sans";
+          font-size: 1rem;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+
+        h2 {
+          color: var(--Colors-Typography-Colors-Header-or-Display-Text, #000);
+          /* Body Text - Medium/Body Text - Medium - 1 */
+          font-family: "DM Sans";
+          font-size: 2rem;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+      }
+    }
+  }
+}
+
+
+// ################## SECTION 5 ##################
+
+.section-5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(18, 40, 193, 0) -23.58%, rgba(18, 40, 193, 0.639918) 3.57%, #1228C1 89.94%), url(../../../assets/many-icons.png);
+
+  h2 {
+    color: var(--Colors-White-White, #FFF);
+    text-align: center;
+    /* Header or Display Text/Header Text 3 */
+    font-family: "DM Sans";
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 700;
+    max-width: 34.10175rem;
+  }
+
+  p {
+    color: var(--colors-blue-secondary-color-s-100, #C7C9F8);
+    text-align: center;
+    /* Body Text Regular/Body Text - Regular - 3 */
+    font-family: "DM Sans";
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+}
+
+.video-testimonies {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+
+  img {
+    cursor: pointer;
+  }
+}
+
+// ################## SECTION 6 ##################
+
+.section-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #EEF8FF;
+  width: 100%;
+  height: 80vh;
+
+  .text-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.27813rem;
+
+    .btn {
+      color: var(--Blacks-Black-300, #434343);
+      text-align: center;
+      /* Body Text - Medium/Body Text - Medium - 5 */
+      font-family: "DM Sans";
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      display: flex;
+      padding: var(--Numbers-Spacing-M, 0.5rem) 1rem;
+      align-items: flex-start;
+      gap: 0.625rem;
+      border-radius: 6.25rem;
+      background: var(--colors-blue-secondary-color-s-50, #E9EAFC);
+    }
+
+    h2 {
+      color: var(--Kovarly-Black, #000);
+      text-align: center;
+      /* Body Text - Medium/Body Text - Medium - 1 */
+      font-family: "DM Sans";
+      font-size: 2rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}
+
+.card-slides-container {
+  display: flex;
+  align-items: center;
+  width: clamp(15rem, 58vw, 55rem);
+  gap: 1rem;
+  padding-block: 2rem;
+  overflow: scroll;
+}
+
+.card-slides {
+  display: flex;
+  flex-direction: column;
+  min-width: 20rem;
+  gap: 2rem;
+  background: #FFF;
+  border: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+  padding-block: 2.5rem;
+  padding-left: 2.5rem;
+  padding-right: 1.5rem;
+  border-radius: 1.06513rem;
+
+  h3 {
+    color: var(--Blacks-Body-Text-Color---Black-400, #555);
+    /* Body Text Regular/Body Text - Regular */
+    font-family: "DM Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+
+    .user-details {
+      h3 {
+        color: var(--Kovarly-Black, #000);
+        /* Body Text - Medium/Body Text - Medium - 4 */
+        font-family: "DM Sans";
+        font-size: 1.125rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+
+      p {
+        color: var(--Blacks-Black-500, #7B7B7B);
+        font-family: Manrope;
+        font-size: 0.74556rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.17163rem; /* 157.143% */
+      }
+    }
+  }
+}
+
+footer {
+  padding: var(--container);
+  background-color: #0009B0;
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 6rem;
+  }
+
+  .left-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.0625rem;
+  }
+
+  .right-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4375rem;
+
+    h2 {
+      color: #FFF;
+      /* Body Text Bold/Body Text - Bold - 2 */
+      font-family: "DM Sans";
+      font-size: 1.5rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    p {
+      color: #FFF;
+      font-family: "DM Sans";
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 131.372%; /* 1.31369rem */
+    }
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #FFF;
+    color: #FFF;
+    /* Body Text Regular/Body Text - Regular - 4 */
+    font-family: "DM Sans";
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    p {
+      padding-top: 1rem;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="header">
+        <div class="header-left">
+            <img src="../../../assets/Group 1000002454.svg" alt="">
+        </div>
+        <div class="header-right">
+            <span>
+                <img src="../../../assets/Header Icon.svg" alt="">
+            </span>
+            <span>
+                <img src="../../../assets/Header Icon (1).svg" alt="">
+            </span>
+            <span class="header-initials">
+               DA
+            </span>
+        </div>
+    </div>
+    <div class="head-border">
+
+    </div>
+    <div class="header-sub">
+        <div class="header-sub-left">
+            <span class="header-dashboard" (click)="navigateToDashboard()">
+                <img src="../../../assets/dashboard-square-02 (1).svg" alt="">
+                <span>Dashboard</span>
+            </span>
+            <span class="header-ticket" (click)="navigateToTicket()">
+                <img src="../../../assets/ticket-02.svg" alt="">
+                <span>Ticket History</span>
+            </span>
+            <span class="header-board" (click)="navigateToWinner()">
+                <img src="../../../assets/analytics-01.svg" alt="">
+                <span>Winners Board</span>
+            </span>
+        </div>
+        <div>
+           <span class="header-note">Lottery Winners will be announced</span><span class="header-note-bold"> everyday of the week</span>  
+        </div>
+    </div>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
