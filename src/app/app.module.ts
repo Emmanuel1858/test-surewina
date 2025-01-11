@@ -33,25 +33,4 @@ import { WinnerBoardComponent } from './pages/winner-board/winner-board.componen
   providers: [],
   bootstrap: [AppComponent]
 })
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    WebsiteComponent,
-    // CreateAccontNameComponent,
-    CreateAccountNameComponent,
-    CreateAccountPasswordComponent,
-    CreateAccountOtpComponent,
-    DashboardComponent,
-    LayoutComponent,
-    TicketHistoryComponent,
-    WinnerBoardComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
 export class AppModule { }
