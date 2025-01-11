@@ -8,6 +8,12 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
 import { WinnerBoardComponent } from './pages/winner-board/winner-board.component';
+import { AdminPortalLoginComponent } from './pages/admin-portal-login/admin-portal-login.component';
+import { AdminPortalComponent } from './pages/admin-portal/admin-portal.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
+import { AdminLotteryComponent } from './pages/admin-lottery/admin-lottery.component';
+import { AdminTransactionsComponent } from './pages/admin-transactions/admin-transactions.component';
 // import { CreateAccountNameComponent } from './pages/create-account-name/create-account-name.component';
 
 
@@ -24,7 +30,18 @@ const routes: Routes = [
       { path: 'ticket-history', component:TicketHistoryComponent},
       { path: 'winner-board', component:WinnerBoardComponent }
     ]
-  }
+  },
+
+  // admin path route
+  { path: 'admin-login', component: AdminPortalLoginComponent },
+  { path: 'admin', component: AdminPortalComponent,
+    children: [ 
+      { path: 'dashboard', component: AdminDashboardComponent },
+      { path: 'users', component: AdminUsersComponent },
+      { path: 'lottery', component: AdminLotteryComponent },
+      { path: 'transactions', component: AdminTransactionsComponent },
+    ]
+   },
 
 
 ]
