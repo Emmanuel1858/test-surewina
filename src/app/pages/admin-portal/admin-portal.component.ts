@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AdminPortalComponent {
 
+  constructor() {
+
+  }
+
+  currentRoute: string = 'Your Dashboard'
+  userName: string = 'Dasola A';
+  userEmail: string = 'dasola_dzn@gmail.com';
 }

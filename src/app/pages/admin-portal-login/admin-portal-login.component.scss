@@ -130,7 +130,8 @@
   color: var(--clr-white);
   background-color: var(--clr-blue-800);
   // padding: var(--NumbersSpacingS, 16px) 20px;
-  padding: var(--NumbersSpacingS, 16px) 20px 6px 0px;
+  padding: var(--Numbers-Numbers-6, 1rem) 1.25rem;
+  // padding: var(--NumbersSpacingS, 16px) 20px 6px 0px;
   border-radius: var(--rounded-xl);
   color: var(--Colors-White-White, #FFF);
 
@@ -150,7 +151,7 @@
 
 .btn-cont img {
   position: absolute;
-  top: 20px;
+  top: 21px;
   right: 15px;
   // left: 0;
   width: 0.875rem;

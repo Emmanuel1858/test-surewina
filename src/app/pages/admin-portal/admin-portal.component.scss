@@ -1,0 +1,21 @@
+.admin-portal {
+  display: flex;
+}
+.admin-content {
+  padding-inline: 1.6rem;
+  padding-top: 1.2rem;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+h1 {
+  color: var(--colors-black-tetiary-color-b-900, #000);
+
+  /* Body Text - Medium/Body Text - Medium - 2 */
+  font-family: "DM Sans";
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-bottom: 1.63rem;
+}

@@ -18,6 +18,7 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
 import { AdminLotteryComponent } from './pages/admin-lottery/admin-lottery.component';
 import { AdminTransactionsComponent } from './pages/admin-transactions/admin-transactions.component';
+import { AdminSideNavComponent } from './components/admin-side-nav/admin-side-nav.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AdminTransactionsComponent } from './pages/admin-transactions/admin-tra
     AdminDashboardComponent,
     AdminUsersComponent,
     AdminLotteryComponent,
-    AdminTransactionsComponent
+    AdminTransactionsComponent,
+    AdminSideNavComponent
   ],
   imports: [
     BrowserModule,
