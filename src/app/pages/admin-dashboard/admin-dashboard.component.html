@@ -62,19 +62,267 @@
   </div>
 
   <div class="sm-long-card card card-4">
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <path d="M11.7496 29C13.4294 25.9576 17.2765 25.5988 19.4675 27.9237C19.9573 28.4435 20.2022 28.7035 20.4195 28.7346C20.6367 28.7657 21.9997 27.9427 22.4836 27.6506C22.9768 27.353 24.3443 26.5272 24.4302 26.3112C24.5162 26.0951 24.4262 25.7268 24.2463 24.9902C23.5919 22.3117 25.1788 19.4929 27.7143 18.7658C28.3928 18.5713 28.7319 18.474 28.866 18.2879C29 18.102 29 16.4662 29 15.8678C29 15.2694 29 13.6335 28.866 13.4475C28.7319 13.2615 28.3928 13.1642 27.7143 12.9697C25.1784 12.2426 23.5902 9.42383 24.2443 6.74523C24.4241 6.00853 24.5141 5.64017 24.4282 5.42418C24.3422 5.2082 22.9747 4.38251 22.4816 4.08481C21.9976 3.79266 20.6346 2.96976 20.4175 3.00086C20.2003 3.03198 19.9554 3.29186 19.4654 3.81164C17.5683 5.82405 14.4296 5.82414 12.5326 3.81176C12.0426 3.292 11.7976 3.0321 11.5805 3.001C11.3633 2.96989 10.0003 3.79281 9.51638 4.08496C9.02325 4.3827 7.65564 5.20835 7.56971 5.42437C7.48379 5.64039 7.57378 6.0087 7.75374 6.74533C8.4081 9.42385 6.82122 12.2426 4.28573 12.9697C3.60724 13.1642 3.268 13.2615 3.134 13.4476C3 13.6335 3 15.2694 3 15.8678C3 16.4662 3 18.102 3.134 18.2881C3.26802 18.4741 3.6071 18.5713 4.28526 18.7657C4.29321 18.768 4.30116 18.7704 4.3091 18.7726M10.2812 17.4348C9.81318 18.0093 5.03958 22.9835 3.63558 24.461C1.68558 26.9234 4.60278 30.3709 7.25478 28.1547L10.4528 24.7893C12.2468 22.9014 13.7288 21.2598 14.0096 21.112C14.3528 20.8494 15.4448 20.9971 16.7708 20.915C18.1748 20.8494 19.7348 20.7673 20.6708 19.2898C21.1388 18.6332 21.1972 17.3367 21.1949 16.1707C21.1932 15.2708 21.1867 14.3982 21.2012 13.7903C21.2168 13.1337 21.2012 13.1147 21.0608 12.9695C20.8977 12.7625 20.5616 12.7561 20.4212 12.8874C20.234 13.0516 18.3225 15.0795 17.9096 15.5141C16.8176 16.6632 14.8208 15.5961 15.3278 13.7904C15.398 13.3799 16.1312 12.7233 17.3792 11.41C17.9408 10.7533 18.4088 10.5071 18.2528 10.0967C18.0344 9.52209 17.7848 9.76834 15.6788 9.71088C13.2608 9.76834 12.5588 9.76834 11.7008 10.622C10.9806 11.3084 10.729 12.2308 10.6135 13.462C10.3748 16.0065 10.7759 16.8274 10.2812 17.4348Z" stroke="#FFB951" stroke-width="2" stroke-linecap="round"/>
-      </svg> -->
       <img src="../.././../assets/configuration-02.svg" alt="">
 
       <div class="text-content">
         <h2> Setup a draw </h2>
         <p> Schedule monthly or weekly draws </p>
+
+        <div class="dots-slider">
+          <!-- use class to change the width of each dot -->
+          <div  class="dot wider-dot "></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
       </div>
   </div>
 
   <div class="lg-card card card-5">
+    <div class="table">
+      <div class="table-head">
+        <!-- the class active-tab will add dynamic class features to the tab -->
+        <div class=" tab active-tab">
+          <p> Prizes </p>
+          <!-- add or remove based on the active tab -->
+          <div  class="border-bottom"></div>
+        </div>
+        <div class="tab">
+          <p> Winners </p>
+          <div  class="border-bottom"></div>
+        </div>
+        
+      </div>
+      <div class="table-content">
+        <!-- show content based on active tap *ngSwitch -->
 
+        <div *ngIf="false" class="tab-1-content">
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+            <div class="item-image">
+              <img src="../../../assets/car-prize.png" alt="">
+            </div>
+            <div class="item-details">
+              <p> Jan 1st - Jan 14th </p>
+              <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+              <div class="item-extra-details">
+                <p> January Suprize Lottery </p>
+                <ul>
+                  <li> ₦ 1,000 per ticket </li>
+                  <li> 11,762 tickets bought </li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+            <div class="item-image">
+              <img src="../../../assets/bike-prize.png" alt="">
+            </div>
+            <div class="item-details">
+              <p> Jan 1st - Jan 14th </p>
+              <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+              <div class="item-extra-details">
+                <p> January Suprize Lottery </p>
+                <ul>
+                  <li> ₦ 1,000 per ticket </li>
+                  <li> 11,762 tickets bought </li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+            <div class="item-image">
+              <img src="../../../assets/tv-prize.png" alt="">
+            </div>
+            <div class="item-details">
+              <p> Jan 1st - Jan 14th </p>
+              <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+              <div class="item-extra-details">
+                <p> January Suprize Lottery </p>
+                <ul>
+                  <li> ₦ 1,000 per ticket </li>
+                  <li> 11,762 tickets bought </li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+              <div class="item-image">
+                <img src="../../../assets/car-prize.png" alt="">
+              </div>
+              <div class="item-details">
+                <p> Jan 1st - Jan 14th </p>
+                <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+                <div class="item-extra-details">
+                  <p> January Suprize Lottery </p>
+                  <ul>
+                    <li> ₦ 1,000 per ticket </li>
+                    <li> 11,762 tickets bought </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+            <div class="item-image">
+              <img src="../../../assets/tv-prize.png" alt="">
+            </div>
+            <div class="item-details">
+              <p> Jan 1st - Jan 14th </p>
+              <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+              <div class="item-extra-details">
+                <p> January Suprize Lottery </p>
+                <ul>
+                  <li> ₦ 1,000 per ticket </li>
+                  <li> 11,762 tickets bought </li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="tab-2-content">
+
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> I </h2> </div>
+              <h2> Irene </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Yaba </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> S </h2> </div>
+              <h2> Stephen </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Allen Ikeja </p>
+              <p> Played ₦ 6,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
