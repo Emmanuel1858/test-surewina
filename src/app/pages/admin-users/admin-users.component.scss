@@ -1,0 +1,154 @@
+.tab-container {
+  display: flex;
+  gap: 2rem;
+  padding-top: 1rem;
+  padding-inline: 1.25rem;
+  border-bottom: 1px solid var(--colors-blue-secondary-color-s-500, #3148E4);
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    color: var(--Colors-Typography-Colors-Supporting-Text-2, #7B7B7B);
+
+    /* Body Text Regular/Supporting Text - 1 */
+    font-family: "DM Sans";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: .4rem;
+  }
+
+  .active-tab {
+   p {
+    // display: flex;
+    // align-items: center;
+    // gap: .65rem;
+    color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    font-size: 0.875rem;
+    font-weight: 500;
+   }
+
+    .border-bottom {
+      border-bottom: 4px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+      border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Full, 62.5rem);
+    }
+  }
+}
+
+.rounded-border-items {
+  display: flex;
+  color: var(--Colors-Typography-Colors-Supporting-Text-2, #7B7B7B);
+  /* Body Text Regular/Supporting Text - 1 */
+  font-family: "DM Sans";
+  font-size: 0.875rem;
+  font-weight: 400;
+
+  display: flex;
+  gap: var(--Numbers-Spacing-M, 0.5rem);
+  padding: var(--Numbers-Spacing-XS, 0.25rem) var(--Numbers-Spacing-L, 0.625rem);
+  border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Full, 62.5rem);
+  border: 1px solid var(--colors-boarders-strokes-boarders-strokes-soft, #E9E9E9);
+}
+
+.tab-content {
+  padding: 1rem;
+}
+
+.all-users-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--Numbers-Spacing-L, 0.625rem);
+}
+
+.user-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Medium, 0.5rem);
+  border: 1px solid var(--colors-boarders-strokes-boarders-strokes-soft, #E9E9E9);
+  background: var(--Colors-White-White, #FFF);
+
+  &:hover {
+    border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Medium, 0.5rem);
+    border: 1px solid var(--colors-blue-secondary-color-s-100, #C7C9F8);
+    background: #F3F3FE;
+  }
+}
+
+.name-thumbnail {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h2 {
+    color: var(--Colors-Typography-Colors-Header-or-Display-Text, #000);
+    /* Body Text - Medium/Body Text - Medium - 5 */
+    font-family: "DM Sans";
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  p {
+    color: var(--Colors-Typography-Colors-Supporting-Text-2, #7B7B7B);
+    /* Body Text Regular/Supporting Text - 2 - Regular */
+    font-family: "DM Sans";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: var(--Numbers-Numbers-2, 0.25rem) var(--Numbers-Numbers-4, 0.5rem);
+    border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Full, 62.5rem);
+    border: 0.328px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+    background: var(--Colors-White-White, #FFF);
+  }
+}
+
+.contact-info {
+  p {
+    color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+    /* Body Text Regular/Supporting Text - 2 - Regular */
+    font-family: "DM Sans";
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  p:last-child {
+    color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+    text-overflow: ellipsis;
+    /* Body Text Regular/Supporting Text - 1 - Regular */
+    font-family: "DM Sans";
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    // color: red;
+  }
+}
+
+button.status {
+  padding: 0.25rem 0.5rem 0.25rem 0.375rem;
+
+  color: var(--Colors-Feedback-Colors-Success---Hovered, #0A8B60);
+
+  /* Body Text Regular/Supporting Text - 2 */
+  font-family: "DM Sans";
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+    border-radius: 6.25rem;
+  background: var(--Colors-Feedback-Colors-Success---Background, #E8F8F3);
+}
