@@ -19,6 +19,31 @@ export class DashboardComponent implements OnInit, OnDestroy   {
   ];
   currentBackgroundImage: string = this.backgroundImages[0];
   transitioning: boolean = false;
+  showTicketPayment: boolean = false
+  showMakePayment: boolean = false
+  showLoader: boolean = false 
+  showBalance: boolean = false 
+  ticketCount: number = 0; 
+  totalPrice: number = 0; 
+  unitPrice: number = 1000; 
+
+  increment(): void {
+    if (this.ticketCount < 10) {
+      this.ticketCount++;
+      this.updateTotalPrice();
+    }
+  }
+
+  decrement(): void {
+    if (this.ticketCount > 0) {
+      this.ticketCount--;
+      this.updateTotalPrice();
+    }
+  }
+
+  private updateTotalPrice(): void {
+    this.totalPrice = this.ticketCount * this.unitPrice;
+  }
 
 
   ngOnInit(): void {
@@ -27,6 +52,28 @@ export class DashboardComponent implements OnInit, OnDestroy   {
 
   ngOnDestroy(): void {
     this.clearAutoAdvance();
+  }
+
+  navigateToPaymentTicket() {
+    this.showTicketPayment = true
+  }
+  navigateToMakePayment() {
+    this.showMakePayment = true
+    this.showTicketPayment = false
+  }
+  navigateToModal() {
+    this.showLoader = true
+    this.showMakePayment = false
+    this.showTicketPayment = false
+  }
+  navigateToDashboard() {
+    this.showMakePayment = false
+    this.showTicketPayment = false
+    this.showLoader = false 
+  }
+
+  showMyBalance() {
+    this.showBalance = !this.showBalance
   }
 
  

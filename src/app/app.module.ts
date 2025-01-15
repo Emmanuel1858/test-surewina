@@ -12,6 +12,31 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
 import { WinnerBoardComponent } from './pages/winner-board/winner-board.component';
+import { ProfileDetailsComponent } from './pages/profile-details/profile-details.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { ReferralsComponent } from './pages/referrals/referrals.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
+
+// @NgModule({
+//   declarations: [
+//     AppComponent,
+//     WebsiteComponent,
+//     // CreateAccontNameComponent,
+//     CreateAccountNameComponent,
+//     CreateAccountPasswordComponent,
+//     CreateAccountOtpComponent,
+//     DashboardComponent,
+//     LayoutComponent,
+//     TicketHistoryComponent,
+//     WinnerBoardComponent
+//   ],
+//   imports: [
+//     BrowserModule,
+//     AppRoutingModule
+//   ],
+//   providers: [],
+//   bootstrap: [AppComponent]
+// })
 
 @NgModule({
   declarations: [
@@ -24,32 +49,16 @@ import { WinnerBoardComponent } from './pages/winner-board/winner-board.componen
     DashboardComponent,
     LayoutComponent,
     TicketHistoryComponent,
-    WinnerBoardComponent
+    WinnerBoardComponent,
+    ProfileDetailsComponent,
+    SettingsComponent,
+    ReferralsComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-
-@NgModule({
-  declarations: [
-    AppComponent,
-    WebsiteComponent,
-    // CreateAccontNameComponent,
-    CreateAccountNameComponent,
-    CreateAccountPasswordComponent,
-    CreateAccountOtpComponent,
-    DashboardComponent,
-    LayoutComponent,
-    TicketHistoryComponent,
-    WinnerBoardComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

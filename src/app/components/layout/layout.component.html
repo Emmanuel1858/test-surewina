@@ -1,17 +1,20 @@
 <div class="container">
     <div class="header">
         <div class="header-left">
-            <img src="../../../assets/Group 1000002454.svg" alt="">
+            <img src="../../../assets/Group 1000002450.svg" alt="">
         </div>
         <div class="header-right">
-            <span>
+            <span class="header-img">
                 <img src="../../../assets/Header Icon.svg" alt="">
             </span>
-            <span>
+            <span class="header-img">
                 <img src="../../../assets/Header Icon (1).svg" alt="">
             </span>
             <span class="header-initials">
-               DA
+                DA
+            </span>
+            <span class="header-menu" (click)="openMenu()">
+                <img src="../../../assets/menu.svg" alt="">
             </span>
         </div>
     </div>
@@ -20,23 +23,119 @@
     </div>
     <div class="header-sub">
         <div class="header-sub-left">
-            <span class="header-dashboard" (click)="navigateToDashboard()">
+            <span class="header-dashboard" (click)="navigateToDashboard()"
+                [ngClass]="{ 'active': activeHeader === 'dashboard' }">
                 <img src="../../../assets/dashboard-square-02 (1).svg" alt="">
                 <span>Dashboard</span>
             </span>
-            <span class="header-ticket" (click)="navigateToTicket()">
+            <span class="header-ticket" (click)="navigateToTicket()"
+                [ngClass]="{ 'active': activeHeader === 'ticket' }">
                 <img src="../../../assets/ticket-02.svg" alt="">
                 <span>Ticket History</span>
             </span>
-            <span class="header-board" (click)="navigateToWinner()">
+            <span class="header-board" (click)="navigateToWinner()" [ngClass]="{ 'active': activeHeader === 'winner' }">
                 <img src="../../../assets/analytics-01.svg" alt="">
                 <span>Winners Board</span>
             </span>
         </div>
-        <div>
-           <span class="header-note">Lottery Winners will be announced</span><span class="header-note-bold"> everyday of the week</span>  
+        <div class="header-note-container">
+            <span class="header-note">Lottery Winners will be announced</span><span class="header-note-bold"> everyday
+                of the week</span>
         </div>
     </div>
+    <div class="menu-container" *ngIf="showMenu">
+        <div class="menu-header">
+            <h1>Menu</h1>
+            <img (click)="closeMenu()" src="../../../assets/Frame 1000003973.svg" alt="">
+        </div>
+        <div class="menu-options">
+            <div class="all-options" (click)="showDashboard()">
+                <img src="../../../assets/dashboard-mobile.svg" alt="">
+                <span>Dashboard</span>
+            </div>
+            <div class="all-options" (click)="showWinner()">
+                <img src="../../../assets/analytics-mobile.svg" alt="">
+                <span>Winner Board</span>
+            </div>
+            <div class="all-options" (click)="showTicket()">
+                <img src="../../../assets/ticket-mobile.svg" alt="">
+                <span>Ticket History</span>
+            </div>
+            <div class="all-options">
+                <img src="../../../assets/user-account-mobile.svg" alt="">
+                <span>Your Profile</span>
+            </div>
+            <div class="logout-container" (click)="logout()">
+                <img src="../../../assets/logout-03.svg" alt="">
+                <span>Logout</span>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button class="btn-ticket" (click)="showBuyTicketModal()">
+            <span><img src="../../../assets/white-ticket.svg" alt=""></span>
+            <span>BUY TICKET</span>
+        </button>
+    </div>
+
+    <div class="ticket-container-background" *ngIf="showPayTicket">
+
+        <div class="buy-ticket-container">
+            <!-- <div class="buy-ticket-header">
+                <div class="img-dashboard" >
+                    <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
+                </div>
+                <div class="img-question">
+                    <img src="../../../assets/question-ticket.svg" alt="">
+                </div>
+
+            </div> -->
+            <div class="ticket-header-responsive">
+                <div (click)="goBack()">
+                    <img src="../../../assets/go-back.svg" alt="">
+                </div>
+                <div>
+                    <span>Sell Ticket</span>
+                </div>
+                <div (click)="goToDashboard()">
+                    <img src="../../../assets/dashboard-ticket-icon.svg" alt="">
+                </div>
+            </div>
+            <div class="img">
+                <img src="../../../assets/gift-voucher.svg" alt="">
+            </div>
+            <div class="buy-ticket-count">
+                <div class="ticket-price-container">
+                    <span>Ticket Unit Price</span>
+                    <span>₦ 1,000</span>
+                </div>
+                <div class="ticket-count-container">
+                    <span class="count">How Many Tickets</span>
+                    <div class="count-number">
+                        <button (click)="decrement()" >-</button>
+                        <span class="ticket-number">{{ticketCount}}</span>
+                        <button (click)=" increment()">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ticket-bought-container">
+                <div>
+                    <div class="ticket-bought">
+                        <span>Total Ticket Bought</span>
+                        <span class="ticket-amount">{{totalPrice}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-ticket">
+                <button >
+                    <span>PAY FOR TICKET</span>
+                    <span> > </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+ 
     <div>
         <router-outlet></router-outlet>
     </div>
