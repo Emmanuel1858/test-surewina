@@ -38,6 +38,7 @@ const routes: Routes = [
     children: [ 
       { path: 'dashboard', component: AdminDashboardComponent },
       { path: 'users', component: AdminUsersComponent },
+      { path: 'users/:id', component: AdminUsersComponent },
       { path: 'lottery', component: AdminLotteryComponent },
       { path: 'transactions', component: AdminTransactionsComponent },
     ]

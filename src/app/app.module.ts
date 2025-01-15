@@ -19,6 +19,7 @@ import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
 import { AdminLotteryComponent } from './pages/admin-lottery/admin-lottery.component';
 import { AdminTransactionsComponent } from './pages/admin-transactions/admin-transactions.component';
 import { AdminSideNavComponent } from './components/admin-side-nav/admin-side-nav.component';
+import { AdminUserDetailsComponent } from './pages/admin-user-details/admin-user-details.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AdminSideNavComponent } from './components/admin-side-nav/admin-side-na
     AdminUsersComponent,
     AdminLotteryComponent,
     AdminTransactionsComponent,
-    AdminSideNavComponent
+    AdminSideNavComponent,
+    AdminUserDetailsComponent
   ],
   imports: [
     BrowserModule,
