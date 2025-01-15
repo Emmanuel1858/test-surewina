@@ -1,1 +1,56 @@
-<p>admin-lottery works!</p>
+<div class="parent-container">
+  <div class="tab-container">
+    <!-- the class active-tab will add dynamic class features to the tab -->
+    <div class=" tab active-tab">
+      <p> Tickets <span class="rounded-border-items"> 212,132 </span> </p>
+      <!-- add or remove based on the active tab -->
+      <div  class="border-bottom"></div>
+    </div>
+    <div class="tab">
+      <p> Draw History <span class="rounded-border-items"> 06 </span> </p>
+      <div  class="border-bottom"></div>
+    </div>
+    <div class="tab">
+      <p> Prizes <span class="rounded-border-items"> 32 </span> </p>
+      <div  class="border-bottom"></div>
+    </div>
+    <div class="tab">
+      <p> Prize Depots <span class="rounded-border-items"> 4  </span> </p>
+      <div  class="border-bottom"></div>
+    </div>
+  </div>
+
+  <div class="tab-content">
+    <div class="ticket-details">
+      <div class="left">
+        <img src="../../../assets/lotter-ticket-img.png" alt="">
+        <div class="ticket-details-all">
+          <div class="left-side">
+            <span class="ticket-date">03rd Sept, 2024</span>
+            <span class="ticket-name">Jolly Jackpot Lottery</span>
+            <span class="ticket-won">
+                <span>11 Ticket</span>
+                <span>₦ 11,000</span>
+                <span>Cars, laptop, Phones, Gas Cooker</span>
+            </span>
+          </div>
+
+          
+        </div> 
+        <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
+          <div class="dot">
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+              <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
+            </svg>
+          </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
+        </button>
+      </div>
+      <div class="edit">
+        <img src="../../../assets/edit-icon.svg" alt="">
+        <p> Edit </p>
+      </div>
+    </div>
+    
+
+  </div>
+</div>
