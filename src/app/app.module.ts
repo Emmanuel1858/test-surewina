@@ -12,6 +12,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LayoutComponent } from './components/layout/layout.component';
 import { TicketHistoryComponent } from './pages/ticket-history/ticket-history.component';
 import { WinnerBoardComponent } from './pages/winner-board/winner-board.component';
+import { ProfileDetailsComponent } from './pages/profile-details/profile-details.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { ReferralsComponent } from './pages/referrals/referrals.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { AdminPortalComponent } from './pages/admin-portal/admin-portal.component';
 import { AdminPortalLoginComponent } from './pages/admin-portal-login/admin-portal-login.component';
 import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
@@ -21,11 +25,11 @@ import { AdminTransactionsComponent } from './pages/admin-transactions/admin-tra
 import { AdminSideNavComponent } from './components/admin-side-nav/admin-side-nav.component';
 import { AdminUserDetailsComponent } from './pages/admin-user-details/admin-user-details.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     WebsiteComponent,
-    // CreateAccontNameComponent,
     CreateAccountNameComponent,
     CreateAccountPasswordComponent,
     CreateAccountOtpComponent,
@@ -44,7 +48,7 @@ import { AdminUserDetailsComponent } from './pages/admin-user-details/admin-user
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

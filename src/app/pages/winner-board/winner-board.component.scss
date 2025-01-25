@@ -3,6 +3,7 @@
     height: 85vh;
     padding: 20px 40px 0;
 }
+
 .ticket-body {
     width: 47%;
     border: 1px solid #9D9D9D;
@@ -90,5 +91,106 @@
 .ticket-won span {
     border: 1px solid #D9D9D9;
     border-radius: 20px;
-    padding: 5px 8px;   
+    padding: 5px 8px;
+}
+
+
+@media (max-width: 1359px) {
+    .ticket-won {
+        font-size: 12px;
+        font-weight: var(--fw-400);
+        display: flex;
+        gap: 5px;
+    }
+
+    .ticket-details-img img {
+        width: 100px;
+    }
+
+    .ticket-name {
+        font-size: 15px;
+        font-weight: var(--fw-400);
+        color: #262626;
+    }
+
+    .header {
+        background-color: #EEF8FF;
+        border: 1px solid #E9E9E9;
+        display: flex;
+        gap: 30px;
+        padding: 10px 18px;
+        width: 99%;
+        margin: 2px auto 0;
+        border-radius: 4px;
+        font-size: 14px;
+    }
+
+}
+
+@media (max-width: 1180px) {
+    .ticket-details-img img {
+        width: 80px;
+    }
+}
+
+@media (max-width: 1125px) {
+
+    .ticket-date {
+        font-size: 10px;
+        font-weight: var(--fw-400);
+        color: #9D9D9D;
+    }
+    .ticket-won {
+        font-size: 9px;
+        font-weight: var(--fw-400);
+        display: flex;
+        gap: 5px;
+    }
+
+    .ticket-details-img img {
+        width: 80px;
+    }
+
+    .ticket-name {
+        font-size: 13px;
+        font-weight: var(--fw-400);
+        color: #262626;
+    }
+
+    .header {
+        background-color: #EEF8FF;
+        border: 1px solid #E9E9E9;
+        display: flex;
+        gap: 30px;
+        padding: 10px 18px;
+        width: 99%;
+        margin: 2px auto 0;
+        border-radius: 4px;
+        font-size: 12px;
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+    .header-tickets-number, .header-tickets-number-active {
+        display: none;
+    }
+    .container {
+        background-color: #F3F3FE;
+        max-height: 85vh;
+        overflow: auto;
+        padding: 20px 40px 20px;
+    }
+    .ticket-body {
+        width: auto;
+    
+        // max-height: 30vh;
+        overflow: hidden;
+        border: 1px solid #9D9D9D;
+        border-radius: 4px;
+        background-color: #fff;
+    }
+
+    
 }
