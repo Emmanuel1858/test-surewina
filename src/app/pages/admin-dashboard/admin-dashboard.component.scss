@@ -20,17 +20,17 @@
   display: flex;
   gap: var(--Numbers-Spacing-3XL, 1.5rem);
   justify-content: space-between;
+}
 
-  .left-side {
-    display: flex;
-    flex-direction: column;
-    gap: var(--Numbers-Spacing-3XL, 1.5rem);
-    width: 30%;
-  }
+.left-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--Numbers-Spacing-3XL, 1.5rem);
+  width: 30%;
+}
 
-  .right-side {
-    width: 70%;
-  }
+.right-side {
+  width: 70%;
 }
 
 .card {
@@ -486,5 +486,38 @@
       border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Full, 62.5rem);
       border: 1px solid var(--colors-boarders-strokes-boarders-strokes-soft, #E9E9E9);
     }
+  }
+}
+
+$mobile: 10rem;
+$tablet: 20rem;
+
+@media (max-width: 55rem) {
+
+  .first-row {
+    flex-direction: column;
+  }
+
+  .card-1, 
+  .card-2 {
+    width: 100%;
+  }
+
+  .sm-card {
+    gap: 1rem;
+  }
+
+  .left-side {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .second-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .card-5 {
+    width: 100%;
   }
 }
