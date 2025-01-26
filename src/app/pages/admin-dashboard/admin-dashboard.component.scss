@@ -114,9 +114,6 @@
   gap: 2.5rem;
 }
 
-.card-top {
-  
-}
 
 .card-item-collection {
   p {
@@ -140,16 +137,6 @@
     line-height: normal;
   }
 }
-
-.sm-long-card {
-  
-}
-
-.lg-card {
-
-}
-
-
   
 .card-1 { 
   width: 30%;
@@ -178,7 +165,6 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  // grid-area: 3 / 1 / 4 / 2; 
   width: 100%;
   background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
   padding: 1.25rem;
@@ -187,9 +173,7 @@
   img {
     padding: 1rem;
     background-color: var(--colors-blue-secondary-color-s-900, #0009B0);
-    // stroke-width: 1px;
-    // stroke: var(--colors-blue-secondary-color-s-500, #3148E4);
-    // filter: drop-shadow(4px 4px 20px rgba(190, 215, 255, 0.15));
+
     border-radius: 50%;
   }
 
@@ -237,11 +221,20 @@
     background-color: white;
   }
 
+  .black-dot {
+    border-radius: 10rem;
+    width: .25rem;
+    height: .25rem;
+  }
+
   .wider-dot {
     width: 0.875rem;
     height: 0.25rem;
   }
+  
 }
+
+
 
 
 .card-5 {

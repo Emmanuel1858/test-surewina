@@ -66,18 +66,18 @@
     </div>
   
     <div class="sm-long-card card card-4">
-        <img src="../.././../assets/configuration-02.svg" alt="">
+        <img [src]="imgSrc" alt="" (click)="ctaFlip()">
   
         <div class="text-content">
-          <h2> Setup a draw </h2>
-          <p> Schedule monthly or weekly draws </p>
+          <h2> {{h2ctaText}} </h2>
+          <p> {{pctaText}} </p>
   
           <div class="dots-slider">
-            <!-- use class to change the width of each dot -->
-            <div  class="dot wider-dot "></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
+            <div  class="dot" [ngClass]="ctaPosition === 1 ? 'dot wider-dot' : ''"></div>
+            <div class="dot" [ngClass]="ctaPosition === 2 ? 'wider-dot' : ''"></div>
+            <div class="dot" [ngClass]="ctaPosition === 3 ? 'wider-dot' : ''"></div>
           </div>
+          
         </div>
     </div>
   </div>
