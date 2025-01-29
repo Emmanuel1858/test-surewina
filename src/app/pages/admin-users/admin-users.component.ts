@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AdminUsersComponent {
 
+  currentRoute: string = 'User Management';
+  tabs: string = 'all-users-container';
+
+  switchTab(tab: string) {
+    this.tabs = tab;
+  }
 }

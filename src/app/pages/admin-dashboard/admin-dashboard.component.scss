@@ -1,3 +1,16 @@
+
+h1.current-route-header {
+  color: var(--colors-black-tetiary-color-b-900, #000);
+  /* Body Text - Medium/Body Text - Medium - 2 */
+  font-family: "DM Sans";
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-top: .7rem;
+  padding-bottom: 1.63rem;
+}
+
 .parent-container {
   display: flex;
   gap: var(--Numbers-Spacing-3XL, 1.5rem);
@@ -256,6 +269,7 @@
   border-bottom: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
 
   p {
+    cursor: pointer;
     color: var(--Colors-Typography-Colors-Supporting-Text-2, #7B7B7B);
 
     /* Body Text Regular/Supporting Text - 1 */
@@ -485,7 +499,17 @@
 $mobile: 10rem;
 $tablet: 20rem;
 
-@media (max-width: 55rem) {
+// @media (max-width: 65rem) {
+  
+//   .card-1 > .card-bottom { 
+
+//     display: flex;
+//     flex-direction: column-reverse;
+
+//   }
+// }
+
+@media (max-width: 66rem) {
 
   .first-row {
     flex-direction: column;
@@ -513,4 +537,8 @@ $tablet: 20rem;
   .card-5 {
     width: 100%;
   }
+  
+  // .card-bottom {
+  //   flex-direction: column-reverse;
+  // }
 }

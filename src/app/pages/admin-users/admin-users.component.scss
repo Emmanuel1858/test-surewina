@@ -1,9 +1,36 @@
+.current-route-container {
+  display: flex;
+  gap: var(--Numbers-Spacing-L, 0.625rem);
+  align-items: center;
+  padding-top: .7rem;
+  padding-bottom: 1.63rem;
+
+  
+  h1.current-route-header {
+    color: var(--colors-black-tetiary-color-b-900, #000);
+    /* Body Text - Medium/Body Text - Medium - 2 */
+    font-family: "DM Sans";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  img {
+    cursor: pointer;
+  }
+}
+
 .tab-container {
   display: flex;
   gap: 2rem;
-  padding-top: 1rem;
-  padding-inline: 1.25rem;
+  // padding-top: 1rem;
+  // padding-inline: 1.25rem;
   border-bottom: 1px solid var(--colors-blue-secondary-color-s-500, #3148E4);
+
+  .tab {
+    cursor: pointer;
+  }
 
   p {
     display: flex;
@@ -53,7 +80,7 @@
 }
 
 .tab-content {
-  padding: 1rem;
+  padding-block: 1rem;
 }
 
 .all-users-container {

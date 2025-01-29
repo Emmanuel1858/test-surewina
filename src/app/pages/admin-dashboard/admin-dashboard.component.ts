@@ -13,6 +13,11 @@ export class AdminDashboardComponent {
   pctaText: string = 'Schedule monthly or weekly draws';
   imgSrc: string = '../.././../assets/configuration-02.svg';
 
+  
+  currentRoute: string = 'Your Dashboard'
+  userName: string = 'Dasola A';
+  userEmail: string = 'dasola_dzn@gmail.com';
+
   ngOnInit() {  }
 
 

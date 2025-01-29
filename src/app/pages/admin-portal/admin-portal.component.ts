@@ -11,7 +11,4 @@ export class AdminPortalComponent {
 
   }
 
-  currentRoute: string = 'Your Dashboard'
-  userName: string = 'Dasola A';
-  userEmail: string = 'dasola_dzn@gmail.com';
 }
