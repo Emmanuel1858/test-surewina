@@ -1,138 +1,276 @@
 <div class="current-route-container">
-  <img src="../../../assets/go-back.svg" alt=""><h1 class="current-route-header"> {{currentRoute}} </h1>
+  <img (click)="goBack()" *ngIf="showBackBtn" src="../../../assets/go-back.svg" alt=""><h1 class="current-route-header"> {{currentRoute}} </h1>
 </div>
 
 <div class="parent-container">
-  <div class="tab-container">
-    <!-- the class active-tab will add dynamic class features to the tab -->
-    <div class="tab" [ngClass]="tabs == 'all-users-container' ? 'active-tab' : '' ">
-      <p (click)="switchTab('all-users-container')"> All Users <span class="rounded-border-items"> 12,132 </span> </p>
-      <!-- add or remove based on the active tab -->
-      <div  class="border-bottom"></div>
-    </div>
-    <div class="tab" [ngClass]="tabs == 'all-agents-container' ? 'active-tab' : '' ">
-      <p (click)="switchTab('all-agents-container')"> Agents <span class="rounded-border-items"> 32 </span> </p>
-      <div  class="border-bottom"></div>
-    </div>
-  </div>
-
-  <div [ngSwitch]="tabs" class="tab-content">
-    <div *ngSwitchCase="'all-users-container'"  class="all-users-container">
-      <div class="user-details">
-        <div class="name-thumbnail">
-          <img src="../../../assets/user-1.svg" alt="">
-          <div class="name">
-            <h2> Christiana Jumbo </h2>
-            <p> Mobile User </p>
-          </div>
-        </div>
-        <div class="contact-info">
-          <p> 09011220303 </p>
-          <p> Christiana&#64;gmail.com </p>
-        </div>
-        <div class="contact-info">
-          <p> Date Registered </p>
-          <p> October 7, 2024 - 4:51 pm </p>
-        </div>
-        <button class="status">
-          Active
-        </button>
-
-        <img src="../../../assets/view-more-icon.svg" alt="">
+  <!-- this will handle the view for the first level of view -->
+  <ng-container *ngIf="!showBackBtn">
+    <div class="tab-container">
+      <!-- the class active-tab will add dynamic class features to the tab -->
+      <div class="tab" [ngClass]="tabs == 'all-users-container' ? 'active-tab' : '' ">
+        <p (click)="switchTab('all-users-container')"> All Users <span class="rounded-border-items"> 12,132 </span> </p>
+        <!-- add or remove based on the active tab -->
+        <div  class="border-bottom"></div>
       </div>
-      <div class="user-details">
-        <div class="name-thumbnail">
-          <img src="../../../assets/user-1.svg" alt="">
-          <div class="name">
-            <h2> Christiana Jumbo </h2>
-            <p> Mobile User </p>
-          </div>
-        </div>
-        <div class="contact-info">
-          <p> 09011220303 </p>
-          <p> Christiana&#64;gmail.com </p>
-        </div>
-        <div class="contact-info">
-          <p> Date Registered </p>
-          <p> October 7, 2024 - 4:51 pm </p>
-        </div>
-        <button class="status">
-          Active
-        </button>
-
-        <img src="../../../assets/view-more-icon.svg" alt="">
-      </div>
-      <div class="user-details">
-        <div class="name-thumbnail">
-          <img src="../../../assets/user-1.svg" alt="">
-          <div class="name">
-            <h2> Christiana Jumbo </h2>
-            <p> Mobile User </p>
-          </div>
-        </div>
-        <div class="contact-info">
-          <p> 09011220303 </p>
-          <p> Christiana&#64;gmail.com </p>
-        </div>
-        <div class="contact-info">
-          <p> Date Registered </p>
-          <p> October 7, 2024 - 4:51 pm </p>
-        </div>
-        <button class="status">
-          Active
-        </button>
-
-        <img src="../../../assets/view-more-icon.svg" alt="">
-      </div>
-      <div class="user-details">
-        <div class="name-thumbnail">
-          <img src="../../../assets/user-1.svg" alt="">
-          <div class="name">
-            <h2> Christiana Jumbo </h2>
-            <p> Mobile User </p>
-          </div>
-        </div>
-        <div class="contact-info">
-          <p> 09011220303 </p>
-          <p> Christiana&#64;gmail.com </p>
-        </div>
-        <div class="contact-info">
-          <p> Date Registered </p>
-          <p> October 7, 2024 - 4:51 pm </p>
-        </div>
-        <button class="status">
-          Active
-        </button>
-
-        <img src="../../../assets/view-more-icon.svg" alt="">
+      <div class="tab" [ngClass]="tabs == 'all-agents-container' ? 'active-tab' : '' ">
+        <p (click)="switchTab('all-agents-container')"> Agents <span class="rounded-border-items"> 32 </span> </p>
+        <div  class="border-bottom"></div>
       </div>
     </div>
+  
+    <div [ngSwitch]="tabs" class="tab-content">
+      <div *ngSwitchCase="'all-users-container'"  class="all-users-container">
+        <div (click)="detailsPage('user')" class="user-details">
+          <div class="name-thumbnail">
+            <img src="../../../assets/user-1.svg" alt="">
+            <div class="name">
+              <h2> Christiana Jumbo </h2>
+              <p> Mobile User </p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <p> 09011220303 </p>
+            <p> Christiana&#64;gmail.com </p>
+          </div>
+          <div class="contact-info">
+            <p> Date Registered </p>
+            <p> October 7, 2024 - 4:51 pm </p>
+          </div>
+          <button class="status-btn"[ngClass]="getBtnColor('active')">
+            <div class="dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
+              fill="none">
+              <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
+              </svg>
+            </div> 
+            {{status !== null ? status : 'Not Available'}}
+          </button>
+  
+          <img src="../../../assets/view-more-icon.svg" alt="">
+        </div>
+        <!-- <div class="user-details">
+          <div class="name-thumbnail">
+            <img src="../../../assets/user-1.svg" alt="">
+            <div class="name">
+              <h2> Christiana Jumbo </h2>
+              <p> Mobile User </p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <p> 09011220303 </p>
+            <p> Christiana&#64;gmail.com </p>
+          </div>
+          <div class="contact-info">
+            <p> Date Registered </p>
+            <p> October 7, 2024 - 4:51 pm </p>
+          </div>
+          <button class="status">
+            Active
+          </button>
+  
+          <img src="../../../assets/view-more-icon.svg" alt="">
+        </div>
+        <div class="user-details">
+          <div class="name-thumbnail">
+            <img src="../../../assets/user-1.svg" alt="">
+            <div class="name">
+              <h2> Christiana Jumbo </h2>
+              <p> Mobile User </p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <p> 09011220303 </p>
+            <p> Christiana&#64;gmail.com </p>
+          </div>
+          <div class="contact-info">
+            <p> Date Registered </p>
+            <p> October 7, 2024 - 4:51 pm </p>
+          </div>
+          <button class="status">
+            Active
+          </button>
+  
+          <img src="../../../assets/view-more-icon.svg" alt="">
+        </div>
+        <div class="user-details">
+          <div class="name-thumbnail">
+            <img src="../../../assets/user-1.svg" alt="">
+            <div class="name">
+              <h2> Christiana Jumbo </h2>
+              <p> Mobile User </p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <p> 09011220303 </p>
+            <p> Christiana&#64;gmail.com </p>
+          </div>
+          <div class="contact-info">
+            <p> Date Registered </p>
+            <p> October 7, 2024 - 4:51 pm </p>
+          </div>
+          <button class="status">
+            Active
+          </button>
+  
+          <img src="../../../assets/view-more-icon.svg" alt="">
+        </div> -->
+      </div>
+  
+      <div *ngSwitchCase="'all-agents-container'"  class="all-agents-container">
+        <div (click)="detailsPage('agent')" class="user-details">
+          <div class="name-thumbnail">
+            <img src="../../../assets/user-1.svg" alt="">
+            <div class="name">
+              <h2> Joshua Adaranijo </h2>
+              <p> Yaba Lagos State </p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <p> 09011220303 </p>
+            <p> Joshua_Adaranijo&#64;gmail.com </p>
+          </div>
+          <div class="contact-info">
+            <p> Sold </p>
+            <p> 51,650 Tickets </p>
+          </div>
+          <div class="contact-info">
+            <p> Oweing  </p>
+            <p> ₦ 1,676,200 </p>
+          </div>
+          <button class="status-btn"[ngClass]="getBtnColor('active')">
+            <div class="dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
+              fill="none">
+              <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
+              </svg>
+            </div> 
+            {{status !== null ? status : 'Not Available'}}
+          </button>
+          <button>
 
-    <div *ngSwitchCase="'all-agents-container'"  class="all-agents-container">
-      <div class="user-details">
-        <div class="name-thumbnail">
-          <img src="../../../assets/user-1.svg" alt="">
-          <div class="name">
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="showBackBtn">
+    <div class="tab-container">
+      <!-- the class active-tab will add dynamic class features to the tab -->
+      <div class="tab" [ngClass]="tabs == 'personal-information' ? 'active-tab' : '' ">
+        <p (click)="switchTab('personal-information')"> Personal Information </p>
+        <!-- add or remove based on the active tab -->
+        <div  class="border-bottom"></div>
+      </div>
+
+      <div *ngIf="currentRoute == 'User Details'" class="tab" [ngClass]="tabs == 'ticket-history' ? 'active-tab' : '' ">
+        <p (click)="switchTab('ticket-history')"> Ticket History </p>
+        <!-- add or remove based on the active tab -->
+        <div  class="border-bottom"></div>
+      </div>
+
+      <div *ngIf="currentRoute == 'Agent Details'" class="tab" [ngClass]="tabs == 'tickets-sold' ? 'active-tab' : '' ">
+        <p (click)="switchTab('tickets-sold')"> Tickets Sold </p>
+        <!-- add or remove based on the active tab -->
+        <div  class="border-bottom"></div>
+      </div>
+
+      <div *ngIf="currentRoute == 'Agent Details'" class="tab" [ngClass]="tabs == 'commission' ? 'active-tab' : '' ">
+        <p class="unique-problem" (click)="switchTab('commission')"> Commission Earned <span class="rounded-border-items"> ₦ {{commissionEarned}} </span> </p>
+        <!-- add or remove based on the active tab -->
+        <div class="border-bottom"></div>
+      </div>
+
+    </div>
+
+    <div [ngSwitch]="tabs" class="tab-content"> 
+      <div class=" add-flex-gap" *ngSwitchCase="'personal-information'"> 
+        <div class="person-profile-blue-bg">
+          <img src="../../../assets/personal-details-headshot.svg" alt="">
+          <div class="personal-details">
             <h2> Joshua Adaranijo </h2>
-            <p> Yaba Lagos State </p>
+            <div class="collection">
+              <span class="status-btn"[ngClass]="getBtnColor('active')">
+                <div class="dot">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
+                  fill="none">
+                  <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
+                  </svg>
+                </div> 
+                {{status !== null ? status : 'Not Available'}}
+              </span>
+
+              <span class="rounded-border-items"> Mobile User </span>
+              <span class="rounded-border-items with-icon"> <img src="../../../assets/jolly-points-icon.png" alt=""> 100 Jolly Points </span>
+              <span class="rounded-border-items"> Christiana&#64;gmail.com </span>
+              <span class="rounded-border-items"> Registered: October 7, 2024 - 4:51 pm   </span>
+            </div>
           </div>
         </div>
-        <div class="contact-info">
-          <p> 09011220303 </p>
-          <p> Joshua_Adaranijo&#64;gmail.com </p>
+
+        <div class="more-details-collection">
+          <div class="table">
+            <div class="table-items">
+              <p>Tickets Bought</p>
+              <p>231</p>
+            </div>
+            <div class="table-items tickets">
+              <p>Tickets Amount</p>
+              <p>₦ 40,000</p>
+            </div>
+            <div class="table-items">
+              <p>Prizes Won</p>
+              <p>400</p>
+            </div>
+            <div class="table-items">
+              <p>Prizes Value</p>
+              <p>₦ 312,000</p>
+            </div>
+          </div>
+          <div class="table">
+            <div class="table-items">
+              <p>Phone Number</p>
+              <p>09018293839</p>
+            </div>
+            <div class="table-items">
+              <div class="file-container">
+                <img src="../../../assets/pdf-icon.png" alt="">
+                <p> Christiana - NIN </p>
+                <img src="../../../assets/download-03.svg" alt="">
+              </div>
+            </div>
+            <div class="table-items address">
+              <p>Address</p>
+              <p>29, Adeyemo Alakija, Victoria Island, Lagos, Nigeria</p>
+            </div>
+          </div>
         </div>
-        <div class="contact-info">
-          <p> Sold </p>
-          <p> 51,650 Tickets </p>
-        </div>
-        <div class="contact-info">
-          <p> Oweing  </p>
-          <p> ₦ 1,676,200 </p>
-        </div>
-        <button class="status">
-          Active
-        </button>
       </div>
+
+      <div *ngSwitchCase="'ticket-history'">
+        <div class="all-tickets">
+          <div class="ticket-details">
+            <div class="left">
+              <img src="../../../assets/lotter-ticket-img.png" alt="">
+              <div class="ticket-details-all">
+                <div class="left-side">
+                  <span class="ticket-date">03rd Sept, 2024</span>
+                  <span class="ticket-name">Jolly Jackpot Lottery</span>
+                  <span class="ticket-won">
+                      <span>11 Ticket</span>
+                      <span>₦ 11,000</span>
+                      <span>Cars, laptop, Phones, Gas Cooker</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="prize-show"></div>
+      </div>
+      <div *ngSwitchCase="'tickets-sold'" > <p> tickets sold </p> </div>
+      <div *ngSwitchCase="'commission'" > <p> commission </p> </div>
     </div>
-  </div>
+  </ng-container>
+  
 </div>
