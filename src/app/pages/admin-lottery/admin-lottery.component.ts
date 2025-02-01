@@ -9,6 +9,7 @@ export class AdminLotteryComponent {
 
   status: string = '';
   transactionStatus: string = 'Successful';
+  tab: string = 'tickets'
 
   constructor () {
     
@@ -52,5 +53,9 @@ export class AdminLotteryComponent {
     } else {
       return 'transparent'; // Default color for unhandled statuses
     }
+  }
+
+  switchTab(tab: string) {
+
   }
 }

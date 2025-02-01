@@ -8,18 +8,32 @@ import { Component } from '@angular/core';
 export class AdminUsersComponent {
 
   currentRoute: string = 'User Management';
-  tabs: string = 'all-users-container';
+  primaryTabs: string = 'all-users-container';
+  tabs: string = 'personal-information';
   showBackBtn: boolean = false;
   commissionEarned: string = '1,676,200';
-  status: string = 'active'
+  status: string = 'active';
+  transactionStatus: string = 'Successful'
 
   switchTab(tab: string) {
     this.tabs = tab;
   }
 
+  // handles the first user & agent tabs
+  switchprimaryTabs(tab: string) {
+    this.primaryTabs = tab;
+  }
+
   goBack() {
     // find a way to pass the tab the user was coming from 
-    // user or agent tab 
+    // user or agent tab
+    if (this.primaryTabs == 'all-users-container' ) {
+      this.primaryTabs = 'all-users-container'
+    } else {
+      this.primaryTabs = 'all-agents-container'
+    }
+    // reset to go back to personal information
+    this.tabs = 'personal-information'
     this.showBackBtn = false;
   }
 

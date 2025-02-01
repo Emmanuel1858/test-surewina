@@ -42,7 +42,7 @@ const routes: Routes = [
       { path: 'admin-dashboard', component: AdminDashboardComponent },
       { path: 'users', component: AdminUsersComponent },
       { path: 'lottery', component: AdminLotteryComponent },
-      { path: 'transaction', component: AdminTransactionsComponent },
+      { path: 'transactions', component: AdminTransactionsComponent },
     ]
    }
 
