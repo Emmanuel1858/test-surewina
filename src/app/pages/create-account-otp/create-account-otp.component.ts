@@ -1,12 +1,25 @@
-import { Component, OnInit, OnDestroy  } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-create-account-otp',
   templateUrl: './create-account-otp.component.html',
   styleUrls: ['./create-account-otp.component.scss']
 })
 export class CreateAccountOtpComponent implements OnInit, OnDestroy {
+
   otp: string[] = ['', '', '', '', '', ''];
+  firstName: string = this.dataService.getRegisterUserData('firstName')
+  lastName: string = this.dataService.getRegisterUserData('lastName')
+  phoneNumber: string = this.dataService.getRegisterUserData('phoneNumber')
+  password: string = this.dataService.getRegisterUserData('password')
+  email: string = this.dataService.getRegisterUserData('emailAddress')
+  referredBy: string = ''
+  isConscent: boolean = false
+  otpValidate: boolean = false
+  showLoader: boolean = false
   images: string[] = [
     '../../../assets/Property 1=Splash Screen - Carousel 1.png',
     '../../../assets/Property 1=Splash Screen - Carousel 2.png',
@@ -16,25 +29,46 @@ export class CreateAccountOtpComponent implements OnInit, OnDestroy {
   private intervalId: any;
   modalVisibility: boolean = false
 
-  constructor(private router:Router) {}
+  constructor(private router: Router, private authService: AuthServiceService, private dataService: DataService) { }
 
   moveToNext(event: Event, index: number): void {
-    const input = event.target as HTMLInputElement; 
-    const value = input.value;
-  
+    const input = event.target as HTMLInputElement;
+    const value = input.value.trim();
+
+    if (value.length > 1) {
+      input.value = value.charAt(0);
+    }
+
+    this.otp[index] = input.value;
+
     if (value && value.length === 1 && index < this.otp.length - 1) {
       const nextInput = input.nextElementSibling as HTMLInputElement;
-      nextInput?.focus(); 
+      nextInput?.focus();
     }
-  
+
+
     if (!value && index > 0) {
       const previousInput = input.previousElementSibling as HTMLInputElement;
-      previousInput?.focus(); 
+      previousInput?.focus();
     }
   }
 
-  showModal() {
-    this.modalVisibility = true
+  async showModal() {
+    this.showLoader = true
+    setTimeout(() => {
+      this.showLoader = false
+      if (this.otp.join('').length === 6) {
+        this.modalVisibility = true
+      } else {
+        this.otpValidate = true
+        setTimeout(() => {
+          this.otpValidate = false
+        }, 10000);
+      }
+    }, 7000 )
+
+
+
   }
 
   navigateToDashboard() {
@@ -48,13 +82,13 @@ export class CreateAccountOtpComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.intervalId); 
+    clearInterval(this.intervalId);
   }
 
   startCarousel(): void {
     this.intervalId = setInterval(() => {
-      this.activeIndex = (this.activeIndex + 1) % this.images.length; 
+      this.activeIndex = (this.activeIndex + 1) % this.images.length;
     }, 4000);
   }
-  
+
 }

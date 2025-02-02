@@ -21,23 +21,30 @@
                     <span class="heading-sub">Please provide your personal information</span>
                     <div class="icons">
                         <span>
-                            <img class="google-icon" src="../../../assets/Google Logos.svg" alt="">
+                            <!-- <img class="google-icon" src="../../../assets/Google Logos.svg" alt=""> -->
                         </span>
                         <span>
-                            <img class="facebook-icon" src="../../../assets/logos_facebook.svg" alt="">
+                            <!-- <img class="facebook-icon" src="../../../assets/logos_facebook.svg" alt=""> -->
                         </span>
                     </div>
                 </div>
             </div>
             <div class="all-inputs">
-                <input type="text" placeholder="Full name">
-                <input type="text" placeholder="Email Address ">
-                <input type="text" placeholder="Who referred you?">
+                <input type="text" placeholder="First name" [(ngModel)]="firstName" 
+                [class.error-border]="formSubmitted && isEmpty(firstName)">
+                <input type="text" placeholder="Last name" [(ngModel)]="lastName" 
+                [class.error-border]="formSubmitted && isEmpty(lastName)">
+                <input type="text" placeholder="Phone number" [(ngModel)]="phoneNumber" 
+                [class.error-border]="formSubmitted && isEmpty(phoneNumber)">
+                <input type="text" placeholder="Email Address" [(ngModel)]="emailAddress"
+                [class.error-border]="formSubmitted && isEmpty(emailAddress)">
+                <!-- <span>Optional</span> -->
+                <input type="text" placeholder="Who referred you?" [(ngModel)]="referred">
             </div>
             <div class="footer">
                 <div class="all-text">
                     <span class="have-account">Already have an account?</span>
-                    <span class="log-in">Log in</span>
+                    <span class="log-in" (click)="navigateToLogin()">Log in</span>
                 </div>
                 <div class="buttons">
                     <button class="btn-back" (click)="navigateBack()">Go Back</button>

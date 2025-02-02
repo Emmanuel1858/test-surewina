@@ -17,14 +17,18 @@
                 </div>
             </div>
             <div class="otp-container">
+                <div class="error-message" *ngIf="otpValidate">Invalid or Expired OTP!</div>
                 <div class="otp-text">Enter OTP Here</div>
                 <div class="all-inputs">
-                    <input type="number" maxlength="1" class="otp-box" (input)="moveToNext($event, 0)">
-                    <input type="number" maxlength="1" class="otp-box" (input)="moveToNext($event, 1)">
-                    <input type="number" maxlength="1" class="otp-box" (input)="moveToNext($event, 2)">
-                    <input type="number" maxlength="1" class="otp-box" (input)="moveToNext($event, 3)">
-                    <input type="number" maxlength="1" class="otp-box" (input)="moveToNext($event, 4)">
-                    <input type="number" maxlength="1" class="otp-box" (input)="moveToNext($event, 5)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[0]" (input)="moveToNext($event, 0)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[1]" (input)="moveToNext($event, 1)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[2]" (input)="moveToNext($event, 2)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[3]" (input)="moveToNext($event, 3)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[4]" (input)="moveToNext($event, 4)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[5]" (input)="moveToNext($event, 5)">
+                </div>
+                <div class="loader" *ngIf="showLoader">
+                    <app-loader/>
                 </div>
                 <div class="otp-text-main">
                     <span>Didn’t receive the code? </span>

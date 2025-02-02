@@ -1,0 +1,57 @@
+<div class="form-group">
+    <div class="content">
+        <div class="content-top">
+            <img class="jolly-logo" src="./../../../assets/jollywina-logo.svg" alt="">
+
+            <div class="login-card">
+
+                <div class="top">
+                    <p> User Portal </p>
+                </div>
+
+                <div class="bottom">
+                    <h1> Enter your details to login </h1>
+                    <p class="error" *ngIf="formSubmitted">Both fields are required!</p>
+                    <p class="error" *ngIf="showErrorMessage">{{showError}}</p>
+                    <div class="form">
+                        <div class="all-inputs">
+                            <input type="text" placeholder="Email address or Phone number" [(ngModel)]="emailAddress" 
+                            [class.error-border]="formSubmitted">
+                            <div class="input-pass">
+                                <input [type]="showPassword ? 'text' : 'password'" placeholder="Password"
+                                [class.error-border]="formSubmitted" [(ngModel)]="password">
+                                <i class="eye-icon" (click)="togglePasswordVisibility()">
+                                    {{ showPassword ? '🙈' : '👁️' }}
+                                </i>
+                            </div>
+                           
+                        </div>
+                        <div class="loader" *ngIf="showLoader">
+                            <app-loader/>
+                        </div>
+
+                        <div class="checkbox">
+                            <input class="check-box" type="checkbox" name="" id="">
+                            <p> Remember me for 30 days </p>
+                        </div>
+                    </div>
+
+
+
+                    <button class="btn-cont" (click)="navigateToDashboard()"> Login
+                        <img src="../../../assets/grommet-icons_form-next.svg" alt="">
+                    </button>
+                    <div>
+                        <span class="info-account">Don't have an account?</span>
+                        <span class="btn-register" (click)="navigateToCreateAcc()">Register now</span>
+                    </div>
+
+                    <p> Forgot Password? <span> Reach out to the Administrator </span> </p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="footer-txt"> ©2024 Jollywina.com </h2>
+
+    </div>
+</div>

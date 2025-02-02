@@ -12,6 +12,9 @@ import { ProfileDetailsComponent } from './pages/profile-details/profile-details
 import { SettingsComponent } from './pages/settings/settings.component';
 import { ReferralsComponent } from './pages/referrals/referrals.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { HeaderComponent } from './components/header/header.component';
 // import { CreateAccountNameComponent } from './pages/create-account-name/create-account-name.component';
 
 
@@ -20,6 +23,10 @@ const routes: Routes = [
   { path: 'create-account-name', component: CreateAccountNameComponent },
   { path: 'create-account-password', component: CreateAccountPasswordComponent },
   { path: 'create-account-otp', component: CreateAccountOtpComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'profile', component: ProfileComponent},
+  { path: 'profile-details', component: ProfileDetailsComponent},
+
 
   { path: '', redirectTo: 'Jollywina.com', pathMatch: 'full' },
   {

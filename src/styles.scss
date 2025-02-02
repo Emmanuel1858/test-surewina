@@ -162,6 +162,7 @@ ol {
 html,
 body {
   height: 100%;
+  overflow: hidden;
 }
 
 /* Set core body defaults */
@@ -450,3 +451,5 @@ textarea:not([rows]) {
 :target {
   scroll-margin-block: 5ex;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

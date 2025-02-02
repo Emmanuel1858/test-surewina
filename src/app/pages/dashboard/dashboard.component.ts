@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy   {
-  bars: boolean[]= [true, false, false, false, false];
+export class DashboardComponent implements OnInit, OnDestroy {
+  bars: boolean[] = [true, false, false, false, false];
   currentIndex: number = 0;
   intervalId: any;
   backgroundImages: string[] = [
@@ -21,11 +22,30 @@ export class DashboardComponent implements OnInit, OnDestroy   {
   transitioning: boolean = false;
   showTicketPayment: boolean = false
   showMakePayment: boolean = false
-  showLoader: boolean = false 
-  showBalance: boolean = false 
-  ticketCount: number = 0; 
-  totalPrice: number = 0; 
-  unitPrice: number = 1000; 
+  showLoader: boolean = false
+  showBalance: boolean = false
+  ticketCount: number = 0;
+  totalPrice: number = 0;
+  unitPrice: number = 1000;
+  firstName: string = `${sessionStorage.getItem('firstName')}`
+  lastName: string = `${sessionStorage.getItem('lastName')}`
+  phoneNumber: string = `${sessionStorage.getItem('phoneNumber')}`
+  initials: string = ''
+
+
+  constructor(private router: Router) { }
+
+  navigateToProfile() {
+    this.router.navigate(['/profile'])
+  }
+
+  showProfile() {
+    this.router.navigate(['/profile'])
+  }
+
+  testFunc() {
+    console.log('testttttt')
+  }
 
   increment(): void {
     if (this.ticketCount < 10) {
@@ -46,8 +66,12 @@ export class DashboardComponent implements OnInit, OnDestroy   {
   }
 
 
+
   ngOnInit(): void {
     this.startAutoAdvance();
+    this.initials = (this.firstName?.charAt(0) || '') + (this.lastName?.charAt(0) || '');
+    this.initials = this.initials.toUpperCase();
+    sessionStorage.setItem('initial', this.initials)
   }
 
   ngOnDestroy(): void {
@@ -56,6 +80,7 @@ export class DashboardComponent implements OnInit, OnDestroy   {
 
   navigateToPaymentTicket() {
     this.showTicketPayment = true
+    // this.router.navigate(['/profile'])
   }
   navigateToMakePayment() {
     this.showMakePayment = true
@@ -69,18 +94,18 @@ export class DashboardComponent implements OnInit, OnDestroy   {
   navigateToDashboard() {
     this.showMakePayment = false
     this.showTicketPayment = false
-    this.showLoader = false 
+    this.showLoader = false
   }
 
   showMyBalance() {
     this.showBalance = !this.showBalance
   }
 
- 
+
   goNext(): void {
     if (this.currentIndex < this.bars.length - 1) {
       this.currentIndex++;
-      this.bars[this.currentIndex] = true; 
+      this.bars[this.currentIndex] = true;
       this.updateBackgroundImage();
     }
     this.resetAutoAdvance();
@@ -128,4 +153,6 @@ export class DashboardComponent implements OnInit, OnDestroy   {
       this.transitioning = false;
     }, 800); // Match the CSS transition duration
   }
+
+
 }

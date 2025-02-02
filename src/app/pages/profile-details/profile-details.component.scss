@@ -1,0 +1,15 @@
+.first-block-profile{
+    border: 1px solid;
+    width: 50%;
+}
+
+.first-block-profile-balance {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.first-block-profile-balance div {
+    display: flex;
+    flex-direction: column;
+}

@@ -109,16 +109,16 @@
             </div>
             <div class="third-card-progress">
                 <div class="third-card-progress-bar">
-
+                    
                 </div>
             </div>
             <div class="details-container">
-                <div class="third-card-profile">
+                <div class="third-card-profile" (click)="navigateToProfile()">
                     <div class="profile-pic">
                         <img src="../../../assets/avatar.svg" alt="">
                     </div>
                     <div class="profile-details">
-                        <div class="profile-name">Dasola Awoye</div>
+                        <div class="profile-name">{{firstName}} {{lastName}}</div>
                         <div class="profile-number">0813 456 7829</div>
                     </div>
                 </div>
@@ -231,11 +231,13 @@
             </div>
         </div>
         <div class="details-container">
-            <div class="third-card-profile">
+            
+            <div class="third-card-profile" >
+                
                 <div class="profile-pic">
                     <img src="../../../assets/avatar.svg" alt="">
                 </div>
-                <div class="profile-details">
+                <div class="profile-details" >
                     <div class="profile-name">Dasola Awoye</div>
                     <div class="profile-number">0813 456 7829</div>
                 </div>
@@ -253,7 +255,7 @@
                 <div class="nin-pic">
                     <img src="../../../assets/gallery.svg" alt="">
                 </div>
-                <div>
+                <div (click)="testFunc()">
                     <div>Provide your NIN</div>
                     <div>for verification</div>
                 </div>

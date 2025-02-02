@@ -10,17 +10,18 @@ export class LayoutComponent {
   activeHeader: string = 'dashboard';
   showMenu: boolean = false;
   showPayTicket: boolean = false
-  ticketCount: number = 0; 
-  totalPrice: number = 0; 
-  unitPrice: number = 1000; 
+  ticketCount: number = 0;
+  totalPrice: number = 0;
+  unitPrice: number = 1000;
+  initial: string = `${sessionStorage.getItem('initial')}`
 
 
-  constructor(private router: Router){}
+  constructor(private router: Router) { }
 
   navigateToDashboard() {
     this.router.navigate(['/dashboard'])
     this.activeHeader = 'dashboard';
- 
+
   }
   navigateToTicket() {
     this.router.navigate(['/ticket-history'])
@@ -66,7 +67,7 @@ export class LayoutComponent {
     this.totalPrice = this.ticketCount * this.unitPrice;
   }
 
-  openMenu(){
+  openMenu() {
     this.showMenu = true
   }
 

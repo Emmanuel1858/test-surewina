@@ -1,5 +1,5 @@
 export const environment = {
-  production: true,
+  production: false,
   baseUrl: 'dummy.url',
   authentication: 'dummy-auth'
 };
