@@ -1,3 +1,13 @@
+<div class="header-mobile mobile-only-top" *ngIf="mobileVisibility">
+    <div (click)="closeWinner()">
+        <img src="../../../assets/go-back.svg" alt="">
+    </div>
+    <div>Winner Board</div>
+    <div><img src="../../../assets/menu.svg" alt=""></div>
+</div>
+
+
+
 <div class="container">
     <div class="ticket-body">
         <div class="header">
@@ -20,69 +30,48 @@
         </div>
 
         <div>
-            <div class="ticket-details">
+            <div class="ticket-details" *ngFor="let name of ticketName; let i = index" (click)="selectTicket(i)">
                 <div class="ticket-details-img">
                     <img src="../../../assets/keke-without-label.svg" alt="">
                 </div>
                 <div class="ticket-details-all">
-                    <span class="ticket-date">Sept, 2024</span>
-                    <span class="ticket-name">Suzuki Tricycle - Keke napep</span>
+                    <span class="ticket-date">{{name.drawDate.split('T')[0]}}</span>
+                    <span class="ticket-name">{{name.drawDescription}}</span>
                     <span class="ticket-won">
                         <span>Jolly Jackpot Lottery</span>
-                        <span>₦ 1,000 Per Tickets</span>
+                        <span>{{name.totalWinners}}</span>
                         <!-- <span>Cars, bikes, laptop, Monitor, Smartphones</span> -->
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="ticket-details">
-                <div class="ticket-details-img">
-                    <img src="../../../assets/bike-without-label.svg" alt="">
-                </div>
-                <div class="ticket-details-all">
-                    <span class="ticket-date">Feb, 2024</span>
-                    <span class="ticket-name">7 units of Suzuki Super Bike</span>
-                    <span class="ticket-won">
-                        <span>Jolly Jackpot Lottery</span>
-                        <span>₦ 1,000 Per Tickets</span>
-                        <!-- <span>Cars, laptop, Phones, Gas Cooker</span> -->
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="ticket-details">
-                <div class="ticket-details-img">
-                    <img src="../../../assets/blender.svg" alt="">
-                </div>
-                <div class="ticket-details-all">
-                    <span class="ticket-date">03rd Sept, 2024</span>
-                    <span class="ticket-name">12 units of LG Blender Model G23</span>
-                    <span class="ticket-won">
-                        <span>Jolly Jackpot Lottery</span>
-                        <span>₦ 1,000 per ticket</span>
-                        <!-- <span>Cars, laptop, Phones, Gas Cooker</span> -->
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="ticket-details">
-                <div class="ticket-details-img">
-                    <img src="../../../assets/tv-without-label.svg" alt="">
-                </div>
-                <div class="ticket-details-all">
-                    <span class="ticket-date">March, 2024</span>
-                    <span class="ticket-name">12 units of Samsung 8K HD TV</span>
-                    <span class="ticket-won">
-                        <span>Jolly Jackpot Lottery</span>
-                        <span>₦ 1,000 per ticket</span>
-                        <!-- <span>Cars, laptop, Phones, Gas Cooker</span> -->
                     </span>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="winner-container laptop-only" *ngIf="selectedTicketIndex !== null">
+        <div *ngFor="let winner of ticketName[selectedTicketIndex]?.winners.items">
+            <span>{{ winner.name }}</span>
+            <span>{{ winner.location }}</span>
+            <span>{{ winner.totalAmount }}</span>
+            <span>{{ winner.prize }}</span>
+        </div>
+    </div>
+
+ 
+
 </div>
+
+<div class="loader" *ngIf="showLoader">
+    <app-loader/>
+</div>
+
+<div class="mobile-only" *ngIf="mobileVisibility">
+    <div class="winner-container" *ngIf="selectedTicketIndex !== null">
+        <div *ngFor="let winner of ticketName[selectedTicketIndex]?.winners.items">
+            <span>{{ winner.name }}</span>
+            <span>{{ winner.location }}</span>
+            <span>{{ winner.totalAmount }}</span>
+            <span>{{ winner.prize }}</span>
+        </div>
+    </div>
+</div>
+

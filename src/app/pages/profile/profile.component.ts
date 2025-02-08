@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { UserAccountService } from 'src/app/services/user-account.service';
@@ -9,7 +9,7 @@ import { UserAccountService } from 'src/app/services/user-account.service';
   styleUrls: ['./profile.component.scss']
 })
 
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
 
   currentRoute: string = '';
   tabs: string = 'profile-details';
@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
   phoneNumber: string = '';
   jollyPoints: any = null;
   address: string = '';
+  firstAddress: any ;
   password: string = '';
   showError: string = '';
   updateAddress: string = '';
@@ -36,6 +37,7 @@ export class ProfileComponent implements OnInit {
   confirmNewPassword: string = '';
   showPassError: boolean = false;
   initial: string = `${sessionStorage.getItem('initial')}`
+  // phoneNumber: string = `${sessionStorage.getItem('phoneNumber')}`
   modalVisibility: boolean = false
 
   constructor(private userAccontService: UserAccountService) { }
@@ -61,6 +63,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserDetails()
+  }
+
+  ngOnDestroy(): void {
+      // if(this.address === '') {
+      //   sessionStorage.setItem('address', false)
+      // } else {
+      //   sessionStorage.setItem('address', true)
+      // }
   }
 
   switchTab(tab: string) {
@@ -101,6 +111,14 @@ export class ProfileComponent implements OnInit {
   }
 
  async completeLocation() {
+    if(this.updateAddress === '' ) {
+       this.showError = 'Please input your address!'
+      setTimeout(() => {
+        this.showError = ''
+      }, 10000);
+     
+      return
+    }
     const credentialsAddressUpdate = {
       password: this.password,
       address: this.updateAddress
@@ -150,4 +168,6 @@ export class ProfileComponent implements OnInit {
   completeProfile() {
     this.modalVisibility = true
   }
+
+
 }

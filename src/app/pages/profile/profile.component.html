@@ -15,6 +15,7 @@
                     <span class="header-status">Verified</span>
                     <span class="header-points">{{jollyPoints}} Jolly Point(s)</span>
                     <span class="header-email">{{email}}</span>
+                    <span class="header-phone">{{phoneNumber}}</span>
                 </div>
             </div>
         </div>
@@ -73,13 +74,13 @@
                             <div class="profile-details-complete">
                                 <div class="profile-complete">
                                     <span>Complete your profile</span>
-                                    <span>{{address === '' ? '50%' : '75%'}}</span>
+                                    <span>{{address === '' ? '50%' : '100%'}}</span>
                                 </div>
                                 <div class="profile-details-progress">
                                     <div class="profile-details-progress-bar"
                                     [ngStyle]="{
-                                        'width': address ? '75%' : '50%',
-                                        'border': address ? '4px solid orange' : '4px solid red'
+                                        'width': address ? '100%' : '50%',
+                                        'border': address ? '4px solid green' : '4px solid red'
                                       }">
 
                                     </div>
@@ -87,22 +88,7 @@
                             </div>
                             <div class="profile-details-nin-container">
                                 <div class="profile-details-nin">
-                                    <div>
-                                        <img src="../../../assets/location.svg" alt="">
-                                    </div>
-                                    <div class="profile-details-nin-text">
-                                        <span>Please Provide your NIN</span>
-                                        <span>details for verification purposes</span>
-                                    </div>
-                                </div>
-                                <div class="profile-details-nin-btn" (click)="updateNIN()">
-                                    <span>UPDATE NIN</span>
-                                    <span> > </span>
-                                </div>
-                            </div>
-                            <div class="profile-details-nin-container">
-                                <div class="profile-details-nin">
-                                    <div>
+                                    <div class="img-location">
                                         <img src="../../../assets/gallery.svg" alt="">
                                     </div>
                                     <div class="profile-details-nin-text">
@@ -122,15 +108,7 @@
 
                 <div *ngIf="tabs === 'settings'">
                     <div class="settings-container">
-                        <div class="settings-email-container">
-                            <div class="settings-email-text">
-                                <span>Change Email</span>
-                            </div>
-                            <div class="settings-email-btn" (click)="updateEmail()">
-                                <span>Proceed</span>
-                                <span>></span>
-                            </div>
-                        </div>
+                        
                         <div class="settings-email-container">
                             <div class="settings-email-text">
                                 <span>Change Password</span>
@@ -140,15 +118,7 @@
                                 <span>></span>
                             </div>
                         </div>
-                        <div class="settings-email-container">
-                            <div class="settings-email-text">
-                                <span>Change Phone Number</span>
-                            </div>
-                            <div class="settings-email-btn" (click)="updateNumber()">
-                                <span>Proceed</span>
-                                <span>></span>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
 
@@ -233,39 +203,7 @@
         </div>
     </div>
 
-    <div class="ticket-container-background" *ngIf="showNINUpdate">
-        <div class="buy-ticket-container">
-            <div class="buy-ticket-header">
-                <div class="img-dashboard" (click)="closeAllModal()">
-                    <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
-                </div>
-                <div class="buy-ticket-header-text">
-                    <span class="bigger-text">Update your NIN</span>
-                </div>
-                <div class="img-question">
-                    <img src="../../../assets/question-ticket.svg" alt="">
-                </div>
-
-            </div>
-
-            <div class="input">
-                <input type="text" placeholder="Enter your NIN">
-            </div>
-
-            <div class="note">
-                <span>Kindly note that all the information you provided is safe with us.
-                    We will not share your information to any third party without your concent</span>
-            </div>
-
-            <div class="footer-ticket">
-                <button (click)="completeProfile">
-                    <span>COMPLETE PROFILE SETUP</span>
-                    <span> > </span>
-                </button>
-            </div>
-
-        </div>
-    </div>
+  
     <div class="ticket-container-background" *ngIf="showlocationUpdate">
         <div class="buy-ticket-container">
             <div class="buy-ticket-header">
@@ -282,7 +220,8 @@
             </div>
 
             <div class="input">
-                {{showError}}
+                <p class="error"> {{showError}}</p>
+               
                 <input type="text" placeholder="Enter your location" [(ngModel)]="updateAddress" >
                 <input type="password" placeholder="Enter your password" [(ngModel)]="password">
             </div>
@@ -301,40 +240,7 @@
 
         </div>
     </div>
-    <div class="ticket-container-background" *ngIf="showEmailUpdate">
-        <div class="buy-ticket-container">
-            <div class="buy-ticket-header">
-                <div class="img-dashboard" (click)="closeAllModal()">
-                    <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
-                </div>
-                <div class="buy-ticket-header-text">
-                    <span class="bigger-text">Update your Email</span>
-                </div>
-                <div class="img-question">
-                    <img src="../../../assets/question-ticket.svg" alt="">
-                </div>
 
-            </div>
-
-            <div class="input">
-                <input type="text" placeholder="Email address">
-                <input type="text" placeholder="New email address">
-            </div>
-
-            <div class="note">
-                <span>Kindly note that all the information you provided is safe with us.
-                    We will not share your information to any third party without your concent</span>
-            </div>
-
-            <div class="footer-ticket">
-                <button>
-                    <span>Continue</span>
-                    <span> > </span>
-                </button>
-            </div>
-
-        </div>
-    </div>
     <div class="ticket-container-background" *ngIf="showPasswordUpdate">
         <div class="buy-ticket-container">
             <div class="buy-ticket-header">
@@ -373,40 +279,7 @@
 
         </div>
     </div>
-    <div class="ticket-container-background" *ngIf="showNumberUpdate">
-        <div class="buy-ticket-container">
-            <div class="buy-ticket-header">
-                <div class="img-dashboard" (click)="closeAllModal()">
-                    <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
-                </div>
-                <div class="buy-ticket-header-text">
-                    <span class="bigger-text">Update your Phone number</span>
-                </div>
-                <div class="img-question">
-                    <img src="../../../assets/question-ticket.svg" alt="">
-                </div>
 
-            </div>
-
-            <div class="input">
-                <input type="text" placeholder="Phone Number">
-                <input type="text" placeholder="New phone number">
-            </div>
-
-            <div class="note">
-                <span>Kindly note that all the information you provided is safe with us.
-                    We will not share your information to any third party without your concent</span>
-            </div>
-
-            <div class="footer-ticket">
-                <button>
-                    <span>Continue</span>
-                    <span> > </span>
-                </button>
-            </div>
-
-        </div>
-    </div>
     <div class="overlay-modal" *ngIf="modalVisibility" >
         <div class="modal">
             <div class="container-modal">

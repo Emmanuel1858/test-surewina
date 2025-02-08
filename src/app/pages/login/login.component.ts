@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
@@ -15,6 +15,10 @@ export class LoginComponent {
   emailAddress: string = '';
   password: string = '';
   showError: string = '';
+  firstName: string = ''
+  lastName: string = ''
+  initialFromLogin: string = ''
+  address: boolean = false;
 
   constructor(private router: Router, private authService: AuthServiceService) { }
 
@@ -56,14 +60,18 @@ export class LoginComponent {
         sessionStorage.setItem('lastName', response.result.lastName)
         sessionStorage.setItem('token', response.result.jwtToken)
         sessionStorage.setItem('phoneNumber', response.result.phoneNumber)
+        // sessionStorage.setItem('address', response.result.address)
+        sessionStorage.setItem('address', String(response.result.address));
+
         this.router.navigate(['/dashboard'])
       }
     } catch (error) {
+      this.showLoader = false
       console.error(error)
     }
 
 
-    this.router.navigate(['/dashboard'])
+   
   }
 
   navigateToCreateAcc() {
@@ -74,4 +82,10 @@ export class LoginComponent {
     this.showPassword = !this.showPassword;
   }
 
+  ngOnDestroy(): void {
+    this.firstName = `${sessionStorage.getItem('firstName')}`
+    this.lastName = `${sessionStorage.getItem('lastName')}`
+    this.initialFromLogin = (this.firstName?.charAt(0) || '') + (this.lastName?.charAt(0))
+    sessionStorage.setItem('initialFromLogin', this.initialFromLogin)
+  }
 }

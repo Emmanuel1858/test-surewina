@@ -3,31 +3,36 @@
         <div class="header">
             <div class="header-tickets">
                 <span class="header-tickets-text-active">Ongoing Tickets</span>
-                <span class="header-tickets-number-active">05</span>
+                <span class="header-tickets-number-active">{{itemsInArray}}</span>
             </div>
             <div class="header-tickets">
                 <span class="header-tickets-text">Previously Played Tickets</span>
-                <span class="header-tickets-number">26</span>
+                <span class="header-tickets-number">0</span>
             </div>
         </div>
 
+        <div class="loader" *ngIf="showLoader">
+            <app-loader />
+        </div>
+
+
         <div>
-            <div class="ticket-details">
+            <div class="ticket-details" *ngFor="let ticket of allTicket">
                 <div class="ticket-details-img">
-                    <img src="../../../assets/Rectangle 4585.svg" alt="">
+                    <img [src]="ticket.ticketImage" alt="">
                 </div>
                 <div class="ticket-details-all">
-                    <span class="ticket-date">05th Sept, 2024</span>
-                    <span class="ticket-name">Jolly Jackpot Lottery</span>
+                    <span class="ticket-date">{{ticket.created.split('T')[0]}}</span>
+                    <span class="ticket-name">{{ticket.drawName}}</span>
                     <span class="ticket-won">
-                        <span>12 Ticket</span>
-                        <span>₦ 12,000</span>
-                        <span>Cars, bikes, laptop, Monitor, Smartphones</span>
+                        <span>{{ticket.numberOfTickets}} Ticket(s)</span>
+                        <span>₦ {{ticket.amount}} </span>
+                        <span>{{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}}</span>
                     </span>
                 </div>
             </div>
         </div>
-        <div>
+        <!-- <div>
             <div class="ticket-details">
                 <div class="ticket-details-img">
                     <img src="../../../assets/helmet.svg" alt="">
@@ -58,7 +63,7 @@
                     </span>
                 </div>
             </div>
-        </div>
+        </div> -->
 
     </div>
 

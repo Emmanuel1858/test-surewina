@@ -14,7 +14,7 @@ export class WebsiteComponent {
   constructor(private router: Router){}
 
   navigateToCreatAccount() {
-    this.router.navigate(['/create-account-name'])
+    this.router.navigate(['/login'])
   }
 
   navigateToPaymentTicket() {

@@ -25,6 +25,15 @@ import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { HeaderComponent } from './components/header/header.component'
+import { AdminPortalLoginComponent } from './pages/admin-portal-login/admin-portal-login.component';
+import { AdminPortalComponent } from './pages/admin-portal/admin-portal.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
+import { AdminLotteryComponent } from './pages/admin-lottery/admin-lottery.component';
+import { AdminTransactionsComponent } from './pages/admin-transactions/admin-transactions.component';
+import { AdminSideNavComponent } from './components/admin-side-nav/admin-side-nav.component';
+import { VendorLoginComponent } from './pages/vendor-login/vendor-login.component';
+import { VendorDashboardComponent } from './pages/vendor-dashboard/vendor-dashboard.component';
 
 // @NgModule({
 //   declarations: [
@@ -67,6 +76,15 @@ import { HeaderComponent } from './components/header/header.component'
     LoginComponent,
     ProfileComponent,
     HeaderComponent,
+    AdminPortalLoginComponent,
+    AdminPortalComponent,
+    AdminDashboardComponent,
+    AdminUsersComponent,
+    AdminLotteryComponent,
+    AdminTransactionsComponent,
+    AdminSideNavComponent,
+    VendorLoginComponent,
+    VendorDashboardComponent
 
   ],
   imports: [

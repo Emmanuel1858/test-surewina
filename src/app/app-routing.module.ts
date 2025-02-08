@@ -15,6 +15,14 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AdminPortalLoginComponent } from './pages/admin-portal-login/admin-portal-login.component';
+import { AdminPortalComponent } from './pages/admin-portal/admin-portal.component';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
+import { AdminLotteryComponent } from './pages/admin-lottery/admin-lottery.component';
+import { AdminTransactionsComponent } from './pages/admin-transactions/admin-transactions.component';
+import { VendorLoginComponent } from './pages/vendor-login/vendor-login.component';
+import { VendorDashboardComponent } from './pages/vendor-dashboard/vendor-dashboard.component';
 // import { CreateAccountNameComponent } from './pages/create-account-name/create-account-name.component';
 
 
@@ -23,9 +31,10 @@ const routes: Routes = [
   { path: 'create-account-name', component: CreateAccountNameComponent },
   { path: 'create-account-password', component: CreateAccountPasswordComponent },
   { path: 'create-account-otp', component: CreateAccountOtpComponent },
-  { path: 'login', component: LoginComponent},
-  { path: 'profile', component: ProfileComponent},
-  { path: 'profile-details', component: ProfileDetailsComponent},
+  { path: 'login', component: LoginComponent },
+
+  { path: 'profile', component: ProfileComponent },
+  { path: 'profile-details', component: ProfileDetailsComponent },
 
 
   { path: '', redirectTo: 'Jollywina.com', pathMatch: 'full' },
@@ -37,15 +46,19 @@ const routes: Routes = [
       { path: 'winner-board', component: WinnerBoardComponent }
     ]
   },
-  { path: 'my-profile', component: MyProfileComponent}
-  // {
-  //   path: '', component: LayoutComponent,
-  //   children: [
-  //     { path: 'profile-details', component: ProfileDetailsComponent },
-  //     { path: 'settings', component: SettingsComponent },
-  //     { path: 'referrals', component: ReferralsComponent }
-  //   ]
-  // }
+
+  { path: 'vendor-login', component: VendorLoginComponent },
+  { path: 'vendor-dashboard', component: VendorDashboardComponent },
+  { path: 'admin-login', component: AdminPortalLoginComponent },
+  {
+    path: '', component: AdminPortalComponent,
+    children: [
+      { path: 'admin-dashboard', component: AdminDashboardComponent },
+      { path: 'users', component: AdminUsersComponent },
+      { path: 'lottery', component: AdminLotteryComponent },
+      { path: 'transactions', component: AdminTransactionsComponent },
+    ]
+  }
 
 
 ]
@@ -55,4 +68,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-

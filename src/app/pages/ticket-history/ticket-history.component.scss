@@ -1,3 +1,15 @@
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
 .container {
     background-color: #F3F3FE;
     height: 85vh;
@@ -63,13 +75,15 @@
     margin: 10px;
     border-radius: 4px;
     align-items: center;
-
-
 }
 
 .ticket-details-all {
     display: flex;
     flex-direction: column;
+}
+
+.ticket-details-img {
+    width: 20%;
 }
 
 .ticket-date {

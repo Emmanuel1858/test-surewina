@@ -1,0 +1,27 @@
+<div class="side-nav-container">
+  <div class="side-nav-top">
+    <img src="../../../assets/jollywina-logo.svg" alt="">
+  </div>
+  <div class="side-nav-bottom">
+    <nav>
+      <a routerLink="/admin-dashboard" routerLinkActive="active"> <img src="../../../assets/home-02.svg" alt=""> Dashboard </a>
+      <a routerLink="/users" routerLinkActive="active"> <img src="../../../assets/user-circle.svg" alt="" > Users </a>
+      <a routerLink="/lottery" routerLinkActive="active"> <img src="../../../assets/lottery-02.svg" alt="" > Lottery </a>
+      <a routerLink="/transactions" routerLinkActive="active"> <img src="../../../assets/transactions-icon.svg" alt="" > Transactions </a>
+    </nav>
+  
+    <div class="support">
+      <div class="top">
+        <img src="../../../assets/help-circle.svg" alt="">
+        <p> Support </p>
+      </div>
+      <div class="profile-card">
+        <img src="../../../assets/profile-card-img.svg" alt="">
+        <div class="profile-name">
+          <h2> {{userName}} </h2>
+          <p> {{userEmail}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

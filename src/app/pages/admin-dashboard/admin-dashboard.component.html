@@ -1,0 +1,338 @@
+<h1 class="current-route-header"> {{currentRoute}} </h1>
+
+<div class="parent-container">
+  <div class="first-row">
+    <div class="sm-card card card-1"> 
+      <div class="card-top"> 
+        <p> Total Tickets Sold </p>
+      </div>
+      <div class="card-bottom">
+        <p class="item-1"> ₦ 32.2m </p>
+        <div class="item-2">
+          <div class="sub-item-1">
+            <!-- arrow icon that shows increase or decrease -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M11.5 10.1667V4.5H5.83333M11.3333 4.66667L4.5 11.5" stroke="#111519" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <p class="percentage-value"> +5.0% </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="sm-wide-card card card-2">
+      <div class="card-top"> 
+        <p> Tickets sold by channels </p>
+      </div>
+      <div class="card-bottom">
+        <div class="card-item-collection">
+          <p> Web App </p>
+          <h2> ₦ 7,215,878 </h2>
+        </div>
+        <div class="card-item-collection">
+          <p> Mobile App </p>
+          <h2> ₦ 21,000,215 </h2>
+        </div>
+        <div class="card-item-collection">
+          <p> USSD </p>
+          <h2> ₦ 1,000,215 </h2>
+        </div>
+        <div class="card-item-collection">
+          <p> Agents  </p>
+          <h2> ₦ 1,000,215 </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <div class="second-row">
+  <div class="left-side">
+    <div class="sm-card card card-3">
+      <div class="card-top"> 
+        <p> Prizes Won </p>
+      </div>
+      <div class="card-bottom">
+        <div class="card-bottom">
+          <p class="item-1"> ₦  738k </p>
+          <div class="item-2">
+            <div class="sub-item-1">
+              <!-- arrow icon that shows increase or decrease -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M11.5 10.1667V4.5H5.83333M11.3333 4.66667L4.5 11.5" stroke="#111519" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p class="percentage-value"> +5.0% </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="sm-long-card card card-4">
+        <img [src]="imgSrc" alt="" (click)="ctaFlip()">
+  
+        <div class="text-content">
+          <h2> {{h2ctaText}} </h2>
+          <p> {{pctaText}} </p>
+  
+          <div class="dots-slider">
+            <div  class="dot" [ngClass]="ctaPosition === 1 ? 'dot wider-dot' : ''"></div>
+            <div class="dot" [ngClass]="ctaPosition === 2 ? 'wider-dot' : ''"></div>
+            <div class="dot" [ngClass]="ctaPosition === 3 ? 'wider-dot' : ''"></div>
+          </div>
+          
+        </div>
+    </div>
+  </div>
+
+  <div class="lg-card card card-5">
+    <div class="table">
+      <div class="table-head">
+        <!-- the class active-tab will add dynamic class features to the tab -->
+        <div class="tab" [ngClass]="tabs == 'prizes' ? 'active-tab' : '' ">
+          <p (click)="switchTab('prizes') "> Prizes </p>
+          <!-- add or remove based on the active tab -->
+          <div class="border-bottom"></div>
+        </div>
+        <div class="tab" [ngClass]="tabs == 'winners' ? 'active-tab' : '' ">
+          <p (click)="switchTab('winners')"> Winners </p>
+          <div class="border-bottom"></div>
+        </div>
+        
+      </div>
+      <div [ngSwitch]="tabs" class="table-content">
+        <!-- show content based on active tap *ngSwitch -->
+
+        <div *ngSwitchCase="'prizes'" class="tab-1-content">
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+            <div class="item-image">
+              <img src="../../../assets/car-prize.png" alt="">
+            </div>
+            <div class="item-details">
+              <p> Jan 1st - Jan 14th </p>
+              <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+              <div class="item-extra-details">
+                <p> January Suprize Lottery </p>
+                <ul>
+                  <li> ₦ 1,000 per ticket </li>
+                  <li> 11,762 tickets bought </li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+            <div class="item-image">
+              <img src="../../../assets/bike-prize.png" alt="">
+            </div>
+            <div class="item-details">
+              <p> Jan 1st - Jan 14th </p>
+              <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+              <div class="item-extra-details">
+                <p> January Suprize Lottery </p>
+                <ul>
+                  <li> ₦ 1,000 per ticket </li>
+                  <li> 11,762 tickets bought </li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+            <div class="item-image">
+              <img src="../../../assets/tv-prize.png" alt="">
+            </div>
+            <div class="item-details">
+              <p> Jan 1st - Jan 14th </p>
+              <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+              <div class="item-extra-details">
+                <p> January Suprize Lottery </p>
+                <ul>
+                  <li> ₦ 1,000 per ticket </li>
+                  <li> 11,762 tickets bought </li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+              <div class="item-image">
+                <img src="../../../assets/car-prize.png" alt="">
+              </div>
+              <div class="item-details">
+                <p> Jan 1st - Jan 14th </p>
+                <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+                <div class="item-extra-details">
+                  <p> January Suprize Lottery </p>
+                  <ul>
+                    <li> ₦ 1,000 per ticket </li>
+                    <li> 11,762 tickets bought </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="items">
+            <div class="item-collection">
+              <!-- will back-end provide images -->
+            <div class="item-image">
+              <img src="../../../assets/tv-prize.png" alt="">
+            </div>
+            <div class="item-details">
+              <p> Jan 1st - Jan 14th </p>
+              <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+              <div class="item-extra-details">
+                <p> January Suprize Lottery </p>
+                <ul>
+                  <li> ₦ 1,000 per ticket </li>
+                  <li> 11,762 tickets bought </li>
+                </ul>
+              </div>
+            </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div *ngSwitchCase="'winners'" class="tab-2-content">
+
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> I </h2> </div>
+              <h2> Irene </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Yaba </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> S </h2> </div>
+              <h2> Stephen </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Allen Ikeja </p>
+              <p> Played ₦ 6,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          <div class="row-content">
+            <div class="user-name">
+              <div class="circle"> <h2> A </h2> </div>
+              <h2> Adetayo </h2>
+            </div>
+            <div class="rounded-border-items">
+              <p> From Mende Mende </p>
+              <p> Played ₦ 12,000 </p>
+              <p> Won Jeep Cheroke SUV 2024 </p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+
+  
+</div>
+

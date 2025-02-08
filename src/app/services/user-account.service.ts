@@ -45,7 +45,6 @@ export class UserAccountService {
       });
   
       const httpOptions = { headers };
-  
       return this.http.post(`${this.baseUrl}${this.userPasswordUrl}`, credentialsPasswordUpdate, httpOptions);
     }
     return new Observable<any>();

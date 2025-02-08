@@ -22,6 +22,13 @@ export class AuthServiceService {
     
   }
 
+  // registerVendor(credentialsRegisterVendor: {firstName: string; lastName: string; phoneNumber: string; password: string; email: string; referredBy: string; isConscient: boolean}): Observable <any> {
+  //   return this.http.post(`${this.baseUrl}${this.registerUserUrl}`, credentialsRegisterUser, {
+  //     headers: { 'Content-Type': 'application/json' },
+  //   })
+    
+  // }
+
   loginUser(credentialsLoginUser: {user: string; password: string}): Observable <any> {
     return this.http.post(`${this.baseUrl}${this.loginUserUrl}`, credentialsLoginUser, {
       headers: { 'Content-Type': 'application/json' },
