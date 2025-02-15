@@ -1,6 +1,19 @@
 * {
   font-family: "DM Sans";
 }
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000000;
+}
+
 header {
   position: fixed;
   width: 100%;
@@ -98,6 +111,13 @@ header {
 }
 
 // ################## SECTION 1 ##################
+
+main {
+  max-height: 85vh;
+  overflow: auto;
+
+}
+
 
 section.add-gradient {
   height: 100vh;
@@ -585,7 +605,8 @@ section.blue-gradient {
       font-size: 0.58688rem;
       font-style: normal;
       font-weight: 500;
-      line-height: 1.17369rem; /* 200% */
+      line-height: 1.17369rem;
+      /* 200% */
       letter-spacing: 0.01763rem;
     }
 
@@ -596,7 +617,8 @@ section.blue-gradient {
       font-size: 1.56494rem;
       font-style: normal;
       font-weight: 700;
-      line-height: 1.17369rem; /* 75% */
+      line-height: 1.17369rem;
+      /* 75% */
     }
   }
 
@@ -611,7 +633,8 @@ section.blue-gradient {
       font-size: 0.58688rem;
       font-style: normal;
       font-weight: 500;
-      line-height: 1.17369rem; /* 200% */
+      line-height: 1.17369rem;
+      /* 200% */
       text-transform: uppercase;
       padding-block: .1rem;
     }
@@ -627,7 +650,7 @@ section.blue-gradient {
   border-radius: 0.97806rem;
   background: #EEF8FF;
   margin: var(--container);
-  
+
   .top {
     padding-top: 2.4rem;
   }
@@ -816,14 +839,16 @@ section.blue-gradient {
         font-size: 0.74556rem;
         font-style: normal;
         font-weight: 400;
-        line-height: 1.17163rem; /* 157.143% */
+        line-height: 1.17163rem;
+        /* 157.143% */
       }
     }
   }
 }
 
 footer {
-  padding: var(--container);
+  // padding: var(--container);
+  padding: 12px 30px;
   background-color: #0009B0;
 
   .footer-top {
@@ -859,7 +884,8 @@ footer {
       font-size: 1rem;
       font-style: normal;
       font-weight: 400;
-      line-height: 131.372%; /* 1.31369rem */
+      line-height: 131.372%;
+      /* 1.31369rem */
     }
   }
 
@@ -1014,7 +1040,7 @@ footer {
 }
 
 .ticket-bought {
-  margin: 0 auto;
+  margin: 10px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1025,13 +1051,15 @@ footer {
   font-size: 32px;
 }
 
+
+
 .footer-ticket {
   position: absolute;
   bottom: 0;
   background-color: #fff;
   border: 1px solid #D9D9D9;
   width: 100%;
-  height: 100px;
+  height: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1127,9 +1155,9 @@ form {
 }
 
 .card-number-container {
- display: flex;
- flex-direction: column; 
- position: relative;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .card-number-container label {
@@ -1148,12 +1176,12 @@ form {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type=number] {
--moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 .img-card-type {
@@ -1223,7 +1251,7 @@ input[type=number] {
 
 .container-modal {
   // margin-top: 50px;
-  
+
   width: 70%;
   height: 70%;
   margin: 10rem auto 0;
@@ -1262,6 +1290,7 @@ input[type=number] {
   0% {
     stroke-dashoffset: 1000;
   }
+
   100% {
     stroke-dashoffset: 0;
   }
@@ -1271,6 +1300,7 @@ input[type=number] {
   0% {
     stroke-dashoffset: -100;
   }
+
   100% {
     stroke-dashoffset: 900;
   }
@@ -1325,3 +1355,336 @@ input[type=number] {
 
 }
 
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input input {
+  width: 80%;
+  padding: 10px 20px;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #C7C9F8;
+}
+
+@media (max-width: 1395px) {
+
+  h1 {
+    max-width: 365.751px;
+
+    color: var(--Colors-Typography-Colors-Header-or-Display-Text, #000);
+    font-family: "DM Sans";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 90%;
+  }
+
+  .support-text {
+    display: flex;
+    max-width: 365px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--Numbers-Spacing-3XL, 24px);
+
+    p {
+      color: var(--Colors-Typography-Colors-Supporting-Text-1, #555);
+      /* Body Text Regular/Body Text - Regular - 3 */
+      font-family: "DM Sans";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      max-width: 365px;
+    }
+  }
+
+  .btn-full {
+    cursor: pointer;
+
+    &.blue {
+      padding: var(--Numbers-Spacing-XL, 16px) 20px;
+      align-items: center;
+      border-radius: 400px;
+      background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    }
+
+    a {
+      color: var(--Colors-White-White, #FFF);
+      /* Button Text/Button Text - Large */
+      font-family: "DM Sans";
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-transform: uppercase;
+      display: flex;
+      gap: 5px;
+
+    }
+  }
+
+  .right-top img {
+    height: 30%;
+    width: 30%;
+  }
+
+  img.gift-icon {
+    width: 3.68313rem;
+    height: 3.75rem;
+  }
+
+  .prize-details-medium {
+    padding-block: 1rem;
+    padding-inline: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 31.704px;
+    /* min-width: 241.176px; */
+    flex-shrink: 0;
+    border-radius: var(--Numbers-Numbers-6, 16px);
+    border: 1.644px solid var(--colors-black-tetiary-color-b-700, #434343);
+    background: var(--colors-black-tetiary-color-b-900, #000);
+  }
+
+  .ticket-collection img {
+    width: 30%;
+    height: 30%;
+  }
+
+  .prize-earnings h2 {
+    color: var(--Colors-White-White, #FFF);
+    font-family: var(--body-font);
+    font-size: 18.296px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0;
+  }
+}
+
+
+// @media (max-width: 1000px) {
+
+//   section.add-gradient {
+//     height: 100%;
+//     background: linear-gradient(358deg, #DCE9FA -12.63%, rgba(239, 246, 255, 0) 61.81%), url(wavy-patter-bg.png);
+//     background-position: cover;
+//   }
+
+//   .section-1 {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     gap: 30px;
+//     padding: var(--container);
+//     /* justify-content: space-between; */
+//     /* height: 100vh; */
+//   }
+
+//   .right-side {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     gap: 22.646px;
+//   }
+
+//   section.blue-gradient {
+//     background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+//     background-position: cover;
+//     height: 100%;
+//     padding-bottom: 25px;
+//     /* margin-top: 161px; */
+//   }
+
+//   .section-2 {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 48px;
+//     height: 100%;
+//     padding-top: 10px;
+//     background: linear-gradient(180deg, rgba(18, 40, 193, 0) -23.58%, rgba(18, 40, 193, 0.639918) 3.57%, #1228C1 89.94%), url(many-icons.png);
+//   }
+
+//   .section-2 h2 {
+//     color: var(--Colors-White-White, #FFF);
+//     text-align: center;
+//     font-family: "DM Sans";
+//     font-size: 20px;
+//     font-style: normal;
+//     font-weight: 700;
+//   }
+
+//   .section-2 button.btn-white-bg {
+//     cursor: pointer;
+//     display: flex;
+//     padding: var(--Numbers-Spacing-XL, 1rem) 1.25rem;
+//     border-radius: 25rem;
+//     border: 1px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+//     background: #FFF;
+//     color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+//     font-family: "DM Sans";
+//     font-size: 16px;
+//     font-style: normal;
+//     font-weight: 500;
+//     line-height: normal;
+//     text-transform: uppercase;
+//   }
+
+//   .section-3-content .content-1 {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Large, 1rem);
+//     background-color: lightgray;
+//     background-image: url(tricycle-prize.jpg);
+//     background-position: center;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     width: 36.125rem;
+//     height: 25rem;
+//     display: none;
+//   }
+
+//   .section-3-content {
+//     display: flex;
+//     width: 100%;
+//     align-items: center;
+//     justify-content: center;
+//     padding: var(--container);
+//     gap: var(--Numbers-Spacing-9XL, 6.25rem);
+//     /* height: 100%; */
+//   }
+
+//   .section-4 .top {
+//     /* padding-top: 2.4rem; */
+//     display: none;
+//   }
+// }
+
+// @media (max-width: 500px) {
+
+//   .links a {
+//     cursor: pointer;
+//     font-family: "DM Sans";
+//     font-size: 18px;
+//     font-style: normal;
+//     font-weight: 500;
+//     display: none;
+//     line-height: normal;
+// }
+
+//   section.add-gradient {
+//     height: 100%;
+//     background: linear-gradient(358deg, #DCE9FA -12.63%, rgba(239, 246, 255, 0) 61.81%), url(wavy-patter-bg.png);
+//     background-position: cover;
+//   }
+
+//   .section-1 {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     gap: 30px;
+//     padding: var(--container);
+//     /* justify-content: space-between; */
+//     /* height: 100vh; */
+//   }
+
+//   .right-side {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     gap: 22.646px;
+//   }
+
+//   section.blue-gradient {
+//     background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+//     background-position: cover;
+//     height: 100%;
+//     padding-bottom: 25px;
+//     /* margin-top: 161px; */
+//   }
+
+//   .section-2 {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 48px;
+//     height: 100%;
+//     padding-top: 10px;
+//     background: linear-gradient(180deg, rgba(18, 40, 193, 0) -23.58%, rgba(18, 40, 193, 0.639918) 3.57%, #1228C1 89.94%), url(many-icons.png);
+//   }
+
+//   .btn-full a {
+//     color: var(--Colors-White-White, #FFF);
+//     font-family: "DM Sans";
+//     font-size: 12px;
+//     font-style: normal;
+//     font-weight: 500;
+//     line-height: normal;
+//     text-transform: uppercase;
+//     display: flex;
+//     gap: 5px;
+//   }
+
+//   .section-2 h2 {
+//     color: var(--Colors-White-White, #FFF);
+//     text-align: center;
+//     font-family: "DM Sans";
+//     font-size: 20px;
+//     font-style: normal;
+//     font-weight: 700;
+//   }
+
+//   .section-2 button.btn-white-bg {
+//     cursor: pointer;
+//     display: flex;
+//     padding: var(--Numbers-Spacing-XL, 1rem) 1.25rem;
+//     border-radius: 25rem;
+//     border: 1px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+//     background: #FFF;
+//     color: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+//     font-family: "DM Sans";
+//     font-size: 14px;
+//     font-style: normal;
+//     font-weight: 500;
+//     line-height: normal;
+//     text-transform: uppercase;
+//   }
+
+//   .section-3-content .content-1 {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Large, 1rem);
+//     background-color: lightgray;
+//     background-image: url(tricycle-prize.jpg);
+//     background-position: center;
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     width: 36.125rem;
+//     height: 25rem;
+//     display: none;
+//   }
+
+//   .section-3-content {
+//     display: flex;
+//     width: 100%;
+//     align-items: center;
+//     justify-content: center;
+//     padding: var(--container);
+//     gap: var(--Numbers-Spacing-9XL, 6.25rem);
+//     /* height: 100%; */
+//   }
+
+//   .section-4 .top {
+//     /* padding-top: 2.4rem; */
+//     display: none;
+//   }
+// }

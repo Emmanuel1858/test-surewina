@@ -35,9 +35,13 @@
 
 
 
-                    <button class="btn-cont"> Login
+                    <button class="btn-cont" (click)="navigateToDashboard()"> Login
                         <img src="../../../assets/grommet-icons_form-next.svg" alt="">
                     </button>
+                    <div>
+                        <span class="info-account">Don't have an account?</span>
+                        <span class="btn-register" (click)="navigateToCreateAcc()">Register now</span>
+                    </div>
 
                     <p> Forgot Password? <span> Reach out to the Administrator </span> </p>
                 </div>

@@ -1,0 +1,107 @@
+<div class="header-mobile mobile-only-top" *ngIf="mobileVisibility">
+    <div (click)="closeWinner()">
+        <img src="../../../assets/Group 1000002450.svg" alt="">
+    </div>
+    <div>Winner Board</div>
+    <div (click)="openMenu()"><img src="../../../assets/menu.svg" alt=""></div>
+</div>
+
+<div class="menu-container" *ngIf="showMenu">
+    <div class="menu-header">
+        <h1>Menu</h1>
+        <img (click)="closeMenu()" src="../../../assets/Frame 1000003973.svg" alt="">
+    </div>
+    <div class="menu-options">
+        <div class="all-options" (click)="showDashboard()">
+            <img src="../../../assets/dashboard-mobile.svg" alt="">
+            <span>Dashboard</span>
+        </div>
+        <div class="all-options" (click)="showWinner()">
+            <img src="../../../assets/analytics-mobile.svg" alt="">
+            <span>Winner Board</span>
+        </div>
+        <div class="all-options" (click)="showTicket()">
+            <img src="../../../assets/ticket-mobile.svg" alt="">
+            <span>Ticket History</span>
+        </div>
+        <div class="all-options" (click)="navigateToProfile()">
+            <img src="../../../assets/user-account-mobile.svg" alt="">
+            <span>Your Profile</span>
+        </div>
+        <div class="logout-container" (click)="logout()">
+            <img src="../../../assets/logout-03.svg" alt="">
+            <span>Logout</span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    
+    <div class="ticket-body">
+        <div class="header">
+            <div class="header-tickets">
+                <span class="header-tickets-text-active">1st Quarter</span>
+                <span class="header-tickets-number-active">32</span>
+            </div>
+            <div class="header-tickets">
+                <span class="header-tickets-text">2nd Quarter</span>
+                <span class="header-tickets-number">32</span>
+            </div>
+            <div class="header-tickets">
+                <span class="header-tickets-text">3rd Quarter</span>
+                <span class="header-tickets-number">32</span>
+            </div>
+            <div class="header-tickets">
+                <span class="header-tickets-text">4th Quarter</span>
+                <span class="header-tickets-number">32</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="ticket-details" *ngFor="let name of ticketName; let i = index" (click)="selectTicket(i)">
+                <div class="ticket-details-img">
+                    <img src="../../../assets/keke-without-label.svg" alt="">
+                </div>
+                <div class="ticket-details-all">
+                    <span class="ticket-date">{{name.drawDate.split('T')[0]}}</span>
+                    <span class="ticket-name">{{name.drawDescription}}</span>
+                    <span class="ticket-won">
+                        <span>Sure Jackpot Lottery</span>
+                        <span>{{name.totalWinners}}</span>
+                        <!-- <span>Cars, bikes, laptop, Monitor, Smartphones</span> -->
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="winner-container laptop-only" *ngIf="selectedTicketIndex !== null">
+        <div *ngFor="let winner of ticketName[selectedTicketIndex]?.winners.items">
+            <span>{{ winner.name }}</span>
+            <span>{{ winner.location }}</span>
+            <span>{{ winner.totalAmount }}</span>
+            <span>{{ winner.prize }}</span>
+        </div>
+    </div>
+
+ 
+
+</div>
+
+<div class="loader" *ngIf="showLoader">
+    <app-loader/>
+</div>
+
+<div class="mobile-only" *ngIf="mobileVisibility">
+    <div class="winner-container" *ngIf="selectedTicketIndex !== null">
+        <div *ngFor="let winner of ticketName[selectedTicketIndex]?.winners.items">
+            <span>{{ winner.name }}</span>
+            <span>{{ winner.location }}</span>
+            <span>{{ winner.totalAmount }}</span>
+            <span>{{ winner.prize }}</span>
+        </div>
+    </div>
+</div>
+

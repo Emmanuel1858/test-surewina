@@ -42,7 +42,6 @@ export class LayoutComponent implements OnInit {
   navigateToDashboard() {
     this.router.navigate(['/dashboard'])
     this.activeHeader = 'dashboard';
-
   }
   navigateToDashboardMobile() {
     this.showMakePayment = false

@@ -61,7 +61,7 @@
               <img class="prize-item" src="../../../assets/prize-item.png" alt="">
               <div class="prize-details">
                 <p class="date"> 03rd June, 2024 </p>
-                <p class="lottery-name"> Jolly Jackpot Lottery </p>
+                <p class="lottery-name"> Sure Jackpot Lottery </p>
                 <div class="ticket-btn-details">
                   <button class="ticket-btn">
                     11 tickets
@@ -136,7 +136,7 @@
             <button class="btn">
               <a> Everyone is a winner </a>
             </button>
-            <p>Play today’s game <br> <span> JOLLY JACKPOT </span></p>
+            <p>Play today’s game <br> <span> SURE JACKPOT </span></p>
           </div>
           <div class="bottom">
             <p> Affordable tickets, amazing prizes – a chance to change your life </p>
@@ -185,7 +185,7 @@
   <section class="blue-gradient">
     <div class="section section-5">
       <div class="text-header">
-        <h2> What people are saying about JollyWina </h2>
+        <h2> What people are saying about Surewina </h2>
         <p> Hear from our lucky winners </p>
       </div>
       <div class="video-testimonies">
@@ -287,10 +287,14 @@
     </div>
     <div class="footer-bottom">
       <p> © 2024 All rights Reservered </p>
-      <p> Jollywina.com </p>
+      <p> Surewina.com </p>
     </div>
   </div>
 </footer>
+
+<div class="loader" *ngIf="loading">
+  <app-loader/>
+</div>
 
 <div class="ticket-container-background" *ngIf="showTicketPayment">
   <div class="buy-ticket-container">
@@ -313,14 +317,14 @@
       <div class="buy-ticket-count">
           <div class="ticket-price-container">
               <span>Ticket Unit Price</span>
-              <span>₦ 1,000</span>
+              <span>₦ {{unitPrice}}</span>
           </div>
           <div class="ticket-count-container">
               <span class="count">How Many Tickets</span>
               <div class="count-number">
-                  <button>-</button>
+                  <button (click)="decrement()">-</button>
                   <span class="ticket-number">0</span>
-                  <button>+</button>
+                  <button (click)="increment()">+</button>
               </div>
           </div>
       </div>
@@ -328,9 +332,15 @@
           <div>
               <div class="ticket-bought">
                   <span>Total Ticket Bought</span>
-                  <span class="ticket-amount">₦ 3,000</span>
+                  <span class="ticket-amount">₦{{totalPrice}}</span>
               </div>
           </div>
+      </div>
+
+      <div class="input">
+        <span *ngIf="showAddressError" style="color: red;">Email or phone number is required!</span>
+        <span>Note: If you register you won't have to fill this again</span>
+        <input [(ngModel)]="identifier" type="text" name="" id="" placeholder="Enter your email address or phone number">
       </div>
       <div class="footer-ticket">
           <button (click)="navigateToMakePayment()">
@@ -348,6 +358,7 @@
               <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
           </div>
           <div class="buy-ticket-header-text">
+            <span style="color: red;">{{showError}}</span>
               <span class="bigger-text">Make payment for this ticket</span>
               <span class="small-text">Select your payment method and make payment</span>
           </div>
@@ -369,7 +380,7 @@
               </div>
               <div class="transfer-details">
                   <span class="transfer-details-text">Pay with Transfer</span>
-                  <span class="transfer-details-number">1000000342, JollyWina LTD, Moniepoint</span>
+                  <span class="transfer-details-number">1000000342, Surewina LTD, Moniepoint</span>
               </div>
           </div>
       </div>

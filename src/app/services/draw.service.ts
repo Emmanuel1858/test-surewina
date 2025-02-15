@@ -26,4 +26,34 @@ export class DrawService {
     }
     return new Observable<any>();
   }
+  getTodayDrawVendor(credentialsTodayDraw: {pageNumber: number; numberOfRecords: number}) {
+    
+    const bearerToken = sessionStorage.getItem('vendorToken')
+    // debugger
+    if (bearerToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `bearer ${bearerToken}`,
+        'Content-Type': 'application/json' 
+      });
+      
+      const httpOptions = { headers}
+      return this.http.post(`${this.baseUrl}${this.getTodayDrawUrl}`, credentialsTodayDraw, httpOptions)
+    }
+    return new Observable<any>();
+  }
+  getTodayDrawWithoutToken(credentialsTodayDraw: {pageNumber: number; numberOfRecords: number}) {
+    
+    const bearerToken = sessionStorage.getItem('token')
+    // debugger
+    if (!bearerToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `bearer ${bearerToken}`,
+        'Content-Type': 'application/json' 
+      });
+      
+      const httpOptions = { headers}
+      return this.http.post(`${this.baseUrl}${this.getTodayDrawUrl}`, credentialsTodayDraw, httpOptions)
+    }
+    return new Observable<any>();
+  }
 }

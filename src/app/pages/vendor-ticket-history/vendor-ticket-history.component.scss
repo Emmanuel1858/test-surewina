@@ -1,0 +1,248 @@
+
+.menu-container {
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 100vh;
+    // display: none;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 40px;
+    font-size: 24px;
+    background-color: #EEF8FF;
+}
+
+.menu-header h1 {
+    color: #262626;
+    font-weight: var(--fw-700);
+}
+
+.menu-header img{
+    position: relative;
+    top: -5pz;
+}
+
+.menu-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 50px auto 0;
+}
+
+.all-options {
+    border: 1px solid #E9E9E9;
+    border-radius: 14px;
+    width: 115px;
+    height: 115px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 22px;
+    // padding: 20px;
+
+}
+
+
+.logout-container {
+    background-color: #FCEAEA;
+    position: absolute;
+    bottom: 80px;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #DE2626;
+    padding: 10px 0;
+    cursor: pointer;
+}
+
+
+
+.header-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.mobile-only-top {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #f3f3fe;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+    padding: 20px;
+}
+
+
+.first-card {
+    // display: flex;
+    background-color: #1228C1;
+    width: 100%;
+    height: auto;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: var(--cta-alt);
+}
+
+
+.first-card-prize {
+    display: flex;
+    justify-content: space-between;
+    // border: 2px solid #434343;
+    background-color: #5564c7;
+    // margin-top: 170px;
+    border-radius: 2px;
+    padding: 20px;
+
+}
+
+.first-card-ticket {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.first-card-ticket :first-child {
+    font-size: 14px;
+    color: #C4C4C4;
+}
+
+.first-card-ticket :last-child {
+    font-size: 18px;
+}
+
+.ticket-gift-container-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.ticket-container {
+    border: 1px solid #f3f3fe;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 10px;
+    margin-top: 20px;
+    font-family: var(--cta-alt);
+}
+
+.ticket-container-img{
+    width: 45%;
+}
+
+.ticket-container-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ticket-container-text :first-child{
+    color: #C4C4C4;
+}
+
+.ticket-gift-container {
+    position: absolute;
+    background-color: #fff;
+    top: 0;
+    right: -100%;
+    padding: 10px;
+    width: 100%;
+    height: 100vh;
+} 
+
+.background-image {
+    height: 40vh;
+    width: 100%;
+    margin: 0 auto;
+    background-image: url(/assets/white\ jeep.svg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    padding: 15px;
+    position: relative;
+}
+
+.background-image-text {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.background-image-text :first-child {
+    font-weight: 200;
+}
+
+.background-image-text :last-child {
+    font-weight: 900;
+}
+
+.background-image-text-sub {
+    // margin-top: 100px;
+    // width: 80%;
+    font-family: var(--cta-alt);
+    padding: 10px;
+    // margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 20px;
+    background-color: #fff;
+    color: #000;
+}
+
+.customer-details {
+    margin-top: 30px;
+    border: 1px solid #d9d9d9;
+    // display: flex;
+    // gap: 10px;
+    padding: 15px;
+    background-color: #fff;
+}
+
+.customer-details-name {
+    display: flex;
+    flex-direction: column;
+}
+
+.total-ticket-amount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.customers-detail-sub {
+    display: flex;
+    justify-content: space-between;
+}
+
+

@@ -34,6 +34,17 @@ import { AdminTransactionsComponent } from './pages/admin-transactions/admin-tra
 import { AdminSideNavComponent } from './components/admin-side-nav/admin-side-nav.component';
 import { VendorLoginComponent } from './pages/vendor-login/vendor-login.component';
 import { VendorDashboardComponent } from './pages/vendor-dashboard/vendor-dashboard.component';
+import { VendorCreateAccountNameComponent } from './pages/vendor-create-account-name/vendor-create-account-name.component';
+import { VendorCreateAccountPasswordComponent } from './pages/vendor-create-account-password/vendor-create-account-password.component';
+import { VendorCreateAccountOtpComponent } from './pages/vendor-create-account-otp/vendor-create-account-otp.component';
+import { LayoutVendorComponent } from './components/layout-vendor/layout-vendor.component';
+import { VendorWinnerBoardComponent } from './pages/vendor-winner-board/vendor-winner-board.component';
+import { VendorTicketHistoryComponent } from './pages/vendor-ticket-history/vendor-ticket-history.component';
+import { VendorSellTicketComponent } from './pages/vendor-sell-ticket/vendor-sell-ticket.component';
+import { VendorMakePaymentComponent } from './pages/vendor-make-payment/vendor-make-payment.component';
+// import { VenorProfileComponent } from './pages/venor-profile/venor-profile.component';
+import { VendorProfileComponent } from './pages/vendor-profile/vendor-profile.component';
+import { SelectProfileComponent } from './pages/select-profile/select-profile.component';
 
 // @NgModule({
 //   declarations: [
@@ -84,7 +95,18 @@ import { VendorDashboardComponent } from './pages/vendor-dashboard/vendor-dashbo
     AdminTransactionsComponent,
     AdminSideNavComponent,
     VendorLoginComponent,
-    VendorDashboardComponent
+    VendorDashboardComponent,
+    VendorCreateAccountNameComponent,
+    VendorCreateAccountPasswordComponent,
+    VendorCreateAccountOtpComponent,
+    LayoutVendorComponent,
+    VendorWinnerBoardComponent,
+    VendorTicketHistoryComponent,
+    VendorSellTicketComponent,
+    VendorMakePaymentComponent,
+    // VenorProfileComponent,
+    VendorProfileComponent,
+    SelectProfileComponent
 
   ],
   imports: [

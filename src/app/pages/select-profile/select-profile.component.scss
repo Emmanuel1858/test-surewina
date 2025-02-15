@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container-text h3 {
+    margin: 0;
+    font-weight: var(--fw-700);
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.second-card {
+    display: flex;
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    height: auto;
+    margin-top: 10px;
+    // border-radius: 20px;
+
+
+}
+
+.second-card-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #000;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.second-card-right-ticket {
+    display: flex;
+    gap: 10px;
+    color: #fff;
+    align-items: center;
+    background-color: #555555;
+    padding: 10px;
+}
+
+.sell-ticket-img {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #000;
+}
+
+.second-card-right-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.second-card-right-text :first-child {
+    font-size: 20px;
+}
+
+.second-card-right-text :last-child {
+    color: #C4C4C4;
+}
+
+.second-card-game-text {
+    color: #fff;
+    font-size: 24px;
+}
+
+.second-card-jolly-text {
+    color: #FF9B0F;
+    font-size: 24px;
+    font-weight: var(--fw-700);
+}
+
+.second-card-text {
+    color: #D9D9D9;
+    font-family: var(--fw-400);
+    size: 14px;
+    // width: 200px;
+}

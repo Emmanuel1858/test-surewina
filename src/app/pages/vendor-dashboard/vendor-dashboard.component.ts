@@ -24,8 +24,13 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
     transitioning: boolean = false;
     showTicketPayment: boolean = false;
     showMakePayment: boolean = false;
+    showRedeemPrize: boolean = false
+    showGameInfo: boolean = false
     showLoader: boolean = false;
+    showTicketRedeemSuccessfully: boolean = false
     showBalance: boolean = true;
+    showMoney: boolean = false
+    showRedeemWithMoneyOrPrize: boolean = false
     ticketCount: number = 0;
     totalPrice: number = 0;
     unitPrice: number = 1000;
@@ -82,6 +87,25 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
       this.clearAutoAdvance();
     }
   
+    // async getTodayDraw() {
+    //   const drawForToday = {
+    //     pageNumber: this.pageNumber,
+    //     numberOfRecords: this.numberOfRecords
+    //   }
+    //   try {
+    //     const response = await lastValueFrom(this.drawService.getTodayDraw(drawForToday))
+    //     // console.log(response)
+    //     this.items = response.result.items
+    //     this.nameGame = response.result.items[0].name
+    //     this.drawId = response.result.items[0].drawId
+    //     this.ticketImage = response.result.items[0].ticketImage
+    //     this.unitPrice = response.result.items[0].amount
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // }
+  
+
     navigateToPaymentTicket() {
       this.showTicketPayment = true
       // this.router.navigate(['/profile'])
@@ -103,6 +127,10 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
   
     showMyBalance() {
       this.showBalance = !this.showBalance
+    }
+
+    navigateToSellTicket() {
+      this.router.navigate(['/vendor-sell-ticket'])
     }
   
   

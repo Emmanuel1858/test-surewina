@@ -4,7 +4,6 @@ import { lastValueFrom } from 'rxjs';
 import { DrawService } from 'src/app/services/draw.service';
 import { PrizeService } from 'src/app/services/prize.service';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
-
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -152,7 +151,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.loading = false
       if (response.responseStatus === false) {
         this.showError = response.responseMessage
-       
+
       } else {
         this.showLoader = true
         this.showMakePayment = false
@@ -162,7 +161,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.loading = true
       console.log(error)
     }
- 
+
   }
   navigateToDashboard() {
     this.showMakePayment = false

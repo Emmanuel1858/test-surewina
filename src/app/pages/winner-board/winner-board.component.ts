@@ -22,8 +22,6 @@ export class WinnerBoardComponent implements OnInit {
       this.getWinnerBoard()
   }
 
-
-
   async getWinnerBoard() {
     try {
       this.showLoader = true

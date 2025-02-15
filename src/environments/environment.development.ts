@@ -1,6 +1,7 @@
 export const environment = {
   production: false,
-  baseUrl: 'http://16.171.64.178:81/api/',
+  // baseUrl: 'https://16.171.64.178:81/api/'
+  baseUrl: 'https://16.171.64.178/api/',
   authentication: {
     registerUser: 'Auth/RegisterUser',
     loginUser: 'Auth/LoginUser',
@@ -22,8 +23,11 @@ export const environment = {
     updatePassword: 'UserAccount/UpdatePassword',
   }, 
   userTicket: {
+    buyTicketWeb: 'UserTicket/BuyTicket',
     buyTicket: 'UserTicket/BuyTicketInApp',
     onGoingTicket: 'UserTicket/GetOngoingTickets',
+    vendorTicketHistory: 'UserTicket/GetVendorHistory',
+    ticketById: 'UserTicket/GetTicketPrizesWon', 
     winnerBoard: 'UserTicket/WinnersBoard?numberOfDraws=10'
   },
   user: {

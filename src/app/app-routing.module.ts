@@ -23,16 +23,24 @@ import { AdminLotteryComponent } from './pages/admin-lottery/admin-lottery.compo
 import { AdminTransactionsComponent } from './pages/admin-transactions/admin-transactions.component';
 import { VendorLoginComponent } from './pages/vendor-login/vendor-login.component';
 import { VendorDashboardComponent } from './pages/vendor-dashboard/vendor-dashboard.component';
+import { VendorCreateAccountNameComponent } from './pages/vendor-create-account-name/vendor-create-account-name.component';
+import { VendorCreateAccountPasswordComponent } from './pages/vendor-create-account-password/vendor-create-account-password.component';
+import { VendorCreateAccountOtpComponent } from './pages/vendor-create-account-otp/vendor-create-account-otp.component';
+import { VendorWinnerBoardComponent } from './pages/vendor-winner-board/vendor-winner-board.component';
+import { VendorTicketHistoryComponent } from './pages/vendor-ticket-history/vendor-ticket-history.component';
+import { VendorSellTicketComponent } from './pages/vendor-sell-ticket/vendor-sell-ticket.component';
+import { VendorMakePaymentComponent } from './pages/vendor-make-payment/vendor-make-payment.component';
+import { SelectProfileComponent } from './pages/select-profile/select-profile.component';
 // import { CreateAccountNameComponent } from './pages/create-account-name/create-account-name.component';
 
 
 const routes: Routes = [
   { path: 'Jollywina.com', component: WebsiteComponent },
+  { path: 'select-your-profile', component: SelectProfileComponent},
   { path: 'create-account-name', component: CreateAccountNameComponent },
   { path: 'create-account-password', component: CreateAccountPasswordComponent },
   { path: 'create-account-otp', component: CreateAccountOtpComponent },
   { path: 'login', component: LoginComponent },
-
   { path: 'profile', component: ProfileComponent },
   { path: 'profile-details', component: ProfileDetailsComponent },
 
@@ -47,8 +55,15 @@ const routes: Routes = [
     ]
   },
 
+  { path: 'vendor-create-account-name', component: VendorCreateAccountNameComponent },
+  { path: 'vendor-create-account-password', component: VendorCreateAccountPasswordComponent },
+  { path: 'vendor-create-account-otp', component: VendorCreateAccountOtpComponent },
   { path: 'vendor-login', component: VendorLoginComponent },
   { path: 'vendor-dashboard', component: VendorDashboardComponent },
+  { path: 'vendor-winner-board', component: VendorWinnerBoardComponent },
+  { path: 'vendor-ticket-history', component: VendorTicketHistoryComponent},
+  { path: 'vendor-sell-ticket', component: VendorSellTicketComponent},
+  { path: 'vendor-make-payment', component: VendorMakePaymentComponent},
   { path: 'admin-login', component: AdminPortalLoginComponent },
   {
     path: '', component: AdminPortalComponent,

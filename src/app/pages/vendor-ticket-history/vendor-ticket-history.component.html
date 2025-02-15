@@ -1,0 +1,152 @@
+<div class="header-mobile mobile-only-top">
+    <div>
+        <img src="../../../assets/Group 1000002450.svg" alt="">
+    </div>
+    <div>Ticket History</div>
+    <div (click)="openMenu()"><img src="../../../assets/menu.svg" alt=""></div>
+
+</div>
+<div class="card-container">
+    <div>
+        <span>History of ticket sold</span>
+    </div>
+    <div>
+        <div class="first-card">
+            <div class="first-card-prize">
+                <div class="first-card-ticket">
+                    <span>Tickets</span>
+                    <span>0</span>
+                </div>
+                <div class="first-card-ticket">
+                    <span>Commission</span>
+                    <span>₦0</span>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="ticket-container" *ngFor="let ticket of allTicket">
+        <div class="ticket-container-img">
+            <img [src]="ticket.ticketImage" alt="">
+        </div>
+        <div class="ticket-container-text">
+            <span>{{ticket.created.split('T')[0]}}</span>
+            <span>{{ticket.numberOfTickets}} Ticket(s)</span>
+            <span>₦{{ticket.amount}}, {{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}} </span>
+        </div>
+    </div>
+    <div class="ticket-container">
+        <div class="ticket-container-img">
+            <img src="../../../assets/gift-voucher.svg" alt="">
+        </div>
+        <div class="ticket-container-text">
+            <span>05th Sept, 2024</span>
+            <span>Ciroma Chukwuma</span>
+            <span>₦ 12,000, September </span>
+        </div>
+    </div>
+    <div class="ticket-container">
+        <div class="ticket-container-img">
+            <img src="../../../assets/gift-voucher.svg" alt="">
+        </div>
+        <div class="ticket-container-text">
+            <span>05th Sept, 2024</span>
+            <span>Ciroma Chukwuma</span>
+            <span>₦ 12,000, September </span>
+        </div>
+    </div>
+</div>
+<div class="ticket-gift-container" *ngIf="showTicketDetails">
+    <div class="ticket-gift-container-header">
+        <span>
+            <img src="../../../assets/go-back.svg" alt="">
+        </span>
+        <span>Redeem Prize</span>
+        <span>
+            <img src="../../../assets/menu.svg" alt="">
+        </span>
+    </div>
+    <div>
+        <div>
+            <div>
+                <span>Ticket breakdown</span>
+            </div>
+            <div class="background-image">
+                <div class="background-image-text">
+                    <span>WAP-TICKET-90876-XYZ</span>
+                    <span>WHITE JEEP CHEROKEE SUV 2024</span>
+                </div>
+                <div class="background-image-text-sub">
+                    <span>
+                        Please call the customer with the below phone number to inform them that they have won a prize
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="customer-details">
+            <div class="customer-details-name">
+                <span>Customer Name</span>
+                <span>Ciroma Chukwuma Adekunle</span>
+            </div>
+            <div class="customers-detail-sub">
+                <div class="customer-details-name">
+                    <span>Phone Number</span>
+                    <span>08077618920</span>
+                </div>
+                <div class="customer-details-name">
+                    <span>Game ID</span>
+                    <span>WAP-90876-XYZ</span>
+                </div>
+            </div>
+        </div>
+        <div class="customer-details">
+            <div class="customers-detail-sub">
+                <div class="customer-details-name">
+                    <span>Ticket Unit Price</span>
+                    <span>₦ 1,000</span>
+                </div>
+                <div class="customer-details-name">
+                    <span>They Bought</span>
+                    <span>12 Ticket</span>
+                </div>
+            </div>
+            <div class="total-ticket-amount">
+                <span>Total ticket bought</span>
+                <span>₦ 3,000</span>
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+
+<div class="menu-container" *ngIf="showMenu">
+    <div class="menu-header">
+        <h1>Menu</h1>
+        <img (click)="closeMenu()" src="../../../assets/Frame 1000003973.svg" alt="">
+    </div>
+    <div class="menu-options">
+        <div class="all-options" (click)="showDashboard()">
+            <img src="../../../assets/dashboard-mobile.svg" alt="">
+            <span>Dashboard</span>
+        </div>
+        <div class="all-options" (click)="showWinner()">
+            <img src="../../../assets/analytics-mobile.svg" alt="">
+            <span>Winner Board</span>
+        </div>
+        <div class="all-options" (click)="showTicket()">
+            <img src="../../../assets/ticket-mobile.svg" alt="">
+            <span>Ticket History</span>
+        </div>
+        <div class="all-options" (click)="navigateToProfile()">
+            <img src="../../../assets/user-account-mobile.svg" alt="">
+            <span>Your Profile</span>
+        </div>
+        <div class="logout-container" (click)="logout()">
+            <img src="../../../assets/logout-03.svg" alt="">
+            <span>Logout</span>
+        </div>
+    </div>
+</div>

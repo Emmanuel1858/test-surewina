@@ -72,7 +72,7 @@ export class CreateAccountOtpComponent implements OnInit, OnDestroy {
   }
 
   navigateToDashboard() {
-    this.router.navigate(['/dashboard'])
+    this.router.navigate(['/login'])
   }
   navigateToPassword() {
     this.router.navigate(['/create-account-password'])

@@ -58,6 +58,7 @@ export class LoginComponent {
       } else {
         sessionStorage.setItem('firstName', response.result.firstName)
         sessionStorage.setItem('lastName', response.result.lastName)
+        console.log(response.result.jwtToken)
         sessionStorage.setItem('token', response.result.jwtToken)
         sessionStorage.setItem('phoneNumber', response.result.phoneNumber)
         // sessionStorage.setItem('address', response.result.address)

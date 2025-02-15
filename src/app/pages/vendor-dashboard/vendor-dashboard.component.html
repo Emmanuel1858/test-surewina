@@ -1,14 +1,18 @@
+<div>
+    <app-layout-vendor/>
+</div>
 <div class="container">
+
     <div class="card-container">
         <div class="first-card">
             <div class="first-card-prize">
                 <div class="first-card-ticket">
                     <span>Tickets</span>
-                    <span>1,650</span>
+                    <span>0</span>
                 </div>
                 <div class="first-card-ticket">
                     <span>Commission</span>
-                    <span>₦ 956,900</span>
+                    <span>₦0</span>
 
                 </div>
 
@@ -17,7 +21,7 @@
         </div>
         <div class="second-card">
             <div class="second-card-right">
-                <div class="second-card-right-ticket">
+                <div class="second-card-right-ticket" (click)="navigateToSellTicket()">
                     <div class="sell-ticket-img">
                         <img src="../../../assets/sell-ticket.svg" alt="">
                     </div>
@@ -36,78 +40,6 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </div>
-
-    <div class="ticket-winner-container">
-        <div class="ticket-table">
-            <div class="ticket-button">
-                <button class="ticket-btn-text">Your Ticket History</button>
-                <button class="ticket-btn-view">
-                    <span>VIEW ALL</span>
-                    <span> > </span>
-                </button>
-            </div>
-            <div>
-                <div class="ticket-details">
-                    <div>
-                        <img src="../../../assets/Rectangle 4585.svg" alt="">
-                    </div>
-                    <div class="ticket-details-all">
-                        <span class="ticket-date">05th Sept, 2024</span>
-                        <span class="ticket-name">Jolly Jackpot Lottery</span>
-                        <span class="ticket-won">
-                            <span>12 Ticket</span>
-                            <span>₦ 12,000</span>
-                            <span>Cars, bikes, laptop, Monitor, Smartphones</span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="winner-table">
-            <div class="winner-button">
-                <button class="winner-btn-text">Lottery Winners Board</button>
-                <button class="winner-btn-view">
-                    <span>VIEW ALL</span>
-                    <span> > </span>
-                </button>
-            </div>
-            <div>
-                <div class="winner-table-head">
-                    <div class="thead-active">
-                        <span>Jolly Jackpot</span>
-                        <span class="winner-jolly-number">32</span>
-                    </div>
-                    <div class="thead">
-                        <span>Jolly Jumbo</span>
-                        <span class="winner-jolly-num">32</span>
-                    </div>
-                    <div class="thead">
-                        <span>Jolly Boom</span>
-                        <span class="winner-jolly-num">32</span>
-                    </div>
-                    <div class="thead">
-                        <span>Jolly Geluu</span>
-                        <span class="winner-jolly-num">32</span>
-                    </div>
-                </div>
-                <div class="winner-table-body">
-                    <div class="winner-body-name">
-                        <span><img src="../../../assets/Property 1=Variant5.svg" alt=""></span>
-                        <span>Irene</span>
-                    </div>
-                    <div class="winner-body">
-                        From Yaba
-                    </div>
-                    <div class="winner-body">
-                        Played ₦ 12,000
-                    </div>
-                    <div class="winner-body">
-                        Won Jeep Cheroke SUV 2024
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -313,5 +245,173 @@
             </div>
         </div>
     </div>
-
+    <div class="ticket-container-background" *ngIf="showRedeemPrize">
+        <div class="redeem-prize-container">
+            <div>
+                <img src="../../../assets/prize-icon.svg" alt="">
+            </div>
+            <div class="redeem-prize-container-text">
+                <span>
+                    Please enter customer GameID to redeem their prizes
+                </span>
+            </div>
+            <div class="redeem-prize-container-input">
+                <input type="text" placeholder="Enter customer game Id">
+            </div>
+            <div class="footer">
+                <button>
+                    CONTINUE >
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="ticket-container-background" *ngIf="showGameInfo">
+        <div class="customer-container">
+            <div>
+                <span>Is this game information correct?</span>
+            </div>
+            <div class="customer-details-container">
+                <div class="customer-details-name">
+                    <span>Customer Name</span>
+                    <span>Ciroma Chukwuma Adekunle</span>
+                </div>
+                <div class="customer-details-sub">
+                    <div class="customer-details-number">
+                        <span>Phone Number</span>
+                        <span>08077618928</span>
+                    </div>
+                    <div class="customer-details-number">
+                        <span>Game ID</span>
+                        <span>WAP-90876-XYZ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="customer-details-container">
+                <div class="customer-details-sub">
+                    <div class="customer-details-number">
+                        <span>Ticket Unit Price</span>
+                        <span>₦ 1,000</span>
+                    </div>
+                    <div class="customer-details-number">
+                        <span>They Bought</span>
+                        <span>12 Tickets</span>
+                    </div>
+                </div>
+                <div class="customer-details-prize">
+                    <span>Prize won</span>
+                    <span>White Jeep Cherokee Suv 2024</span>
+                </div>
+            </div>
+            <div class="footer">
+                <button>
+                    YES IT IS >
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="redeem-money-prize" *ngIf="showRedeemWithMoneyOrPrize">
+        <div class="header">
+            <span>
+                <img src="../../../assets/go-back.svg" alt="">
+            </span>
+            <span>
+                Redeem Prize
+            </span>
+            <span>
+                <img src="../../../assets/menu.svg" alt="">
+            </span>
+        </div>
+        <div class="redeem-money-prize-sub">
+            <div>
+                <span>How do you want to redeem your prize</span>
+            </div>
+            <div class="redeem-prize-ticket">
+                <div class="redeem-prize-ticket-img">
+                    <img src="../../../assets/white jeep.svg" alt="">
+                </div>
+                <div class="redeem-prize-ticket-text">
+                    <span>WAP-TICKET-90876-XYZ</span>
+                    <span>White Jeep Cherokee Suv 2024</span>
+                </div>
+            </div>
+            <div class="prize-money-container">
+                <div class="prize-depot-container">
+                    <div>
+                        <img src="../../../assets/location-icon.svg" alt="">
+                    </div>
+                    <div>
+                        <span>Visit Prize Depot</span>
+                    </div>
+                </div>
+                <div class="money-depot-container">
+                    <div>
+                        <img src="../../../assets/cash (2).svg" alt="">
+                    </div>
+                    <div>
+                        <span>Convert to money</span>
+                    </div>
+                </div>
+            </div>
+            <div class="location-prize">
+                <div class="location-prize-text">
+                    <span>Lagos Depot 1</span>
+                    <span>12, Admiralty Way, Lekki</span>
+                </div>
+                <div class="location-prize-text">
+                    <span>Abuja Depot 1</span>
+                    <span>12, Garki Crescent, Lekki</span>
+                </div>
+                <div class="location-prize-text">
+                    <span>Port Harcourt Depot 1</span>
+                    <span>12, Trans Crescent, Lekki</span>
+                </div>
+            </div>
+            <div class="money-prize" *ngIf="showMoney">
+                <div class="money-prize-text">
+                    <span>Value of the prize you won</span>
+                    <span>₦ 23,000,000</span>
+                </div>
+                <div class="money-prize-input">
+                    <input type="text" placeholder="Enter customer game ID">
+                </div>
+                <div class="money-prize-input">
+                    <input type="text" placeholder="Enter bank">
+                </div>
+            </div>
+          <div class="footer">
+                <button>
+                    CONTINUE >
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="ticket-container-background" *ngIf="showTicketRedeemSuccessfully">
+        <div class="modal">
+            <div class="container-modal">
+                <div class="modal-img">
+                    <img src="../../../assets/Group 1000002391.svg" alt="">
+                    <img src="../../../assets/Group 1000002392.svg" alt="">
+                </div>
+                <div class="tick-container">
+                    <section class="animated_check_circle">
+                        <svg viewBox="0 0 130.2 130.2" class="animated_check_circle">
+                            <circle class="path circle" fill="none" stroke="#10B981" stroke-width="6"
+                                stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                            <polyline class="path check" fill="none" stroke="#10B981" stroke-width="6"
+                                stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5" />
+                        </svg>
+                    </section>
+                </div>
+                <div class="modal-text">
+                    <h2>Prize successfully redeemed for </h2>
+                    <h2> Ciroma Chukwuma Adekunle</h2>
+                    <span>A notification will be sent to their email and phone number with the necessary details to collect prize </span>
+                    <!-- <span> announcement of the lottery winners</span> -->
+                </div>
+                <div class="modal-btn">
+                    <button>Ok, Got it</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

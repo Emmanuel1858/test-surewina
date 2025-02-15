@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="container-img">
+        <img class="img" *ngFor="let image of images; let i = index" [class.active]="i === activeIndex" [src]="image"
+            alt="Carousel Image" />
+
+    </div>
+
+    <div class="login-details">
+        <div class="login-details-container">
+            <div class="first-details">
+                <div class="container-step">
+                    <span>STEP 3</span>
+                </div>
+                <div>
+                    <h1 class="heading">Email Verification</h1>
+                    <span class="heading-sub">Please enter the OTP sent to your email address</span>
+                </div>
+            </div>
+            <div class="otp-container">
+                <div class="error-message" *ngIf="otpValidate">Invalid or Expired OTP!</div>
+                <div class="otp-text">Enter OTP Here</div>
+                <div class="all-inputs">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[0]" (input)="moveToNext($event, 0)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[1]" (input)="moveToNext($event, 1)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[2]" (input)="moveToNext($event, 2)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[3]" (input)="moveToNext($event, 3)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[4]" (input)="moveToNext($event, 4)">
+                    <input type="number" maxlength="1" class="otp-box" [(ngModel)]="otp[5]" (input)="moveToNext($event, 5)">
+                </div>
+                <div class="loader" *ngIf="showLoader">
+                    <app-loader/>
+                </div>
+                <div class="otp-text-main">
+                    <span>Didn’t receive the code? </span>
+                    <span class="otp-text-main-resend">Resend code</span>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="all-text">
+                   
+                </div>
+                <div class="buttons">
+                    <button class="btn-back" (click)="navigateToPassword()">Go Back</button>
+                    <button class="btn-cont" (click)="showModal()">Continue <img
+                            src="../../../assets/grommet-icons_form-next.svg" alt=""></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="overlay-modal" *ngIf="modalVisibility" >
+    <div class="modal">
+        <div class="container-modal">
+            <div class="modal-img">
+                <img src="../../../assets/Group 1000002391.svg" alt="">
+                <img src="../../../assets/Group 1000002392.svg" alt="">
+            </div>
+            <div class="tick-container">
+                <section class="animated_check_circle">
+                    <svg viewBox="0 0 130.2 130.2" class="animated_check_circle">
+                        <circle class="path circle" fill="none" stroke="#10B981" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#10B981" stroke-width="6"
+                            stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5" />
+                    </svg>
+                </section>
+            </div>
+            <div class="modal-text">
+                <h1>Account Successfully Created</h1>
+                <span>Start buying tickets and winning prizes now</span>
+            </div>
+            <div class="modal-btn">
+                <button (click)="navigateToDashboard()">GET STARTED</button>
+            </div>
+        </div>
+    </div>
+</div>
