@@ -14,10 +14,27 @@ export class PrizeService {
   constructor(private http: HttpClient) { }
   getAllPrize() {
     const bearerToken = sessionStorage.getItem('token')
-    if (bearerToken) {
+    if (!bearerToken) {
       const headers = new HttpHeaders().set('Authorization', `bearer ${bearerToken}`)
       return this.http.get(`${this.baseUrl}${this.getPrizeUrl}`)
     }
     return new Observable<any>();
+  }
+
+  addPrize(credentials: {
+    name: string,
+    prizeTier: number,
+    estimatedPrice: number,
+    image: string
+  }) {
+    const bearerToken = sessionStorage.getItem('token')
+    if(!bearerToken) {
+      const headers = new HttpHeaders({
+        'Authorization' : `bearer${bearerToken}`,
+        'Content-Type' : 'application/json'
+      })
+      return this.http.post(`${this.baseUrl}${this.addPrizeUrl}`, credentials, {headers} )
+    }
+    return new Observable<any>()
   }
 }

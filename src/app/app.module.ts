@@ -45,6 +45,15 @@ import { VendorMakePaymentComponent } from './pages/vendor-make-payment/vendor-m
 // import { VenorProfileComponent } from './pages/venor-profile/venor-profile.component';
 import { VendorProfileComponent } from './pages/vendor-profile/vendor-profile.component';
 import { SelectProfileComponent } from './pages/select-profile/select-profile.component';
+import { VendorHeaderComponent } from './components/vendor-header/vendor-header.component';
+import { AddTicketComponent } from './pages/add-ticket/add-ticket.component';
+import { TicketAvailableComponent } from './pages/ticket-available/ticket-available.component';
+import { ScheduleDrawComponent } from './pages/schedule-draw/schedule-draw.component';
+import { AddPrizeComponent } from './pages/add-prize/add-prize.component';
+import { AddPrizeDepotComponent } from './pages/add-prize-depot/add-prize-depot.component';
+import { ConfigureTierComponent } from './pages/configure-tier/configure-tier.component';
+import { ConfigureWinningsComponent } from './pages/configure-winnings/configure-winnings.component';
+import { TestingComponent } from './pages/testing/testing.component';
 
 // @NgModule({
 //   declarations: [
@@ -106,7 +115,16 @@ import { SelectProfileComponent } from './pages/select-profile/select-profile.co
     VendorMakePaymentComponent,
     // VenorProfileComponent,
     VendorProfileComponent,
-    SelectProfileComponent
+    SelectProfileComponent,
+    VendorHeaderComponent,
+    AddTicketComponent,
+    TicketAvailableComponent,
+    ScheduleDrawComponent,
+    AddPrizeComponent,
+    AddPrizeDepotComponent,
+    ConfigureTierComponent,
+    ConfigureWinningsComponent,
+    TestingComponent
 
   ],
   imports: [

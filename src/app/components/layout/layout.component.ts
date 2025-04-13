@@ -18,7 +18,7 @@ export class LayoutComponent implements OnInit {
   showLoader: boolean = false
   ticketCount: number = 0;
   totalPrice: number = 0;
-  unitPrice: number = 1000;
+  unitPrice: number = 0;
   initialFromLogin: string = `${sessionStorage.getItem('initialFromLogin')}`
   pageNumber: number = 1
   numberOfRecords: number = 4
@@ -36,12 +36,17 @@ export class LayoutComponent implements OnInit {
   constructor(private router: Router, private drawService: DrawService, private userTicket: UserTicketService) { }
 
   ngOnInit(): void {
-    this.getTodayDraw()
+    const savedHeader = sessionStorage.getItem('activeHeader');
+    if (savedHeader) {
+      this.activeHeader = savedHeader;
+    }
+    // this.getTodayDraw()
   }
 
   navigateToDashboard() {
     this.router.navigate(['/dashboard'])
     this.activeHeader = 'dashboard';
+    sessionStorage.setItem('activeHeader', this.activeHeader);
   }
   navigateToDashboardMobile() {
     this.showMakePayment = false
@@ -51,10 +56,12 @@ export class LayoutComponent implements OnInit {
   navigateToTicket() {
     this.router.navigate(['/ticket-history'])
     this.activeHeader = 'ticket';
+    sessionStorage.setItem('activeHeader', this.activeHeader);
   }
   navigateToWinner() {
     this.router.navigate(['/winner-board'])
     this.activeHeader = 'winner';
+    sessionStorage.setItem('activeHeader', this.activeHeader);
   }
 
   
@@ -162,23 +169,23 @@ export class LayoutComponent implements OnInit {
     this.router.navigate(['/ticket-history'])
   }
 
-  async getTodayDraw() {
-    const drawForToday = {
-      pageNumber: this.pageNumber,
-      numberOfRecords: this.numberOfRecords
-    }
-    try {
-      const response = await lastValueFrom(this.drawService.getTodayDraw(drawForToday))
-      console.log(response)
-      this.items = response.result.items
-      this.nameGame = response.result.items[0].name
-      this.drawId = response.result.items[0].drawId
-      this.ticketImage = response.result.items[0].ticketImage
-      this.unitPrice = response.result.items[0].amount
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // async getTodayDraw() {
+  //   const drawForToday = {
+  //     pageNumber: this.pageNumber,
+  //     numberOfRecords: this.numberOfRecords
+  //   }
+  //   try {
+  //     const response = await lastValueFrom(this.drawService.getTodayDraw(drawForToday))
+  //     console.log(response)
+  //     this.items = response.result.items
+  //     this.nameGame = response.result.items[0].name
+  //     this.drawId = response.result.items[0].drawId
+  //     this.ticketImage = response.result.items[0].ticketImage
+  //     this.unitPrice = response.result.items[0].amount
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // }
 
 
 }

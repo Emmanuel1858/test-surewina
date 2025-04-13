@@ -1,86 +1,169 @@
 <div class="parent-container">
+  <div class="parent-container-header">
+    <div>Lottery Management</div>
+    <div class="btns-header">
+      <!-- <button class="not-constant-btn" (click)="configureTier()" *ngIf="winningConfigPage">CONFIGURE TIERS</button> -->
+      <button (click)="goToNext()" class="constant-btn">{{btnText}}</button>
+    </div>
+
+  </div>
   <div class="tab-container">
     <!-- the class active-tab will add dynamic class features to the tab -->
-    <div class=" tab active-tab">
-      <p> Tickets <span class="rounded-border-items"> 212,132 </span> </p>
+    <div class="tab" [ngClass]="tabs == 'tickets' ? 'active-tab' : '' ">
+      <p (click)="switchTab('tickets')"> Tickets <span class="rounded-border-items"> {{numberOfTicket}} </span> </p>
       <!-- add or remove based on the active tab -->
-      <div  class="border-bottom"></div>
+      <div class="border-bottom"></div>
     </div>
-    <div class="tab">
-      <p> Draw History <span class="rounded-border-items"> 06 </span> </p>
-      <div  class="border-bottom"></div>
+    <div class="tab" [ngClass]="tabs == 'drawHistory' ? 'active-tab' : '' ">
+      <p (click)="switchTab('drawHistory')"> Draw History <span class="rounded-border-items"> {{numberOfDrawHistory}} </span> </p>
+      <div class="border-bottom"></div>
     </div>
-    <div class="tab">
-      <p> Prizes <span class="rounded-border-items"> 32 </span> </p>
-      <div  class="border-bottom"></div>
+    <div class="tab" [ngClass]="tabs == 'prizes' ? 'active-tab' : '' ">
+      <p (click)="switchTab('prizes')"> Prizes <span class="rounded-border-items"> {{numberOfPrize}} </span> </p>
+      <div class="border-bottom"></div>
     </div>
-    <div class="tab">
-      <p> Prize Depots <span class="rounded-border-items"> 4  </span> </p>
-      <div  class="border-bottom"></div>
+    <div class="tab" [ngClass]="tabs == 'prizeDepot' ? 'active-tab' : '' ">
+      <p (click)="switchTab('prizeDepot')"> Prize Depots <span class="rounded-border-items"> {{numberOfPrizeDepot}} </span> </p>
+      <div class="border-bottom"></div>
+    </div>
+    <div class="tab" [ngClass]="tabs == 'winningConfig' ? 'active-tab' : '' ">
+      <p (click)="switchTab('winningConfig')"> Winning Configuration <span class="rounded-border-items"> 4</span> </p>
+      <div class="border-bottom"></div>
     </div>
   </div>
+  <div [ngSwitch]="tabs">
+    <div class="tab-content" *ngSwitchCase="'tickets'">
+      <div class="ticket-details" *ngFor="let ticket of allTicket">
+        <div class="left">
+          <img [src]="ticket.image" alt="">
+          <div class="ticket-details-all">
+            <div class="left-side">
+              <span class="ticket-date">{{ticket.createdOn.split('T')[0]}}</span>
+              <span class="ticket-name">Jolly Jackpot Lottery</span>
+              <span class="ticket-won">
+                <span>{{ticket.totalTicketsSold}} Ticket sold</span>
+                <span>₦ {{ticket.totalAmount}} Total amount </span>
+                <!-- <span>Cars, laptop, Phones, Gas Cooker</span> -->
+              </span>
+            </div>
 
-  <div class="tab-content">
-    <div class="ticket-details">
-      <div class="left">
-        <img src="../../../assets/lotter-ticket-img.png" alt="">
-        <div class="ticket-details-all">
-          <div class="left-side">
-            <span class="ticket-date">03rd Sept, 2024</span>
-            <span class="ticket-name">Jolly Jackpot Lottery</span>
-            <span class="ticket-won">
-                <span>11 Ticket</span>
-                <span>₦ 11,000</span>
-                <span>Cars, laptop, Phones, Gas Cooker</span>
-            </span>
+
           </div>
-
-          
-        </div> 
-        <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
-          <div class="dot">
-            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-              <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
-            </svg>
-          </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
-        </button>
+          <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
+            <div class="dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
+              </svg>
+            </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
+          </button>
+        </div>
       </div>
-      <div class="edit">
-        <img src="../../../assets/edit-icon.svg" alt="">
-        <p> Edit </p>
+
+    </div>
+
+    <div *ngSwitchCase="'drawHistory'">
+      <div class="ticket-details" *ngFor="let draw of getAllDrawHistory">
+        <div class="left">
+          <div class="left-img">
+            <img [src]="draw.ticketImage" alt="">
+          </div>
+          <div class="ticket-details-all">
+            <div class="left-side">
+              <span class="ticket-date">{{draw.drawDay.split('T')[0]}}</span>
+              <span class="ticket-name">{{draw.name}}</span>
+              <span class="ticket-won">
+                <!-- <span>Minimum Ticket: 1</span> -->
+                <span>₦ {{draw.amount}} per tickets</span>
+                <!-- <span>Cars, laptop, Phones, Gas Cooker</span> -->
+              </span>
+            </div>
+          </div>
+          <button class="status-btn" [ngClass]="{ 'active-bg': draw.isActive, 'inactive-bg': !draw.isActive }">
+           {{draw.isActive ? 'Active' : 'Inactive'}}
+          </button>
+        </div>
       </div>
     </div>
-    
-    <div class="ticket-details">
-      <div class="left">
-        <img src="../../../assets/lotter-ticket-img.png" alt="">
-        <div class="ticket-details-all">
-          <div class="left-side">
-            <span class="ticket-date">03rd Sept, 2024</span>
-            <span class="ticket-name">Jolly Jackpot Lottery</span>
-            <span class="ticket-won">
-                <span>11 Ticket</span>
-                <span>₦ 11,000</span>
-                <span>Cars, laptop, Phones, Gas Cooker</span>
-            </span>
-          </div>
-
-          
-        </div> 
-        <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
-          <div class="dot">
-            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-              <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
-            </svg>
-          </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
-        </button>
-      </div>
-      <div class="edit">
-        <img src="../../../assets/edit-icon.svg" alt="">
-        <p> Edit </p>
+    <div *ngSwitchCase="'prizes'" class="prize-tab">
+      <div class="prize-tab-container" *ngFor="let prize of getAllPrizeArray">
+        <div class="prize-image">
+          <img [src]="prize.image" alt="">
+        </div>
+        <div class="prize-tab-text">
+          <h2>{{prize.name}}</h2>
+          <span>Worth ₦{{prize.amount}} </span>
+          <span>Prize tier-{{prize.prizeTier}} </span>
+        </div>
       </div>
     </div>
-    
+    <div *ngSwitchCase="'prizeDepot'" class="prize-tab">
+      <div class="prize-tab-container" *ngFor="let depot of getAllPrizeDepot" >
+        <div>
+          <img [src]="depot.depotImage" alt="">
+        </div>
+        <div class="prize-tab-text">
+          <h2>{{depot.depotName}}</h2>
+          <span>{{depot.depotAddress}}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngSwitchCase="'winningConfig'">
+      <div class="winning_config_view_container" >
+        <div class="winning_config_view">
+          <div (click)="closeMoreConfig()">
+            <img src="../../../assets/go-back.svg" alt="">
+          </div>
+          <div class="winning_config_view_header">
+            <span>Winnings Configuration</span>
+            <span>Base amount, allocated percentage and tiers</span>
+          </div>
+          <div>
+            <img src="../../../assets/question-ticket.svg" alt="">
+          </div>
+        </div>
+        <div class="winningConfig_head_container_inner">
+          <div class="winningConfig_head">
+            <span>Business Base Amount</span>
+            <span>₦{{businessBaseAmount}} </span>
+          </div>
+          <div class="winningConfig_head_sub">
+            <span>Business Allocation (%)</span>
+            <span>{{salesAllocation}}%</span>
+          </div>
+        </div>
+        <div>
+          <div class="winningConfig_tier1">
+            <div>
+             <span>Tier 1 - {{tierOneAllocationInPercent}}%</span> 
+            </div>
+            <div>
+              <!-- 2: White Jeep Cherokee Suv 2024 -->
+            </div>
+          </div>
+          <div class="winningConfig_tier2">
+            <div>
+             <span>Tier 2 - {{tierTwoAllocationInPercent}}%</span> 
+            </div>
+            <div>
+             
+            </div>
+          </div>
+          <div class="winningConfig_tier3">
+            <div>
+             <span>Tier 3 - {{tierThreeAllocationInPercent}}%</span> 
+            </div>
+            <div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
 
+
+    </div>
   </div>
+  <div class="loader" *ngIf="loading">
+    <app-loader />
+  </div>
+
 </div>

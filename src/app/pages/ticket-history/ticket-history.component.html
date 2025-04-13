@@ -1,23 +1,70 @@
 <div class="container">
     <div class="ticket-body">
         <div class="header">
-            <div class="header-tickets">
-                <span class="header-tickets-text-active">Ongoing Tickets</span>
-                <span class="header-tickets-number-active">{{itemsInArray}}</span>
+            <div class="header-tickets" (click)="switchTab('ongoing')">
+                <span class="header-tickets-text"
+                    [ngClass]="tabs == 'ongoing' ? 'header-tickets-text-active' : '' ">Ongoing Tickets</span>
+                <span class="header-tickets-number"
+                    [ngClass]="tabs == 'ongoing' ? 'header-tickets-number-active' : '' ">{{itemsInArray}}</span>
             </div>
-            <div class="header-tickets">
-                <span class="header-tickets-text">Previously Played Tickets</span>
-                <span class="header-tickets-number">0</span>
+            <div class="header-tickets" (click)="switchTab('previous')">
+                <span class="header-tickets-text"
+                    [ngClass]="tabs == 'previous' ? 'header-tickets-text-active' : '' ">Previously played tickets</span>
+                <span class="header-tickets-number"
+                    [ngClass]="tabs == 'previous' ? 'header-tickets-number-active' : '' ">{{itemsInArray}}</span>
             </div>
         </div>
 
-        <div class="loader" *ngIf="showLoader">
+        <!-- <div class="loader" *ngIf="showLoader">
             <app-loader />
+        </div> -->
+
+        <div [ngSwitch]="tabs">
+            <div *ngSwitchCase="'ongoing'">
+                <!-- Ongoing -->
+                <div>
+                    <div class="ticket-details" *ngFor="let ticket of allTicket"
+                        (click)="getTicketId(ticket.ticketRef, ticket.ticketImage)">
+                        <div class="ticket-details-img">
+                            <img [src]="ticket.ticketImage" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{ticket.created.split('T')[0]}}</span>
+                            <span class="ticket-name">{{ticket.drawName}}</span>
+                            <span class="ticket-won">
+                                <span>{{ticket.numberOfTickets}} Ticket(s)</span>
+                                <span>₦ {{ticket.amount}} </span>
+                                <span>{{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}}</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngSwitchCase="'previous'">
+                <!-- previously -->
+                <div>
+                    <div class="ticket-details" *ngFor="let ticket of allPreviousTicket"
+                        (click)="getTicketId(ticket.ticketRef, ticket.ticketImage)">
+                        <div class="ticket-details-img">
+                            <img [src]="ticket.ticketImage" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{ticket.created.split('T')[0]}}</span>
+                            <span class="ticket-name">{{ticket.drawName}}</span>
+                            <span class="ticket-won">
+                                <span>{{ticket.numberOfTickets}} Ticket(s)</span>
+                                <span>₦ {{ticket.amount}} </span>
+                                <span>{{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}}</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-
-        <div>
-            <div class="ticket-details" *ngFor="let ticket of allTicket">
+        <!-- <div>
+            <div class="ticket-details" *ngFor="let ticket of allTicket" (click)="getTicketId(ticket.ticketRef, ticket.ticketImage)">
                 <div class="ticket-details-img">
                     <img [src]="ticket.ticketImage" alt="">
                 </div>
@@ -31,40 +78,101 @@
                     </span>
                 </div>
             </div>
-        </div>
-        <!-- <div>
-            <div class="ticket-details">
-                <div class="ticket-details-img">
-                    <img src="../../../assets/helmet.svg" alt="">
-                </div>
-                <div class="ticket-details-all">
-                    <span class="ticket-date">03rd Sept, 2024</span>
-                    <span class="ticket-name">Jolly Jackpot Lottery</span>
-                    <span class="ticket-won">
-                        <span>11 Ticket</span>
-                        <span>₦ 11,000</span>
-                        <span>Cars, laptop, Phones, Gas Cooker</span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="ticket-details">
-                <div class="ticket-details-img">
-                    <img src="../../../assets/buildings.svg" alt="">
-                </div>
-                <div class="ticket-details-all">
-                    <span class="ticket-date">03rd Sept, 2024</span>
-                    <span class="ticket-name">Jolly Jackpot Lottery</span>
-                    <span class="ticket-won">
-                        <span>2 Ticket</span>
-                        <span>₦ 2,000</span>
-                        <span>Cars, laptop, Phones, Gas Cooker</span>
-                    </span>
-                </div>
-            </div>
         </div> -->
 
     </div>
+
+    <div class="first-layer-redeem" [ngStyle]="{'background-image': 'url(' + selectedTicketImage + ')'}"
+        *ngIf="redeemTicketFirst">
+        <div class="first-layer-redeem-info">
+            <span>SW-TICKET-90876-XYZ</span>
+            <span>Moter Bike</span>
+        </div>
+
+        <div class="first-layer-redeem-note">
+            <span>Easily let us know how you want to redeem and collect your prize</span>
+            <button (click)="goToNext()">
+                Continue >
+            </button>
+        </div>
+    </div>
+
+    <div class="redeem-money-prize" *ngIf="redeemTicketSecond">
+        <!-- <div class="header">
+            <span>
+                <img src="../../../assets/go-back.svg" alt="">
+            </span>
+            <span>
+                Redeem Prize
+            </span>
+            <span>
+                <img src="../../../assets/menu.svg" alt="">
+            </span>
+        </div> -->
+        <div class="redeem-money-prize-sub">
+            <div>
+                <span>How do you want to redeem your prize</span>
+            </div>
+            <div class="redeem-prize-ticket">
+                <div class="redeem-prize-ticket-img">
+                    <img [src]="selectedTicketImage" alt="">
+                </div>
+                <div class="redeem-prize-ticket-text">
+                    <span>WAP-TICKET-90876-XYZ</span>
+                    <span>Motor Bike</span>
+                </div>
+            </div>
+            <div class="prize-money-container">
+                <div class="prize-depot-container" (click)="toggleLocation()">
+                    <div>
+                        <img src="../../../assets/location-icon.svg" alt="">
+                    </div>
+                    <div>
+                        <span>Visit Prize Depot</span>
+                    </div>
+                </div>
+                <div class="money-depot-container" (click)="toggleMoney()">
+                    <div>
+                        <img src="../../../assets/cash (2).svg" alt="">
+                    </div>
+                    <div>
+                        <span>Convert to money</span>
+                    </div>
+                </div>
+            </div>
+            <div class="location-prize" *ngIf="showLocation">
+                <div class="location-prize-text">
+                    <span>Lagos Depot 1</span>
+                    <span>12, Admiralty Way, Lekki</span>
+                </div>
+                <div class="location-prize-text">
+                    <span>Abuja Depot 1</span>
+                    <span>12, Garki Crescent, Lekki</span>
+                </div>
+                <div class="location-prize-text">
+                    <span>Port Harcourt Depot 1</span>
+                    <span>12, Trans Crescent, Lekki</span>
+                </div>
+            </div>
+            <div class="money-prize" *ngIf="showMoney">
+                <div class="money-prize-text">
+                    <span>Value of the prize you won</span>
+                    <span>₦ 23,000,000</span>
+                </div>
+                <div class="money-prize-input">
+                    <input type="text" placeholder="Enter customer game ID">
+                </div>
+                <div class="money-prize-input">
+                    <input type="text" placeholder="Enter bank">
+                </div>
+            </div>
+            <div class="footer-continue">
+                <button>
+                    CONTINUE >
+                </button>
+            </div>
+        </div>
+    </div>
+
 
 </div>

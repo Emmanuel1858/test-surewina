@@ -40,10 +40,10 @@ export class VendorProfileComponent implements OnInit, OnDestroy{
 
   constructor(private userAccontService: UserAccountService) { }
 
-  async getUserDetails() {
+  async getVendorDetails() {
     try {
       this.showLoader = true
-      const response = await this.userAccontService.userDetails().toPromise();
+      const response = await this.userAccontService.vendorDetails().toPromise();
       console.log(response)
       this.email = response.result.email
       this.firstName = response.result.firstName
@@ -60,7 +60,7 @@ export class VendorProfileComponent implements OnInit, OnDestroy{
   }
 
   ngOnInit(): void {
-    this.getUserDetails()
+    this.getVendorDetails()
   }
 
   ngOnDestroy(): void {
@@ -123,7 +123,7 @@ export class VendorProfileComponent implements OnInit, OnDestroy{
     }
     try {
       this.showLoader = true
-      const response = await lastValueFrom(this.userAccontService.userAddressUpdate(credentialsAddressUpdate))
+      const response = await lastValueFrom(this.userAccontService.vendorAddressUpdate(credentialsAddressUpdate))
       this.showLoader = false
       console.log(response)
       if(response.responseStatus === false) {
@@ -148,7 +148,7 @@ export class VendorProfileComponent implements OnInit, OnDestroy{
       }
       try {
         this.showLoader = true
-        const response = await lastValueFrom(this.userAccontService.userPasswordUpdate(credentialsPasswordUpdate))
+        const response = await lastValueFrom(this.userAccontService.vendorPasswordUpdate(credentialsPasswordUpdate))
         this.showLoader = false
         console.log(response)
         if(response.responseStatus === false) {

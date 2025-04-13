@@ -263,6 +263,7 @@
     display: flex;
     gap: 5px;
     left: 0;
+    width: 100%;
     width: -webkit-fill-available;
 }
 
@@ -811,6 +812,133 @@ input[type=number] {
     border-bottom-left-radius: 6px;
 
 }
+
+
+.ticket-body {
+    width: 90%;
+    border: 1px solid #9D9D9D;
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 0 auto;
+    // margin-left: 40px;
+    display: flex;
+
+}
+
+.ticket-body-inner {
+    width: 100%;
+}
+
+
+.header {
+    background-color: #EEF8FF;
+    border: 1px solid #E9E9E9;
+    display: flex;
+    gap: 30px;
+    padding: 10px 18px;
+    width: 99%;
+    margin: 5px auto 0;
+    border-radius: 4px;
+    overflow-x: auto;
+    justify-content: space-between;
+    gap: 3px;
+}
+
+
+.active-tab {
+    border-bottom: 4px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    border-radius: 4px;
+}
+
+.header-tickets {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+
+.header-tickets-number-active {
+    border: 1px solid #D9D9D9;
+    color: #1228C1;
+    padding: 1px 8px;
+    border-radius: 20px;
+    background-color: #FCFCFC;
+}
+
+.header-tickets-number {
+    border: 1px solid #D9D9D9;
+    background-color: #FCFCFC;
+    padding: 1px 8px;
+    border-radius: 20px;
+}
+
+
+.ticket-details-con {
+    max-height: 70vh;
+    overflow-y: auto;
+    // width: 95%;
+    /* updated */
+    margin: 0 auto;
+    /* center horizontally */
+}
+
+
+.ticket-details {
+    background-color: #FCFCFC;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    margin: 10px auto;
+    border-radius: 4px;
+    width: 99%;
+
+}
+
+.ticket-details-all {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-date {
+    font-size: 12px;
+    font-weight: var(--fw-400);
+    color: #9D9D9D;
+}
+
+.ticket-name {
+    font-size: 18px;
+    font-weight: var(--fw-400);
+    color: #262626;
+}
+
+.ticket-won {
+    font-size: 14px;
+    font-weight: var(--fw-400);
+    display: flex;
+    gap: 5px;
+    max-width: 100%;
+    /* Ensure it doesn't overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ticket-won span {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px;
+    max-width: 100%;
+    /* Ensure it doesn't overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 
 .img-card-type img {
     width: 30px;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-vendor-ticket-history',
@@ -25,10 +26,13 @@ export class VendorTicketHistoryComponent implements OnInit {
   tierThreePrize: string = ''
   showLoader: boolean = false
   allTicket: any = []
-  constructor(private router: Router, private userTicket: UserTicketService){}
+  totalTicketSold: number = 0
+  totalCommission: number = 0
+  constructor(private router: Router, private userService: UserService, private userTicket: UserTicketService) { }
 
   ngOnInit(): void {
-      this.getVendorTicket()
+    this.getVendorTicket()
+    this.vendorDetails()
   }
 
   openMenu() {
@@ -37,6 +41,18 @@ export class VendorTicketHistoryComponent implements OnInit {
   logout() {
     this.router.navigate(['/vendor-login'])
     sessionStorage.clear()
+  }
+
+  
+  async vendorDetails() {
+    try {
+      const response = await lastValueFrom(this.userService.getVendorDetails())
+      console.log(response)
+      this.totalTicketSold = response.result.totalTickets
+      this.totalCommission = response.result.totalCommission
+    } catch (e) {
+      console.log(e)
+    }
   }
   showDashboard() {
     this.showMenu = false
@@ -67,8 +83,8 @@ export class VendorTicketHistoryComponent implements OnInit {
     try {
       this.showLoader = true
       const response = await lastValueFrom(this.userTicket.vendorHistoryTicket(credentialGoingTicket))
-      // console.log(response)
       this.showLoader = false
+      
       this.itemsInArray = response.result.items.length
       this.amount = response.result.items[0].amount
       this.created = response.result.items[0].created
@@ -80,8 +96,17 @@ export class VendorTicketHistoryComponent implements OnInit {
       this.tierThreePrize = response.result.items[0].tierThreePrize
       this.allTicket = response.result.items
       console.log(this.allTicket)
-      
-    } catch(error) {
+
+    } catch (error) {
+      console.log('this is my error message:',error)
+    }
+  }
+
+  async getTicketId(ticketRef: string) {
+    try {
+      const response = this.userTicket.getVendorTicketById(ticketRef)
+      console.log(response)
+    } catch (error) {
       console.log(error)
     }
   }

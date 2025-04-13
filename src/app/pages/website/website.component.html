@@ -1,6 +1,6 @@
 <header>
   <div class="container header">
-    <img src="./assets/jollywina-logo.svg">
+    <img src="./assets/Sure Wina Logo - Blue.svg">
     <div class="links">
       <a>Home</a>
       <a>FAQ's</a>
@@ -161,7 +161,7 @@
     </div>
     <div class="section-4">
       <div class="top">
-        <img src="../../../assets/dashboard-sample.png" alt="">
+        <app-winner-board/>
       </div>
       <hr>
       <div class="bottom">
@@ -323,7 +323,7 @@
               <span class="count">How Many Tickets</span>
               <div class="count-number">
                   <button (click)="decrement()">-</button>
-                  <span class="ticket-number">0</span>
+                  <span class="ticket-number">{{ticketCount}}</span>
                   <button (click)="increment()">+</button>
               </div>
           </div>
@@ -339,6 +339,7 @@
 
       <div class="input">
         <span *ngIf="showAddressError" style="color: red;">Email or phone number is required!</span>
+        <span *ngIf="showTicketError" style="color: red;">Total ticket bought cannot be zero!</span>
         <span>Note: If you register you won't have to fill this again</span>
         <input [(ngModel)]="identifier" type="text" name="" id="" placeholder="Enter your email address or phone number">
       </div>
@@ -370,7 +371,7 @@
       <div>
           <div class="total-ticket-container">
               <span class="total-ticket-name">Total Ticket Bought</span>
-              <span class="total-ticket-number">₦ 3,000</span>
+              <span class="total-ticket-number">₦{{totalPrice}}</span>
           </div>
       </div>
       <div class="pay-with-transfer-container">

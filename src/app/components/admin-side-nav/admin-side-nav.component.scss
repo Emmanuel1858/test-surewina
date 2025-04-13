@@ -5,6 +5,8 @@
   background: var(--Colors-White-White, #FFF);
   height: 100vh;
   box-shadow: 4px 0px 16px 0px rgba(69, 136, 236, 0.05);
+  z-index: 1;
+  position: relative;
 }
 
 .side-nav-top {
@@ -58,7 +60,7 @@
     line-height: normal;
 
     &.active,
-    &:hover, 
+    &:hover,
     &:active,
     &:focus-within {
       border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Medium, 0.5rem);

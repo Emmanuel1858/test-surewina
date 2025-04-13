@@ -62,4 +62,8 @@ export class VendorMakePaymentComponent {
     }
 
   }
+
+  goToDashboard() {
+    this.router.navigate(['/vendor-dashboard'])
+  }
 }

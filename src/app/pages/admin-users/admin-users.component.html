@@ -13,7 +13,7 @@
         <div  class="border-bottom"></div>
       </div>
       <div class="tab" [ngClass]="primaryTabs == 'all-agents-container' ? 'active-tab' : '' ">
-        <p (click)="switchprimaryTabs('all-agents-container')"> Agents <span class="rounded-border-items"> 32 </span> </p>
+        <p (click)="switchprimaryTabs('all-agents-container')"> Agents <span class="rounded-border-items"> {{numberOfVendors}} </span> </p>
         <div  class="border-bottom"></div>
       </div>
     </div>
@@ -47,32 +47,32 @@
             {{status !== null ? status : 'Not Available'}}
           </button>
   
-          <img src="../../../assets/view-more-icon.svg" alt="">
+          <img (click)="getUserById(user.userId)" src="../../../assets/view-more-icon.svg" alt="">
         </div>
         
       </div>
   
       <div *ngSwitchCase="'all-agents-container'"  class="all-agents-container">
         <!-- collection of agent cards -->
-        <div (click)="detailsPage('agent')" class="user-details">
+        <div (click)="detailsPage('agent')" class="user-details" *ngFor="let vendor of allVendor">
           <div class="name-thumbnail">
             <img src="../../../assets/user-1.svg" alt="">
             <div class="name">
-              <h2> Joshua Adaranijo </h2>
-              <p> Yaba Lagos State </p>
+              <h2> {{vendor.firstName}} {{vendor.lastName}} </h2>
+              <p>{{vendor.branch === null ? 'Not Entered yet?' : vendor.branch}}</p>
             </div>
           </div>
           <div class="contact-info">
-            <p> 09011220303 </p>
-            <p> Joshua_Adaranijo&#64;gmail.com </p>
+            <p> {{vendor.phoneNumber	}} </p>
+            <p>{{vendor.email}}</p>
           </div>
           <div class="contact-info">
             <p> Sold </p>
-            <p> 51,650 Tickets </p>
+            <p> {{vendor.ticketsSold}} </p>
           </div>
           <div class="contact-info">
             <p> Oweing  </p>
-            <p> ₦ 1,676,200 </p>
+            <p> {{vendor.owing}} </p>
           </div>
           <button class="status-btn"[ngClass]="getBtnColor('active')">
             <div class="dot">
@@ -90,6 +90,10 @@
       </div>
     </div>
   </ng-container>
+
+  <div *ngIf="loading" class="loader">
+    <app-loader/>
+  </div>
 
   <ng-container *ngIf="showBackBtn">
     <div class="tab-container">
@@ -125,7 +129,7 @@
         <div class="person-profile-blue-bg">
           <img src="../../../assets/personal-details-headshot.svg" alt="">
           <div class="personal-details">
-            <h2> Joshua Adaranijo </h2>
+            <h2> {{userDetails.firstName}} {{userDetails.lastName}} </h2>
             <div class="collection">
               <span class="status-btn"[ngClass]="getBtnColor('active')">
                 <div class="dot">
@@ -138,9 +142,9 @@
               </span>
 
               <span class="rounded-border-items"> Mobile User </span>
-              <span class="rounded-border-items with-icon"> <img src="../../../assets/jolly-points-icon.png" alt=""> 100 Jolly Points </span>
-              <span class="rounded-border-items"> Christiana&#64;gmail.com </span>
-              <span class="rounded-border-items"> Registered: October 7, 2024 - 4:51 pm   </span>
+              <span class="rounded-border-items with-icon"> <img src="../../../assets/jolly-points-icon.png" alt=""> {{userDetails.jollyPoints}} Jolly Points </span>
+              <span class="rounded-border-items">{{userDetails.email}}</span>
+              <span class="rounded-border-items">{{userDetails.registeredOn.split('T')[0]}}</span>
             </div>
           </div>
         </div>
@@ -149,25 +153,25 @@
           <div class="table">
             <div class="table-items">
               <p>Tickets Bought</p>
-              <p>231</p>
+              <p>{{userDetails.totalTicketsBought}}</p>
             </div>
             <div class="table-items tickets">
               <p>Tickets Amount</p>
-              <p>₦ 40,000</p>
+              <p>₦ {{userDetails.totalTicketsBoughtAmount}}</p>
             </div>
             <div class="table-items">
               <p>Prizes Won</p>
-              <p>400</p>
+              <p>{{userDetails.jollyPoints}}</p>
             </div>
             <div class="table-items">
               <p>Prizes Value</p>
-              <p>₦ 312,000</p>
+              <p>₦ {{userDetails.totalPrizeValueAmount}}</p>
             </div>
           </div>
           <div class="table">
             <div class="table-items">
               <p>Phone Number</p>
-              <p>09018293839</p>
+              <p>{{userDetails.phoneNumber}}</p>
             </div>
             <div class="table-items">
               <div class="file-container">
@@ -178,7 +182,7 @@
             </div>
             <div class="table-items address">
               <p>Address</p>
-              <p>29, Adeyemo Alakija, Victoria Island, Lagos, Nigeria</p>
+              <p>{{userDetails.address === null ? 'User has not inputted address yet' : userDetails.address}}</p>
             </div>
           </div>
         </div>

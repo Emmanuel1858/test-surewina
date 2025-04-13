@@ -8,11 +8,11 @@
                 <div class="first-card-prize">
                     <div class="first-card-prize-div">
                         <div>
-                            <span class="first-card-prize-text">Prize Won</span>
+                            <!-- <span class="first-card-prize-text">Prize Won</span> -->
                         </div>
                         <div class="first-card-prize-amount-div">
-                            <span class="first-card-prize-amount">₦ 0</span>
-                            <span class="first-card-prize-sign">~</span>
+                            <!-- <span class="first-card-prize-amount">₦ 0</span>
+                            <span class="first-card-prize-sign">~</span> -->
                         </div>
                     </div>
                     <div class="first-card-prize-img">
@@ -54,19 +54,19 @@
                 <div class="second-card-right-text">
                     <span class="second-card-game-text">
                         
-                        {{items === [] ? 'Opps' : 'Today’s game' }}
+                        {{items === [] ? 'Today’s game' : 'Opps...' }}
                     </span>
                     <span class="second-card-jolly-text">
-                       {{items === [] ? 'No games today ' : nameGame }}
+                       {{items === [] ? nameGame  : 'No game today' }}
                     </span>
                     <span class="second-card-text">
-                        <div>Buy surlly tickets and</div>
-                        <div>win lots of great prizes</div>
+                        <!-- <div>Buy surlly tickets and</div>
+                        <div>win lots of great prizes</div> -->
 
 
                     </span>
                 </div>
-                <div class="button-section">
+                <div class="button-section" *ngIf="showButtonTicket">
                     <img src="../../../assets/dashboard-icon.svg" alt="">
                     <button class="btn-buy-ticket" (click)="navigateToPaymentTicket()">
                         <span>BUY TICKETS</span>
@@ -139,7 +139,7 @@
         </div>
     </div>
 
-    <!-- <div class="ticket-winner-container">
+     <div class="ticket-winner-container">
         <div class="ticket-table">
             <div class="ticket-button">
                 <button class="ticket-btn-text">Your Ticket History</button>
@@ -149,17 +149,17 @@
                 </button>
             </div>
             <div>
-                <div class="ticket-details">
+                <div class="ticket-details" *ngFor="let ticket of allPreviousTicket">
                     <div>
-                        <img src="../../../assets/Rectangle 4585.svg" alt="">
+                        <img [src]="ticket.ticketImage" alt="">
                     </div>
                     <div class="ticket-details-all">
-                        <span class="ticket-date">05th Sept, 2024</span>
-                        <span class="ticket-name">Jolly Jackpot Lottery</span>
+                        <span class="ticket-date">{{ticket.created.split('T')[0]}}</span>
+                        <span class="ticket-name">{{ticket.drawName}}</span>
                         <span class="ticket-won">
-                            <span>12 Ticket</span>
-                            <span>₦ 12,000</span>
-                            <span>Cars, bikes, laptop, Monitor, Smartphones</span>
+                            <span>{{ticket.numberOfTickets}} Ticket(s)</span>
+                            <span>₦ {{ticket.amount}}</span>
+                            <span>{{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}}</span>
                         </span>
                     </div>
                 </div>
@@ -173,43 +173,52 @@
                     <span> > </span>
                 </button>
             </div>
-            <div>
-                <div class="winner-table-head">
-                    <div class="thead-active">
-                        <span>Jolly Jackpot</span>
-                        <span class="winner-jolly-number">32</span>
+            <div class="ticket-body" >
+                <div class="ticket-body-inner">
+                  <!-- HEADER SECTION -->
+                  <div class="header" *ngIf="showMonth">
+                    <div *ngFor="let draw of drawResults; let drawIndex = index">
+                      <div class="header-tickets" [ngClass]="tabs == 'tab' + drawIndex ? 'active-tab' : ''">
+                        <span (click)="switchTab('tab' + drawIndex)" class="header-tickets-text-active">
+                          {{ draw.drawDescription || 'No Description' }}
+                        </span>
+                        <span class="header-tickets-number-active">{{ draw.totalWinners }}</span>
+                      </div>
                     </div>
-                    <div class="thead">
-                        <span>Jolly Jumbo</span>
-                        <span class="winner-jolly-num">32</span>
+                  </div>
+              
+                  <!-- BODY SECTION -->
+                  <div [ngSwitch]="tabs"  *ngFor="let draw of drawResults; let drawIndex = index">
+                    <div *ngSwitchCase="'tab' + drawIndex">
+                      <div class="ticket-details-con">
+                        <div
+                          class="ticket-details"
+                          *ngFor="let item of draw.winners.items; let i = index"
+                          (click)="showListWinners(draw.drawId)"
+                        >
+                          <div class="ticket-details-img">
+                            <img *ngIf="draw.prizes?.[0]?.image" [src]="draw.prizes[0].image" alt="" />
+                          </div>
+                          <div class="ticket-details-all">
+                            <span class="ticket-date">
+                              {{ draw.drawDate?.split('T')[0] || 'No Date' }}
+                            </span>
+                            <span class="ticket-name">
+                              {{ item.ticketRefNo || 'No Name' }}
+                            </span>
+                            <span class="ticket-won">
+                              <span>{{ item.prize }}</span>
+                              <span>₦{{ item.totalAmount }}</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="thead">
-                        <span>Jolly Boom</span>
-                        <span class="winner-jolly-num">32</span>
-                    </div>
-                    <div class="thead">
-                        <span>Jolly Geluu</span>
-                        <span class="winner-jolly-num">32</span>
-                    </div>
-                </div>
-                <div class="winner-table-body">
-                    <div class="winner-body-name">
-                        <span><img src="../../../assets/Property 1=Variant5.svg" alt=""></span>
-                        <span>Irene</span>
-                    </div>
-                    <div class="winner-body">
-                        From Yaba
-                    </div>
-                    <div class="winner-body">
-                        Played ₦ 12,000
-                    </div>
-                    <div class="winner-body">
-                        Won Jeep Cheroke SUV 2024
-                    </div>
+                  </div>
                 </div>
             </div>
         </div>
-    </div> -->
+    </div> 
 
     <div class="third-card-response">
         <div class="third-card-profile-text">
@@ -381,7 +390,7 @@
         </div>
     </div>
     <div class="ticket-container-background" *ngIf="showLoader">
-        <div class="modal" >
+        <div class="modal">
             <div class="container-modal">
                 <div class="modal-img">
                     <img src="../../../assets/Group 1000002391.svg" alt="">

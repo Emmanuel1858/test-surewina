@@ -15,11 +15,11 @@
             <div class="first-card-prize">
                 <div class="first-card-ticket">
                     <span>Tickets</span>
-                    <span>0</span>
+                    <span> {{totalTicketSold}} </span>
                 </div>
                 <div class="first-card-ticket">
                     <span>Commission</span>
-                    <span>₦0</span>
+                    <span>₦{{totalCommission}}</span>
 
                 </div>
 
@@ -27,7 +27,7 @@
 
         </div>
     </div>
-    <div class="ticket-container" *ngFor="let ticket of allTicket">
+    <div class="ticket-container" *ngFor="let ticket of allTicket" (click)="getTicketId(ticket.ticketRef)">
         <div class="ticket-container-img">
             <img [src]="ticket.ticketImage" alt="">
         </div>
@@ -35,26 +35,6 @@
             <span>{{ticket.created.split('T')[0]}}</span>
             <span>{{ticket.numberOfTickets}} Ticket(s)</span>
             <span>₦{{ticket.amount}}, {{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}} </span>
-        </div>
-    </div>
-    <div class="ticket-container">
-        <div class="ticket-container-img">
-            <img src="../../../assets/gift-voucher.svg" alt="">
-        </div>
-        <div class="ticket-container-text">
-            <span>05th Sept, 2024</span>
-            <span>Ciroma Chukwuma</span>
-            <span>₦ 12,000, September </span>
-        </div>
-    </div>
-    <div class="ticket-container">
-        <div class="ticket-container-img">
-            <img src="../../../assets/gift-voucher.svg" alt="">
-        </div>
-        <div class="ticket-container-text">
-            <span>05th Sept, 2024</span>
-            <span>Ciroma Chukwuma</span>
-            <span>₦ 12,000, September </span>
         </div>
     </div>
 </div>

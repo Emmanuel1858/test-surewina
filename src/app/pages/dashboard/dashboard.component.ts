@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   showBalance: boolean = true;
   ticketCount: number = 0;
   totalPrice: number = 0;
-  unitPrice: number = 1000;
+  unitPrice: number = 0;
   firstName: string = `${sessionStorage.getItem('firstName')}`
   lastName: string = `${sessionStorage.getItem('lastName')}`
   phoneNumber: string = `${sessionStorage.getItem('phoneNumber')}`
@@ -46,7 +46,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
   nameGame: string = ''
   ticketImage: string = ''
   items = []
-
+  showButtonTicket: boolean = true
+  itemsInArrayPrevious: number = 5
+  amountPrevious: number = 0
+  createdPrevious: string = ''
+  drawNamePrevious: string = ''
+  numberOfTicketsPrevious: number = 0
+  ticketImagePrevious: string = ''
+  tierOnePrizePrevious: string = ''
+  tierTwoPrizePrevious: string = ''
+  tierThreePrizePrevious: string = ''
+  allPreviousTicket: any[] = []
+  allTicket: any = []
+  tabs: string = 'jan'
+  drawResults: any[] = []
+  showMonth: boolean = true
+  listOfWinners: any = []
+  showWinnerList: boolean = false
   constructor(private router: Router, private drawService: DrawService, private prizeService: PrizeService, private userTicket: UserTicketService) { }
 
   navigateToProfile() {
@@ -85,9 +101,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.startAutoAdvance();
     this.getTodayDraw();
     this.getAllPrize();
+    this.getPreviouslyTicket()
     this.initials = (this.firstName?.charAt(0) || '') + (this.lastName?.charAt(0) || '');
     this.initials = this.initials.toUpperCase();
     sessionStorage.setItem('initial', this.initials)
+    this.getWinnerBoard()
     // window.location.reload()
 
   }
@@ -96,7 +114,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.clearAutoAdvance();
   }
 
+  switchTab(tab: string) {
+    this.tabs = tab
+    console.log(this.tabs)
+  }
+
   async getTodayDraw() {
+    // debugger
     const drawForToday = {
       pageNumber: this.pageNumber,
       numberOfRecords: this.numberOfRecords
@@ -105,10 +129,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
       const response = await lastValueFrom(this.drawService.getTodayDraw(drawForToday))
       // console.log(response)
       this.items = response.result.items
+      if (this.items.length === 0) {
+        this.showButtonTicket = false
+        return
+      }
       this.nameGame = response.result.items[0].name
       this.drawId = response.result.items[0].drawId
       this.ticketImage = response.result.items[0].ticketImage
       this.unitPrice = response.result.items[0].amount
+
     } catch (error) {
       console.log(error)
     }
@@ -125,6 +154,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
       console.log(this.backgroundImages)
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  
+  async getWinnerBoard() {
+    try {
+      // this.showLoader = true;
+  
+      const response = await lastValueFrom(this.userTicket.winnerBoardUser());
+  
+      this.showLoader = false;
+  
+      // Save the draw data
+      this.drawResults = response.result;
+  
+    } catch (error) {
+      this.showLoader = false;
+      console.log(error);
     }
   }
 
@@ -159,6 +206,56 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
     } catch (error) {
       this.loading = true
+      console.log(error)
+    }
+
+  }
+
+  async getPreviouslyTicket() {
+    const credentialGoingTicket = {
+      pageNumber: this.pageNumber,
+      numberOfRecords: this.numberOfRecords
+    }
+    try {
+      // this.showLoader = true
+      const response = await lastValueFrom(this.userTicket.onGoingTicket(credentialGoingTicket))
+      console.log(response)
+      this.showLoader = false
+      this.itemsInArrayPrevious = response.result.items.length
+      if (this.itemsInArrayPrevious === 0) {
+        return
+      }
+      this.amountPrevious = response.result.items[0].amount
+      this.createdPrevious = response.result.items[0].created
+      this.drawNamePrevious = response.result.items[0].drawName
+      this.numberOfTicketsPrevious = response.result.items[0].numberOfTickets
+      this.ticketImagePrevious = response.result.items[0].ticketImage
+      this.tierOnePrizePrevious = response.result.items[0].tierOnePrize
+      this.tierTwoPrizePrevious = response.result.items[0].tierTwoPrize
+      this.tierThreePrizePrevious = response.result.items[0].tierThreePrize
+      this.allPreviousTicket = response.result.items[0]
+
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async showListWinners(i: number) {
+    const credentials = {
+      pageNumber: 1, 
+      numberOfRecords: 10,
+      drawId: i
+    }
+    try {
+      this.showLoader = true
+      const response = await lastValueFrom(this.userTicket.getWinnerByDrawId(credentials))
+      console.log(response)
+      this.showLoader = false
+      this.listOfWinners = response.result.items
+      this.showWinnerList = true
+      this.showMonth = false
+    } catch (error) {
       console.log(error)
     }
 

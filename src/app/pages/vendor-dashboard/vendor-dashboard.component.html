@@ -1,5 +1,5 @@
 <div>
-    <app-layout-vendor/>
+    <app-layout-vendor />
 </div>
 <div class="container">
 
@@ -8,12 +8,11 @@
             <div class="first-card-prize">
                 <div class="first-card-ticket">
                     <span>Tickets</span>
-                    <span>0</span>
+                    <span>{{totalTicketSold}}</span>
                 </div>
                 <div class="first-card-ticket">
                     <span>Commission</span>
-                    <span>₦0</span>
-
+                    <span>₦{{totalCommission}}</span>
                 </div>
 
             </div>
@@ -34,16 +33,315 @@
                     <div class="sell-ticket-img">
                         <img src="../../../assets/redeem-prize.svg" alt="">
                     </div>
-                    <div class="second-card-right-text">
+                    <div class="second-card-right-text" (click)="redeemTicket()">
                         <span>Redeem prize</span>
                         <span>Redeem prize and process payouts.</span>
                     </div>
                 </div>
 
             </div>
+            <div class="ticket-winner-container">
+                <div class="ticket-table">
+                    <div class="ticket-button">
+                        <button class="ticket-btn-text">Your Ticket History</button>
+                        <button class="ticket-btn-view" (click)="navigateToAllTicket()">
+                            <span>VIEW ALL</span>
+                            <span> > </span>
+                        </button>
+                    </div>
+                    <div>
+                        <div class="ticket-details" *ngFor="let ticket of allTicket">
+                            <div>
+                                <img src="../../../assets/Rectangle 4585.svg" alt="">
+                            </div>
+                            <div class="ticket-details-all">
+                                <span class="ticket-date">{{ticket.created.split('T')[0]}}</span>
+                                <span class="ticket-won">
+                                    <span>{{ticket.numberOfTickets}} Tickets</span>
+                                    <span>₦{{ticket.amount}}</span>
+                                    <span> {{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}}</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="winner-table">
+                    <div class="winner-button">
+                        <button class="winner-btn-text">Lottery Winners Board</button>
+                        <button class="winner-btn-view" (click)="navigateToAllWinner()">
+                            <span>VIEW ALL</span>
+                            <span> > </span>
+                        </button>
+                    </div>
+                    <div class="ticket-body" *ngIf="showMonth">
+                        <div class="header">
+                            <div class="header-tickets" [ngClass]="tabs == 'jan' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('jan')" class="header-tickets-text-active">January</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'feb' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('feb')" class="header-tickets-text">February</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'mar' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('mar')" class="header-tickets-text">March</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'apr' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('apr')" class="header-tickets-text">April</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'may' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('may')" class="header-tickets-text">May</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'jun' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('jun')" class="header-tickets-text">June</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'jul' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('jul')" class="header-tickets-text">July</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'aug' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('aug')" class="header-tickets-text">August</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'sept' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('sept')" class="header-tickets-text">September</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'oct' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('oct')" class="header-tickets-text">October</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'nov' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('nov')" class="header-tickets-text">November</span>
+                                
+                            </div>
+                            <div class="header-tickets" [ngClass]="tabs == 'dec' ? 'active-tab' : '' ">
+                                <span (click)="switchTab('dec')" class="header-tickets-text">December</span>
+                                
+                            </div>
+                        </div>
+                    <div [ngSwitch]="tabs" >
+                        <div *ngSwitchCase="'jan'">
+                            <div class="ticket-details-con">
+                                {{noData}}
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index">
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'feb'">
+                            <div class="ticket-details-con">
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index">
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'mar'">
+                            <div class="ticket-details-con">
+                                {{noData}}
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'apr'">
+                            <div class="ticket-details-con">
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'may'">
+                            <div class="ticket-details-con">
+                                {{noData}}
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'jun'">
+                            <div class="ticket-details-con">
+                                {{noData}}
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'jul'">
+                        
+                            <div class="ticket-details-con">
+                                {{noData}}
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'aug'">
+                            <div class="ticket-details-con">
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'sept'">
+                            <div class="ticket-details-con">
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'oct'">
+                            <div class="ticket-details-con">
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'nov'">
+                            <div class="ticket-details-con">
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngSwitchCase="'dec'">
+                            <div class="ticket-details-con">
+                                <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" >
+                                    <div class="ticket-details-img">
+                                        <img [src]="draw.prizes[0].image" alt="">
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                                        <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                                        <span class="ticket-won">
+                                            <span>{{draw.drawDescription}}</span>
+                                            <span>{{draw.totalWinners}} winners</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div> 
+        
         </div>
     </div>
-
     <div class="third-card-response">
         <div class="third-card-profile-text">
             Profile summary
@@ -90,7 +388,6 @@
             </div>
         </div>
     </div>
-
     <div class="ticket-container-background" *ngIf="showTicketPayment">
         <div class="buy-ticket-container">
             <div class="buy-ticket-header">
@@ -112,7 +409,7 @@
             <div class="buy-ticket-count">
                 <div class="ticket-price-container">
                     <span>Ticket Unit Price</span>
-                    <span>₦ 1,000</span>
+                    <span>₦{{unitPrice}}</span>
                 </div>
                 <div class="ticket-count-container">
                     <span class="count">How Many Tickets</span>
@@ -256,10 +553,11 @@
                 </span>
             </div>
             <div class="redeem-prize-container-input">
+
                 <input type="text" placeholder="Enter customer game Id">
             </div>
             <div class="footer">
-                <button>
+                <button >
                     CONTINUE >
                 </button>
             </div>
@@ -273,16 +571,16 @@
             <div class="customer-details-container">
                 <div class="customer-details-name">
                     <span>Customer Name</span>
-                    <span>Ciroma Chukwuma Adekunle</span>
+                    <span>{{userName}}</span>
                 </div>
                 <div class="customer-details-sub">
                     <div class="customer-details-number">
-                        <span>Phone Number</span>
-                        <span>08077618928</span>
+                        <span>Game name</span>
+                        <span>{{phoneNumberName}}</span>
                     </div>
                     <div class="customer-details-number">
                         <span>Game ID</span>
-                        <span>WAP-90876-XYZ</span>
+                        <span>{{gameId}}</span>
                     </div>
                 </div>
             </div>
@@ -290,20 +588,20 @@
                 <div class="customer-details-sub">
                     <div class="customer-details-number">
                         <span>Ticket Unit Price</span>
-                        <span>₦ 1,000</span>
+                        <span>{{ticketUnitPrice}}</span>
                     </div>
                     <div class="customer-details-number">
                         <span>They Bought</span>
-                        <span>12 Tickets</span>
+                        <span>{{totalNumberTicketBought}}</span>
                     </div>
                 </div>
                 <div class="customer-details-prize">
                     <span>Prize won</span>
-                    <span>White Jeep Cherokee Suv 2024</span>
+                    <span>{{totalNumberPrizeWon}}</span>
                 </div>
             </div>
             <div class="footer">
-                <button>
+                <button (click)="navigateToRedeem()">
                     YES IT IS >
                 </button>
             </div>
@@ -325,17 +623,19 @@
             <div>
                 <span>How do you want to redeem your prize</span>
             </div>
-            <div class="redeem-prize-ticket">
+            <div class="redeem-prize-ticket" *ngFor="let prize of showAllPrize">
                 <div class="redeem-prize-ticket-img">
-                    <img src="../../../assets/white jeep.svg" alt="">
+                    <img [src]="prize.image" alt="">
                 </div>
                 <div class="redeem-prize-ticket-text">
-                    <span>WAP-TICKET-90876-XYZ</span>
-                    <span>White Jeep Cherokee Suv 2024</span>
+                    <span>{{gameId}}</span>
+                    <span>{{prize.description}}</span>
                 </div>
             </div>
             <div class="prize-money-container">
-                <div class="prize-depot-container">
+                <div class="prize-depot-container"
+                [ngClass]="{'active': activeContainer === 'location'}" 
+                (click)="showLocationBtn()">
                     <div>
                         <img src="../../../assets/location-icon.svg" alt="">
                     </div>
@@ -343,7 +643,9 @@
                         <span>Visit Prize Depot</span>
                     </div>
                 </div>
-                <div class="money-depot-container">
+                <div class="money-depot-container" 
+                [ngClass]="{'active': activeContainer === 'money'}" 
+                (click)="showMoneyBtn()">
                     <div>
                         <img src="../../../assets/cash (2).svg" alt="">
                     </div>
@@ -352,7 +654,7 @@
                     </div>
                 </div>
             </div>
-            <div class="location-prize">
+            <div class="location-prize" *ngIf="showLocation">
                 <div class="location-prize-text">
                     <span>Lagos Depot 1</span>
                     <span>12, Admiralty Way, Lekki</span>
@@ -371,15 +673,15 @@
                     <span>Value of the prize you won</span>
                     <span>₦ 23,000,000</span>
                 </div>
-                <div class="money-prize-input">
+                <!-- <div class="money-prize-input">
                     <input type="text" placeholder="Enter customer game ID">
                 </div>
                 <div class="money-prize-input">
                     <input type="text" placeholder="Enter bank">
-                </div>
+                </div> -->
             </div>
-          <div class="footer">
-                <button>
+            <div class="footer">
+                <button (click)="navigateToSucessModal()">
                     CONTINUE >
                 </button>
             </div>
@@ -404,14 +706,51 @@
                 </div>
                 <div class="modal-text">
                     <h2>Prize successfully redeemed for </h2>
-                    <h2> Ciroma Chukwuma Adekunle</h2>
-                    <span>A notification will be sent to their email and phone number with the necessary details to collect prize </span>
+                    <h2> {{userName === 'Non registered user' ? phoneNumberName : userName }}</h2>
+                    <!-- <span>A notification will be sent to their email and phone number with the necessary details to
+                        collect prize </span> -->
                     <!-- <span> announcement of the lottery winners</span> -->
                 </div>
                 <div class="modal-btn">
-                    <button>Ok, Got it</button>
+                    <button (click)="closeModal()">Ok, Got it</button>
                 </div>
             </div>
         </div>
     </div>
+    <div class="ticket-container-background" *ngIf="showGameId">
+        <div class="modal-redeem-prize">
+            <div>
+                <img src="../../../assets/gift-icon.svg" alt="">
+            </div>
+            <div style="text-align: center; font-size: 18px;">
+                
+                <span>
+                    Please enter customer GameID
+                    to redeem their prizes
+                </span>
+            </div>
+            <div class="input-game-id" style="text-align: center;">
+                <span style="color: red;" *ngIf="showGameError">Please enter a valid game ID</span>
+                <span style="color: red;" >{{showGameErrorBackend}}</span>
+                <input type="text" placeholder="Enter customer Game ID" [(ngModel)]="customerGameId">
+            </div>
+            <div>
+                <button class="btn-redeem-prize" (click)="navigateToGameInfo()">
+                    <span>CONTINUE</span>
+                    <span> > </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="sell-ticket-container" *ngIf="sellTicketBtn">
+    <button class="sell-ticket-btn-overlay" (click)="navigateToSellTicket()">
+        <span>+</span>
+        <span>Sell Ticket</span>
+    </button>
+</div>
+
+<div class="loader" *ngIf="loading">
+    <app-loader/>
 </div>

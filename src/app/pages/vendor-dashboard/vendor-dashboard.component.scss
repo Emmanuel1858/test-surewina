@@ -1,3 +1,21 @@
+
+* {
+    font-family: "DM Sans", sans-serif;
+}
+
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
 .container {
     max-height: 85vh;
     overflow: auto;
@@ -126,6 +144,8 @@
     display: flex;
     width: 90%;
     justify-content: center;
+    flex-direction: column;
+    gap: 10px;
     height: auto;
     // border-radius: 20px;
 
@@ -407,7 +427,7 @@
 
 .ticket-table {
     border: 1px solid #D9D9D9;
-    width: 80%;
+    width: 100%;
     padding: 20px;
     border-radius: 4px;
 
@@ -467,11 +487,12 @@
     border: 1px solid #D9D9D9;
     border-radius: 20px;
     padding: 5px 8px;
+    white-space: nowrap;
 }
 
 .winner-table {
     border: 1px solid #D9D9D9;
-    width: 80%;
+    width: 100%;
     // padding: 20px;
     border-radius: 4px;
 
@@ -548,6 +569,7 @@ table {
     padding: 0 8px;
     display: flex;
     align-items: center;
+    white-space: nowrap;
 }
 
 .ticket-container-background {
@@ -968,7 +990,7 @@ input[type=number] {
 .modal-text span {
     font-weight: var(--fw-400);
     font-size: 15px;
-    width: 97%;
+    text-align: center;
     // font-size: var(--fs-32);
 }
 
@@ -1022,6 +1044,11 @@ input[type=number] {
     // width: 80%;
 }
 
+.redeem-prize-container-input {
+    display: flex;
+    flex-direction: column;
+}
+
 .redeem-prize-container-input input {
 
     border: 1px solid #d9d9d9;
@@ -1036,15 +1063,16 @@ input[type=number] {
 
 .customer-container {
     position: absolute;
-    width: 100%;
+    width: 90%;
     bottom: 0;
     background-color: #fff;
-    // border: 1px solid #9D9D9D;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
     padding: 10px;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
     font-family: var(--cta-alt);
 }
 
@@ -1117,6 +1145,7 @@ input[type=number] {
     background-color: #fff;
     border: 1px solid #d9d9d9;
     padding: 10px;
+    margin-top: 10px;
 }
 
 .redeem-prize-ticket-img {
@@ -1148,8 +1177,8 @@ input[type=number] {
 .prize-depot-container {
     border: 1px solid #d9d9d9;
     width: 50%;
-    background-color: #1228C1;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1157,6 +1186,8 @@ input[type=number] {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
+
+
 
 .money-depot-container {
     background-color: #fff;
@@ -1168,6 +1199,18 @@ input[type=number] {
     padding: 15px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.prize-depot-container, .money-depot-container {
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.prize-depot-container.active, 
+.money-depot-container.active {
+    background-color: #1228C1;
+    color: white; 
 }
 
 .location-prize {
@@ -1249,11 +1292,196 @@ input[type=number] {
 
 }
 
+// .modal-redeem-prize {
+//     height: 60%;
+//     width: 80%;
+//     background-color: var(--clr-dark-20);
+//     border: 1px solid var(--color-boarder-stroke-hard);
+//     position: absolute;
+//     bottom: 0;
+//     right: 0;
+//     transform: translate(-50px -50px);
+// }
+
+.modal-redeem-prize {
+    border: 1px solid #D9D9D9;
+    width: 90%;
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-family: var(--cta-alt);
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.input-game-id {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-game-id input {
+    width: 15rem;
+    padding: 10px 10px;
+    outline: none;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+}
+
+.btn-redeem-prize {
+    background-color: #1228C1;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+.sell-ticket-container {
+    position: absolute;
+    right: 40px;
+    bottom: 50px;
+}
+
+.sell-ticket-btn-overlay {
+    background-color: #1228C1;
+    padding: 5px 10px;
+    font-family: var(--cta-alt);
+    color: #fff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    box-shadow: 0px 0px 5px 4px #888888;
+}
+
+
+.ticket-body {
+    // width: 47%;
+    border: 1px solid #9D9D9D;
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 0 auto;
+    max-width: 100%;
+    overflow: auto;
+ 
+}
+
+.header {
+    background-color: #EEF8FF;
+    border: 1px solid #E9E9E9;
+    display: flex;
+    // gap: 30px;
+    padding: 10px 18px;
+    width: 99.5%;
+    justify-content: space-between;
+    margin: 2px auto;
+    border-radius: 4px;
+}
+
+.header-tickets {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.header-tickets-text-active {
+    // border-bottom: 4px solid #262626;
+    // border-bottom: 4px solid var(--colors-blue-secondary-color-s-500, #3148E4);
+    // border-radius: 4px;
+}
+
+.header-tickets-number-active {
+    border: 1px solid #D9D9D9;
+    color: #1228C1;
+    padding: 1px 8px;
+    border-radius: 20px;
+    background-color: #FCFCFC;
+}
+
+.header-tickets-number {
+    border: 1px solid #D9D9D9;
+    background-color: #FCFCFC;
+    padding: 1px 8px;
+    border-radius: 20px;
+}
+
+
+.ticket-details-con {
+    max-height: 70vh;
+    overflow: auto;
+}
+
+
+.ticket-details {
+    background-color: #FCFCFC;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    margin: 10px auto;
+    border-radius: 4px;
+    width: 100%;
+
+}
+
+.ticket-details-all {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-date {
+    font-size: 12px;
+    font-weight: var(--fw-400);
+    color: #9D9D9D;
+}
+
+.ticket-name {
+    font-size: 18px;
+    font-weight: var(--fw-400);
+    color: #262626;
+}
+
+.ticket-won {
+    font-size: 14px;
+    font-weight: var(--fw-400);
+    display: flex;
+    gap: 5px;
+    max-width: 100%; /* Ensure it doesn't overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ticket-won span {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px;
+    max-width: 100%; /* Ensure it doesn't overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.active-tab {
+    border-bottom: 4px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    border-radius: 4px;
+}
+
 @media (max-width: 1359px) {
 
     .ticket-table {
         border: 1px solid #D9D9D9;
-        width: 80%;
+        width: 100%;
         padding: 15px;
         border-radius: 4px;
     }
@@ -1279,7 +1507,7 @@ input[type=number] {
 
     .ticket-table {
         border: 1px solid #D9D9D9;
-        width: 80%;
+        width: 100%;
         padding: 15px;
         border-radius: 4px;
     }
@@ -1304,7 +1532,7 @@ input[type=number] {
 @media (max-width: 1229px) {
     .ticket-table {
         border: 1px solid #D9D9D9;
-        width: 80%;
+        width: 100%;
         padding: 15px;
         border-radius: 4px;
     }
@@ -1340,7 +1568,7 @@ input[type=number] {
 
     .ticket-table {
         border: 1px solid #D9D9D9;
-        width: 80%;
+        width: 100%;
         padding: 15px;
         border-radius: 4px;
     }
@@ -1366,7 +1594,7 @@ input[type=number] {
 
     .ticket-table {
         border: 1px solid #D9D9D9;
-        width: 80%;
+        width: 100%;
         padding: 15px;
         border-radius: 4px;
     }
@@ -1374,7 +1602,7 @@ input[type=number] {
     .winner-button {
         display: flex;
         justify-content: space-between;
-        padding: 10px 20px;
+        padding: 10px 10px;
         font-size: 12px;
     }
 
@@ -1383,16 +1611,17 @@ input[type=number] {
         justify-content: space-between;
         border: 1px solid #E9E9E9;
         background-color: #EEF8FF;
-        font-size: 12px;
-        width: 100%;
-        padding: 5px 20px;
+        font-size: 8px;
+        width: max-content;
+        padding: 5px 10px;
+        white-space: nowrap;
     }
 
     .winner-table-body {
         display: flex;
         justify-content: space-between;
         padding: 5px 14px;
-        font-size: 12px;
+        font-size: 8px;
     }
 
 
@@ -1401,6 +1630,14 @@ input[type=number] {
 }
 
 @media (max-width: 1000px) {
+
+    .ticket-won {
+        font-size: 8px;
+        font-weight: var(--fw-400);
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
 
     .ticket-table {
         border: 1px solid #D9D9D9;
@@ -1413,6 +1650,8 @@ input[type=number] {
         border: 1px solid #D9D9D9;
         // width: auto;
         border-radius: 4px;
+        overflow: auto;
+        max-width: 100%;
     }
 
 

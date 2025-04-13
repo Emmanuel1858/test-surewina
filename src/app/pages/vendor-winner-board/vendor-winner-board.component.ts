@@ -3,24 +3,105 @@ import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
 
+interface Prize {
+  prizeId: number;
+  prizeTier: number;
+  name: string;
+  image: string;
+}
+
+interface Draw {
+  drawId: number;
+  drawDescription: string;
+  drawDate: string;
+  totalWinners: number;
+  winners: any; // Replace `any` with the correct type if needed
+  prizes: Prize[];
+}
+
+
+
 @Component({
   selector: 'app-vendor-winner-board',
   templateUrl: './vendor-winner-board.component.html',
   styleUrls: ['./vendor-winner-board.component.scss']
 })
+
+
 export class VendorWinnerBoardComponent implements OnInit{
-  ticketName: any = []
+  allDrawsByMonth: any = []
   selectedTicketIndex: number | null = null
   mobileVisibility: boolean = true
   showLoader: boolean = false
   showMenu: boolean = false;
+  tabs: string = 'jan'
+  months: string[] =["2025-01-01T21:25:46.511Z"]
+  showWinnerList: boolean = false
+  showMonth: boolean = true
+  listOfWinners: any = []
+  allPrizes: { prizeId: number; prizeTier: number; name: string; image: string }[] = [];
+  currentPrizeIndex = 0;
+  noData: string = ''
+
   
 
-  constructor(private userTicket: UserTicketService, private router:Router){}
+  constructor(private userTicket: UserTicketService, private router:Router){
+
+  }
 
   ngOnInit(): void {
       this.getWinnerBoard()
+      this.showAllWinnerByMonth()
+      this.showAllWinnerByMonth()
   }
+
+  switchTab(tab: string) {
+    this.tabs = tab
+    console.log(this.tabs)
+    switch (this.tabs) {
+      case 'jan':
+        this.months = ["2025-01-01T21:25:46.511Z"]
+        break;
+      case 'feb': 
+        this.months = [ "2025-02-01T21:25:46.511Z" ]
+        break
+      case 'mar':
+        this.months = [ "2025-03-01T21:25:46.511Z" ]
+        break
+      case 'apr': 
+        this.months = [ "2025-04-01T21:25:46.511Z" ]
+        break
+      case 'may': 
+        this.months = [ "2025-05-01T21:25:46.511Z" ]
+        break
+      case 'jun': 
+        this.months = [ "2025-06-01T21:25:46.511Z" ]
+        break
+      case 'jul': 
+        this.months = [ "2025-07-01T21:25:46.511Z" ]
+        break
+      case 'aug': 
+        this.months = [ "2025-08-01T21:25:46.511Z" ]
+        break
+      case 'sept': 
+        this.months = [ "2025-09-01T21:25:46.511Z" ]
+        break
+      case 'oct': 
+        this.months = [ "2025-10-01T21:25:46.511Z" ]
+        break
+      case 'nov': 
+        this.months = [ "2025-11-01T21:25:46.511Z" ]
+        break
+      case 'dec':
+        this.months = [ "2025-12-01T21:25:46.511Z" ]
+        break
+      default:
+        break;
+    }
+    this.showAllWinnerByMonth()
+  }
+
+  
 
 
   openMenu() {
@@ -54,24 +135,88 @@ export class VendorWinnerBoardComponent implements OnInit{
   }
 
 
+ async showListWinners(i: number) {
+    const credentials = {
+      pageNumber: 1, 
+      numberOfRecords: 10,
+      drawId: i
+    }
+    try {
+      this.showLoader = true
+      const response = await lastValueFrom(this.userTicket.getWinnerByDrawId(credentials))
+      console.log(response)
+      this.showLoader = false
+      this.listOfWinners = response.result.items
+      this.showWinnerList = true
+      this.showMonth = false
+    } catch (error) {
+      console.log(error)
+    }
+
+  }
+
   async getWinnerBoard() {
     try {
       this.showLoader = false
       const response = await lastValueFrom(this.userTicket.winnerBoard())
-      // console.log(response)
+      console.log(response)
       this.showLoader = false
-      this.ticketName = response.result
+      // this.ticketName = response.result
      
     } catch (error) {
      console.log(error)
     }
   }
+
+
   selectTicket(index: number) {
     this.selectedTicketIndex = index; 
     this.mobileVisibility = false// Update selected ticket index
   }
 
   closeWinner() {
-    this.mobileVisibility = false
+   this.router.navigate(['/vendor-dashboard'])
+  }
+
+  showTheMonth() {
+    this.showWinnerList = false 
+    this.showMonth = true
+  }
+
+
+
+  async showAllWinnerByMonth() {
+    const credentialsMonth = this.months
+    try {
+      this.showLoader = true
+      const response = await lastValueFrom(this.userTicket.winnerBoardByMonth(credentialsMonth))
+      console.log('Months by response:', response)
+      if(!this.allDrawsByMonth) {
+        this.noData = 'No Data Available right now'
+      }
+      this.allDrawsByMonth = response.result[0].draws as Draw[]
+      this.allPrizes = this.allDrawsByMonth.map((draw: Draw) => draw.prizes).flat();
+
+      console.log('all prize', this.allPrizes)
+      this.showLoader = false
+    } catch(error) {
+      console.log(error)
+    }
+  }
+
+  get currentPrize() {
+    return this.allPrizes.length > 0 ? this.allPrizes[this.currentPrizeIndex] : null;
+  }
+
+  showNextPrize() {
+    if (this.allPrizes.length > 0) {
+      this.currentPrizeIndex = (this.currentPrizeIndex + 1) % this.allPrizes.length;
+    }
+  }
+
+  showPreviousPrize() {
+    if (this.allPrizes.length > 0) {
+      this.currentPrizeIndex = (this.currentPrizeIndex - 1 + this.allPrizes.length) % this.allPrizes.length;
+    }
   }
 }

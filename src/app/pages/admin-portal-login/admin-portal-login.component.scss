@@ -106,6 +106,7 @@
 .checkbox {
   display: flex;
   gap: .5rem;
+  display: none;
 
   input {
     border-radius: 0.125rem;

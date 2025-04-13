@@ -7,13 +7,13 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-between;
-
+    justify-content: space-evenly;
+    padding: 15px;
 }
 
 .container-img {
     position: relative;
-    width: 45%;
+    width: 36%;
     height: 100%;
 }
 
@@ -38,7 +38,8 @@
 
 .login-details {
     // border: 1px solid;
-    width: 60%;
+    width: 50%;
+    height: 100%;
 }
 
 .login-details-container {

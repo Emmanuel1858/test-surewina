@@ -16,13 +16,18 @@ export class AdminUsersComponent implements OnInit {
   primaryTabs: string = 'all-users-container';
   tabs: string = 'personal-information';
   showBackBtn: boolean = false;
+  loading: boolean = true
   commissionEarned: string = '1,676,200';
   status: string = 'active';
   transactionStatus: string = 'Successful';
   allUsers: any = []
+  allVendor: any = []
+  userDetails: any = {}
   pageNumber: number = 1
   numberOfRecords: number = 3
   numberOfUsers: number = 0
+  numberOfVendors: number = 0
+  
 
   // firstName: string = ''
   // lastName: string = ''
@@ -51,8 +56,10 @@ export class AdminUsersComponent implements OnInit {
       numberOfRecords: this.numberOfRecords
     }
     try {
+      this.loading = true
       const response = await lastValueFrom(this.userService.allGetUsers(getNumberOfUsers));
       console.log(response)
+      this.loading = false
       this.numberOfUsers = response.result.items.length
       this.allUsers = response.result.items
     } catch (error) {
@@ -60,8 +67,38 @@ export class AdminUsersComponent implements OnInit {
     }
   }
 
+  async getUserById(id: number) {
+    try {
+      const response = await lastValueFrom(this.userService.getUserById(id)) 
+      this.userDetails = response.result
+      console.log(response)
+    } catch(error) {
+      console.log(error)
+    }
+
+
+  }
+
+  async getAllVendor() {
+    const getNumberOfUsers = {
+      pageNumber : this.pageNumber,
+      numberOfRecords: this.numberOfRecords
+    }
+    try {
+      // this.loading = true
+      const response = await lastValueFrom(this.userService.allGetVendor(getNumberOfUsers));
+      console.log(response)
+      // this.loading = false
+      this.numberOfVendors = response.result.items.length
+      this.allVendor = response.result.items
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   ngOnInit(): void {
       this.getAllUsers()
+      this.getAllVendor()
   }
 
   goBack() {

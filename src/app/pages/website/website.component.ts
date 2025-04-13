@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { DrawService } from 'src/app/services/draw.service';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
+import { WinnerBoardComponent } from '../winner-board/winner-board.component';
 
 // import { UserService } from 'src/app/services/user.service';
 
@@ -21,6 +22,7 @@ export class WebsiteComponent implements OnInit {
   channel: number = 1
   loading: boolean = false 
   showAddressError: boolean = false
+  showTicketError: boolean = false
   pageNumber: number = 1;
   showError: string = ''
   numberOfRecords: number = 4;
@@ -38,6 +40,7 @@ export class WebsiteComponent implements OnInit {
   increment(): void {
     if (this.ticketCount < 10) {
       this.ticketCount++;
+      // console.log('add')
       this.updateTotalPrice();
     }
   }
@@ -82,6 +85,10 @@ export class WebsiteComponent implements OnInit {
   navigateToMakePayment() {
     if (this.identifier === '') {
       this.showAddressError = true
+      return
+    }
+    if (this.totalPrice === 0) {
+      this.showTicketError = true
       return
     }
     this.showMakePayment = true

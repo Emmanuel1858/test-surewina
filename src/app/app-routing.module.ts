@@ -31,12 +31,20 @@ import { VendorTicketHistoryComponent } from './pages/vendor-ticket-history/vend
 import { VendorSellTicketComponent } from './pages/vendor-sell-ticket/vendor-sell-ticket.component';
 import { VendorMakePaymentComponent } from './pages/vendor-make-payment/vendor-make-payment.component';
 import { SelectProfileComponent } from './pages/select-profile/select-profile.component';
+import { VendorProfileComponent } from './pages/vendor-profile/vendor-profile.component';
+import { AddTicketComponent } from './pages/add-ticket/add-ticket.component';
+import { ScheduleDrawComponent } from './pages/schedule-draw/schedule-draw.component';
+import { AddPrizeComponent } from './pages/add-prize/add-prize.component';
+import { ConfigureTierComponent } from './pages/configure-tier/configure-tier.component';
+import { ConfigureWinningsComponent } from './pages/configure-winnings/configure-winnings.component';
+import { AddPrizeDepotComponent } from './pages/add-prize-depot/add-prize-depot.component';
+import { TestingComponent } from './pages/testing/testing.component';
 // import { CreateAccountNameComponent } from './pages/create-account-name/create-account-name.component';
 
 
 const routes: Routes = [
-  { path: 'Jollywina.com', component: WebsiteComponent },
-  { path: 'select-your-profile', component: SelectProfileComponent},
+  { path: 'Surewina.com', component: WebsiteComponent },
+  { path: 'select-your-profile', component: SelectProfileComponent },
   { path: 'create-account-name', component: CreateAccountNameComponent },
   { path: 'create-account-password', component: CreateAccountPasswordComponent },
   { path: 'create-account-otp', component: CreateAccountOtpComponent },
@@ -45,7 +53,7 @@ const routes: Routes = [
   { path: 'profile-details', component: ProfileDetailsComponent },
 
 
-  { path: '', redirectTo: 'Jollywina.com', pathMatch: 'full' },
+  { path: '', redirectTo: 'Surewina.com', pathMatch: 'full' },
   {
     path: '', component: LayoutComponent,
     children: [
@@ -61,19 +69,27 @@ const routes: Routes = [
   { path: 'vendor-login', component: VendorLoginComponent },
   { path: 'vendor-dashboard', component: VendorDashboardComponent },
   { path: 'vendor-winner-board', component: VendorWinnerBoardComponent },
-  { path: 'vendor-ticket-history', component: VendorTicketHistoryComponent},
-  { path: 'vendor-sell-ticket', component: VendorSellTicketComponent},
-  { path: 'vendor-make-payment', component: VendorMakePaymentComponent},
+  { path: 'vendor-ticket-history', component: VendorTicketHistoryComponent },
+  { path: 'vendor-sell-ticket', component: VendorSellTicketComponent },
+  { path: 'vendor-make-payment', component: VendorMakePaymentComponent },
+  { path: 'vendor-profile', component: VendorProfileComponent },
   { path: 'admin-login', component: AdminPortalLoginComponent },
   {
     path: '', component: AdminPortalComponent,
     children: [
       { path: 'admin-dashboard', component: AdminDashboardComponent },
       { path: 'users', component: AdminUsersComponent },
+      { path: 'lottery-add-ticket', component: AddTicketComponent },
+      { path: 'schedule-draw', component: ScheduleDrawComponent },
+      { path: 'add-prize', component: AddPrizeComponent },
+      { path: 'add-prize-depot', component: AddPrizeDepotComponent},
       { path: 'lottery', component: AdminLotteryComponent },
+      { path: 'configure-tier', component: ConfigureTierComponent },
+      { path: 'configure-winning', component: ConfigureWinningsComponent},
       { path: 'transactions', component: AdminTransactionsComponent },
     ]
-  }
+  },
+  { path: 'test', component: TestingComponent}
 
 
 ]

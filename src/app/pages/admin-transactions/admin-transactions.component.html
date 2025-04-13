@@ -5,7 +5,7 @@
         <p> Total Tickets Earnings </p>
       </div>
       <div class="card-bottom">
-        <p class="item-1"> ₦ 32.2m </p>
+        <p class="item-1"> ₦ {{totalEarning}} </p>
         <div class="item-2">
           <div class="sub-item-1">
             <!-- arrow icon that shows increase or decrease -->
@@ -25,20 +25,16 @@
       </div>
       <div class="card-bottom">
         <div class="card-item-collection">
-          <p> Web App </p>
-          <h2> ₦ 7,215,878 </h2>
+          <p> Website </p>
+          <h2> ₦ {{website}} </h2>
         </div>
         <div class="card-item-collection">
-          <p> Mobile App </p>
-          <h2> ₦ 21,000,215 </h2>
-        </div>
-        <div class="card-item-collection">
-          <p> USSD </p>
-          <h2> ₦ 1,000,215 </h2>
+          <p> User Account </p>
+          <h2> ₦ {{userAccount}} </h2>
         </div>
         <div class="card-item-collection">
           <p> Agents </p>
-          <h2> ₦ 1,000,215 </h2>
+          <h2> ₦ {{vendor}} </h2>
         </div>
       </div>
     </div>
@@ -78,7 +74,7 @@
             <div class="table-heading"> Status </div>
           </th>
           <th>
-            <div class="table-heading">  Customer Name </div>
+            <div class="table-heading"> Customer Details </div>
           </th>
           <th>
             <div class="table-heading"> Date Bought </div>
@@ -88,11 +84,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let transaction of allTransactions">
           <td> <input type="checkbox" /> </td>
-          <td class="amount-earned"> ₦ 1,000 </td>
-          <td> 12 tickets </td>
-          <td> Web App </td>
+          <td class="amount-earned"> {{transaction.amountPaid}} </td>
+          <td> {{transaction.numberOfTickets}} </td>
+          <td> {{transaction.channel}} </td>
           <td>
             <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
               <div class="dot">
@@ -102,98 +98,8 @@
               </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
             </button>
           </td>
-          <td> Bala Muhammed </td>
-          <td> 10th July, 2024 </td>
-          <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
-        </tr>
-        <tr>
-          <td> <input type="checkbox" /> </td>
-          <td class="amount-earned"> ₦ 1,000 </td>
-          <td> 12 tickets </td>
-          <td> Web App </td>
-          <td>
-            <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
-              <div class="dot">
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-                  <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
-                </svg>
-              </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
-            </button>
-          </td>
-          <td> Bala Muhammed </td>
-          <td> 10th July, 2024 </td>
-          <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
-        </tr>
-        <tr>
-          <td> <input type="checkbox" /> </td>
-          <td class="amount-earned"> ₦ 1,000 </td>
-          <td> 12 tickets </td>
-          <td> Web App </td>
-          <td>
-            <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
-              <div class="dot">
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-                  <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
-                </svg>
-              </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
-            </button>
-          </td>
-          <td> Bala Muhammed </td>
-          <td> 10th July, 2024 </td>
-          <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
-        </tr>
-        <tr>
-          <td> <input type="checkbox" /> </td>
-          <td class="amount-earned"> ₦ 1,000 </td>
-          <td> 12 tickets </td>
-          <td> Web App </td>
-          <td>
-            <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
-              <div class="dot">
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-                  <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
-                </svg>
-              </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
-            </button>
-          </td>
-          <td> Bala Muhammed </td>
-          <td> 10th July, 2024 </td>
-          <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
-        </tr>
-        <tr>
-          <td> <input type="checkbox" /> </td>
-          <td class="amount-earned"> ₦ 1,000 </td>
-          <td> 12 tickets </td>
-          <td> Web App </td>
-          <td>
-            <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
-              <div class="dot">
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-                  <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
-                </svg>
-              </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
-            </button>
-          </td>
-          <td> Bala Muhammed </td>
-          <td> 10th July, 2024 </td>
-          <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
-        </tr>
-        <tr>
-          <td> <input type="checkbox" /> </td>
-          <td class="amount-earned"> ₦ 1,000 </td>
-          <td> 12 tickets </td>
-          <td> Web App </td>
-          <td>
-            <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
-              <div class="dot">
-                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
-                  <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
-                </svg>
-              </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
-            </button>
-          </td>
-          <td> Bala Muhammed </td>
-          <td> 10th July, 2024 </td>
+          <td> {{transaction.user}} </td>
+          <td> {{transaction.date.split('T')[0]}} </td>
           <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
         </tr>
       </tbody>

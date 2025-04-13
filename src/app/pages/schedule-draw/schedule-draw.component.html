@@ -1,0 +1,152 @@
+<div *ngIf="showScheduleDraw">
+    <div class="header-container">
+        <img (click)="goToLottery()" src="../../../assets/go-back.svg" alt="">
+        <span>Schedule a new draw</span>
+    </div>
+    <div class="container-details">
+        <div class="ticket-steps">
+            <span class="ticket-steps-1">
+                <img src="../../../assets/first-step.svg" alt="">
+                <span>Step 1 - Draw Properties</span>
+            </span>
+            <span class="ticket-steps-2">
+                <img src="../../../assets/second-step.svg" alt="">
+                <span>Step 2 - Winning Prizes</span>
+
+            </span>
+        </div>
+    </div>
+    <div>
+        <div class="container-draw">
+            <div class="container-draw-properties" *ngFor="let ticket of allTicket">
+                <div class="img-draw-properties">
+                    <img [src]="ticket.image" alt="">
+                </div>
+                <div class="info-draw-properties">
+                    <div class="text-draw-properties">
+                        <span>Ticket {{ticket.id}}</span>
+                        <span>₦{{ticket.price}}</span>
+                    </div>
+                    <div class="input-draw-properties">
+                        <input type="checkbox" [checked]="selectedTicketId === ticket.id"
+                            (change)="onTicketSelect(ticket.id, $event)">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-draw-details">
+            <div class="container-draw-input">
+                <input type="text" placeholder="Enter Draw Name" [(ngModel)]="drawName">
+            </div>
+            <div class="container-draw-dropdown">
+                <div class="input" (click)="toggleDropdown()">
+                    <input type="text" [value]="selectedDay" readonly placeholder="What day should the draw happen?">
+                    <span class="dropdown-icon"><img src="../../../assets/dropdown-arrow.svg" alt=""></span>
+                </div>
+                <div class="dropdown-items" *ngIf="isDropdownOpen">
+                    <span *ngFor="let day of days" (click)="selectDay(day)">{{ day }}</span>
+                </div>
+
+            </div>
+            <div>
+                <div>Minimum ticket can users buy at once</div>
+                <div class="ticket-count">
+                    <button (click)="decrement()">-</button>
+                    <span>{{numberOfTicket}}</span>
+                    <button (click)="increment()">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-btn">
+        <button (click)="goToPrizeTier()">
+            <span>CONTINUE</span>
+            <span>></span>
+        </button>
+    </div>
+    <div class="loader" *ngIf="showLoadingTicket">
+        <app-loader />
+    </div>
+</div>
+
+<div *ngIf="showTierPrize">
+    <div class="loader" *ngIf="loading">
+        <app-loader />
+    </div>
+    <div class="header-container">
+        <img (click)="goToScheduleDraw()" src="../../../assets/go-back.svg" alt="">
+        <span>Schedule a new draw</span>
+    </div>
+    <div class="container-details">
+        <div class="ticket-steps">
+            <span class="ticket-steps-1-next">
+                <img src="../../../assets/step-done.svg" alt="">
+                <span>Step 1 - Draw Properties</span>
+            </span>
+            <span class="ticket-steps-2-next">
+                <img src="../../../assets/second-step.svg" alt="">
+                <span>Step 2 - Winning Prizes</span>
+
+            </span>
+        </div>
+    </div>
+    <div>
+        <div class="all-prizes-tier">
+            <div class="all-prizes-tier-sub">
+                <!-- <span class="tier-prize-header"></span> -->
+                <div class="container-prize-tier-1" *ngFor="let prize of getAllPrizeArray; let i = index">
+                    <div class="tier-prize">
+                        <img [src]="prize.image" alt="">
+                        <div class="tier-prize-text-input">
+                            <div class="tier-prize-text">
+                                <span>{{ prize.name }}</span>
+                                <span>Tier prize {{ prize.prizeTier }}</span>
+                            </div>
+                            <input type="checkbox" [checked]="isPrizeChecked(prize.prizeId)"
+                                (change)="onPrizeCheckboxChange($event, prize.prizeId)">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="container-btn">
+            <button (click)="scheduleDraw()">
+                <span>SCHEDULE DRAW</span>
+                <span>></span>
+            </button>
+        </div>
+    </div>
+</div>
+    <div class="ticket-container-background" *ngIf="showModal">
+        <div class="modal">
+            <div class="container-modal">
+                <div class="modal-img">
+                    <img src="../../../assets/Group 1000002391.svg" alt="">
+                    <img src="../../../assets/Group 1000002392.svg" alt="">
+                </div>
+                <div class="tick-container">
+                    <section class="animated_check_circle">
+                        <svg viewBox="0 0 130.2 130.2" class="animated_check_circle">
+                            <circle class="path circle" fill="none" stroke="#10B981" stroke-width="6"
+                                stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                            <polyline class="path check" fill="none" stroke="#10B981" stroke-width="6"
+                                stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5" />
+                        </svg>
+                    </section>
+                </div>
+                <div class="modal-text">
+                    <h1>Draw Schedule Successfully</h1>
+                    <span>This will run based on the date inputted
+                    </span>
+                    <!-- <span>and easily purchase the tickets</span> -->
+                </div>
+                <div class="modal-btn">
+                    <button (click)="goToLottery()">Ok, Got it</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+ 

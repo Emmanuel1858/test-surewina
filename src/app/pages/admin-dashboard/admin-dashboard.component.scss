@@ -1,4 +1,16 @@
 
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
 h1.current-route-header {
   color: var(--colors-black-tetiary-color-b-900, #000);
   /* Body Text - Medium/Body Text - Medium - 2 */
@@ -52,8 +64,8 @@ h1.current-route-header {
   flex-direction: column;
   justify-content: space-between;
   border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Medium, 0.5rem);
-  border: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
-  background: var(--Color-White-White, #FFF);
+  // border: 1px solid var(--colors-boarders-strokes-boarders-strokes-mild, #D9D9D9);
+  // background: var(--Color-White-White, #FFF);
 }
 
 .card-top {
@@ -119,7 +131,7 @@ h1.current-route-header {
 }
 
 .sm-wide-card {
-  padding: 1.25rem;
+  padding: 0.25rem 0.5rem;
   display: flex;
   // width: 40.5rem;
   flex-direction: column;
@@ -152,7 +164,7 @@ h1.current-route-header {
 }
   
 .card-1 { 
-  width: 30%;
+  width: 93%;
   // grid-area: 1 / 1 / 2 / 2;
   border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Medium, 0.5rem);
   border: 1px solid var(--Colors-Brand-Colors-WinAPrize---Green---Primary-Color, #FFB951);
@@ -174,20 +186,20 @@ h1.current-route-header {
 }
 
 .card-4 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  width: 100%;
-  background: var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
-  padding: 1.25rem;
-  height: 17.5rem;
+
+  .fade-img {
+    transition: opacity 1s ease-in-out;
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+
 
   img {
-    padding: 1rem;
-    background-color: var(--colors-blue-secondary-color-s-900, #0009B0);
+    padding: .5rem;
+    // background-color: var(--colors-blue-secondary-color-s-900, #0009B0);
 
-    border-radius: 50%;
+    border-radius: 5px;
   }
 
   h2 {
