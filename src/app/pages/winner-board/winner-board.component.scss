@@ -23,7 +23,7 @@
 
 
 .container {
-    background-color: #F3F3FE;
+    background-color: #fcfcfc;
     max-height: 85vh;
     overflow: auto;
     padding: 20px 40px 0;
@@ -33,11 +33,11 @@
 }
 
 .ticket-body {
-    width: 90%;
+    width: 94%;
     border: 1px solid #9D9D9D;
     border-radius: 4px;
     background-color: #fff;
-    margin: 0 auto;
+    margin: 35px auto 10px;
     // margin-left: 40px;
     display: flex;
 

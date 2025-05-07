@@ -196,6 +196,7 @@ export class ScheduleDrawComponent implements OnInit {
       }
 
     } catch(e) {
+      
       // console.log(e)
     }
     

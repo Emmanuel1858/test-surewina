@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
@@ -19,7 +20,7 @@ export class UserTicketService {
   private winnerByDrawId: string = environment.userTicket.getWinnerByDrawId
   private winnerBoardUserUrl: string= environment.userTicket.winnerBoardUser
   private winningTicketUrl: string = environment.userTicket.getClamWinningTicket
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router: Router) { }
 
   buyTicketWeb(credentialsBuyTicket: {identifier: string, drawId: number, quantity: number, channel: number}) {
     const bearerToken = sessionStorage.getItem('token')
@@ -73,6 +74,10 @@ export class UserTicketService {
       });
       const httpOptions = { headers }
       return this.http.post(`${this.baseUrl}${this.onGoingTicketUrl}`, credentialGoingTicket, httpOptions )
+    } else {
+      // alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
     }
 
     return new Observable<any>();
@@ -128,6 +133,9 @@ export class UserTicketService {
       });
       const httpOptions = { headers }
       return this.http.get(`${this.baseUrl}${this.winnerBoardUrl}`, httpOptions )
+    } else {
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
     }
 
     return new Observable<any>();
@@ -142,6 +150,9 @@ export class UserTicketService {
       });
       const httpOptions = { headers }
       return this.http.get(`${this.baseUrl}${this.winnerBoardUserUrl}`, httpOptions )
+    } else {
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
     }
 
     return new Observable<any>();

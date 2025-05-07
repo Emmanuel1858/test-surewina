@@ -189,14 +189,16 @@ export class LayoutComponent implements OnInit, OnDestroy {
       this.loading = false
       if (response.responseStatus === false) {
         this.showError = response.responseMessage
-
+        
       } else {
         this.showLoader = true
         this.showMakePayment = false
         this.showPayTicket = false
       }
     } catch (error) {
-      this.loading = true
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
 

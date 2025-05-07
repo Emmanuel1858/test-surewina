@@ -145,6 +145,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.showLoader = true
       }
     } catch(error) {
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       console.error(error)
     }
    
@@ -202,6 +205,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.unitPrice = response.result.items[0].amount
 
     } catch (error) {
+      // debugger
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
   }
@@ -216,6 +223,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.bars[0] = true
       // console.log(this.backgroundImages)
     } catch (error) {
+      // debugger
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
   }
@@ -233,7 +244,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.drawResults = response.result;
 
     } catch (error) {
+      // debugger
       this.showLoader = false;
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error);
     }
   }
@@ -276,7 +291,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.showTicketPayment = false
       }
     } catch (error) {
+      // debugger
       this.loading = true
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
 
@@ -308,6 +327,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
     } catch (error) {
+      // debugger
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
   }
@@ -327,6 +350,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.showWinnerList = true
       this.showMonth = false
     } catch (error) {
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
 

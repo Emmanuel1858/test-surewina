@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
@@ -15,7 +16,7 @@ export class DrawService {
   private getConfigureWinnigUrl: string = environment.draw.getConfigWin
 
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
   getTodayDraw(credentialsTodayDraw: {pageNumber: number; numberOfRecords: number}) {
     
     const bearerToken = sessionStorage.getItem('token')
@@ -28,6 +29,10 @@ export class DrawService {
       
       const httpOptions = { headers}
       return this.http.post(`${this.baseUrl}${this.getTodayDrawUrl}`, credentialsTodayDraw, httpOptions)
+    } else {
+      // alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
     }
     return new Observable<any>();
   }
@@ -43,6 +48,9 @@ export class DrawService {
       
       const httpOptions = { headers}
       return this.http.post(`${this.baseUrl}${this.getTodayDrawUrl}`, credentialsTodayDraw, httpOptions)
+    } else {
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
     }
     return new Observable<any>();
   }

@@ -61,6 +61,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.showLoader = false
 
     } catch (error) {
+    
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       this.showLoader = false
       // console.log(error)
     }
@@ -175,6 +179,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.modalVisibility = true
       }
     } catch(error) {
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       console.error(error)
     }
    
@@ -201,6 +208,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
         }
       } catch(error) {
         console.error(error)
+        alert('You were logged out due to error. Try logging back in.');
+        this.router.navigate(['/login'])
+        sessionStorage.clear()
       }
     }
   }

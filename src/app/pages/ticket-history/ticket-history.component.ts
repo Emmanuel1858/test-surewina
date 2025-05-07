@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
 
@@ -42,7 +43,9 @@ export class TicketHistoryComponent implements OnInit {
   allPreviousTicket: any[] = []
   
 
-  constructor(private userTicket: UserTicketService) {}
+  constructor(private userTicket: UserTicketService, 
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
       this.getOngoingTicket()
@@ -78,6 +81,9 @@ export class TicketHistoryComponent implements OnInit {
       // console.log(response)
       // console.log('testing ticket id with user')
     } catch (error) {
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
   }
@@ -109,6 +115,9 @@ export class TicketHistoryComponent implements OnInit {
       // console.log(this.allTicket)
       
     } catch(error) {
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
   }
@@ -139,6 +148,9 @@ export class TicketHistoryComponent implements OnInit {
       // console.log(this.allTicket)
       
     } catch(error) {
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
   }

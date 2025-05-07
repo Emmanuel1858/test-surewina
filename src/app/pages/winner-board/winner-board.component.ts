@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
 
@@ -23,7 +24,9 @@ export class WinnerBoardComponent implements OnInit {
   drawResults: any[] = []
 
 
-  constructor(private userTicket: UserTicketService) { }
+  constructor(private userTicket: UserTicketService, 
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.getWinnerBoard()
@@ -48,6 +51,9 @@ export class WinnerBoardComponent implements OnInit {
       this.drawResults = response.result;
   
     } catch (error) {
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       this.showLoader = false;
       // console.log(error);
     }
@@ -70,6 +76,9 @@ export class WinnerBoardComponent implements OnInit {
       this.showWinnerList = true
       this.showMonth = false
     } catch (error) {
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
       // console.log(error)
     }
 

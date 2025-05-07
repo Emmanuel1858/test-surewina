@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,16 @@ export class UserAccountService {
   private userAddressUrl: string = environment.userAccount.updateAddress
   private userPasswordUrl: string =  environment.userAccount.updatePassword
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   userDetails() {
     const bearerToken = sessionStorage.getItem('token')
     if(bearerToken) {
       const headers = new HttpHeaders().set('Authorization', ` bearer ${bearerToken}`)
       return this.http.get(`${this.baseUrl}${this.userDetailsUrl}`, {headers})
+    } else {
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
     }
     return new Observable<any>();
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,9 @@ export class UserService {
   private getAllVendors: string = environment.vendor.getAllVendor
   private getVendorSummary: string = environment.vendor.getVendorSummary
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, 
+    private router: Router
+  ) { }
   allGetUsers( getTheNumberOfUsers: { pageNumber: number; numberOfRecords: number; }) {
     const bearerToken = sessionStorage.getItem('token');
     if (!bearerToken) {
@@ -65,6 +68,9 @@ export class UserService {
       const httpOptions = { headers }
       return this.http.get(`${this.baseUrl}${this.getVendorSummary}`, httpOptions)
 
+    } else {
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
     }
     return new Observable<any>()
   }
