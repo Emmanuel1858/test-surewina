@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
+import { Subscription, lastValueFrom } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { SharedService } from 'src/app/services/shared.service';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -81,7 +82,11 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
   totalCommission: number = 0
   pageNumber: number = 1
   numberOfRecords: number = 1
+  inactivityTimeout: any;
+  inactivityDuration = 10 * 60 * 1000;
   noData: string = ''
+  private sub!: Subscription
+ 
   allPrizes: { prizeId: number; prizeTier: number; name: string; image: string }[] = [];
 
 
@@ -89,7 +94,7 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
 
 
   constructor(private router: Router, private userTicket: UserTicketService,
-    private userService: UserService
+    private userService: UserService, private sharedService: SharedService
   ) { }
 
   
@@ -101,8 +106,38 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
     this.vendorDetails()
     this.getVendorTicket()
     this.showAllWinnerByMonth()
+    this.sharedService.ticketBtn$.subscribe(value => {
+      this.sellTicketBtn = value
+    })
     // window.location.reload()
 
+  }
+
+  addActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.addEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  removeActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.removeEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  resetInactivityTimer() {
+    clearTimeout(this.inactivityTimeout);
+    this.inactivityTimeout = setTimeout(() => {
+      this.handleInactivityLogout();
+    }, this.inactivityDuration);
+  }
+
+  handleInactivityLogout() {
+    localStorage.setItem('logoutReason', 'inactivity');
+    // this.authService.logout(); // your logout logic here
+    this.router.navigate(['/vendor-login']);
   }
 
   navigateToProfile() {
@@ -112,7 +147,7 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
   switchTab(tab: string) {
    
     this.tabs = tab
-    console.log(this.tabs)
+    // console.log(this.tabs)
     switch (this.tabs) {
       case 'jan':
         this.months = ["2025-01-01T21:25:46.511Z"]
@@ -161,17 +196,20 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
     try {
       // this.showLoader = true
       const response = await lastValueFrom(this.userTicket.winnerBoardByMonth(credentialsMonth))
-      console.log('Months by response:', response)
+      // console.log('Months by response:', response)
       if (!this.allDrawsByMonth) {
         this.noData = 'No Data Available right now'
       }
       this.allDrawsByMonth = response.result[0].draws as Draw[]
       this.allPrizes = this.allDrawsByMonth.map((draw: Draw) => draw.prizes).flat();
 
-      console.log('all prize', this.allPrizes)
+      // console.log('all prize', this.allPrizes)
       this.showLoader = false
     } catch (error) {
-      console.log(error)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log(error)
     }
   }
 
@@ -180,14 +218,29 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
   }
 
   testFunc() {
-    console.log('testttttt')
+    // console.log('testttttt')
   }
+
+
 
   navigateToAllWinner() {
     this.router.navigate(['/vendor-winner-board'])
   }
   redeemTicket() {
     this.showGameId = true
+    this.sellTicketBtn = false
+  }
+
+  closeModalOnOutsideClick(event: MouseEvent): void {
+    this.hideGameId();
+  }
+
+  hideGameId() {
+    this.showGameId = false
+    this.showGameInfo = false
+  }
+
+  closeBtn() {
     this.sellTicketBtn = false
   }
 
@@ -199,7 +252,7 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
     try {
       this.loading = true
       const response = await lastValueFrom(this.userTicket.getPrizeWonById(this.customerGameId))
-      console.log('true response', response)
+      // console.log('true response', response)
       if (response.responseStatus === false) {
         this.showGameErrorBackend = response.responseMessage
       } else {
@@ -219,8 +272,11 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
       this.loading = false
 
     } catch (error: any) {
-      console.log(error.responseMessage)
-      console.log('false response', error)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log(error.responseMessage)
+      // console.log('false response', error)
     }
 
   }
@@ -229,21 +285,24 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
     try {
       this.loading = true
       const response = await lastValueFrom(this.userTicket.getVendorTicketById(this.customerGameId))
-      console.log('true response', response)
+      // console.log('true response', response)
       this.showAllPrize = response.result
       this.loading = false
       this.showRedeemWithMoneyOrPrize = true
       this.showGameInfo = false
 
     } catch (error: any) {
-      console.log(error.responseMessage)
-      console.log('false response', error)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log(error.responseMessage)
+      // console.log('false response', error)
     }
 
   }
 
   async navigateToSucessModal() {
-    debugger
+    // debugger
     const credentials = {
       ticketReference: this.customerGameId,
       convertedToMoney: this.showMoney
@@ -251,7 +310,7 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
     try {
       this.loading = true
       const response = await lastValueFrom(this.userTicket.getClamWinningTicket(credentials))
-      console.log(response)
+      // console.log(response)
       this.loading= false
       if (response.responseStatus === true) {
         this.showRedeemWithMoneyOrPrize = false
@@ -262,7 +321,10 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
         return
       }
     } catch(e) {
-      console.log(e)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log(e)
     }
 
   }
@@ -309,6 +371,8 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void {
+    this.removeActivityListeners();
+    clearTimeout(this.inactivityTimeout)
     this.clearAutoAdvance();
   }
 
@@ -357,11 +421,16 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
   async vendorDetails() {
     try {
       const response = await lastValueFrom(this.userService.getVendorDetails())
-      console.log(response)
+      // console.log(response)
       this.totalTicketSold = response.result.totalTickets
       this.totalCommission = response.result.totalCommission
+      sessionStorage.setItem('totalTicketSold', String(this.totalTicketSold));
+      sessionStorage.setItem('totalCommission', String(this.totalCommission));
     } catch (e) {
-      console.log(e)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log(e)
     }
   }
 
@@ -385,10 +454,13 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
       // this.tierTwoPrize = response.result.items[0].tierTwoPrize
       // this.tierThreePrize = response.result.items[0].tierThreePrize
       this.allTicket = response.result.items
-      console.log(this.allTicket)
+      // console.log(this.allTicket)
 
     } catch (error) {
-      console.log('this is my error message:', error)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log('this is my error message:', error)
     }
   }
   navigateToAllTicket() {

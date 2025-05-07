@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
@@ -8,7 +8,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
   templateUrl: './vendor-login.component.html',
   styleUrls: ['./vendor-login.component.scss']
 })
-export class VendorLoginComponent {
+export class VendorLoginComponent implements OnInit {
   
   showPassword: boolean = false;
   showLoader: boolean = false;
@@ -23,6 +23,15 @@ export class VendorLoginComponent {
   address: boolean = false;
 
   constructor(private router: Router, private authService: AuthServiceService) { }
+
+  ngOnInit(): void {
+    sessionStorage.clear()
+    const reason = localStorage.getItem('logoutReason');
+    if (reason === 'inactivity') {
+      alert('You were logged out due to inactivity');
+      localStorage.removeItem('logoutReason');    
+    }
+  }
 
   async navigateToDashboard() {
     this.formSubmitted = false; // Reset before checking
@@ -60,7 +69,7 @@ export class VendorLoginComponent {
       } else {
         sessionStorage.setItem('firstName', response.result.firstName)
         sessionStorage.setItem('lastName', response.result.lastName)
-        console.log(response.result.jwtToken)
+        // console.log(response.result.jwtToken)
         sessionStorage.setItem('token', response.result.jwtToken)
         sessionStorage.setItem('phoneNumber', response.result.phoneNumber)
         // sessionStorage.setItem('address', response.result.address)

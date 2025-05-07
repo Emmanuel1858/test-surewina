@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './vendor-ticket-history.component.html',
   styleUrls: ['./vendor-ticket-history.component.scss']
 })
-export class VendorTicketHistoryComponent implements OnInit {
+export class VendorTicketHistoryComponent implements OnInit, OnDestroy {
   showTicketDetails: boolean = false
   showMenu: boolean = false;
   pageNumber: number = 1
@@ -28,11 +28,21 @@ export class VendorTicketHistoryComponent implements OnInit {
   allTicket: any = []
   totalTicketSold: number = 0
   totalCommission: number = 0
+  inactivityTimeout: any;
+  inactivityDuration = 10 * 60 * 1000;
   constructor(private router: Router, private userService: UserService, private userTicket: UserTicketService) { }
 
   ngOnInit(): void {
     this.getVendorTicket()
     this.vendorDetails()
+    this.resetInactivityTimer();
+    this.addActivityListeners();
+  }
+
+  
+  ngOnDestroy(): void {
+    this.removeActivityListeners();
+    clearTimeout(this.inactivityTimeout)
   }
 
   openMenu() {
@@ -43,15 +53,46 @@ export class VendorTicketHistoryComponent implements OnInit {
     sessionStorage.clear()
   }
 
+
+  addActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.addEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  removeActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.removeEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  resetInactivityTimer() {
+    clearTimeout(this.inactivityTimeout);
+    this.inactivityTimeout = setTimeout(() => {
+      this.handleInactivityLogout();
+    }, this.inactivityDuration);
+  }
+
+  handleInactivityLogout() {
+    localStorage.setItem('logoutReason', 'inactivity');
+    // this.authService.logout(); // your logout logic here
+    this.router.navigate(['/vendor-login']);
+  }
+
   
   async vendorDetails() {
     try {
       const response = await lastValueFrom(this.userService.getVendorDetails())
-      console.log(response)
+      // console.log(response)
       this.totalTicketSold = response.result.totalTickets
       this.totalCommission = response.result.totalCommission
     } catch (e) {
-      console.log(e)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log(e)
     }
   }
   showDashboard() {
@@ -95,19 +136,25 @@ export class VendorTicketHistoryComponent implements OnInit {
       this.tierTwoPrize = response.result.items[0].tierTwoPrize
       this.tierThreePrize = response.result.items[0].tierThreePrize
       this.allTicket = response.result.items
-      console.log(this.allTicket)
+      // console.log(this.allTicket)
 
     } catch (error) {
-      console.log('this is my error message:',error)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log('this is my error message:',error)
     }
   }
 
   async getTicketId(ticketRef: string) {
     try {
       const response = this.userTicket.getVendorTicketById(ticketRef)
-      console.log(response)
+      // console.log(response)
     } catch (error) {
-      console.log(error)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log(error)
     }
   }
 }

@@ -75,7 +75,7 @@ export class AdminDashboardComponent implements OnInit {
       // debugge
       this.loading = false
       if (response.responseStatus === true ) {
-        console.log(response)
+        // console.log(response)
         this.totalTicketSold = response.result.overallSummary.totalTickets
         this.prizeWon = response.result.overallSummary.totalAmount
         this.summaryByChannel = response.result.summaryByChannel
@@ -86,7 +86,7 @@ export class AdminDashboardComponent implements OnInit {
       }
 
     } catch(error) {
-      console.log
+      // console.log
     }
 
   }
@@ -116,7 +116,7 @@ export class AdminDashboardComponent implements OnInit {
       // this.numberOfPrize = processed.length;
   
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
 
@@ -126,10 +126,10 @@ export class AdminDashboardComponent implements OnInit {
       this.loading = true
       const response = await lastValueFrom(this.userTicketService.winnerBoardAdmin())
       this.loading = false
-      console.log(response)
+      // console.log(response)
       this.winnersBoard = response.result[0].winners.items
     } catch (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 

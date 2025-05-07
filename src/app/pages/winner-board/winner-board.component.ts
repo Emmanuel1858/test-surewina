@@ -31,7 +31,7 @@ export class WinnerBoardComponent implements OnInit {
 
   switchTab(tab: string) {
     this.tabs = tab
-    console.log(this.tabs)
+    // console.log(this.tabs)
   }
 
   // This will hold the draw data
@@ -49,12 +49,13 @@ export class WinnerBoardComponent implements OnInit {
   
     } catch (error) {
       this.showLoader = false;
-      console.log(error);
+      // console.log(error);
     }
   }
   
 
   async showListWinners(i: number) {
+    // debugger
     const credentials = {
       pageNumber: 1, 
       numberOfRecords: 10,
@@ -63,13 +64,13 @@ export class WinnerBoardComponent implements OnInit {
     try {
       this.showLoader = true
       const response = await lastValueFrom(this.userTicket.getWinnerByDrawId(credentials))
-      console.log(response)
+      // console.log(response)
       this.showLoader = false
       this.listOfWinners = response.result.items
       this.showWinnerList = true
       this.showMonth = false
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
 
   }

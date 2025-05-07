@@ -120,7 +120,7 @@ export class AdminLotteryComponent implements OnInit {
       this.btnText = 'CONFIGURE WINNINGS'
       
     }
-    console.log(tab)
+    // console.log(tab)
   }
 
   goToNext() {
@@ -165,7 +165,7 @@ export class AdminLotteryComponent implements OnInit {
       this.loading = true
       const response = await lastValueFrom(this.adminService.getAllTicket(pagination))
       this.loading = false
-      console.log(response)
+      // console.log(response)
       const result = response.result.items
       const processed = result.map((ticket: any) => {
         if (typeof ticket.image === 'string' && ticket.image.startsWith('data:image')) {
@@ -183,7 +183,7 @@ export class AdminLotteryComponent implements OnInit {
       this.numberOfTicket = response.result.totalCount
 
     } catch (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 
@@ -196,7 +196,7 @@ export class AdminLotteryComponent implements OnInit {
       this.loading = true
 
       const response = await lastValueFrom(this.drawService.getDrawHistory(pagination))
-      console.log(response)
+      // console.log(response)
       this.loading = false
       const result = response.result.items
       const processed = result.map((draw: any ) => {
@@ -214,7 +214,7 @@ export class AdminLotteryComponent implements OnInit {
       this.getAllDrawHistory = processed
       this.numberOfDrawHistory = response.result.totalCount
     } catch (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 
@@ -257,7 +257,7 @@ export class AdminLotteryComponent implements OnInit {
       this.numberOfPrize = processed.length;
   
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
   
@@ -275,7 +275,7 @@ export class AdminLotteryComponent implements OnInit {
     }
     try {
       const response = await lastValueFrom(this.prizeDepotService.getPrizeDepot(pagination))
-      console.log(response)
+      // console.log(response)
       const result = response.result.items 
       const processed = result.map((prize: any) => {
         if(typeof prize.depotImage === 'string' && prize.depotImage.startsWith('data:image')) {
@@ -294,14 +294,14 @@ export class AdminLotteryComponent implements OnInit {
       this.getAllPrizeDepot = processed
       this.numberOfPrizeDepot = response.result.totalCount
     } catch(err) {
-      console.log(err)
+      // console.log(err)
     }
   }
 
   async getWinnigConfig() {
     try {
       const response = await lastValueFrom(this.drawService.getConfigureWin())
-      console.log(response)
+      // console.log(response)
       this.businessBaseAmount = response.result.drawBaseAmount
       this.salesAllocation = response.result.salesAllocationInPercent
       this.tierOneAllocationInPercent = response.result.tierOneAllocationInPercent
@@ -309,7 +309,7 @@ export class AdminLotteryComponent implements OnInit {
       this.tierThreeAllocationInPercent = response.result.tierThreeAllocationInPercent
       
     } catch(e) {
-      console.log(e)
+      // console.log(e)
     }
   }
   // async getAllTickets() {

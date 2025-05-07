@@ -155,9 +155,9 @@
 .second-card-right {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 16px;
     background-color: #000;
-    padding: 10px;
+    padding: 20px;
     border-radius: 8px;
     width: 100%;
 }
@@ -169,7 +169,9 @@
     align-items: center;
     background-color: #555555;
     padding: 10px;
+    border-radius: 8px;
 }
+
 
 .sell-ticket-img {
     padding: 10px;
@@ -1320,6 +1322,15 @@ input[type=number] {
     border-radius: 5px;
 }
 
+.border-top {
+    border-radius: 4px;
+    border: 3px solid rgb(217, 217, 217);
+    width: 90px;
+    position: absolute;
+    top: 10px;
+}
+
+
 .input-game-id {
     display: flex;
     flex-direction: column;
@@ -1347,9 +1358,11 @@ input[type=number] {
     position: absolute;
     right: 40px;
     bottom: 50px;
+   
 }
 
 .sell-ticket-btn-overlay {
+    cursor: pointer;
     background-color: #1228C1;
     padding: 5px 10px;
     font-family: var(--cta-alt);
@@ -1377,10 +1390,10 @@ input[type=number] {
     background-color: #EEF8FF;
     border: 1px solid #E9E9E9;
     display: flex;
-    // gap: 30px;
+    gap: 20px;
     padding: 10px 18px;
     width: 99.5%;
-    justify-content: space-between;
+    // justify-content: space-between;
     margin: 2px auto;
     border-radius: 4px;
 }

@@ -58,12 +58,12 @@ export class AdminUsersComponent implements OnInit {
     try {
       this.loading = true
       const response = await lastValueFrom(this.userService.allGetUsers(getNumberOfUsers));
-      console.log(response)
+      // console.log(response)
       this.loading = false
       this.numberOfUsers = response.result.items.length
       this.allUsers = response.result.items
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 
@@ -71,9 +71,9 @@ export class AdminUsersComponent implements OnInit {
     try {
       const response = await lastValueFrom(this.userService.getUserById(id)) 
       this.userDetails = response.result
-      console.log(response)
+      // console.log(response)
     } catch(error) {
-      console.log(error)
+      // console.log(error)
     }
 
 
@@ -87,12 +87,12 @@ export class AdminUsersComponent implements OnInit {
     try {
       // this.loading = true
       const response = await lastValueFrom(this.userService.allGetVendor(getNumberOfUsers));
-      console.log(response)
+      // console.log(response)
       // this.loading = false
       this.numberOfVendors = response.result.items.length
       this.allVendor = response.result.items
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 

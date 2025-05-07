@@ -12,8 +12,14 @@
             <div class="complete-profile">
                 <h1 class="header-name">{{firstName}} {{lastName}}</h1>
                 <div class="complete-profile-div">
-                    <span class="header-status">Verified</span>
-                    <span class="header-points">{{jollyPoints}} Jolly Point(s)</span>
+                    <div class="header-status">
+                        <img src="../../../assets/verified-dot.svg" alt="">
+                        <span class="header-status">Verified</span>
+                    </div>
+                    <div class="header-points">
+                        <img src="../../../assets/award-icon.svg" alt="">
+                        <span >{{jollyPoints}} Jolly Point(s)</span>
+                    </div>
                     <span class="header-email">{{email}}</span>
                     <span class="header-phone">{{phoneNumber}}</span>
                 </div>
@@ -66,14 +72,14 @@
                                 </div>
                                 <div class="first-block-profile-address">
                                     <span>Address</span>
-                                    <span>{{address === '' ? 'Nil': address}}</span>
+                                    <span>{{address === '' ? 'To complete your profile kindly input your address': address}}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="profile-details-complete-container">
                             <div class="profile-details-complete">
                                 <div class="profile-complete">
-                                    <span>Complete your profile</span>
+                                    <span>{{address === '' ? 'Complete your profile' : 'Profile complete'}}</span>
                                     <span>{{address === '' ? '50%' : '100%'}}</span>
                                 </div>
                                 <div class="profile-details-progress">
@@ -115,7 +121,7 @@
                             </div>
                             <div class="settings-email-btn" (click)="updatePassword()">
                                 <span>Proceed</span>
-                                <span>></span>
+                                <img src="../../../assets/proceed-icon.svg" alt="">
                             </div>
                         </div>
                        
@@ -204,8 +210,8 @@
     </div>
 
   
-    <div class="ticket-container-background" *ngIf="showlocationUpdate">
-        <div class="buy-ticket-container">
+    <div class="ticket-container-background" *ngIf="showlocationUpdate" (click)="closeModalOnOutsideClick($event)">
+        <div class="buy-ticket-container" (click)="$event.stopPropagation()">
             <div class="buy-ticket-header">
                 <div class="img-dashboard" (click)="closeAllModal()">
                     <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
@@ -227,6 +233,7 @@
             </div>
 
             <div class="note">
+                <img src="../../../assets/info-disclaimer.svg" alt="">
                 <span>Kindly note that all the information you provided is safe with us.
                     We will not share your information to any third party without your concent</span>
             </div>

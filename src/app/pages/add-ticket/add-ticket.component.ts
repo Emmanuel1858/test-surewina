@@ -43,7 +43,7 @@ export class AddTicketComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         const base64String = (e.target?.result as string).split(',')[1]; // Remove data URL header
-        console.log('Base64 Image:', base64String);
+        // console.log('Base64 Image:', base64String);
   
         // Now send base64String to your backend
         this.image = base64String
@@ -70,10 +70,10 @@ export class AddTicketComponent implements OnInit {
   }
 
   goToModal() {
-    console.log('ussd:',this.ussdEnabled)
-    console.log('agent:', this.vendorEnabled)
-    console.log('web app', this.userAccountEnabled)
-    console.log('website', this.websiteEnabled)
+    // console.log('ussd:',this.ussdEnabled)
+    // console.log('agent:', this.vendorEnabled)
+    // console.log('web app', this.userAccountEnabled)
+    // console.log('website', this.websiteEnabled)
     
     // this.showModal = true
 
@@ -101,7 +101,7 @@ export class AddTicketComponent implements OnInit {
     try {
       this.loading = true
       const response = await lastValueFrom(this.adminService.addTicket(credentials))
-      console.log(response)
+      // console.log(response)
       this.loading = false
       if(response.responseStatus === false) {
         console.log('error')
@@ -109,7 +109,7 @@ export class AddTicketComponent implements OnInit {
         this.showModal = true
       }
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
 
   }

@@ -28,6 +28,8 @@ export class CreateAccountOtpComponent implements OnInit, OnDestroy {
   activeIndex = 0;
   private intervalId: any;
   modalVisibility: boolean = false
+  inactivityTimeout: any;
+  inactivityDuration = 15 * 60 * 1000;
 
   constructor(private router: Router, private authService: AuthServiceService, private dataService: DataService) { }
 
@@ -65,7 +67,7 @@ export class CreateAccountOtpComponent implements OnInit, OnDestroy {
           this.otpValidate = false
         }, 10000);
       }
-    }, 7000 )
+    }, 7000)
 
 
 
@@ -77,12 +79,43 @@ export class CreateAccountOtpComponent implements OnInit, OnDestroy {
   navigateToPassword() {
     this.router.navigate(['/create-account-password'])
   }
+
+  addActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.addEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  removeActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.removeEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  resetInactivityTimer() {
+    clearTimeout(this.inactivityTimeout);
+    this.inactivityTimeout = setTimeout(() => {
+      this.handleInactivityLogout();
+    }, this.inactivityDuration);
+  }
+
+  handleInactivityLogout() {
+    localStorage.setItem('logoutReason', 'inactivity');
+    // this.authService.logout(); // your logout logic here
+    this.router.navigate(['/login']);
+  }
   ngOnInit(): void {
     this.startCarousel();
+    this.resetInactivityTimer();
+    this.addActivityListeners();
   }
 
   ngOnDestroy(): void {
     clearInterval(this.intervalId);
+    this.removeActivityListeners();
+    clearTimeout(this.inactivityTimeout)
   }
 
   startCarousel(): void {

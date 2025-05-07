@@ -64,7 +64,7 @@
 
 
 .active-tab {
-    border-bottom: 4px solid var(--Colors-Brand-Colors-WinAPrize---Blue---Secondary-Color, #1228C1);
+    border-bottom: 4px solid rgba(38, 38, 38, 1);
     border-radius: 4px;
 }
 
@@ -73,8 +73,8 @@
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    font-family: var(--cta-alt);
 }
-
 
 .header-tickets-number-active {
     border: 1px solid #D9D9D9;
@@ -139,6 +139,7 @@
     display: flex;
     gap: 5px;
     max-width: 100%;
+    color: rgba(85, 85, 85, 1);
     /* Ensure it doesn't overflow */
     white-space: nowrap;
     overflow: hidden;

@@ -33,6 +33,8 @@ export class CreateAccountPasswordComponent implements OnInit, OnDestroy {
   showError: string = ''
   passWordCharacter: boolean = false
   passWordMatch: boolean = false
+  inactivityTimeout: any;
+  inactivityDuration = 15 * 60 * 1000; 
 
   constructor(private router: Router, private dataService: DataService, private authService: AuthServiceService) { }
 
@@ -75,7 +77,7 @@ export class CreateAccountPasswordComponent implements OnInit, OnDestroy {
       this.showLoader = true
       const response = await lastValueFrom(this.authService.registerUser(credentialsRegisterUser))
       this.dataService.setRegisterUserData('password', this.password)
-      console.log(response)
+      // console.log(response)
       this.showLoader = false
       if(response.responseStatus === false) {
        this.showError = response.responseMessage 
@@ -105,13 +107,44 @@ export class CreateAccountPasswordComponent implements OnInit, OnDestroy {
   navigateToName() {
     this.router.navigate(['/create-account-name'])
   }
+  addActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.addEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  removeActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.removeEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  resetInactivityTimer() {
+    clearTimeout(this.inactivityTimeout);
+    this.inactivityTimeout = setTimeout(() => {
+      this.handleInactivityLogout();
+    }, this.inactivityDuration);
+  }
+
+  handleInactivityLogout() {
+    localStorage.setItem('logoutReason', 'inactivity');
+    // this.authService.logout(); // your logout logic here
+    this.router.navigate(['/login']);
+  }
+
   ngOnInit(): void {
     this.startCarousel();
+    this.resetInactivityTimer();
+    this.addActivityListeners();
     // this.password = this.dataService.getRegisterUserData
   }
 
   ngOnDestroy(): void {
     clearInterval(this.intervalId);
+    this.removeActivityListeners();
+    clearTimeout(this.inactivityTimeout)
   }
 
   startCarousel(): void {

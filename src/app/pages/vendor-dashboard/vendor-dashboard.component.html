@@ -43,7 +43,7 @@
             <div class="ticket-winner-container">
                 <div class="ticket-table">
                     <div class="ticket-button">
-                        <button class="ticket-btn-text">Your Ticket History</button>
+                        <button class="ticket-btn-text">History of tickets sold</button>
                         <button class="ticket-btn-view" (click)="navigateToAllTicket()">
                             <span>VIEW ALL</span>
                             <span> > </span>
@@ -58,7 +58,7 @@
                                 <span class="ticket-date">{{ticket.created.split('T')[0]}}</span>
                                 <span class="ticket-won">
                                     <span>{{ticket.numberOfTickets}} Tickets</span>
-                                    <span>₦{{ticket.amount}}</span>
+                                    <span>₦{{ticket.amount}} per tickets</span>
                                     <span> {{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}}</span>
                                 </span>
                             </div>
@@ -77,17 +77,17 @@
                         <div class="header">
                             <div class="header-tickets" [ngClass]="tabs == 'jan' ? 'active-tab' : '' ">
                                 <span (click)="switchTab('jan')" class="header-tickets-text-active">January</span>
-                                
+                                <!-- <span></span> -->
                             </div>
                             <div class="header-tickets" [ngClass]="tabs == 'feb' ? 'active-tab' : '' ">
                                 <span (click)="switchTab('feb')" class="header-tickets-text">February</span>
                                 
                             </div>
-                            <div class="header-tickets" [ngClass]="tabs == 'mar' ? 'active-tab' : '' ">
+                            <!-- <div class="header-tickets" [ngClass]="tabs == 'mar' ? 'active-tab' : '' ">
                                 <span (click)="switchTab('mar')" class="header-tickets-text">March</span>
                                 
-                            </div>
-                            <div class="header-tickets" [ngClass]="tabs == 'apr' ? 'active-tab' : '' ">
+                            </div> -->
+                            <!-- <div class="header-tickets" [ngClass]="tabs == 'apr' ? 'active-tab' : '' ">
                                 <span (click)="switchTab('apr')" class="header-tickets-text">April</span>
                                 
                             </div>
@@ -122,7 +122,7 @@
                             <div class="header-tickets" [ngClass]="tabs == 'dec' ? 'active-tab' : '' ">
                                 <span (click)="switchTab('dec')" class="header-tickets-text">December</span>
                                 
-                            </div>
+                            </div> -->
                         </div>
                     <div [ngSwitch]="tabs" >
                         <div *ngSwitchCase="'jan'">
@@ -542,8 +542,8 @@
             </div>
         </div>
     </div>
-    <div class="ticket-container-background" *ngIf="showRedeemPrize">
-        <div class="redeem-prize-container">
+    <div class="ticket-container-background" *ngIf="showRedeemPrize" (click)="hideGameId()">
+        <div class="redeem-prize-container" (click)="$event.stopPropagation()">
             <div>
                 <img src="../../../assets/prize-icon.svg" alt="">
             </div>
@@ -563,8 +563,8 @@
             </div>
         </div>
     </div>
-    <div class="ticket-container-background" *ngIf="showGameInfo">
-        <div class="customer-container">
+    <div class="ticket-container-background" *ngIf="showGameInfo" (click)="closeModalOnOutsideClick($event)">
+        <div class="customer-container" (click)="$event.stopPropagation()">
             <div>
                 <span>Is this game information correct?</span>
             </div>
@@ -717,8 +717,11 @@
             </div>
         </div>
     </div>
-    <div class="ticket-container-background" *ngIf="showGameId">
-        <div class="modal-redeem-prize">
+    <div class="ticket-container-background" *ngIf="showGameId" (click)="closeModalOnOutsideClick($event)">
+        <div class="modal-redeem-prize" (click)="$event.stopPropagation()" >
+            <div class="border-top">
+
+            </div>
             <div>
                 <img src="../../../assets/gift-icon.svg" alt="">
             </div>

@@ -1,5 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
 import { OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { UserAccountService } from 'src/app/services/user-account.service';
 
@@ -39,14 +40,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
   initial: string = `${sessionStorage.getItem('initial')}`
   // phoneNumber: string = `${sessionStorage.getItem('phoneNumber')}`
   modalVisibility: boolean = false
+  inactivityTimeout: any;
+  inactivityDuration = 15 * 60 * 1000;
 
-  constructor(private userAccontService: UserAccountService) { }
+  constructor(private userAccontService: UserAccountService, 
+    private router: Router
+  ) { }
 
   async getUserDetails() {
     try {
       this.showLoader = true
       const response = await this.userAccontService.userDetails().toPromise();
-      console.log(response)
+      // console.log(response)
       this.email = response.result.email
       this.firstName = response.result.firstName
       this.lastName = response.result.lastName
@@ -57,20 +62,51 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     } catch (error) {
       this.showLoader = false
-      console.log(error)
+      // console.log(error)
     }
   }
 
   ngOnInit(): void {
     this.getUserDetails()
+    this.resetInactivityTimer();
+    this.addActivityListeners();
   }
 
   ngOnDestroy(): void {
+    this.removeActivityListeners();
+    clearTimeout(this.inactivityTimeout)
       // if(this.address === '') {
       //   sessionStorage.setItem('address', false)
       // } else {
       //   sessionStorage.setItem('address', true)
       // }
+  }
+
+  addActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.addEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  removeActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.removeEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  resetInactivityTimer() {
+    clearTimeout(this.inactivityTimeout);
+    this.inactivityTimeout = setTimeout(() => {
+      this.handleInactivityLogout();
+    }, this.inactivityDuration);
+  }
+
+  handleInactivityLogout() {
+    localStorage.setItem('logoutReason', 'inactivity');
+    // this.authService.logout(); // your logout logic here
+    this.router.navigate(['/login']);
   }
 
   switchTab(tab: string) {
@@ -104,6 +140,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.showlocationUpdate = false
   }
 
+  closeModalOnOutsideClick(event: MouseEvent): void {
+    this.closeAllModal();
+  }
+
   reloadPage() {
     this.modalVisibility = false
     this.closeAllModal()
@@ -127,7 +167,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.showLoader = true
       const response = await lastValueFrom(this.userAccontService.userAddressUpdate(credentialsAddressUpdate))
       this.showLoader = false
-      console.log(response)
+      // console.log(response)
       if(response.responseStatus === false) {
         this.showError = response.responseMessage
         
@@ -152,7 +192,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.showLoader = true
         const response = await lastValueFrom(this.userAccontService.userPasswordUpdate(credentialsPasswordUpdate))
         this.showLoader = false
-        console.log(response)
+        // console.log(response)
         if(response.responseStatus === false) {
           this.showError = response.responseMessage
           

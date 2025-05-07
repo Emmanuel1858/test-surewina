@@ -1,7 +1,7 @@
 <div class="form-group">
     <div class="content">
         <div class="content-top">
-            <img class="jolly-logo" src="./../../../assets/Sure Wina Logo - Blue.svg" alt="">
+            <img class="jolly-logo" (click)="navigateBack()" src="./../../../assets/Sure Wina Logo - Blue.svg" alt="">
 
             <div class="login-card">
 
@@ -15,22 +15,21 @@
                     <p class="error" *ngIf="showErrorMessage">{{showError}}</p>
                     <div class="form">
                         <div class="all-inputs">
-                            <input type="text" placeholder="Email address or Phone number" [(ngModel)]="emailAddress" 
-                            [class.error-border]="formSubmitted">
+                            <input type="text" placeholder="Email address or Phone number" [(ngModel)]="emailAddress"
+                                [class.error-border]="formSubmitted">
                             <div class="input-pass">
                                 <input [type]="showPassword ? 'text' : 'password'" placeholder="Password"
-                                [class.error-border]="formSubmitted" [(ngModel)]="password">
-                                <i class="eye-icon" (click)="togglePasswordVisibility()">
-                                    {{ showPassword ? '🙈' : '👁️' }}
-                                </i>
+                                    [class.error-border]="formSubmitted" [(ngModel)]="password">
+                                <i class="fa eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+                                    (click)="togglePasswordVisibility()"></i>
                             </div>
-                           
+
                         </div>
                         <div class="loader" *ngIf="showLoader">
-                            <app-loader/>
+                            <app-loader />
                         </div>
 
-                        
+
                     </div>
 
 

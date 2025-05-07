@@ -76,6 +76,7 @@
 }
 
 .ticket-unit-price {
+    position: relative;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #d9d9d9;
@@ -86,7 +87,15 @@
 .ticket-unit-text {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
+}
+
+.ticket-unit-border {
+    position: absolute;
+    bottom: 0px;
+    border: 1px solid rgb(233, 233, 233);
+    left: 50%;
+    height: 113%;
 }
 
 .ticket-unit-text :first-child {
@@ -96,7 +105,7 @@
 .ticket-unit-text-sub {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
 }
 
 .ticket-unit-text-sub :first-child {
@@ -115,10 +124,15 @@
     color: #555050;
 }
 
+.ticket-bought :last-child {
+    font-size: 20px;
+}
+
 .btn {
     display: flex;
     gap: 10px;
     border: 1px solid #d9d9d9;
+    width: fit-content;
     // border-bottom: 1px solid#d9d9d9;
 }
 

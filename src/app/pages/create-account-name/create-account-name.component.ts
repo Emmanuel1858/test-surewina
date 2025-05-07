@@ -20,20 +20,52 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
   phoneNumber: string = ''
   emailAddress: string = ''
   referred: string = ''
+  inactivityTimeout: any;
+  inactivityDuration = 15 * 60 * 1000; 
+  // inactivityDuration = 100000
 
   constructor(private router: Router, private dataService: DataService) { }
 
   isEmpty(value: string): boolean {
     return !value || value.trim() === '';
   }
+  isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email); // You can use regex for more accurate validation if needed
+  }
+  onPhoneInput(event: any): void {
+    let input = event.target.value;
+
+    // Allow digits and optional '+' at the start
+    if (input.startsWith('+')) {
+      input = '+' + input.slice(1).replace(/\D/g, '');
+    } else {
+      input = input.replace(/\D/g, '');
+    }
+
+    // Limit to 15 characters
+    if (input.length > 15) {
+      input = input.slice(0, 15);
+    }
+
+    this.phoneNumber = input;
+  }
+
+  isInvalidPhoneNumber(): boolean {
+    // Allow phone numbers starting with optional '+' and 8-15 total characters
+    return !/^\+?\d{8,14}$/.test(this.phoneNumber);
+  }
+
   navigateToPassword() {
     const isValid =
       !this.isEmpty(this.firstName) &&
       !this.isEmpty(this.lastName) &&
       !this.isEmpty(this.phoneNumber) &&
-      !this.isEmpty(this.emailAddress)
+      !this.isEmpty(this.emailAddress) &&
+      this.isValidEmail(this.emailAddress) &&
+      !this.isInvalidPhoneNumber()
 
-    if(isValid) {
+    if (isValid) {
       this.dataService.setRegisterUserData('firstName', this.firstName)
       this.dataService.setRegisterUserData('lastName', this.lastName)
       this.dataService.setRegisterUserData('phoneNumber', this.phoneNumber)
@@ -41,7 +73,7 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
       this.dataService.setRegisterUserData('referral', this.referred)
       this.router.navigate(['/create-account-password'])
     } else {
-     this.formSubmitted = true
+      this.formSubmitted = true
     }
 
   }
@@ -52,10 +84,13 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
 
 
   navigateBack() {
+    sessionStorage.clear()
     this.router.navigate([''])
   }
   ngOnInit(): void {
     this.startCarousel();
+    this.resetInactivityTimer();
+    this.addActivityListeners();
     this.firstName = this.dataService.getRegisterUserData('firstName') || ''
     this.lastName = this.dataService.getRegisterUserData('lastName') || ''
     this.phoneNumber = this.dataService.getRegisterUserData('phoneNumber') || ''
@@ -65,8 +100,36 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearInterval(this.intervalId);
+    this.removeActivityListeners();
+    clearTimeout(this.inactivityTimeout)
   }
 
+  addActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.addEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  removeActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.removeEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  resetInactivityTimer() {
+    clearTimeout(this.inactivityTimeout);
+    this.inactivityTimeout = setTimeout(() => {
+      this.handleInactivityLogout();
+    }, this.inactivityDuration);
+  }
+
+  handleInactivityLogout() {
+    localStorage.setItem('logoutReason', 'inactivity');
+    // this.authService.logout(); // your logout logic here
+    this.router.navigate(['/login']);
+  }
   startCarousel(): void {
     this.intervalId = setInterval(() => {
       this.activeIndex = (this.activeIndex + 1) % this.images.length;

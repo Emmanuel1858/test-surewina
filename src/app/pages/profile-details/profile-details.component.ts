@@ -25,27 +25,27 @@ export class ProfileDetailsComponent {
 
 
   add() {
-    console.log('Add button clicked');
+    // console.log('Add button clicked');
   }
 
   goToEditPath(item: any) {
-    console.log('Edit Path:', item);
+    // console.log('Edit Path:', item);
   }
 
   goToEditDept(item: any) {
-    console.log('Edit Department:', item);
+    // console.log('Edit Department:', item);
   }
 
   goToEditBranch(item: any) {
-    console.log('Edit Branch:', item);
+    // console.log('Edit Branch:', item);
   }
 
   deleteEscalation(id: any) {
-    console.log('Delete Escalation:', id);
+    // console.log('Delete Escalation:', id);
   }
 
   deleteDepartmentBranch(id: any) {
-    console.log('Delete Department/Branch:', id);
+    // console.log('Delete Department/Branch:', id);
   }
 
 }

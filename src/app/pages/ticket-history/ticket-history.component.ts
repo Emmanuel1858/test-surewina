@@ -20,8 +20,8 @@ export class TicketHistoryComponent implements OnInit {
   drawNamePrevious: string = ''
   numberOfTickets: number = 0
   numberOfTicketsPrevious: number = 0
-  itemsInArray: number = 10
-  itemsInArrayPrevious: number = 5
+  itemsInArray: number = 0
+  itemsInArrayPrevious: number = 0
   numberOfWinningTickets: number = 0
   ticketImage: string = ''
   ticketImagePrevious: string = ''
@@ -51,7 +51,7 @@ export class TicketHistoryComponent implements OnInit {
 
   switchTab(tab: string) {
     this.tabs = tab
-    console.log(this.tabs)
+    // console.log(this.tabs)
   }
 
 
@@ -75,10 +75,10 @@ export class TicketHistoryComponent implements OnInit {
     this.redeemTicketSecond = false
     try {
       const response = this.userTicket.getTicketById(ticketRef)
-      console.log(response)
-      console.log('testing ticket id with user')
+      // console.log(response)
+      // console.log('testing ticket id with user')
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 
@@ -91,7 +91,7 @@ export class TicketHistoryComponent implements OnInit {
     try {
       this.showLoader = true
       const response = await lastValueFrom(this.userTicket.onGoingTicket(credentialGoingTicket))
-      console.log(response)
+      // console.log(response)
       this.showLoader = false
       this.itemsInArray = response.result.items.length
       if(this.itemsInArray === 0 ) {
@@ -106,10 +106,10 @@ export class TicketHistoryComponent implements OnInit {
       this.tierTwoPrize = response.result.items[0].tierTwoPrize
       this.tierThreePrize = response.result.items[0].tierThreePrize
       this.allTicket = response.result.items
-      console.log(this.allTicket)
+      // console.log(this.allTicket)
       
     } catch(error) {
-      console.log(error)
+      // console.log(error)
     }
   }
   async getPreviouslyTicket() {
@@ -121,7 +121,7 @@ export class TicketHistoryComponent implements OnInit {
     try {
       this.showLoader = true
       const response = await lastValueFrom(this.userTicket.onGoingTicket(credentialGoingTicket))
-      console.log(response)
+      // console.log(response)
       this.showLoader = false
       this.itemsInArrayPrevious = response.result.items.length
       if(this.itemsInArrayPrevious === 0) {
@@ -136,10 +136,10 @@ export class TicketHistoryComponent implements OnInit {
       this.tierTwoPrizePrevious = response.result.items[0].tierTwoPrize
       this.tierThreePrizePrevious = response.result.items[0].tierThreePrize
       this.allPreviousTicket = response.result.items
-      console.log(this.allTicket)
+      // console.log(this.allTicket)
       
     } catch(error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 }

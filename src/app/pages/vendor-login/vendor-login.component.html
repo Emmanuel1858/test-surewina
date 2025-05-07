@@ -1,12 +1,12 @@
 <div class="form-group">
     <div class="content">
         <div class="content-top">
-            <img class="jolly-logo" src="./../../../assets/jollywina-logo.svg" alt="">
+            <img class="jolly-logo"  src="./../../../assets/Sure Wina Logo - Blue.svg" alt="">
 
             <div class="login-card">
 
                 <div class="top">
-                    <p> Vendor Portal </p>
+                    <p> Agent Portal </p>
                 </div>
 
                 <div class="bottom">
@@ -20,9 +20,8 @@
                             <div class="input-pass">
                                 <input [type]="showPassword ? 'text' : 'password'" placeholder="Password"
                                 [class.error-border]="formSubmitted" [(ngModel)]="password">
-                                <i class="eye-icon" (click)="togglePasswordVisibility()">
-                                    {{ showPassword ? '🙈' : '👁️' }}
-                                </i>
+                                <i class="fa eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+                                (click)="togglePasswordVisibility()"></i>
                             </div>
                            
                         </div>

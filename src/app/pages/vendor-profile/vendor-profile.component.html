@@ -1,5 +1,10 @@
-<div>
-    <app-vendor-header />
+<div class="header-mobile mobile-only-top">
+    <div (click)="showDashboard()">
+        <img src="../../../assets/sure-wina-without-text.svg" alt="">
+    </div>
+    <div>Agent's Profile</div>
+    <div (click)="openMenu()"><img src="../../../assets/menu.svg" alt=""></div>
+
 </div>
 <div class="html-container">
     <div>
@@ -13,7 +18,10 @@
                 <h1 class="header-name">{{firstName}} {{lastName}}</h1>
                 <div class="complete-profile-div">
                     <span class="header-status">Verified</span>
-                    <span class="header-points">{{jollyPoints}} Jolly Point(s)</span>
+                    <div class="header-points">
+                        <img src="../../../assets/award-icon.svg" alt="">
+                        <span >{{jollyPoints}} Jolly Point(s)</span>
+                    </div>
                     <span class="header-email">{{email}}</span>
                     <span class="header-phone">{{phoneNumber}}</span>
                 </div>
@@ -39,10 +47,10 @@
                 <div class="border-bottom"></div>
             </div>
 
-            <div class="tab" [ngClass]="tabs === 'referrals' ? 'active-tab' : ''">
+            <!-- <div class="tab" [ngClass]="tabs === 'referrals' ? 'active-tab' : ''">
                 <p (click)="switchTab('referrals')">Referrals</p>
                 <div class="border-bottom"></div>
-            </div>
+            </div> -->
         </div>
 
         <div class="profile">
@@ -51,22 +59,19 @@
                     <div>
                         <div>
                             <div class="first-block-profile">
-                                <div class="first-block-profile-balance">
-                                    <div class="first-block-balance">
-                                        <span>Your Balance</span>
-                                        <span>₦ 0</span>
+                                <div class="first-card">
+                                    <div class="first-card-prize">
+                                        <div class="first-card-ticket">
+                                            <span>Tickets</span>
+                                            <span>{{totalTicketSold}}</span>
+                                        </div>
+                                        <div class="first-card-ticket">
+                                            <span>Commission</span>
+                                            <span>₦{{totalCommission}}</span>
+                                        </div>
+                        
                                     </div>
-                                    <div class="first-block-profile-border">
-
-                                    </div>
-                                    <div class="first-block-referrals">
-                                        <span>Referral Earnings</span>
-                                        <span>₦ 0</span>
-                                    </div>
-                                </div>
-                                <div class="first-block-profile-address">
-                                    <span>Address</span>
-                                    <span>{{address === '' ? 'Nil': address}}</span>
+                        
                                 </div>
                             </div>
                         </div>
@@ -204,8 +209,8 @@
     </div>
 
   
-    <div class="ticket-container-background" *ngIf="showlocationUpdate">
-        <div class="buy-ticket-container">
+    <div class="ticket-container-background" *ngIf="showlocationUpdate" (click)="closeModalOnOutsideClick($event)">
+        <div class="buy-ticket-container"  (click)="$event.stopPropagation()">
             <div class="buy-ticket-header">
                 <div class="img-dashboard" (click)="closeAllModal()">
                     <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
@@ -305,6 +310,35 @@
                     <button >Ok, Got it</button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="menu-container" *ngIf="showMenu">
+    <div class="menu-header">
+        <h1>Menu</h1>
+        <img (click)="closeMenu()" src="../../../assets/Frame 1000003973.svg" alt="">
+    </div>
+    <div class="menu-options">
+        <div class="all-options" (click)="showDashboard()">
+            <img src="../../../assets/dashboard-mobile.svg" alt="">
+            <span>Dashboard</span>
+        </div>
+        <div class="all-options" (click)="showWinner()">
+            <img src="../../../assets/analytics-mobile.svg" alt="">
+            <span>Winner Board</span>
+        </div>
+        <div class="all-options" (click)="showTicket()">
+            <img src="../../../assets/ticket-mobile.svg" alt="">
+            <span>Ticket History</span>
+        </div>
+        <div class="all-options" (click)="navigateToProfile()">
+            <img src="../../../assets/user-account-mobile.svg" alt="">
+            <span>Your Profile</span>
+        </div>
+        <div class="logout-container" (click)="logout()">
+            <img src="../../../assets/logout-03.svg" alt="">
+            <span>Logout</span>
         </div>
     </div>
 </div>

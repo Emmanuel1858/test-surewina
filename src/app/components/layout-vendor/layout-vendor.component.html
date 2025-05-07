@@ -41,4 +41,24 @@
             </div>
         </div>
     </div>
+    <div class="container-logout-background" *ngIf="showLogout">
+        <div class="container-logout">
+            <div>
+                <img src="../../../assets/info-disclaimer.svg" alt="">
+            </div>
+            <div class="logout-question">
+                <span>Are you sure you want to
+                    log out of your account</span>
+            </div>
+            <div class="logout-note">
+                <span>
+                    If you continue whatever you are working on will be deleted
+                </span>
+            </div>
+            <div class="logout-btn">
+                <button (click)="cancel()">GO BACK</button>
+                <button (click)="yesLogout()">CONTINUE > </button>
+            </div>
+        </div>
+    </div>
 </div>

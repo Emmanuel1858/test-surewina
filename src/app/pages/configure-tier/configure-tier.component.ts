@@ -44,13 +44,13 @@ export class ConfigureTierComponent {
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
       this.selectedFileName = file.name; // Store the filename
-      console.log('File selected:', file.name);
+      // console.log('File selected:', file.name);
 
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         const arrayBuffer = e.target?.result as ArrayBuffer;
         this.image = new Uint8Array(arrayBuffer);
-        console.log('Converted Image Bytes:', this.image);
+        // console.log('Converted Image Bytes:', this.image);
       };
       reader.readAsArrayBuffer(file); // Convert image to raw bytes
     }
@@ -90,7 +90,7 @@ export class ConfigureTierComponent {
   selectLocation(location: string) {
     this.selectedLocation = location
     this.allSelectedLocation.push(this.selectedLocation)
-    console.log(this.allSelectedLocation)
+    // console.log(this.allSelectedLocation)
     this.isDropdownOpenLocation = false
   }
 

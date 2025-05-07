@@ -112,7 +112,7 @@ export class ScheduleDrawComponent implements OnInit {
     // Toggle logic: if it's the same ticket, unselect it
     if (isChecked) {
       this.selectedTicketId = ticketId;
-      console.log(this.selectedTicketId)
+      // console.log(this.selectedTicketId)
       sessionStorage.setItem('selectedTicketId', ticketId.toString());
     } else {
       this.selectedTicketId = null;
@@ -189,14 +189,14 @@ export class ScheduleDrawComponent implements OnInit {
       const response = await lastValueFrom(this.drawService.addDraw(credentials)) 
       this.loading = false
       if(response.responseStatus === true) {
-        console.log(response)
+        // console.log(response)
         this.showModal = true
       } else {
         return
       }
 
     } catch(e) {
-      console.log(e)
+      // console.log(e)
     }
     
   }
@@ -228,7 +228,7 @@ export class ScheduleDrawComponent implements OnInit {
       this.numberOfPrize = processed.length;
   
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   }
   
@@ -243,7 +243,7 @@ export class ScheduleDrawComponent implements OnInit {
         this.showLoadingTicket = true
         const response = await lastValueFrom(this.adminService.getAllTicket(pagination))
         this.showLoadingTicket = false
-        console.log(response)
+        // console.log(response)
         const result = response.result.items
         const processed = result.map((ticket: any) => {
           if (typeof ticket.image === 'string' && ticket.image.startsWith('data:image')) {
@@ -261,7 +261,7 @@ export class ScheduleDrawComponent implements OnInit {
         // this.numberOfTicket = response.result.totalCount
   
       } catch (e) {
-        console.log(e)
+        // console.log(e)
       }
     }
 

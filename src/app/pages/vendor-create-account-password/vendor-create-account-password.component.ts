@@ -79,7 +79,7 @@ export class VendorCreateAccountPasswordComponent implements OnDestroy, OnInit {
       this.showLoader = true
       const response = await lastValueFrom(this.authService.registerVendor(credentialsRegisterVendor))
       this.dataService.setRegisterUserData('password', this.password)
-      console.log(response)
+      // console.log(response)
       this.showLoader = false
       if(response.responseStatus === false) {
        this.showError = response.responseMessage 

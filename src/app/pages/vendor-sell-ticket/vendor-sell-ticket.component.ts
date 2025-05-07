@@ -25,17 +25,50 @@ export class VendorSellTicketComponent implements OnInit, OnDestroy {
   showError: string = ''
   phoneNumber: string = ''
   email: string = ''
+  inactivityTimeout: any;
+  inactivityDuration = 10 * 60 * 1000;
 
   constructor(private router: Router, private userTicket: UserTicketService, private drawService: DrawService) { }
 
   ngOnInit(): void {
       this.getTodayDraw()
+      this.resetInactivityTimer();
+      this.addActivityListeners();
   }
 
   ngOnDestroy(): void {
+    this.removeActivityListeners();
+    clearTimeout(this.inactivityTimeout)
     sessionStorage.setItem('phoneNumber', this.phoneNumber)
     sessionStorage.setItem('drawId', String(this.drawId))
     sessionStorage.setItem('quantity', String(this.ticketCount))
+  }
+
+  addActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.addEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  removeActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.removeEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  resetInactivityTimer() {
+    clearTimeout(this.inactivityTimeout);
+    this.inactivityTimeout = setTimeout(() => {
+      this.handleInactivityLogout();
+    }, this.inactivityDuration);
+  }
+
+  handleInactivityLogout() {
+    localStorage.setItem('logoutReason', 'inactivity');
+    // this.authService.logout(); // your logout logic here
+    this.router.navigate(['/vendor-login']);
   }
 
   naviagteToVendorDashboard() {
@@ -72,7 +105,10 @@ export class VendorSellTicketComponent implements OnInit, OnDestroy {
       this.drawId = response.result.items[0].drawId
       this.unitPrice = response.result.items[0].amount
     } catch (error) {
-      console.log(error)
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+      // console.log(error)
     }
   }
 

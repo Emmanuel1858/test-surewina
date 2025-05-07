@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
+import { Subscription, lastValueFrom } from 'rxjs';
 import { DrawService } from 'src/app/services/draw.service';
+import { SharedService } from 'src/app/services/shared.service';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
 
 
@@ -10,8 +11,14 @@ import { UserTicketService } from 'src/app/services/user-ticket.service';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss']
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent implements OnInit, OnDestroy {
   activeHeader: string = 'dashboard';
+  notActiveState: boolean = false
+  activeState: boolean = true
+  notActiveStateTicket: boolean = true
+  activeStateTicket: boolean = false
+  private sub!: Subscription;
+  private subWinner!: Subscription;
   showMenu: boolean = false;
   showPayTicket: boolean = false
   showMakePayment: boolean = false
@@ -22,6 +29,7 @@ export class LayoutComponent implements OnInit {
   initialFromLogin: string = `${sessionStorage.getItem('initialFromLogin')}`
   pageNumber: number = 1
   numberOfRecords: number = 4
+  ticketError: boolean = false
   nameGame: string = ''
   items: any = []
   drawId: number = 1
@@ -30,64 +38,140 @@ export class LayoutComponent implements OnInit {
   ticketImage: string = ''
   showError: string = ''
   loading: boolean = false
+  inactivityTimeout: any;
+  inactivityDuration = 15 * 60 * 1000;
+  showMobileBtn: boolean = true
+  showLogout: boolean = false
 
-
-
-  constructor(private router: Router, private drawService: DrawService, private userTicket: UserTicketService) { }
+  constructor(private router: Router,
+    private drawService: DrawService,
+    private userTicket: UserTicketService,
+    private sharedService: SharedService) { }
 
   ngOnInit(): void {
+    // this.showMobileBtn = true
+    this.resetInactivityTimer();
+    this.addActivityListeners();
     const savedHeader = sessionStorage.getItem('activeHeader');
     if (savedHeader) {
       this.activeHeader = savedHeader;
     }
+
+    this.sub = this.sharedService.action$.subscribe(() => {
+      this.navigateToTicket()
+    })
+    this.subWinner = this.sharedService.actionsWinnerBoard$.subscribe(() => {
+      this.navigateToWinner()
+    })
     // this.getTodayDraw()
   }
 
-  navigateToDashboard() {
-    this.router.navigate(['/dashboard'])
-    this.activeHeader = 'dashboard';
-    sessionStorage.setItem('activeHeader', this.activeHeader);
+  ngOnDestroy(): void {
+    this.sub.unsubscribe()
+    this.removeActivityListeners();
+    clearTimeout(this.inactivityTimeout)
+    this.subWinner.unsubscribe()
   }
+
+  addActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.addEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  removeActivityListeners() {
+    const events = ['click', 'keydown'];
+    events.forEach(event =>
+      window.removeEventListener(event, this.resetInactivityTimer.bind(this))
+    );
+  }
+
+  resetInactivityTimer() {
+    clearTimeout(this.inactivityTimeout);
+    this.inactivityTimeout = setTimeout(() => {
+      this.handleInactivityLogout();
+    }, this.inactivityDuration);
+  }
+
+  handleInactivityLogout() {
+    localStorage.setItem('logoutReason', 'inactivity');
+    // this.authService.logout(); // your logout logic here
+    this.router.navigate(['/login']);
+  }
+  navigateToDashboard() {
+    this.router.navigate(['/dashboard']);
+    this.setActiveHeader('dashboard');
+  }
+  
+  navigateToTicket() {
+    this.router.navigate(['/ticket-history']);
+    this.setActiveHeader('ticket');
+  }
+  
+  navigateToWinner() {
+    this.router.navigate(['/winner-board']);
+    this.setActiveHeader('winner');
+  }
+
+  setActiveHeader(header: string) {
+    this.activeHeader = header;
+    sessionStorage.setItem('activeHeader', header);
+  }
+
   navigateToDashboardMobile() {
     this.showMakePayment = false
     this.showPayTicket = true
     this.showLoader = false
   }
-  navigateToTicket() {
-    this.router.navigate(['/ticket-history'])
-    this.activeHeader = 'ticket';
-    sessionStorage.setItem('activeHeader', this.activeHeader);
-  }
-  navigateToWinner() {
-    this.router.navigate(['/winner-board'])
-    this.activeHeader = 'winner';
-    sessionStorage.setItem('activeHeader', this.activeHeader);
-  }
 
-  
+
+
   navigateToProfile() {
     this.router.navigate(['/profile'])
   }
 
   completeLogout() {
-    this.router.navigate(['/'])
+    this.router.navigate(['/profile'])
     sessionStorage.clear()
   }
 
 
   logout() {
+    // debugger
+    this.showLogout = true
+    this.showMobileBtn = false
+    this.showMenu = false
+    // this.router.navigate(['/login'])
+  }
+
+  yesLogout() {
     this.router.navigate(['/login'])
     sessionStorage.clear()
   }
 
+  cancel() {
+    this.showMenu = true
+    this.showLogout = true
+    this.showMobileBtn = false
+  }
 
   showBuyTicketModal() {
+    this.showMobileBtn = false
     this.showPayTicket = true
   }
 
   navigateToMakePayment() {
-    this.showMakePayment = true
-    this.showPayTicket = false
+    if(this.totalPrice === 0) {
+      this.ticketError = true
+      setTimeout(() => {
+        this.ticketError = false
+      }, 6000);
+    } else {
+      this.showMakePayment = true
+      this.showPayTicket = false
+    }
+
   }
 
   async navigateToModal() {
@@ -101,11 +185,11 @@ export class LayoutComponent implements OnInit {
     try {
       this.loading = true
       const response = await lastValueFrom(this.userTicket.buyTicket(credentialsBuyTicket))
-      console.log(response)
+      // console.log(response)
       this.loading = false
       if (response.responseStatus === false) {
         this.showError = response.responseMessage
-       
+
       } else {
         this.showLoader = true
         this.showMakePayment = false
@@ -113,14 +197,15 @@ export class LayoutComponent implements OnInit {
       }
     } catch (error) {
       this.loading = true
-      console.log(error)
+      // console.log(error)
     }
- 
+
   }
 
 
 
   goBack() {
+    this.showMobileBtn = true
     this.showPayTicket = false
   }
 
@@ -148,14 +233,17 @@ export class LayoutComponent implements OnInit {
 
   openMenu() {
     this.showMenu = true
+    this.showMobileBtn = false
   }
 
   closeMenu() {
     this.showMenu = false
+    this.showMobileBtn = true
   }
 
   showDashboard() {
     this.showMenu = false
+    this.showMobileBtn = true
     this.router.navigate(['/dashboard'])
   }
 

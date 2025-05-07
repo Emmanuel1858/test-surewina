@@ -1,5 +1,8 @@
 <div class="container">
     <div class="card-container">
+        <div class="mobile-only">
+            <span>Welcome, {{firstName}}</span>
+        </div>
         <div class="first-card">
             <div class="th">
                 <div class="first-card-text">
@@ -84,7 +87,7 @@
                     <span class="arrow" (click)="goNext()">
                         <span>></span>
                     </span>
-                    <span class="arrow" (click)="goPrev()">
+                    <span class="arrow" (click)="goPrev()"> 
                         <span>
                             < </span>
                         </span>
@@ -125,7 +128,7 @@
                         <div class="profile-number">{{phoneNumber}}</div>
                     </div>
                 </div>
-                <div class="location-details">
+                <div class="location-details" (click)="updateLocationUpdate()">
                     <div class="location-pic">
                         <img src="../../../assets/location.svg" alt="">
                     </div>
@@ -143,7 +146,7 @@
         <div class="ticket-table">
             <div class="ticket-button">
                 <button class="ticket-btn-text">Your Ticket History</button>
-                <button class="ticket-btn-view">
+                <button class="ticket-btn-view" (click)="navigateToTicketHistory()">
                     <span>VIEW ALL</span>
                     <span> > </span>
                 </button>
@@ -168,12 +171,12 @@
         <div class="winner-table">
             <div class="winner-button">
                 <button class="winner-btn-text">Lottery Winners Board</button>
-                <button class="winner-btn-view">
+                <button class="winner-btn-view" (click)="navigateToWinnerBoard()">
                     <span>VIEW ALL</span>
                     <span> > </span>
                 </button>
             </div>
-            <div class="ticket-body" >
+            <div class="ticket-body">
                 <div class="ticket-body-inner">
                   <!-- HEADER SECTION -->
                   <div class="header" *ngIf="showMonth">
@@ -182,7 +185,7 @@
                         <span (click)="switchTab('tab' + drawIndex)" class="header-tickets-text-active">
                           {{ draw.drawDescription || 'No Description' }}
                         </span>
-                        <span class="header-tickets-number-active">{{ draw.totalWinners }}</span>
+                        <span class="header-tickets-number-active" [ngClass]="tabs == 'tab' + drawIndex ? 'active-tab-number' : ''">{{ draw.totalWinners }}</span>
                       </div>
                     </div>
                   </div>
@@ -248,7 +251,7 @@
                     <div class="profile-number">{{phoneNumber}}</div>
                 </div>
             </div>
-            <div class="location-details">
+            <div class="location-details" (click)="updateLocationUpdate()">
                 <div class="location-pic">
                     <img src="../../../assets/location.svg" alt="">
                 </div>
@@ -260,8 +263,8 @@
         </div>
     </div>
 
-    <div class="ticket-container-background" *ngIf="showTicketPayment">
-        <div class="buy-ticket-container">
+    <div class="ticket-container-background" *ngIf="showTicketPayment" (click)="closeModalOnOutsideClick($event)">
+        <div class="buy-ticket-container"  (click)="$event.stopPropagation()">
             <div class="buy-ticket-header">
                 <div class="img-dashboard" (click)="navigateToDashboard()">
                     <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
@@ -274,6 +277,9 @@
                     <img src="../../../assets/question-ticket.svg" alt="">
                 </div>
 
+            </div>
+            <div class="ticket-error" *ngIf="ticketError">
+                <span>Total ticket bought cannot be 0!</span>
             </div>
             <div class="img">
                 <img src="../../../assets/gift-voucher.svg" alt="">
@@ -312,8 +318,44 @@
     <div class="loader" *ngIf="loading">
         <app-loader/>
     </div>
-    <div class="ticket-container-background" *ngIf="showMakePayment">
-        <div class="buy-ticket-container">
+    <div class="ticket-container-background" *ngIf="showlocationUpdate" (click)="closeModalOnOutsideClick($event)">
+        <div class="buy-ticket-container" (click)="$event.stopPropagation()">
+            <div class="buy-ticket-header">
+                <div class="img-dashboard" (click)="closeAllModal()">
+                    <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
+                </div>
+                <div class="buy-ticket-header-text">
+                    <span class="bigger-text">Update your Location</span>
+                </div>
+                <div class="img-question">
+                    <img src="../../../assets/question-ticket.svg" alt="">
+                </div>
+
+            </div>
+
+            <div class="input">
+                <p class="error"> {{showError}}</p>
+               
+                <input type="text" placeholder="Enter your location" [(ngModel)]="updateAddress" >
+                <input type="password" placeholder="Enter your password" [(ngModel)]="password">
+            </div>
+
+            <div class="note">
+                <span>Kindly note that all the information you provided is safe with us.
+                    We will not share your information to any third party without your concent</span>
+            </div>
+
+            <div class="footer-ticket">
+                <button (click)="completeLocation()">
+                    <span>COMPLETE PROFILE SETUP</span>
+                    <span> > </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="ticket-container-background" *ngIf="showMakePayment" (click)="closeModalOnOutsideClick($event)">
+        <div class="buy-ticket-container" (click)="$event.stopPropagation()">
             <div class="buy-ticket-header">
                 <div class="img-dashboard" (click)="navigateToDashboard()">
                     <img src="../../../assets/dashboard-icon-ticket.svg" alt="">

@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { DrawService } from 'src/app/services/draw.service';
 import { PrizeService } from 'src/app/services/prize.service';
+import { SharedService } from 'src/app/services/shared.service';
+import { UserAccountService } from 'src/app/services/user-account.service';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -34,7 +36,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
   phoneNumber: string = `${sessionStorage.getItem('phoneNumber')}`
   // address: any = `${sessionStorage.getItem('address')}`
   address = sessionStorage.getItem('address') === 'true';
-
   initials: string = ''
   pageNumber: number = 1;
   showError: string = ''
@@ -43,6 +44,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   drawId: number = 1
   channel: number = 1
   loading: boolean = false
+  showlocationUpdate: boolean = false;
+  password: string = '';
   nameGame: string = ''
   ticketImage: string = ''
   items = []
@@ -56,6 +59,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   tierOnePrizePrevious: string = ''
   tierTwoPrizePrevious: string = ''
   tierThreePrizePrevious: string = ''
+  updateAddress: string = '';
   allPreviousTicket: any[] = []
   allTicket: any = []
   tabs: string = 'jan'
@@ -63,19 +67,38 @@ export class DashboardComponent implements OnInit, OnDestroy {
   showMonth: boolean = true
   listOfWinners: any = []
   showWinnerList: boolean = false
-  constructor(private router: Router, private drawService: DrawService, private prizeService: PrizeService, private userTicket: UserTicketService) { }
+  ticketError: boolean = false
+  constructor(private router: Router,
+    private drawService: DrawService,
+    private prizeService: PrizeService, 
+    private userTicket: UserTicketService, 
+    private sharedService: SharedService, 
+    private userAccountService: UserAccountService) { }
 
   navigateToProfile() {
     this.router.navigate(['/profile'])
+  }
+
+  updateLocationUpdate() {
+    this.showlocationUpdate = true
   }
 
   showProfile() {
     this.router.navigate(['/profile'])
   }
 
-  testFunc() {
-    console.log('testttttt')
+  navigateToTicketHistory() {
+    this.sharedService.triggerAction()
   }
+
+  navigateToWinnerBoard() {
+    this.sharedService.triggerWinnerBoard()
+  }
+
+
+  // testFunc() {
+  //   console.log('testttttt')
+  // }
 
   increment(): void {
     if (this.ticketCount < 10) {
@@ -91,9 +114,49 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
+
+
+  closeAllModal() {
+    this.showlocationUpdate = false
+  }
+
+  async completeLocation() {
+    if(this.updateAddress === '' ) {
+       this.showError = 'Please input your address!'
+      setTimeout(() => {
+        this.showError = ''
+      }, 10000);
+     
+      return
+    }
+    const credentialsAddressUpdate = {
+      password: this.password,
+      address: this.updateAddress
+    }
+    try {
+      this.loading = true
+      const response: any = await lastValueFrom(this.userAccountService.userAddressUpdate(credentialsAddressUpdate))
+      this.loading = false
+      // console.log(response)
+      if(response.responseStatus === false) {
+        this.showError = response.responseMessage
+        
+      } else {
+        this.showLoader = true
+      }
+    } catch(error) {
+      console.error(error)
+    }
+   
+  }
+
   private updateTotalPrice(): void {
     this.totalPrice = this.ticketCount * this.unitPrice;
   }
+
+  // navigateToTicketHistory() {
+  //   this.router.navigate(['/ticket-history'])
+  // }
 
 
 
@@ -116,7 +179,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   switchTab(tab: string) {
     this.tabs = tab
-    console.log(this.tabs)
+    // console.log(this.tabs)
   }
 
   async getTodayDraw() {
@@ -139,39 +202,39 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.unitPrice = response.result.items[0].amount
 
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 
   async getAllPrize() {
     try {
       const response = await lastValueFrom(this.prizeService.getAllPrize())
-      console.log(response.result)
+      // console.log(response.result)
       this.backgroundImages = response.result.map((prize: any) => prize.image)
       const length = this.backgroundImages.length
       this.bars = Array(length).fill(false)
       this.bars[0] = true
-      console.log(this.backgroundImages)
+      // console.log(this.backgroundImages)
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 
-  
+
   async getWinnerBoard() {
     try {
       // this.showLoader = true;
-  
+
       const response = await lastValueFrom(this.userTicket.winnerBoardUser());
-  
+
       this.showLoader = false;
-  
+
       // Save the draw data
       this.drawResults = response.result;
-  
+
     } catch (error) {
       this.showLoader = false;
-      console.log(error);
+      // console.log(error);
     }
   }
 
@@ -180,8 +243,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // this.router.navigate(['/profile'])
   }
   navigateToMakePayment() {
-    this.showMakePayment = true
-    this.showTicketPayment = false
+    if(this.totalPrice === 0) {
+      this.ticketError = true
+      setTimeout(() => {
+        this.ticketError = false
+      }, 6000);
+    } else {
+      this.showMakePayment = true
+      this.showTicketPayment = false
+    }
+
   }
   async navigateToModal() {
     const credentialsBuyTicket = {
@@ -194,7 +265,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     try {
       this.loading = true
       const response = await lastValueFrom(this.userTicket.buyTicket(credentialsBuyTicket))
-      console.log(response)
+      // console.log(response)
       this.loading = false
       if (response.responseStatus === false) {
         this.showError = response.responseMessage
@@ -206,7 +277,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       }
     } catch (error) {
       this.loading = true
-      console.log(error)
+      // console.log(error)
     }
 
   }
@@ -219,7 +290,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     try {
       // this.showLoader = true
       const response = await lastValueFrom(this.userTicket.onGoingTicket(credentialGoingTicket))
-      console.log(response)
+      // console.log(response)
       this.showLoader = false
       this.itemsInArrayPrevious = response.result.items.length
       if (this.itemsInArrayPrevious === 0) {
@@ -237,26 +308,26 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
 
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
   }
 
   async showListWinners(i: number) {
     const credentials = {
-      pageNumber: 1, 
+      pageNumber: 1,
       numberOfRecords: 10,
       drawId: i
     }
     try {
       this.showLoader = true
       const response = await lastValueFrom(this.userTicket.getWinnerByDrawId(credentials))
-      console.log(response)
+      // console.log(response)
       this.showLoader = false
       this.listOfWinners = response.result.items
       this.showWinnerList = true
       this.showMonth = false
     } catch (error) {
-      console.log(error)
+      // console.log(error)
     }
 
   }
@@ -264,12 +335,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.showMakePayment = false
     this.showTicketPayment = false
     this.showLoader = false
+    this.showlocationUpdate = false
   }
 
   showMyBalance() {
     this.showBalance = !this.showBalance
   }
 
+  closeModalOnOutsideClick(event: MouseEvent): void {
+    this.navigateToDashboard();
+  }
 
   goNext(): void {
     if (this.currentIndex < this.bars.length - 1) {

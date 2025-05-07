@@ -16,6 +16,7 @@
 }
 
 .card-container {
+    background-color: #fcfcfc;
     display: flex;
     justify-content: space-between;
     padding: 40px 40px 20px;
@@ -355,6 +356,7 @@
     padding: 10px;
     border-radius: 5px;
     color: #fff;
+    cursor: pointer;
 }
 
 .nin-details {
@@ -555,7 +557,7 @@ table {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 20px 0 0 0;
+    padding: 20px 0 10px 0;
 }
 
 .img-dashboard {
@@ -577,18 +579,27 @@ table {
     font-size: 24px;
 }
 
+.ticket-error {
+    color: #f03;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 .img {
     background-color: #fff;
     margin: 30px auto 0;
-    padding: 1px 0;
+    // padding: 1px 0;
     width: 80%;
     border-radius: 10px;
     border: 1px solid #D9D9D9;
 }
 
 .img img {
-    margin: 15px auto;
-    // width: 70%;
+    margin: 5px auto;
+    width: 60%;
 }
 
 .buy-ticket-count {
@@ -603,6 +614,39 @@ table {
     margin: 0 auto;
 }
 
+
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    height: 50vh;
+    font-family: var(--cta-alt);
+  }
+  
+  .input input {
+    width: 85%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    outline: none;
+  }
+  
+  .note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // height: 40vh;
+  }
+  
+  .note span {
+    width: 85%;
+    color: #555555;
+    font-family: var(--cta-alt);
+  
+  }
+  
 
 .ticket-price-container {
     display: flex;
@@ -659,7 +703,7 @@ table {
 }
 
 .ticket-bought {
-    margin: 20px auto;
+    margin: 10px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -841,7 +885,7 @@ input[type=number] {
     border-radius: 4px;
     overflow-x: auto;
     justify-content: space-between;
-    gap: 3px;
+    gap: 20px;
 }
 
 
@@ -850,21 +894,31 @@ input[type=number] {
     border-radius: 4px;
 }
 
+.active-tab-number {
+    color: #1228C1;
+}
+
 .header-tickets {
     display: flex;
     align-items: center;
     gap: 5px;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 
-.header-tickets-number-active {
+.header-tickets-number-active.active-tab-number {
     border: 1px solid #D9D9D9;
     color: #1228C1;
     padding: 1px 8px;
     border-radius: 20px;
     background-color: #FCFCFC;
 }
+
+.header-tickets-number-active {
+  
+    border-color: #1228C1;
+  }
 
 .header-tickets-number {
     border: 1px solid #D9D9D9;
@@ -973,6 +1027,7 @@ input[type=number] {
     border-radius: 6px;
     outline: none;
     padding-left: 5px;
+    width: 100%;
 }
 
 .save-card-details {
@@ -1100,6 +1155,10 @@ input[type=number] {
 }
 
 .third-card-response {
+    display: none;
+}
+
+.mobile-only {
     display: none;
 }
 
@@ -2434,6 +2493,9 @@ input[type=number] {
         display: flex;
         flex-direction: column;
         // gap: 10px;
+    }
+    .mobile-only {
+        display: flex;
     }
 
     .first-card {

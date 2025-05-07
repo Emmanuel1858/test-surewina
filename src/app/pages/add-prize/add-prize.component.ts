@@ -56,7 +56,7 @@ export class AddPrizeComponent {
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         const base64String = (e.target?.result as string).split(',')[1]; // Remove data URL header
-        console.log('Base64 Image:', base64String);
+        // console.log('Base64 Image:', base64String);
   
         // Now send base64String to your backend
         this.image = base64String
@@ -88,9 +88,10 @@ export class AddPrizeComponent {
       this.loading = true
       const response = await lastValueFrom(this.addPrize.addPrize(credentials))
       this.loading = false
-      console.log(response)
+      return response
+      // console.log(response)
     } catch (e) {
-      console.log(e)
+      // console.log(e)
     }
     
     this.showModal = true
@@ -122,7 +123,7 @@ export class AddPrizeComponent {
   selectLocation(location: string) {
     this.selectedLocation = location
     this.allSelectedLocation.push(this.selectedLocation)
-    console.log(this.allSelectedLocation)
+    // console.log(this.allSelectedLocation)
     this.isDropdownOpenLocation = false
   }
 

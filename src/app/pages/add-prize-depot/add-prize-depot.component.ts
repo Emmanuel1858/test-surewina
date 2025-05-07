@@ -48,7 +48,7 @@ export class AddPrizeDepotComponent {
       const reader = new FileReader();
       reader.onload = (e: ProgressEvent<FileReader>) => {
         const base64String = (e.target?.result as string).split(',')[1]; // Remove data URL header
-        console.log('Base64 Image:', base64String);
+        // console.log('Base64 Image:', base64String);
 
         // Now send base64String to your backend
         this.image = base64String
@@ -74,10 +74,10 @@ export class AddPrizeDepotComponent {
       this.loading = true
       const response = await lastValueFrom(this.prizeDepot.addPrizeDepot(credentials))
       this.loading = false
-      console.log(response)
+      // console.log(response)
       this.showModal = true
     } catch (e) {
-      console.log(e)
+      // console.log(e)
     }
   
 

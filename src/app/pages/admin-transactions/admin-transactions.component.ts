@@ -75,17 +75,17 @@ export class AdminTransactionsComponent implements OnInit {
     try {
       const response = await lastValueFrom(this.analyticsService.analyticsSaleSummary(pagination))
       this.allTransactions = response.result.items
-      console.log(response)
+      // console.log(response)
 
     } catch (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 
   async analysisSummary() {
     try {
       const response = await lastValueFrom(this.analyticsService.analyticsAdmin())
-      console.log(response)
+      // console.log(response)
       this.totalEarning = response.result.overallSummary.totalAmount
       this.website = response.result.summaryByChannel[0].count
       this.vendor = response.result.summaryByChannel[1].count
@@ -93,7 +93,7 @@ export class AdminTransactionsComponent implements OnInit {
 
 
     } catch (e) {
-      console.log(e)
+      // console.log(e)
     }
   }
 

@@ -131,7 +131,7 @@
 }
 
 .all-inputs {
-    margin-top: 45px;
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: var(--NumbersSpacingL);
@@ -140,7 +140,7 @@
 .footer {
     position: absolute;
     // top: 0;
-    bottom: 30px;
+    bottom: 0;
     left: 0;
     width: 100%;
 }

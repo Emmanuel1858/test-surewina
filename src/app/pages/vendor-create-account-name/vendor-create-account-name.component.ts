@@ -29,6 +29,31 @@ export class VendorCreateAccountNameComponent implements OnInit, OnDestroy {
   isEmpty(value: string): boolean {
     return !value || value.trim() === '';
   }
+  isValidEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email); // You can use regex for more accurate validation if needed
+  }
+  onPhoneInput(event: any): void {
+    let input = event.target.value;
+
+    // Allow digits and optional '+' at the start
+    if (input.startsWith('+')) {
+      input = '+' + input.slice(1).replace(/\D/g, '');
+    } else {
+      input = input.replace(/\D/g, '');
+    }
+
+    // Limit to 15 characters
+    if (input.length > 15) {
+      input = input.slice(0, 15);
+    }
+
+    this.phoneNumber = input;
+  }
+  isInvalidPhoneNumber(): boolean {
+    // Allow phone numbers starting with optional '+' and 8-15 total characters
+    return !/^\+?\d{8,14}$/.test(this.phoneNumber);
+  }
   navigateToPassword() {
     const isValid =
       !this.isEmpty(this.firstName) &&
@@ -36,7 +61,9 @@ export class VendorCreateAccountNameComponent implements OnInit, OnDestroy {
       !this.isEmpty(this.phoneNumber) &&
       !this.isEmpty(this.emailAddress) &&
       !this.isEmpty(this.BVN) &&
-      !this.isEmpty(this.NIN)
+      !this.isEmpty(this.NIN) &&
+      this.isValidEmail(this.emailAddress) &&
+      !this.isInvalidPhoneNumber()
     if (isValid) {
       this.dataService.setRegisterVendorData('firstName', this.firstName)
       this.dataService.setRegisterVendorData('lastName', this.lastName)
@@ -59,7 +86,7 @@ export class VendorCreateAccountNameComponent implements OnInit, OnDestroy {
 
 
   navigateBack() {
-    this.router.navigate([''])
+    this.router.navigate(['/vendor-login'])
   }
   ngOnInit(): void {
     this.startCarousel();
