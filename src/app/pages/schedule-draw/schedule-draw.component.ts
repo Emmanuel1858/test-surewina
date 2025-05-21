@@ -238,7 +238,7 @@ export class ScheduleDrawComponent implements OnInit {
     // debugger
       const pagination = {
         pageNumber: 1,
-        numberOfRecords: 10
+        numberOfRecords: 5
       }
       try {
         this.showLoadingTicket = true

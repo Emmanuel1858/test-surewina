@@ -22,6 +22,7 @@ export class WinnerBoardComponent implements OnInit {
   noData: string = ''
   allDrawsByMonth: any = [] 
   drawResults: any[] = []
+  showEmptyStateWinner: boolean = false
 
 
   constructor(private userTicket: UserTicketService, 
@@ -49,6 +50,9 @@ export class WinnerBoardComponent implements OnInit {
   
       // Save the draw data
       this.drawResults = response.result;
+      if(this.drawResults.length === 0) {
+        this.showEmptyStateWinner = true
+      }
   
     } catch (error) {
       alert('You were logged out due to error. Try logging back in.');

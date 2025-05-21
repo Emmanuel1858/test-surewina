@@ -28,6 +28,10 @@ export class AdminLotteryComponent implements OnInit {
   getAllPrizeArray: any = []
   numberOfPrize: number = 0
   getAllPrizeDepot: any = []
+  numberOfRecords: number = 5
+  currentPage: number = 1;
+  currentPageTicket: number = 1
+  currentPageDepot: number = 1
   numberOfPrizeDepot: number = 0
   businessBaseAmount: number = 0
   salesAllocation: number = 0
@@ -36,20 +40,16 @@ export class AdminLotteryComponent implements OnInit {
   tierThreeAllocationInPercent: number = 0
   loading: boolean = false
 
-  constructor(private router: Router, 
-    private prize: PrizeService, 
-    private adminService: AdminService, 
-    private drawService: DrawService, 
-    private prizeService: PrizeService, 
+  constructor(private router: Router,
+    private prize: PrizeService,
+    private adminService: AdminService,
+    private drawService: DrawService,
+    private prizeService: PrizeService,
     private prizeDepotService: PrizeDepotService
   ) { }
 
   ngOnInit(): void {
     this.getAllTicket()
-    this.getDrawHistory()
-    this.getAllPrize()
-    this.getAllDepot()
-    this.getWinnigConfig()
   }
 
 
@@ -89,7 +89,7 @@ export class AdminLotteryComponent implements OnInit {
       this.status = 'Approved/Active'; // You can choose a specific name here if needed
       return '#079455';
     } else {
-      return 'transparent'; // Default color for unhandled statuses
+      return '#B51726'; // Default color for unhandled statuses
     }
   }
 
@@ -102,23 +102,27 @@ export class AdminLotteryComponent implements OnInit {
     }
     if (this.tabs === 'drawHistory') {
       this.winningConfigPage = false
+      this.getDrawHistory()
       this.btnText = 'SCHEDULE DRAW'
-    
+
     }
     if (this.tabs === 'prizes') {
+      this.getAllPrize()
       this.winningConfigPage = false
       this.btnText = 'ADD PRIZE'
-   
+
     }
     if (this.tabs === 'prizeDepot') {
+      this.getAllDepot()
       this.winningConfigPage = false
       this.btnText = 'ADD PRIZE DEPOT'
-     
+
     }
     if (this.tabs === 'winningConfig') {
+      this.getWinnigConfig()
       this.winningConfigPage = true
       this.btnText = 'CONFIGURE WINNINGS'
-      
+
     }
     // console.log(tab)
   }
@@ -130,13 +134,13 @@ export class AdminLotteryComponent implements OnInit {
     }
     if (this.btnText === 'SCHEDULE DRAW') {
       this.router.navigate((['/schedule-draw']))
-     
+
     }
     if (this.btnText === 'ADD PRIZE') {
       this.router.navigate(['/add-prize'])
     }
     if (this.btnText === 'ADD PRIZE DEPOT') {
-        this.router.navigate(['/add-prize-depot'])
+      this.router.navigate(['/add-prize-depot'])
     }
     if (this.btnText === 'CONFIGURE WINNINGS') {
       this.router.navigate(['/configure-winning'])
@@ -155,11 +159,11 @@ export class AdminLotteryComponent implements OnInit {
     this.viewMore = false
   }
 
- async getAllTicket() {
-  // debugger
+  async getAllTicket(pageNumber: number = 1) {
+    // debugger
     const pagination = {
-      pageNumber: 1,
-      numberOfRecords: 10
+      pageNumber: pageNumber,
+      numberOfRecords: this.numberOfRecords
     }
     try {
       this.loading = true
@@ -171,77 +175,98 @@ export class AdminLotteryComponent implements OnInit {
         if (typeof ticket.image === 'string' && ticket.image.startsWith('data:image')) {
           return ticket
         }
-        if(typeof ticket.image === 'string') {
+        if (typeof ticket.image === 'string') {
           return {
-            ...ticket, 
-            image:`data:image/png;base64,${ticket.image}`
+            ...ticket,
+            image: `data:image/png;base64,${ticket.image}`
           }
         }
         return ticket
       })
       this.allTicket = processed
       this.numberOfTicket = response.result.totalCount
+      this.currentPageTicket = pageNumber;
 
     } catch (e) {
       // console.log(e)
     }
   }
 
- async getDrawHistory() {
-    const pagination = {
-      pageNumber : 1, 
-      numberOfRecords: 60
+  changePageTicket(page: number) {
+    if (page >= 1 && page <= this.totalPagesTicket.length) {
+      this.getAllTicket(page);
     }
-    try {
-      this.loading = true
+  }
 
-      const response = await lastValueFrom(this.drawService.getDrawHistory(pagination))
-      // console.log(response)
-      this.loading = false
-      const result = response.result.items
-      const processed = result.map((draw: any ) => {
-        if(typeof draw.ticketImage === 'string' && draw.ticketImage.startsWith('data:image')) {
-          return draw
+  get paginatedTicket() {
+    return this.allTicket;
+  }
+
+  get totalPagesTicket(): number[] {
+    return Array.from({ length: Math.ceil(this.numberOfTicket / this.numberOfRecords) }, (_, i) => i + 1);
+  }
+
+  async getDrawHistory(pageNumber: number = 1) {
+    const pagination = {
+      pageNumber: pageNumber,
+      numberOfRecords: this.numberOfRecords
+    };
+
+    try {
+      this.loading = true;
+
+      const response = await lastValueFrom(this.drawService.getDrawHistory(pagination));
+      this.loading = false;
+
+      const result = response.result.items;
+      const processed = result.map((draw: any) => {
+        if (typeof draw.ticketImage === 'string' && draw.ticketImage.startsWith('data:image')) {
+          return draw;
         }
         if (typeof draw.ticketImage === 'string') {
           return {
             ...draw,
             ticketImage: `data:image/png;base64,${draw.ticketImage}`
-          }
+          };
         }
-        return draw
-      })
-      this.getAllDrawHistory = processed
-      this.numberOfDrawHistory = response.result.totalCount
+        return draw;
+      });
+
+      this.getAllDrawHistory = processed;
+      this.numberOfDrawHistory = response.result.totalCount;
+      this.currentPage = pageNumber; // update current page
     } catch (e) {
-      // console.log(e)
+      this.loading = false;
+      console.error(e);
     }
   }
 
-  // async getAllPrize() {
-  //   try {
-  //     // debugger
-  //     const response = await lastValueFrom(this.prizeService.getAllPrize())
-  //     console.log(response)
-  //     this.getAllPrizeArray = response.result
-  //     this.numberOfPrize = response.result.length
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPagesDrawHistory.length) {
+      this.getDrawHistory(page);
+    }
+  }
 
-  //   } catch(e) {
-  //     console.log(e)
-  //   }
-  // }
+  get paginatedDrawHistory() {
+    return this.getAllDrawHistory;
+  }
+
+  get totalPagesDrawHistory(): number[] {
+    return Array.from({ length: Math.ceil(this.numberOfDrawHistory / this.numberOfRecords) }, (_, i) => i + 1);
+  }
+
   async getAllPrize() {
     try {
       this.loading = true
       const response = await lastValueFrom(this.prizeService.getAllPrize());
       this.loading = false
       const result = response.result;
-  
+
       const processed = result.map((prize: any) => {
         if (typeof prize.image === 'string' && prize.image.startsWith('data:image')) {
           return prize;
         }
-  
+
         // If it's a base64 string without the header, add the prefix
         if (typeof prize.image === 'string') {
           return {
@@ -249,42 +274,42 @@ export class AdminLotteryComponent implements OnInit {
             image: `data:image/png;base64,${prize.image}`, // change to jpeg if needed
           };
         }
-  
+
         return prize;
       });
-  
+
       this.getAllPrizeArray = processed;
       this.numberOfPrize = processed.length;
-  
+
     } catch (e) {
       // console.log(e);
     }
   }
-  
+
   // byteArrayToBase64(byteArray: number[]): string {
   //   const binary = byteArray.map(byte => String.fromCharCode(byte)).join('');
   //   return window.btoa(binary);
   // }
-  
 
-  async getAllDepot() {
+
+  async getAllDepot(pageNumber: number = 1) {
     // debugger
     const pagination = {
-      pageNumber: 1,
-      numberOfRecords: 10
+      pageNumber: pageNumber,
+      numberOfRecords: this.numberOfRecords
     }
     try {
       const response = await lastValueFrom(this.prizeDepotService.getPrizeDepot(pagination))
       // console.log(response)
-      const result = response.result.items 
+      const result = response.result.items
       const processed = result.map((prize: any) => {
-        if(typeof prize.depotImage === 'string' && prize.depotImage.startsWith('data:image')) {
+        if (typeof prize.depotImage === 'string' && prize.depotImage.startsWith('data:image')) {
           return prize
         }
 
-        if(typeof prize.depotImage === 'string') {
+        if (typeof prize.depotImage === 'string') {
           return {
-            ...prize, 
+            ...prize,
             depotImage: `data:image/png;base64,${prize.depotImage}`,
           };
         }
@@ -293,9 +318,24 @@ export class AdminLotteryComponent implements OnInit {
       })
       this.getAllPrizeDepot = processed
       this.numberOfPrizeDepot = response.result.totalCount
-    } catch(err) {
+      this.currentPageDepot = pageNumber
+    } catch (err) {
       // console.log(err)
     }
+  }
+
+  changePageDepot(page: number) {
+    if (page >= 1 && page <= this.totalPagesDepot.length) {
+      this.getAllDepot(page);
+    }
+  }
+
+  get paginatedDepot() {
+    return this.getAllPrizeDepot;
+  }
+
+  get totalPagesDepot(): number[] {
+    return Array.from({ length: Math.ceil(this.numberOfPrizeDepot / this.numberOfRecords) }, (_, i) => i + 1);
   }
 
   async getWinnigConfig() {
@@ -307,8 +347,8 @@ export class AdminLotteryComponent implements OnInit {
       this.tierOneAllocationInPercent = response.result.tierOneAllocationInPercent
       this.tierTwoAllocationInPercent = response.result.tierTwoAllocationInPercent
       this.tierThreeAllocationInPercent = response.result.tierThreeAllocationInPercent
-      
-    } catch(e) {
+
+    } catch (e) {
       // console.log(e)
     }
   }

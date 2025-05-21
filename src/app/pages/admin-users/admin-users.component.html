@@ -21,40 +21,39 @@
     <div [ngSwitch]="primaryTabs" class="tab-content">
       <div *ngSwitchCase="'all-users-container'"  class="all-users-container">
         <!-- collection of user cards -->
-        <div (click)="detailsPage('user')" class="user-details" *ngFor="let user of allUsers">
-          <div class="name-thumbnail">
-            <img src="../../../assets/user-1.svg" alt="">
-            <div class="name">
-              <h2> {{user.firstName}} {{user.lastName}} </h2>
-              <p> Mobile User </p>
+          <div  class="user-details" (click)="getUserById(user.userId)" *ngFor="let user of paginatedUser">
+            <div class="name-thumbnail">
+              <img src="../../../assets/user-1.svg" alt="">
+              <div class="name">
+                <h2> {{user.firstName}} {{user.lastName}} </h2>
+                <p> Mobile User </p>
+              </div>
             </div>
+            <div class="contact-info">
+              <p> {{user.phoneNumber}} </p>
+              <p> {{user.email}} </p>
+            </div>
+            <div class="contact-info">
+              <p style="color: #9D9D9D;"> Date Registered </p>
+              <p> {{user.registeredOn.split('T')[0]}} </p>
+            </div>
+            <button class="status-btn"[ngClass]="getBtnColor('active')">
+              <div class="dot">
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
+                fill="none">
+                <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
+                </svg>
+              </div> 
+              {{status !== null ? status : 'Not Available'}}
+            </button>
+    
+            <img (click)="getUserById(user.userId)" src="../../../assets/view-more-icon.svg" alt="">
           </div>
-          <div class="contact-info">
-            <p> {{user.phoneNumber}} </p>
-            <p> {{user.email}} </p>
-          </div>
-          <div class="contact-info">
-            <p> Date Registered </p>
-            <p> {{user.registeredOn.split('T')[0]}} </p>
-          </div>
-          <button class="status-btn"[ngClass]="getBtnColor('active')">
-            <div class="dot">
-              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
-              fill="none">
-              <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
-              </svg>
-            </div> 
-            {{status !== null ? status : 'Not Available'}}
-          </button>
-  
-          <img (click)="getUserById(user.userId)" src="../../../assets/view-more-icon.svg" alt="">
-        </div>
-        
       </div>
   
       <div *ngSwitchCase="'all-agents-container'"  class="all-agents-container">
         <!-- collection of agent cards -->
-        <div (click)="detailsPage('agent')" class="user-details" *ngFor="let vendor of allVendor">
+        <div (click)="detailsPage('agent')" class="user-details" *ngFor="let vendor of paginatedVendor">
           <div class="name-thumbnail">
             <img src="../../../assets/user-1.svg" alt="">
             <div class="name">
@@ -92,7 +91,7 @@
   </ng-container>
 
   <div *ngIf="loading" class="loader">
-    <app-loader/>
+    <app-loader-admin/>
   </div>
 
   <ng-container *ngIf="showBackBtn">
@@ -190,38 +189,23 @@
 
       <div class="ticket-history-container" *ngSwitchCase="'ticket-history'">
         <div class="all-tickets">
-          <div class="ticket-details">
+          <div class="ticket-details" *ngFor="let ticketDetails of ticketHistory">
             <div class="left">
-              <img src="../../../assets/car-prize.png" alt="">
+              <img  class="ticket-image" [src]="ticketDetails.ticketImage" alt="">
               <div class="ticket-details-all">
                 <div class="left-side">
-                  <span class="ticket-date">03rd Sept, 2024</span>
-                  <span class="ticket-name">Jolly Jackpot Lottery</span>
+                  <span class="ticket-date">{{ticketDetails.created.split('T')[0]}}</span>
+                  <span class="ticket-name">{{ticketDetails.drawName}}</span>
                   <span class="ticket-won">
-                      <span>11 Ticket</span>
-                      <span>₦ 11,000</span>
-                      <span>Cars, laptop, Phones, Gas Cooker</span>
+                      <span>{{ticketDetails.numberOfTickets}} Ticket(s)</span>
+                      <span>₦ {{ticketDetails.amount}}</span>
+                      <span>{{ticketDetails.tierOnePrize}}, {{ticketDetails.tierTwoPrize}}, {{ticketDetails.tierThreePrize}}</span>
                   </span>
                 </div>
               </div>
             </div>
           </div>
-          <div class="ticket-details">
-            <div class="left">
-              <img src="../../../assets/lotter-ticket-img.png" alt="">
-              <div class="ticket-details-all">
-                <div class="left-side">
-                  <span class="ticket-date">03rd Sept, 2024</span>
-                  <span class="ticket-name">Jolly Jackpot Lottery</span>
-                  <span class="ticket-won">
-                      <span>11 Ticket</span>
-                      <span>₦ 11,000</span>
-                      <span>Cars, laptop, Phones, Gas Cooker</span>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
         <div class="prize-table">
           <div class="prize-image-container">
@@ -408,4 +392,37 @@
     </div>
   </ng-container>
   
+</div>
+
+<div class="pagination" *ngIf="showUserPagination" >
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+    « Prev
+  </button>
+
+  <button
+    *ngFor="let page of totalPagesUser"
+    (click)="changePage(page)"
+    [class.active]="page === currentPage">
+    {{ page }}
+  </button>
+
+  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPagesUser.length">
+    Next »
+  </button>
+</div>
+<div class="pagination" *ngIf="showAgentPagination" >
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+    « Previous
+  </button>
+
+  <button
+    *ngFor="let page of totalPagesVendor"
+    (click)="changePage(page)"
+    [class.active]="page === currentPage">
+    {{ page }}
+  </button>
+
+  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPagesVendor.length">
+    Next »
+  </button>
 </div>

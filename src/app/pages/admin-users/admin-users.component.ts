@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
+import { UserTicketService } from 'src/app/services/user-ticket.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -22,11 +23,17 @@ export class AdminUsersComponent implements OnInit {
   transactionStatus: string = 'Successful';
   allUsers: any = []
   allVendor: any = []
+  ticketHistory: any = []
   userDetails: any = {}
   pageNumber: number = 1
-  numberOfRecords: number = 3
+  numberOfRecords: number = 5
   numberOfUsers: number = 0
   numberOfVendors: number = 0
+  currentPage = 1;
+  itemsPerPage = 5;
+  showUserPagination: boolean = true
+  showAgentPagination: boolean = false
+
   
 
   // firstName: string = ''
@@ -40,7 +47,7 @@ export class AdminUsersComponent implements OnInit {
   // totalTicketsBoughtAmount:number = 0
   // registeredOn: string = ""
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private userTicket: UserTicketService) {}
 
   switchTab(tab: string) {
     this.tabs = tab;
@@ -48,6 +55,13 @@ export class AdminUsersComponent implements OnInit {
 
   switchprimaryTabs(tab: string) {
     this.primaryTabs = tab;
+    if(this.primaryTabs === 'all-users-container') {
+      this.showUserPagination = true
+      this.showAgentPagination = false
+    } else {
+      this.showUserPagination = false
+      this.showAgentPagination = true
+    }
   }
 
   async getAllUsers() {
@@ -56,19 +70,26 @@ export class AdminUsersComponent implements OnInit {
       numberOfRecords: this.numberOfRecords
     }
     try {
+      // debugger
       this.loading = true
       const response = await lastValueFrom(this.userService.allGetUsers(getNumberOfUsers));
-      // console.log(response)
+      console.log(response)
       this.loading = false
       this.numberOfUsers = response.result.items.length
       this.allUsers = response.result.items
     } catch (error) {
-      // console.log(error)
+      console.log(error)
     }
   }
 
   async getUserById(id: number) {
+    
+    this.showBackBtn = true;
+
+ 
     try {
+      this.getUserTicket(id)
+      this.currentRoute = 'User Details'
       const response = await lastValueFrom(this.userService.getUserById(id)) 
       this.userDetails = response.result
       // console.log(response)
@@ -77,6 +98,22 @@ export class AdminUsersComponent implements OnInit {
     }
 
 
+  }
+
+  async getUserTicket(userId: number) {
+    // debugger
+    const credentials = {
+      pageNumber: this.pageNumber, 
+      numberOfRecords: this.numberOfRecords
+    }
+    try {
+      const response: any = await lastValueFrom(this.userTicket.getUserTicketHistory(userId, credentials))
+      this.ticketHistory = response.result.items
+      console.log(response)
+
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   async getAllVendor() {
@@ -104,21 +141,31 @@ export class AdminUsersComponent implements OnInit {
   goBack() {
     if (this.primaryTabs == 'all-users-container' ) {
       this.primaryTabs = 'all-users-container'
+      this.showUserPagination = true
+      this.showAgentPagination = false
     } else {
       this.primaryTabs = 'all-agents-container'
+      this.showUserPagination = false
+      this.showAgentPagination = true
+
     }
     this.tabs = 'personal-information'
     this.showBackBtn = false;
+ 
   }
 
   detailsPage(role: string, roleData?: any) {
     this.showBackBtn = true;
+    this.showUserPagination = false
+    this.showAgentPagination = false
 
     if (role == 'user') {
       this.currentRoute = 'User Details';
 
+
     } else {
       this.currentRoute = 'Agent Details';
+
     }
   }
 
@@ -161,4 +208,30 @@ export class AdminUsersComponent implements OnInit {
       return 'transparent'; // Default color for unhandled statuses
     }
   }
+
+  changePage(page: number) {
+    this.currentPage = page;
+  }
+
+  
+  // total pages for prizes
+  get totalPagesUser(): number[] {
+    return Array.from({ length: Math.ceil(this.numberOfUsers / this.itemsPerPage) }, (_, i) => i + 1);
+  }
+
+  get paginatedUser() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.allUsers.slice(start, start + this.itemsPerPage);
+  }
+
+  get totalPagesVendor(): number[] {
+    return Array.from({ length: Math.ceil(this.numberOfVendors / this.itemsPerPage) }, (_, i) => i + 1);
+  }
+
+  get paginatedVendor() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.allVendor.slice(start, start + this.itemsPerPage);
+  }
+
+
 }

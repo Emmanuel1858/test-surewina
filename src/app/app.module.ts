@@ -54,6 +54,8 @@ import { AddPrizeDepotComponent } from './pages/add-prize-depot/add-prize-depot.
 import { ConfigureTierComponent } from './pages/configure-tier/configure-tier.component';
 import { ConfigureWinningsComponent } from './pages/configure-winnings/configure-winnings.component';
 import { TestingComponent } from './pages/testing/testing.component';
+import { AdminInitiateComponent } from './pages/admin-initiate/admin-initiate.component';
+import { LoaderAdminComponent } from './components/loader-admin/loader-admin.component';
 
 // @NgModule({
 //   declarations: [
@@ -124,7 +126,9 @@ import { TestingComponent } from './pages/testing/testing.component';
     AddPrizeDepotComponent,
     ConfigureTierComponent,
     ConfigureWinningsComponent,
-    TestingComponent
+    TestingComponent,
+    AdminInitiateComponent,
+    LoaderAdminComponent
 
   ],
   imports: [

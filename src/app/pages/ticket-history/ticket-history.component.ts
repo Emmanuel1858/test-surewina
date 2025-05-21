@@ -39,6 +39,8 @@ export class TicketHistoryComponent implements OnInit {
   allTicket: any = []
   showMoney: boolean = false
   showLocation: boolean = false
+  showEmptyOngoingTicket: boolean = false
+  showEmptyPreviousTicket: boolean = false
   tabs: string = 'ongoing'
   allPreviousTicket: any[] = []
   
@@ -101,6 +103,7 @@ export class TicketHistoryComponent implements OnInit {
       this.showLoader = false
       this.itemsInArray = response.result.items.length
       if(this.itemsInArray === 0 ) {
+        this.showEmptyOngoingTicket = true
         return
       }
       this.amount = response.result.items[0].amount
@@ -134,6 +137,7 @@ export class TicketHistoryComponent implements OnInit {
       this.showLoader = false
       this.itemsInArrayPrevious = response.result.items.length
       if(this.itemsInArrayPrevious === 0) {
+        this.showEmptyPreviousTicket = true
         return
       }
       this.amountPrevious = response.result.items[0].amount

@@ -64,15 +64,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
   allTicket: any = []
   tabs: string = 'jan'
   drawResults: any[] = []
+  showEmptyStateWinner: boolean = false
   showMonth: boolean = true
   listOfWinners: any = []
   showWinnerList: boolean = false
   ticketError: boolean = false
+  showEmptyStateTicket: boolean = false
   constructor(private router: Router,
     private drawService: DrawService,
-    private prizeService: PrizeService, 
-    private userTicket: UserTicketService, 
-    private sharedService: SharedService, 
+    private prizeService: PrizeService,
+    private userTicket: UserTicketService,
+    private sharedService: SharedService,
     private userAccountService: UserAccountService) { }
 
   navigateToProfile() {
@@ -121,12 +123,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   async completeLocation() {
-    if(this.updateAddress === '' ) {
-       this.showError = 'Please input your address!'
+    if (this.updateAddress === '') {
+      this.showError = 'Please input your address!'
       setTimeout(() => {
         this.showError = ''
       }, 10000);
-     
+
       return
     }
     const credentialsAddressUpdate = {
@@ -138,19 +140,19 @@ export class DashboardComponent implements OnInit, OnDestroy {
       const response: any = await lastValueFrom(this.userAccountService.userAddressUpdate(credentialsAddressUpdate))
       this.loading = false
       // console.log(response)
-      if(response.responseStatus === false) {
+      if (response.responseStatus === false) {
         this.showError = response.responseMessage
-        
+
       } else {
         this.showLoader = true
       }
-    } catch(error) {
+    } catch (error) {
       alert('You were logged out due to error. Try logging back in.');
       this.router.navigate(['/login'])
       sessionStorage.clear()
       console.error(error)
     }
-   
+
   }
 
   private updateTotalPrice(): void {
@@ -192,7 +194,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       numberOfRecords: this.numberOfRecords
     }
     try {
+      this.loading = true
       const response = await lastValueFrom(this.drawService.getTodayDraw(drawForToday))
+      this.loading = false
       // console.log(response)
       this.items = response.result.items
       if (this.items.length === 0) {
@@ -239,9 +243,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
       const response = await lastValueFrom(this.userTicket.winnerBoardUser());
 
       this.showLoader = false;
-
-      // Save the draw data
       this.drawResults = response.result;
+      if (this.drawResults.length === 0) {
+        this.showEmptyStateWinner = true
+        return
+      }
 
     } catch (error) {
       // debugger
@@ -258,7 +264,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     // this.router.navigate(['/profile'])
   }
   navigateToMakePayment() {
-    if(this.totalPrice === 0) {
+    if (this.totalPrice === 0) {
       this.ticketError = true
       setTimeout(() => {
         this.ticketError = false
@@ -313,7 +319,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.showLoader = false
       this.itemsInArrayPrevious = response.result.items.length
       if (this.itemsInArrayPrevious === 0) {
+        this.showEmptyStateTicket = true
         return
+
       }
       this.amountPrevious = response.result.items[0].amount
       this.createdPrevious = response.result.items[0].created

@@ -39,6 +39,7 @@ import { ConfigureTierComponent } from './pages/configure-tier/configure-tier.co
 import { ConfigureWinningsComponent } from './pages/configure-winnings/configure-winnings.component';
 import { AddPrizeDepotComponent } from './pages/add-prize-depot/add-prize-depot.component';
 import { TestingComponent } from './pages/testing/testing.component';
+import { AdminInitiateComponent } from './pages/admin-initiate/admin-initiate.component';
 // import { CreateAccountNameComponent } from './pages/create-account-name/create-account-name.component';
 
 
@@ -74,6 +75,7 @@ const routes: Routes = [
   { path: 'vendor-make-payment', component: VendorMakePaymentComponent },
   { path: 'vendor-profile', component: VendorProfileComponent },
   { path: 'admin-login', component: AdminPortalLoginComponent },
+  { path: 'initiate', component: AdminInitiateComponent},
   {
     path: '', component: AdminPortalComponent,
     children: [

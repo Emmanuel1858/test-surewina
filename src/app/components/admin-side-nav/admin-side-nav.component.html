@@ -4,10 +4,24 @@
   </div>
   <div class="side-nav-bottom">
     <nav>
-      <a routerLink="/admin-dashboard" routerLinkActive="active"> <img src="../../../assets/home-02.svg" alt=""> Dashboard </a>
-      <a routerLink="/users" routerLinkActive="active"> <img src="../../../assets/user-circle.svg" alt="" > Users </a>
-      <a routerLink="/lottery" routerLinkActive="active"> <img src="../../../assets/lottery-02.svg" alt="" > Lottery </a>
-      <a routerLink="/transactions" routerLinkActive="active"> <img src="../../../assets/transactions-icon.svg" alt="" > Transactions </a>
+      <a routerLink="/admin-dashboard" routerLinkActive="active" #dashboardRLA="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }">
+        <img [src]="dashboardRLA.isActive ? '../../../assets/active-dashboard-admin.svg' : '../../../assets/home-02.svg'" alt="">
+        Dashboard
+      </a>
+      <a routerLink="/users" routerLinkActive="active" #usersRLA="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }">
+        <img [src]="usersRLA.isActive ? '../../../assets/active-user-admin.svg' : '../../../assets/user-circle.svg'" alt="">
+        Users
+      </a>
+  
+      <a routerLink="/lottery" routerLinkActive="active" #lotteryRLA="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }">
+        <img [src]="lotteryRLA.isActive ? '../../../assets/active-lottery-admin.svg' : '../../../assets/lottery-02.svg'" alt="">
+        Lottery
+      </a>
+  
+      <a routerLink="/transactions" routerLinkActive="active" #transactionsRLA="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }">
+        <img [src]="transactionsRLA.isActive ? '../../../assets/active-trans-admin.svg' : '../../../assets/transactions-icon.svg'" alt="">
+        Transactions
+      </a>
     </nav>
   
     <div class="support">

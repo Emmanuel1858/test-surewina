@@ -37,8 +37,14 @@
 
 .header-right {
     display: flex;
+    align-items: center;
     gap: 8px;
 
+}
+
+.header-img {
+    margin-right: 10px;
+    cursor: pointer;
 }
 
 .header-initials {
@@ -179,6 +185,72 @@
     display: none;
 }
 
+.container-logout-laptop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(3px);
+    height: 100vh;
+    width: 100vw;
+}
+
+.container-logout-laptop-sub {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* padding: 178px; */
+    background-color: #F6F6F6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.logout-question-laptop {
+    font-weight: 900;
+    font-size: 20px;
+    text-align: center;
+    width: 35%;
+}
+
+.logout-note-laptop {
+    text-align: center;
+    width: 35%;
+}
+
+.logout-btn-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* border: 1px solid; */
+    border-top: 1px solid #ccc;
+    padding: 22px 40px;
+}
+
+.logout-btn-container :first-child {
+    border: 1px solid rgb(18, 40, 193);
+    color: rgb(18, 40, 193);
+    background-color: #fff;
+    outline: none;
+    border-radius: 20px;
+    padding: 5px 25px;
+    cursor: pointer;
+}
+
+.logout-btn-container :last-child {
+    background-color: rgb(18, 40, 193);
+    color: #fff;
+    outline: none;
+    border-radius: 20px;
+    padding: 5px 25px;
+    cursor: pointer;
+
+}
 
 .buy-ticket-container {
     position: absolute;
@@ -495,9 +567,6 @@ input[type=number] {
     margin-top: 20px;
     color: #555555;
 }
-
-
-
 
 .modal {
     width: 100%;

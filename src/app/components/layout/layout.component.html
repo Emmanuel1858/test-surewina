@@ -8,7 +8,7 @@
                 <!-- <img src="../../../assets/Header Icon.svg" alt=""> -->
             </span>
             <span class="header-img">
-                <!-- <img src="../../../assets/Header Icon (1).svg" alt=""> -->
+                <img  (click)="showLogoutLaptop()" src="../../../assets/logout.svg" alt="">
             </span>
             <span class="header-initials" (click)="navigateToProfile()">
                 {{initialFromLogin}}
@@ -265,6 +265,24 @@
                 <button (click)="yesLogout()">CONTINUE > </button>
             </div>
         </div>
+    </div>
+    <div class="container-logout-laptop" *ngIf="logoutModalLaptop">
+        <div class="container-logout-laptop-sub">
+            <span>
+                <img src="../../../assets/info-disclaimer.svg" alt="">
+            </span>
+            <span class="logout-question-laptop">
+                Are you sure you want to log out of your account
+            </span>
+            <span class="logout-note-laptop">
+                If you continue whatever you're working on will be deleted
+            </span>
+            <div class="logout-btn-container" >
+                <button (click)="goBackLaptop()">GO BACK</button>
+                <button (click)="yesLogout()">YES LOGOUT > </button>
+            </div>
+        </div>
+
     </div>
 </div>
 

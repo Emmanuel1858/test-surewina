@@ -40,6 +40,7 @@
     margin: 35px auto 10px;
     // margin-left: 40px;
     display: flex;
+    position: relative;
 
 }
 
@@ -157,6 +158,12 @@
     text-overflow: ellipsis;
 }
 
+.empty-state-winner {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 100px);
+}
 
 .winner-container div {
     display: flex;

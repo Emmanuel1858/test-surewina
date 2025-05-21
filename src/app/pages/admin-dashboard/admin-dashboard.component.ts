@@ -26,6 +26,7 @@ export class AdminDashboardComponent implements OnInit {
   getAllPrizeArray: any = []
   intervalId: any;
   loading: boolean = false
+  winnersBoardTotalCount: number = 0
 
 
 
@@ -91,6 +92,44 @@ export class AdminDashboardComponent implements OnInit {
 
   }
 
+  allPrizes = Array.from({ length: 20 }, (_, i) => ({
+    date: 'Jan 1st - Jan 14th',
+    // title: `Prize ${i + 1}: 2 units of White Jeep Cherokee Suv 2024`,
+    description: 'January Suprize Lottery',
+    price: '₦ 1,000 per ticket',
+    tickets: '11,762 tickets bought',
+    image: 'assets/car-prize.png'
+  }));
+
+  currentPage = 1;
+  itemsPerPage = 5;
+
+  get paginatedPrizes() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.getAllPrizeArray.slice(start, start + this.itemsPerPage);
+  }
+
+  changePage(page: number) {
+    this.currentPage = page;
+  }
+  // total pages for prizes
+  get totalPages(): number[] {
+    return Array.from({ length: Math.ceil(this.getAllPrizeArray.length / this.itemsPerPage) }, (_, i) => i + 1);
+  }
+
+  get paginatedWinners() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    return this.winnersBoard.slice(start, start + this.itemsPerPage);
+  }
+
+  // changePageWinner(page: number) {
+  //   this.currentPage = page;
+  // }
+  // total pages for winners
+  get totalPagesWinner(): number[] {
+    return Array.from({ length: Math.ceil(this.winnersBoardTotalCount / this.itemsPerPage) }, (_, i) => i + 1);
+  }
+
   async getAllPrize() {
     try {
       const response = await lastValueFrom(this.prizeService.getAllPrize());
@@ -128,6 +167,7 @@ export class AdminDashboardComponent implements OnInit {
       this.loading = false
       // console.log(response)
       this.winnersBoard = response.result[0].winners.items
+      this.winnersBoardTotalCount = response.result[0].winners.totalCount
     } catch (e) {
       // console.log(e)
     }

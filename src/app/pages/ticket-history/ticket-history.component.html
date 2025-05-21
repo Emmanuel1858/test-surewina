@@ -22,7 +22,7 @@
         <div [ngSwitch]="tabs">
             <div *ngSwitchCase="'ongoing'">
                 <!-- Ongoing -->
-                <div>
+                <div class="ongoing-ticket">
                     <div class="ticket-details" *ngFor="let ticket of allTicket"
                         (click)="getTicketId(ticket.ticketRef, ticket.ticketImage)">
                         <div class="ticket-details-img">
@@ -38,12 +38,15 @@
                             </span>
                         </div>
                     </div>
+                    <div class="empty-state-ticket" *ngIf="showEmptyOngoingTicket">
+                        <img src="../../../assets/empty-state-ticket.svg" alt="">
+                    </div>
                 </div>
 
             </div>
             <div *ngSwitchCase="'previous'">
                 <!-- previously -->
-                <div>
+                <div class="ongoing-ticket">
                     <div class="ticket-details" *ngFor="let ticket of allPreviousTicket"
                         (click)="getTicketId(ticket.ticketRef, ticket.ticketImage)">
                         <div class="ticket-details-img">
@@ -58,6 +61,9 @@
                                 <span>{{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}}</span>
                             </span>
                         </div>
+                    </div>
+                    <div class="empty-state-ticket" *ngIf="showEmptyPreviousTicket">
+                        <img src="../../../assets/empty-state-ticket.svg" alt="">
                     </div>
                 </div>
             </div>
@@ -89,12 +95,12 @@
             <span>Moter Bike</span>
         </div>
 
-        <div class="first-layer-redeem-note">
+        <!-- <div class="first-layer-redeem-note">
             <span>Easily let us know how you want to redeem and collect your prize</span>
             <button (click)="goToNext()">
                 Continue >
             </button>
-        </div>
+        </div> -->
     </div>
 
     <div class="redeem-money-prize" *ngIf="redeemTicketSecond">

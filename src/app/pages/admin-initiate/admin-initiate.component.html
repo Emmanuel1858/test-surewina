@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="container-head">What would you like to initiate</div>
+    <div class="container-note">Choose the most suited option</div>
+    <div class="card-all">
+        <div class="container-card" (click)="navigateToAddTicket()">
+            <span>
+                <img src="../../../assets/create-ticket-icon.svg" alt="">
+            </span>
+            <span class="container-card-head">
+                Create a ticket
+            </span>
+            <span class="container-card-note">
+                Configure ticket details and prices
+            </span>
+        </div>
+        <div class="container-card" (click)="navigateToAddPrize()">
+            <span>
+                <img src="../../../assets/add-ticket-icon.svg" alt="">
+            </span>
+            <span class="container-card-head">
+                Add new prize
+            </span>
+            <span class="container-card-note">
+                Add a new prize into the system
+            </span>
+        </div>
+        <div class="container-card" (click)="navigateToSchduleDraw()">
+            <span>
+                <img src="../../../assets/schedule-draw-icon.svg" alt="">
+            </span>
+            <span class="container-card-head">
+                Setup a draw
+            </span>
+            <span class="container-card-note">
+                Schedule daily draws for Surewina
+            </span>
+        </div>
+    </div>
+</div>

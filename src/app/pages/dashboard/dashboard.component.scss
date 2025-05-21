@@ -46,7 +46,22 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
 
+.first-card-prize-empty {
+    border: 2px solid #434343;
+    margin-top: 170px;
+    border-radius: 2px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.first-card-prize-empty :last-child {
+    font-weight: 300;
+    color: #aaa;
 }
 
 .first-card-prize-div {
@@ -137,7 +152,8 @@
     padding: 10px;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    width: 255px;
+    // width: 255px;
+    width: 340px;
 }
 
 .second-card-right-text {
@@ -171,7 +187,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 22px auto;
+    margin: 0 auto;
     width: 100%;
     height: 100%;
 }
@@ -202,7 +218,8 @@
     // background-image: url(../../../assets/samsung-tv.svg);
     // background-image: url(../../../assets/yellow-paper.svg);
     // background-image: url(../../../assets/white-jeep.svg);
-    width: 425px;
+    // width: 425px;
+    width: 640px;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -210,6 +227,15 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
 
+}
+
+.empty-state-prizes {
+    background-image: url(../../../assets/empty-state-prize.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    // width: 425px;
+    width: 640px;
 }
 
 .second-card-prize-text {
@@ -288,6 +314,7 @@
     padding: 20px;
     border-radius: 8px;
     height: 70vh;
+    display: none;
 }
 
 .third-card-profile-text {
@@ -318,18 +345,26 @@
     border: 4px solid #fff;
     border-radius: 10px;
     // background-color: #000896;
-   
+
 }
 
 .third-card-profile {
     display: flex;
     gap: 8px;
     align-items: center;
-    background-color: #fff;
-    color: #000;
+    color: #fff;
+    background-color: #262626;
     width: 100%;
     padding: 10px;
     border-radius: 5px;
+    position: relative;
+    margin-top: 10px;
+}
+
+.img-arrow img {
+    position: absolute;
+    right: 15px;
+    top: 30%;
     cursor: pointer;
 }
 
@@ -338,13 +373,13 @@
     flex-direction: column;
 }
 
-.profile-name {
-    color: #262626;
-}
+// .profile-name {
+//     color: #262626;
+// }
 
-.profile-number {
-    color: #555555;
-}
+// .profile-number {
+//     color: #555555;
+// }
 
 .location-details {
     display: flex;
@@ -623,30 +658,30 @@ table {
     gap: 10px;
     height: 50vh;
     font-family: var(--cta-alt);
-  }
-  
-  .input input {
+}
+
+.input input {
     width: 85%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #D9D9D9;
     outline: none;
-  }
-  
-  .note {
+}
+
+.note {
     display: flex;
     justify-content: center;
     align-items: center;
     // height: 40vh;
-  }
-  
-  .note span {
+}
+
+.note span {
     width: 85%;
     color: #555555;
     font-family: var(--cta-alt);
-  
-  }
-  
+
+}
+
 
 .ticket-price-container {
     display: flex;
@@ -866,11 +901,32 @@ input[type=number] {
     margin: 0 auto;
     // margin-left: 40px;
     display: flex;
+}
 
+.empty-state-winners {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ticket-body-inner {
     width: 100%;
+}
+
+.empty-state-ticket {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-state-ticket span {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #3B82F6;
+    cursor: pointer;
 }
 
 
@@ -916,9 +972,9 @@ input[type=number] {
 }
 
 .header-tickets-number-active {
-  
+
     border-color: #1228C1;
-  }
+}
 
 .header-tickets-number {
     border: 1px solid #D9D9D9;
@@ -1165,7 +1221,7 @@ input[type=number] {
 @media (max-width: 1490px) {
     .first-card {
         background-color: #000;
-        width: 350px;
+        width: 315px;
         height: 70vh;
         color: #fff;
         padding: 10px 15px;
@@ -1177,20 +1233,29 @@ input[type=number] {
         padding: 10px;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        width: 235px;
+        // width: 235px;
+        width: 300px;
     }
 
     .second-card-prize {
         position: relative;
         display: flex;
         padding: 20px;
-        width: 416px;
+        // width: 416px;
+        width: 600px;
         background-repeat: no-repeat;
         background-size: cover;
         color: #fff;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
+    }
 
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        width: 600px;
     }
 
     .third-card-response {
@@ -1213,7 +1278,7 @@ input[type=number] {
 @media (max-width: 1359px) {
     .first-card {
         background-color: #000;
-        width: 320px;
+        width: 315px;
         height: 70vh;
         color: #fff;
         padding: 10px 15px;
@@ -1242,7 +1307,8 @@ input[type=number] {
         padding: 10px;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        width: 235px;
+        // width: 235px;
+        width: 300px;
     }
 
     .second-card-game-text {
@@ -1278,13 +1344,22 @@ input[type=number] {
         position: relative;
         display: flex;
         padding: 20px;
-        width: 416px;
+        // width: 416px;
+        width: 600px;
         background-repeat: no-repeat;
         background-size: cover;
         color: #fff;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
+    }
 
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 600px;
     }
 
     .third-card-response {
@@ -1456,7 +1531,8 @@ input[type=number] {
         padding: 10px;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        width: 235px;
+        // width: 235px;
+        width: 320px;
     }
 
     .second-card-game-text {
@@ -1492,13 +1568,22 @@ input[type=number] {
         position: relative;
         display: flex;
         padding: 20px;
-        width: 416px;
+        // width: 416px;
+        width: 630px;
         background-repeat: no-repeat;
         background-size: cover;
         color: #fff;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
+    }
 
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 630px;
     }
 
     .third-card-response {
@@ -1514,6 +1599,36 @@ input[type=number] {
         width: 250px;
         padding: 20px;
         border-radius: 8px;
+    }
+
+    .third-card-profile {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        color: #fff;
+        background-color: #262626;
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+        margin-top: 10px;
+        font-size: 12px;
+    }
+
+    .third-card-profile .profile-pic img {
+        width: 80%;
+    }
+
+    .first-card-prize-empty {
+        border: 2px solid #434343;
+        margin-top: 170px;
+        border-radius: 2px;
+        padding: 13px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
     }
 
     .button-section {
@@ -1688,7 +1803,8 @@ input[type=number] {
         padding: 10px;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        width: 235px;
+        // width: 235px;
+        width: 320px;
     }
 
     .second-card-game-text {
@@ -1739,13 +1855,22 @@ input[type=number] {
         position: relative;
         display: flex;
         padding: 20px;
-        width: 416px;
+        // width: 416px;
+        width: 630px;
         background-repeat: no-repeat;
         background-size: cover;
         color: #fff;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
+    }
 
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 630px;
     }
 
     .profile-pic {
@@ -1967,7 +2092,8 @@ input[type=number] {
         padding: 10px;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        width: 190px;
+        // width: 190px;
+        width: 275px;
     }
 
     .second-card-game-text {
@@ -2018,13 +2144,22 @@ input[type=number] {
         position: relative;
         display: flex;
         padding: 20px;
-        width: 416px;
+        // width: 416px;
+        width: 630px;
         background-repeat: no-repeat;
         background-size: cover;
         color: #fff;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
+    }
 
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 630px;
     }
 
     .profile-pic {
@@ -2256,7 +2391,9 @@ input[type=number] {
         padding: 10px;
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        width: 190px;
+        // width: 190px;
+        width: 275px;
+
     }
 
     .second-card-game-text {
@@ -2307,13 +2444,23 @@ input[type=number] {
         position: relative;
         display: flex;
         padding: 20px;
-        width: 416px;
+        // width: 416px;
+        width: 630px;
         background-repeat: no-repeat;
         background-size: cover;
         color: #fff;
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
 
+    }
+
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 630px;
     }
 
     .profile-pic {
@@ -2494,6 +2641,7 @@ input[type=number] {
         flex-direction: column;
         // gap: 10px;
     }
+
     .mobile-only {
         display: flex;
     }
@@ -2525,6 +2673,17 @@ input[type=number] {
         border-radius: 2px;
         padding: 20px 73px 20px 20px;
     }
+
+    // .first-card-prize-empty {
+    //     border: 2px solid #434343;
+    //     margin-top: 170px;
+    //     border-radius: 2px;
+    //     padding: 20px;
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     gap: 12px;
+    // }
 
     .first-card-prize-img {
         display: none;
@@ -2582,6 +2741,15 @@ input[type=number] {
         border-bottom-left-radius: 8px;
         border-top-right-radius: 0;
         border-top-left-radius: 0;
+    }
+
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        height: 43vh;
+        width: auto;
     }
 
     .progress-bar span:last-child {

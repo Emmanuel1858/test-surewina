@@ -42,6 +42,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
   inactivityDuration = 15 * 60 * 1000;
   showMobileBtn: boolean = true
   showLogout: boolean = false
+  logoutModalLaptop: boolean = false
 
   constructor(private router: Router,
     private drawService: DrawService,
@@ -145,9 +146,17 @@ export class LayoutComponent implements OnInit, OnDestroy {
     // this.router.navigate(['/login'])
   }
 
+  showLogoutLaptop() {
+    this.logoutModalLaptop = true
+  }
+
   yesLogout() {
     this.router.navigate(['/login'])
     sessionStorage.clear()
+  }
+
+  goBackLaptop() {
+    this.logoutModalLaptop = false
   }
 
   cancel() {

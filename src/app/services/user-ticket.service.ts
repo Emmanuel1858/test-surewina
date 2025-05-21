@@ -18,16 +18,16 @@ export class UserTicketService {
   private winnerBoardAdminUrl: string = environment.userTicket.winnersBoardAdmin
   private winnerBoardMonthUrl: string = environment.userTicket.getWinnerByMonth
   private winnerByDrawId: string = environment.userTicket.getWinnerByDrawId
-  private winnerBoardUserUrl: string= environment.userTicket.winnerBoardUser
+  private winnerBoardUserUrl: string = environment.userTicket.winnerBoardUser
   private winningTicketUrl: string = environment.userTicket.getClamWinningTicket
-  constructor(private http:HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  buyTicketWeb(credentialsBuyTicket: {identifier: string, drawId: number, quantity: number, channel: number}) {
+  buyTicketWeb(credentialsBuyTicket: { identifier: string, drawId: number, quantity: number, channel: number }) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if (!bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
 
       const httpOptions = { headers }
@@ -36,12 +36,12 @@ export class UserTicketService {
     return new Observable<any>();
   }
 
-  buyTicket(credentialsBuyTicket: {identifier: string, drawId: number, quantity: number, channel: number}) {
+  buyTicket(credentialsBuyTicket: { identifier: string, drawId: number, quantity: number, channel: number }) {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
 
       const httpOptions = { headers }
@@ -49,13 +49,13 @@ export class UserTicketService {
     }
     return new Observable<any>();
   }
-  buyTicketVendor(credentialsBuyTicket: {identifier: string, drawId: number, quantity: number, channel: number}) {
+  buyTicketVendor(credentialsBuyTicket: { identifier: string, drawId: number, quantity: number, channel: number }) {
     const bearerToken = sessionStorage.getItem('token')
     // debugger
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
 
       const httpOptions = { headers }
@@ -65,15 +65,15 @@ export class UserTicketService {
   }
 
 
-  onGoingTicket(credentialGoingTicket: {pageNumber: number, numberOfRecords: number}) {
+  onGoingTicket(credentialGoingTicket: { pageNumber: number, numberOfRecords: number }) {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
-      return this.http.post(`${this.baseUrl}${this.onGoingTicketUrl}`, credentialGoingTicket, httpOptions )
+      return this.http.post(`${this.baseUrl}${this.onGoingTicketUrl}`, credentialGoingTicket, httpOptions)
     } else {
       // alert('You were logged out due to error. Try logging back in.');
       this.router.navigate(['/login'])
@@ -82,15 +82,15 @@ export class UserTicketService {
 
     return new Observable<any>();
   }
-  vendorHistoryTicket(credentialGoingTicket: {pageNumber: number, numberOfRecords: number}) {
+  vendorHistoryTicket(credentialGoingTicket: { pageNumber: number, numberOfRecords: number }) {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
-      return this.http.post(`${this.baseUrl}${this.vendorOnGoingTicketUrl}`, credentialGoingTicket, httpOptions )
+      return this.http.post(`${this.baseUrl}${this.vendorOnGoingTicketUrl}`, credentialGoingTicket, httpOptions)
     }
 
     return new Observable<any>();
@@ -98,41 +98,41 @@ export class UserTicketService {
 
   getTicketById(ticketRef: string) {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
       return this.http.get(`${this.baseUrl}UserTicket/GetTicketPrizesWon?ticketRefNumber=${ticketRef}`)
     }
 
-    return new Observable<any> ()
+    return new Observable<any>()
 
   }
   getVendorTicketById(ticketRef: string) {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
       return this.http.get(`${this.baseUrl}UserTicket/GetTicketPrizesWon?ticketRefNumber=${ticketRef}`, httpOptions)
     }
 
-    return new Observable<any> ()
+    return new Observable<any>()
 
   }
   winnerBoard() {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
-      return this.http.get(`${this.baseUrl}${this.winnerBoardUrl}`, httpOptions )
+      return this.http.get(`${this.baseUrl}${this.winnerBoardUrl}`, httpOptions)
     } else {
       this.router.navigate(['/vendor-login'])
       sessionStorage.clear()
@@ -143,13 +143,13 @@ export class UserTicketService {
 
   winnerBoardUser() {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
-      return this.http.get(`${this.baseUrl}${this.winnerBoardUserUrl}`, httpOptions )
+      return this.http.get(`${this.baseUrl}${this.winnerBoardUserUrl}`, httpOptions)
     } else {
       this.router.navigate(['/login'])
       sessionStorage.clear()
@@ -159,10 +159,10 @@ export class UserTicketService {
   }
   winnerBoardAdmin() {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if (!bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
       return this.http.get(`${this.baseUrl}${this.winnerBoardAdminUrl}`, httpOptions)
@@ -172,7 +172,7 @@ export class UserTicketService {
 
   winnerBoardByMonth(credentialsMonth: string[]) {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `${bearerToken}`,
         'Content-Type': 'application/json'
@@ -183,12 +183,25 @@ export class UserTicketService {
     return new Observable<any>()
   }
 
+  getUserTicketHistory(userId: number, credentialGoingTicket: { pageNumber: number, numberOfRecords: number }) {
+    const bearerToken = sessionStorage.getItem('token')
+    if (!bearerToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `${bearerToken}`,
+        'Content-Type': 'application/json'
+      })
+      const httpOptions = { headers }
+      return this.http.post(`${this.baseUrl}UserTicket/GetUserTicketsHistory?userId=${userId}`, credentialGoingTicket, httpOptions)
+    }
+    return new Observable
+  }
+
   getPrizeWonById(ticketRefNumber: string) {
     const bearerToken = sessionStorage.getItem('token')
     if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
       return this.http.get(`${this.baseUrl}UserTicket/GetUserDetails?ticketRefNumber=${ticketRefNumber}`, httpOptions)
@@ -196,25 +209,25 @@ export class UserTicketService {
     return new Observable<any>()
   }
 
-  getWinnerByDrawId(credentialsDrawId: {pageNumber: number, numberOfRecords: number, drawId: number}) {
+  getWinnerByDrawId(credentialsDrawId: { pageNumber: number, numberOfRecords: number, drawId: number }) {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
-      return this.http.post(`${this.baseUrl}${this.winnerByDrawId}`, credentialsDrawId, httpOptions )
+      return this.http.post(`${this.baseUrl}${this.winnerByDrawId}`, credentialsDrawId, httpOptions)
     }
     return new Observable<any>()
   }
 
-  getClamWinningTicket(credential: {ticketReference: string, convertedToMoney: boolean}) {
+  getClamWinningTicket(credential: { ticketReference: string, convertedToMoney: boolean }) {
     const bearerToken = sessionStorage.getItem('token')
-    if(bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       })
       const httpOptions = { headers }
       return this.http.post(`${this.baseUrl}${this.winningTicketUrl}`, credential, httpOptions)

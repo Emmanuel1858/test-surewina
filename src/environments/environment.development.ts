@@ -1,7 +1,8 @@
 export const environment = {
   production: false,
   // baseUrl: 'https://16.171.64.178:81/api/'
-  baseUrl: 'https://16.171.64.178/api/',
+  // baseUrl: 'https://16.171.64.178/api/',
+  baseUrl: 'https://www.surewina.com/api/',
   authentication: {
     registerUser: 'Auth/RegisterUser',
     loginUser: 'Auth/LoginUser',

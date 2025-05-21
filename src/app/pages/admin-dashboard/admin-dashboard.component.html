@@ -20,14 +20,16 @@
       </div>
     </div>
 
-    <div class="sm-wide-card card card-2" *ngFor="let data of summaryByChannel">
+    <div class="sm-wide-card card card-2">
       <div class="card-top">
-        <p> Tickets sold by channels </p>
+        <p> Tickets Earnings by channels </p>
       </div>
-      <div class="card-bottom">
-        <div class="card-item-collection">
-          <p> {{data.channel}} </p>
-          <h2> ₦ {{data.count}} </h2>
+      <div class="card-channels" >
+        <div class="card-bottom" *ngFor="let data of summaryByChannel">
+          <div class="card-item-collection">
+            <p> {{data.channel}} </p>
+            <h2> ₦ {{data.count}} </h2>
+          </div>
         </div>
       </div>
     </div>
@@ -89,32 +91,51 @@
         </div>
         <div [ngSwitch]="tabs" class="table-content">
           <!-- show content based on active tap *ngSwitch -->
-
           <div *ngSwitchCase="'prizes'" class="tab-1-content">
-            <div class="items" *ngFor="let prize of getAllPrizeArray">
+            <div class="items" *ngFor="let prize of paginatedPrizes">
               <div class="item-collection">
                 <!-- will back-end provide images -->
                 <div class="item-image">
-                  <img src="../../../assets/car-prize.png" alt="">
+                  <img [src]="prize.image" alt="">
                 </div>
                 <div class="item-details">
                   <p> Jan 1st - Jan 14th </p>
-                  <h2> 2 units of White Jeep Cherokee Suv 2024 </h2>
+                  <h2> {{prize.name}} </h2>
                   <div class="item-extra-details">
-                    <p> January Suprize Lottery </p>
+                    <p> Suprize Lottery </p>
                     <ul>
-                      <li> ₦ 1,000 per ticket </li>
-                      <li> 11,762 tickets bought </li>
+                      <li> ₦ {{prize.amount}} per ticket </li>
+                      <!-- <li> 11,762 tickets bought </li> -->
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
+          
+            <!-- Pagination Controls -->
+            <div class="pagination">
+              <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+                « Prev
+              </button>
+            
+              <button
+                *ngFor="let page of totalPages"
+                (click)="changePage(page)"
+                [class.active]="page === currentPage">
+                {{ page }}
+              </button>
+            
+              <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages.length">
+                Next »
+              </button>
+            </div>
+            
           </div>
+          
 
           <div *ngSwitchCase="'winners'" class="tab-2-content">
 
-            <div class="row-content" *ngFor="let winner of winnersBoard">
+            <div class="row-content" *ngFor="let winner of paginatedWinners">
               <div class="user-name">
                 <div class="circle">
                   <h2> </h2>
@@ -127,14 +148,29 @@
                 <p> Won {{winner.prize}} </p>
               </div>
             </div>
-
+            <div class="pagination">
+              <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+                « Prev
+              </button>
+            
+              <button
+                *ngFor="let page of totalPagesWinner"
+                (click)="changePage(page)"
+                [class.active]="page === currentPage">
+                {{ page }}
+              </button>
+            
+              <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPagesWinner.length">
+                Next »
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="loader" *ngIf="loading">
-    <app-loader />
+    <app-loader-admin />
   </div>
 
 </div>

@@ -66,7 +66,9 @@
     border-radius: 20px;
 }
 
-
+.ongoing-ticket {
+    position: relative;
+}
 
 .ticket-details {
     background-color: #FCFCFC;
@@ -114,6 +116,13 @@
     border: 1px solid #D9D9D9;
     border-radius: 20px;
     padding: 5px 8px;
+}
+
+.empty-state-ticket {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 100px);
 }
 
 
