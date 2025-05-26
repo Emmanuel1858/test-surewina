@@ -390,3 +390,55 @@ h2.footer-txt {
         font-family: var(--cta-alt);
     }
 }
+
+/* Blurry dark background */
+.modal-overlay {
+    font-family: var(--cta-alt);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px); /* Blur effect */
+    background-color: rgba(0, 0, 0, 0.4); /* Slight dark tint */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* White modal container */
+  .modal-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  /* Styled OK button */
+  .modal-box button {
+    margin-top: 1.5rem;
+    padding: 0.6rem 2rem;
+    background-color: #1228C1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer; /* Not clickable without JS */
+    // pointer-events: none;
+    transition: all .3s ease-in-out; 
+  }
+
+  .modal-box button:hover {
+    background-color: #0a1458;
+  }
+  
+  .modal-box p {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+  }
+  

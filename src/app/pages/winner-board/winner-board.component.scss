@@ -33,11 +33,11 @@
 }
 
 .ticket-body {
-    width: 94%;
+    width: 45vw;
     border: 1px solid #9D9D9D;
     border-radius: 4px;
     background-color: #fff;
-    margin: 35px auto 10px;
+    // margin: 35px auto 10px;
     // margin-left: 40px;
     display: flex;
     position: relative;
@@ -53,20 +53,37 @@
     background-color: #EEF8FF;
     border: 1px solid #E9E9E9;
     display: flex;
-    gap: 30px;
-    padding: 10px 18px;
+    // gap: 30px;
+    padding: 10px 18px 0;
     width: 99%;
     margin: 5px auto 0;
     border-radius: 4px;
     overflow-x: auto;
     justify-content: space-between;
-    gap: 3px;
+    gap: 30px;
+    white-space: nowrap;
+}
+
+.header::-webkit-scrollbar {
+    width: 0;
 }
 
 
 .active-tab {
     border-bottom: 4px solid rgba(38, 38, 38, 1);
-    border-radius: 4px;
+    border-radius: 2px;
+}
+
+.header-tickets-text {
+    color: #555555;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.header-tickets-text-active {
+    color: #000;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 .header-tickets {
@@ -90,6 +107,22 @@
     background-color: #FCFCFC;
     padding: 1px 8px;
     border-radius: 20px;
+}
+
+.header-tickets-number-active.active-tab-number {
+    border: 1px solid #D9D9D9;
+    color: #1228C1;
+    padding: 1px 8px;
+    border-radius: 20px;
+    background-color: #FCFCFC;
+}
+
+.inactive-tab-number {
+    border: 1px solid #D9D9D9 !important;
+    color: #000;
+    padding: 1px 8px;
+    border-radius: 20px;
+    background-color: #FCFCFC;
 }
 
 

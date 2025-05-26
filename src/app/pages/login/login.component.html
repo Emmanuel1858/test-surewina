@@ -42,7 +42,7 @@
                         <span class="btn-register" (click)="navigateToCreateAcc()">Register now</span>
                     </div>
 
-                    <p> Forgot Password? <span> Reach out to the Administrator </span> </p>
+                    <!-- <p> Forgot Password? <span> Reach out to the Administrator </span> </p> -->
                 </div>
             </div>
         </div>
@@ -51,3 +51,11 @@
 
     </div>
 </div>
+
+<div class="modal-overlay" *ngIf="dueToInactivity">
+    <div class="modal-box">
+      <p>You were logged out due to inactivity.</p>
+      <button (click)="closeModal()">OK</button>
+    </div>
+  </div>
+  

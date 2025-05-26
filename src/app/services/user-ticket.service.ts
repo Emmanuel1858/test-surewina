@@ -151,7 +151,7 @@ export class UserTicketService {
       const httpOptions = { headers }
       return this.http.get(`${this.baseUrl}${this.winnerBoardUserUrl}`, httpOptions)
     } else {
-      this.router.navigate(['/login'])
+      // this.router.navigate(['/login'])
       sessionStorage.clear()
     }
 

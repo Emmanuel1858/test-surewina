@@ -14,18 +14,18 @@ export class WinnerBoardComponent implements OnInit {
   ticketName: any = []
   selectedTicketIndex: number | null = null
   mobileVisibility: boolean = false
-  showLoader: boolean = false
+  showLoader: boolean = true
   tabs: string = 'jan'
   showWinnerList: boolean = false
   showMonth: boolean = true
   listOfWinners: any = []
   noData: string = ''
-  allDrawsByMonth: any = [] 
+  allDrawsByMonth: any = []
   drawResults: any[] = []
   showEmptyStateWinner: boolean = false
 
 
-  constructor(private userTicket: UserTicketService, 
+  constructor(private userTicket: UserTicketService,
     private router: Router
   ) { }
 
@@ -39,35 +39,47 @@ export class WinnerBoardComponent implements OnInit {
   }
 
   // This will hold the draw data
-
   async getWinnerBoard() {
     try {
-      this.showLoader = true;
-  
       const response = await lastValueFrom(this.userTicket.winnerBoardUser());
-  
       this.showLoader = false;
-  
-      // Save the draw data
       this.drawResults = response.result;
-      if(this.drawResults.length === 0) {
-        this.showEmptyStateWinner = true
+
+      if (this.drawResults.length === 0) {
+        this.showEmptyStateWinner = true;
+        return;
       }
-  
+
+      // Capitalize each word in drawDescription
+      this.drawResults = this.drawResults.map(draw => ({
+        ...draw,
+        drawDescription: this.capitalizeWords(draw.drawDescription)
+      }));
+
+      this.tabs = 'tab0';
+
     } catch (error) {
-      alert('You were logged out due to error. Try logging back in.');
-      this.router.navigate(['/login'])
-      sessionStorage.clear()
       this.showLoader = false;
-      // console.log(error);
+      alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login']);
+      sessionStorage.clear();
     }
   }
-  
+
+  // Capitalize each word in a string
+  capitalizeWords(text: string): string {
+    return text
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+
 
   async showListWinners(i: number) {
     // debugger
     const credentials = {
-      pageNumber: 1, 
+      pageNumber: 1,
       numberOfRecords: 10,
       drawId: i
     }

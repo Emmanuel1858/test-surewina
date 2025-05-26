@@ -236,27 +236,60 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
 
+  // async getWinnerBoard() {
+  //   try {
+  //     // this.showLoader = true;
+  //     const response = await lastValueFrom(this.userTicket.winnerBoardUser());
+  //     this.showLoader = false;
+  //     this.drawResults = response.result;
+  //     if (this.drawResults.length === 0) {
+  //       this.showEmptyStateWinner = true
+  //       return
+  //     }
+
+  //   } catch (error) {
+  //     // debugger
+  //     this.showLoader = false;
+  //     alert('You were logged out due to error. Try logging back in.');
+  //     this.router.navigate(['/login'])
+  //     sessionStorage.clear()
+  //     // console.log(error);
+  //   }
+  // }
+
   async getWinnerBoard() {
     try {
-      // this.showLoader = true;
-
       const response = await lastValueFrom(this.userTicket.winnerBoardUser());
-
       this.showLoader = false;
       this.drawResults = response.result;
+  
       if (this.drawResults.length === 0) {
-        this.showEmptyStateWinner = true
-        return
+        this.showEmptyStateWinner = true;
+        return;
       }
-
+  
+      // Capitalize each word in drawDescription
+      this.drawResults = this.drawResults.map(draw => ({
+        ...draw,
+        drawDescription: this.capitalizeWords(draw.drawDescription)
+      }));
+  
+      this.tabs = 'tab0';
+  
     } catch (error) {
-      // debugger
       this.showLoader = false;
       alert('You were logged out due to error. Try logging back in.');
-      this.router.navigate(['/login'])
-      sessionStorage.clear()
-      // console.log(error);
+      this.router.navigate(['/login']);
+      sessionStorage.clear();
     }
+  }
+
+  capitalizeWords(text: string): string {
+    return text
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 
   navigateToPaymentTicket() {
@@ -343,27 +376,31 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  async showListWinners(i: number) {
-    const credentials = {
-      pageNumber: 1,
-      numberOfRecords: 10,
-      drawId: i
-    }
-    try {
-      this.showLoader = true
-      const response = await lastValueFrom(this.userTicket.getWinnerByDrawId(credentials))
-      // console.log(response)
-      this.showLoader = false
-      this.listOfWinners = response.result.items
-      this.showWinnerList = true
-      this.showMonth = false
-    } catch (error) {
-      alert('You were logged out due to error. Try logging back in.');
-      this.router.navigate(['/login'])
-      sessionStorage.clear()
-      // console.log(error)
-    }
+  // async showListWinners(i: number) {
+  //   const credentials = {
+  //     pageNumber: 1,
+  //     numberOfRecords: 10,
+  //     drawId: i
+  //   }
+  //   try {
+  //     this.showLoader = true
+  //     const response = await lastValueFrom(this.userTicket.getWinnerByDrawId(credentials))
+  //     // console.log(response)
+  //     this.showLoader = false
+  //     this.listOfWinners = response.result.items
+  //     this.showWinnerList = true
+  //     this.showMonth = false
+  //   } catch (error) {
+  //     alert('You were logged out due to error. Try logging back in.');
+  //     this.router.navigate(['/login'])
+  //     sessionStorage.clear()
+  //     // console.log(error)
+  //   }
 
+  // }
+
+  showListWinners(i: number) {
+    
   }
   navigateToDashboard() {
     this.showMakePayment = false

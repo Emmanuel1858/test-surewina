@@ -13,6 +13,10 @@ import { WinnerBoardComponent } from '../winner-board/winner-board.component';
   templateUrl: './website.component.html',
   styleUrls: ['./website.component.scss']
 })
+
+// export class WebsiteComponent {
+
+// }
 export class WebsiteComponent implements OnInit, OnDestroy {
   showTicketPayment: boolean = false
   showMakePayment: boolean = false
@@ -194,7 +198,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
       numberOfRecords: this.numberOfRecords
     }
     try {
-      // this.loading = true
+      this.loading = true
       const response = await lastValueFrom(this.drawService.getTodayDrawWithoutToken(drawForToday))
       // console.log(response)
       this.loading = false

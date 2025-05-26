@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   lastName: string = ''
   initialFromLogin: string = ''
   address: boolean = false;
+  dueToInactivity: boolean = false
 
   constructor(private router: Router, private authService: AuthServiceService) { }
 
@@ -27,11 +28,15 @@ export class LoginComponent implements OnInit {
     sessionStorage.clear()
     const reason = localStorage.getItem('logoutReason');
     if (reason === 'inactivity') {
-      alert('You were logged out due to inactivity');
+      this.dueToInactivity = true
       localStorage.removeItem('logoutReason');
       
     }
 
+  }
+
+  closeModal() {
+    this.dueToInactivity = false
   }
 
 

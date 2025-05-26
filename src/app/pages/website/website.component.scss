@@ -31,8 +31,12 @@
   font-size: 16px;
 }
 
+.header_btn_mobile {
+  display: none;
+}
 
-.header_btn button {
+
+.header_btn_laptop button {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -85,6 +89,10 @@
   font-size: 71px;
   width: 100%;
   line-height: 80px;
+}
+
+.first_section_last_mobile {
+  display: none;
 }
 
 .first_section_first :nth-child(3) {
@@ -219,7 +227,7 @@
   justify-content: center;
   align-items: center;
   gap: 45px;
-  padding: 100px 0;
+  padding: 100px 20px;
   background-color: rgb(18, 40, 193);
 }
 
@@ -227,6 +235,7 @@
   color: rgba(255, 255, 255, 1);
   font-size: 42px;
   font-weight: 700;
+  text-align: center;
 }
 
 .step_container {
@@ -253,7 +262,7 @@
   content: "----";
   position: absolute;
   top: 30%;
-  right: -50px;   
+  right: -50px;
   transform: translateY(-50%);
   color: #aaa;
   font-size: 20px;
@@ -452,6 +461,7 @@
   flex-direction: column;
   padding-block: 50px;
   gap: 20px;
+  display: none;
 
 }
 
@@ -510,6 +520,11 @@
   color: #000;
   font-weight: 500;
   font-size: 32px;
+}
+
+.sixth_section_quote_all_main {
+  display: flex;
+  justify-content: center;
 }
 
 .sixth_section_quote_all {
@@ -1140,6 +1155,14 @@ input[type=number] {
     display: flex;
     margin-top: 50px;
     gap: 15px;
+    justify-content: flex-end;
+  }
+
+  .first_section_last_first {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+
   }
 
 }
@@ -1200,26 +1223,272 @@ input[type=number] {
     display: flex;
     margin-top: 50px;
     gap: 15px;
-    justify-content: space-around;
+    justify-content: flex-end;
   }
 
   .first_section_last_first {
     display: flex;
     gap: 20px;
-    justify-content: space-around;
+    justify-content: flex-end;
   }
 
   .first_section_last_first_img {
     width: 20%;
+  }
+
+  .first_section {
+    // background-image: url(background_pattern.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: space-between;
+    height: 73vh;
+    padding: 40px 30px 30px;
+  }
+
 }
-.first_section {
-  // background-image: url(background_pattern.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex
-;
-  justify-content: space-between;
-  padding: 40px 30px 30px;
+
+@media (max-width: 1000px) {
+  .header_text {
+    display: none;
+  }
+
+  .header_btn_laptop {
+    display: none;
+  }
+
+  .header_btn_mobile {
+    display: block;
+  }
+
+  .first_section {
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    /* justify-content: space-between; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* height: 0; */
+    margin: 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 40px 30px 30px;
+  }
+
+  .first_section_first {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    width: auto;
+  }
+
+  .first_section_last {
+    display: none;
+  }
+
+  .first_section_last_mobile {
+    display: flex;
+    flex-direction: column;
+    margin: 35px auto;
+    gap: 20px;
+
+  }
+
+  .step_container {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    /* justify-content: space-between; */
+  }
+
+  .second_section_step:not(:last-child)::after {
+    content: " ";
+    position: absolute;
+    top: 30%;
+    right: -50px;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .second_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    padding: 100px 20px;
+    background-color: rgb(18, 40, 193);
+  }
+
+  .third_section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(../../../assets/water_mark_logo.svg);
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: right;
+    flex-direction: column-reverse;
+  }
+
+  .third_section_right {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    margin-block: 30px;
+  }
+
+  .second-card-prize {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    width: 90%;
+    margin-block: 30px;
+    height: 55vh;
+    /* padding: 32px 20px 80px; */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    // border: 1px solid red;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  .arrow-section {
+    display: none;
+  }
+
+  .fourth_section {
+    display: none;
+  }
+
 }
-  
+
+@media (max-width: 776px) {
+  .sixth_section_quote_all_main {}
+
+  .sixth_section_quote {
+    color: rgb(85, 85, 85);
+    font-weight: 400;
+    font-size: 10px;
+  }
+
+  .sixth_section_quote_details {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .sixth_section_quote_name :first-child {
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .sixth_section_quote_name :last-child {
+    color: rgb(123, 123, 123);
+    font-size: 9.93px;
+    font-weight: 400;
+  }
+
+  .sixth_section_quote_all_main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 80%;
+    overflow: auto;
+  }
+
+  .sixth_section_quote_all {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .sixth_section_btn {
+    display: flex;
+    gap: 10px;
+    display: none;
+  }
+
+
+}
+
+
+@media (max-width: 600px) {
+  .sixth_section_quote_container {
+    border: 1px solid rgb(217, 217, 217);
+    background-color: #fff;
+    border-radius: 17px;
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .sixth_section_quote_details img {
+    width: 30%;
+  }
+
+  .sixth_section_quote_name :first-child {
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    /* text-emphasis: dodgerblue; */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 65px;
+  }
+
+
+  .sixth_section_quote_name :last-child {
+    color: rgb(123, 123, 123);
+    font-size: 9.93px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 65px;
+  }
+
+  .sixth_section_text_sub {
+    color: #000;
+    font-weight: 500;
+    font-size: 25px;
+  }
+
+  .sixth_section_quote {
+    color: rgb(85, 85, 85);
+    font-weight: 400;
+    font-size: 7px;
+  }
+
+  .sixth_section_quote_name :first-child {
+    color: rgb(0, 0, 0);
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 65px;
+  }
+
+  .sixth_section_quote_name :last-child {
+    color: rgb(123, 123, 123);
+    font-size: 7.93px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 65px;
+  }
+
+
 }
