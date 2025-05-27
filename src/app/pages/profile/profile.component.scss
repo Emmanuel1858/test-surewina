@@ -584,7 +584,7 @@ table {
   align-items: center;
   flex-direction: column;
   gap: 10px;
-  height: 50vh;
+  height: 23vh;
   font-family: var(--cta-alt);
 }
 
@@ -620,7 +620,7 @@ table {
 
 .footer-ticket {
   position: absolute;
-  bottom: 0;
+  bottom: 100px;
   background-color: #fff;
   border: 1px solid #D9D9D9;
   width: 100%;

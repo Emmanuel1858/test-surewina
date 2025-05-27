@@ -24,7 +24,7 @@
     display: flex;
     justify-content: space-between;
     // width: %;
-    margin: 20px 40px 0;
+    margin: 20px 20px 0;
     // border: 1px solid;
 
 }
@@ -405,7 +405,7 @@
 
 .footer-ticket {
     position: absolute;
-    bottom: 0;
+    bottom: 100px;
     background-color: #fff;
     border: 1px solid #D9D9D9;
     width: 100%;
@@ -924,7 +924,7 @@ input[type=number] {
     .btn-ticket {
         display: flex;
         position: absolute;
-        bottom: 180px;
+        bottom: 120px;
         right: 40px;
         align-items: center;
         gap: 8px;
