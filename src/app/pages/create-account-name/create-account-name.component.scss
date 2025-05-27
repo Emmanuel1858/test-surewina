@@ -8,7 +8,7 @@
     height: 100%;
     display: flex;
     justify-content: space-evenly;
-    padding: 15px;
+    // padding: 15px;
 }
 
 .container-img {
@@ -98,6 +98,17 @@
     padding: 5px;
 }
 
+.all-inputs-container {
+    // border: 1px solid;
+    max-height: 42vh;
+    overflow: auto;
+}
+
+// .all-inputs-container::-webkit-scrollbar {
+//     width: 0;
+// }
+
+
 .all-inputs {
     display: flex;
     flex-direction: column;
@@ -114,6 +125,99 @@
     padding: 16px;
     font-family: var(--cta-alt);
 }
+.input-state {
+    position: relative;
+    width: 205px;
+}
+
+.input-state input {
+    width: 100%;
+    height: 44px;
+    outline: none;
+    border: 1px solid var(--color-boarder-stroke);
+    border-radius: 6px;
+    background-color: #F6F6F6;
+    padding: 16px;
+    font-family: var(--cta-alt);
+}
+
+.state-lga {
+    width: 415px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-state img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.input-lga {
+    position: relative;
+    width: 205px;
+}
+
+.input-lga input {
+    width: 100%;
+    height: 44px;
+    outline: none;
+    border: 1px solid var(--color-boarder-stroke);
+    border-radius: 6px;
+    background-color: #F6F6F6;
+    padding: 16px;
+    font-family: var(--cta-alt);
+}
+
+.input-lga img {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* COMMON DROPDOWN STYLES */
+.dropdown {
+    position: absolute;
+    top: 40px; /* Just below the input (44px height + 4px spacing) */
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid var(--color-boarder-stroke);
+    border-radius: 6px;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 4px 0 0 0;
+    list-style: none;
+  }
+  
+  /* EACH DROPDOWN ITEM */
+  .dropdown li {
+    padding: 10px 14px;
+    cursor: pointer;
+    font-family: var(--cta-alt);
+    transition: background-color 0.2s ease;
+  }
+  
+  /* HOVER EFFECT */
+  .dropdown li:hover {
+    background-color: #f0f0f0;
+  }
+  
+  /* OPTIONAL: Scrollbar styling (if needed) */
+  .dropdown::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .dropdown::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+  }
+  
 
 .all-text {
     font-size: 14px;
@@ -200,6 +304,12 @@
 }
 
 @media (max-width: 1000px) {
+
+    .all-inputs-container {
+        // border: 1px solid;
+        max-height: 42vh;
+        overflow: auto;
+    }
     .container-img {
         display: none;
     }

@@ -146,7 +146,7 @@
     border-radius: 4px;
     margin: 10px auto;
     border-radius: 4px;
-    width: 99%;
+    width: fit-content;
 
 }
 
@@ -259,93 +259,93 @@
     }
 }
 
-@media (max-width: 1125px) {
+// @media (max-width: 1125px) {
 
-    .ticket-date {
-        font-size: 10px;
-        font-weight: var(--fw-400);
-        color: #9D9D9D;
-    }
+//     .ticket-date {
+//         font-size: 10px;
+//         font-weight: var(--fw-400);
+//         color: #9D9D9D;
+//     }
 
-    .ticket-won {
-        font-size: 9px;
-        font-weight: var(--fw-400);
-        display: flex;
-        gap: 5px;
-    }
+//     .ticket-won {
+//         font-size: 9px;
+//         font-weight: var(--fw-400);
+//         display: flex;
+//         gap: 5px;
+//     }
 
-    .ticket-details-img img {
-        width: 80px;
-    }
+//     .ticket-details-img img {
+//         width: 80px;
+//     }
 
-    .ticket-name {
-        font-size: 13px;
-        font-weight: var(--fw-400);
-        color: #262626;
-    }
+//     .ticket-name {
+//         font-size: 13px;
+//         font-weight: var(--fw-400);
+//         color: #262626;
+//     }
 
-    .header {
-        background-color: #EEF8FF;
-        border: 1px solid #E9E9E9;
-        display: flex;
-        gap: 30px;
-        padding: 10px 18px;
-        width: 99%;
-        margin: 2px auto 0;
-        border-radius: 4px;
-        font-size: 12px;
-    }
+//     .header {
+//         background-color: #EEF8FF;
+//         border: 1px solid #E9E9E9;
+//         display: flex;
+//         gap: 30px;
+//         padding: 10px 18px;
+//         width: 99%;
+//         margin: 2px auto 0;
+//         border-radius: 4px;
+//         font-size: 12px;
+//     }
 
-}
+// }
 
-@media (max-width: 1000px) {
+// @media (max-width: 1000px) {
 
-    .header-tickets-number,
-    .header-tickets-number-active {
-        display: none;
-    }
+//     .header-tickets-number,
+//     .header-tickets-number-active {
+//         display: none;
+//     }
 
-    .container {
-        background-color: #F3F3FE;
-        max-height: 85vh;
-        overflow: auto;
-        padding: 20px 40px 20px;
-    }
+//     .container {
+//         background-color: #F3F3FE;
+//         max-height: 85vh;
+//         overflow: auto;
+//         padding: 20px 40px 20px;
+//     }
 
-    .ticket-body {
-        width: 94%;
+//     .ticket-body {
+//         width: 94%;
 
-        // max-height: 30vh;
-        overflow: hidden;
-        border: 1px solid #9D9D9D;
-        border-radius: 4px;
-        background-color: #fff;
-    }
+//         // max-height: 30vh;
+//         overflow: hidden;
+//         border: 1px solid #9D9D9D;
+//         border-radius: 4px;
+//         background-color: #fff;
+//     }
 
-    .laptop-only {
-        display: none;
-    }
+//     .laptop-only {
+//         display: none;
+//     }
 
-    .mobile-only-top {
-        display: flex;
-        position: absolute;
-        top: 6px;
-        left: 0;
-        background-color: #fff;
-        border: 1px solid #f3f3fe;
-    }
+//     .mobile-only-top {
+//         display: flex;
+//         position: absolute;
+//         top: 6px;
+//         left: 0;
+//         background-color: #fff;
+//         border: 1px solid #f3f3fe;
+//     }
 
-    .mobile-only {
-        display: block;
-        position: absolute;
-        top: 16%;
-        left: 0;
-        background-color: #f3f3fe;
-    }
+//     .mobile-only {
+//         display: block;
+//         position: absolute;
+//         top: 16%;
+//         left: 0;
+//         background-color: #f3f3fe;
+//     }
 
-    .mobile-only .winner-container div {
-        width: 100vw;
-    }
+//     .mobile-only .winner-container div {
+//         width: 100vw;
+//     }
 
 
-}
+// }

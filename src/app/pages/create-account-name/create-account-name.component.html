@@ -29,6 +29,7 @@
                     </div>
                 </div>
             </div>
+            <div class="all-inputs-container">
             <div class="all-inputs">
                 <input type="text" placeholder="First name" [(ngModel)]="firstName" 
                 [class.error-border]="formSubmitted && isEmpty(firstName)">
@@ -41,7 +42,28 @@
                 [class.error-border]="formSubmitted && (isEmpty(emailAddress) || !isValidEmail(emailAddress))">
                 <!-- <span>Optional</span> -->
                 <input type="text" placeholder="Who referred you?" [(ngModel)]="referred">
+                <div class="state-lga">
+                    
+                    <div class="input-state" (click)="showStates = !showStates">
+                      <input type="text" placeholder="Select state" [value]="selectedState" readonly>
+                      <img src="../../../assets/dropdown-icon-login.svg" alt="">
+                      <ul *ngIf="showStates" class="dropdown">
+                        <li *ngFor="let state of states" (click)="onStateSelect(state); showStates = false">{{ state }}</li>
+                      </ul>
+                    </div>
+                  
+                    <!-- LGA DROPDOWN -->
+                    <div class="input-lga" (click)="showLgas = !showLgas" *ngIf="lgas.length">
+                      <input type="text" placeholder="Local Government" [value]="selectedLga" readonly>
+                      <img src="../../../assets/dropdown-icon-login.svg" alt="">
+                      <ul *ngIf="showLgas" class="dropdown">
+                        <li *ngFor="let lga of lgas" (click)="onLgaSelect(lga); showLgas = false">{{ lga }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
             </div>
+        </div>
             <div class="footer">
                 <div class="all-text">
                     <span class="have-account">Already have an account?</span>

@@ -21,6 +21,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   showTicketPayment: boolean = false
   showMakePayment: boolean = false
   showLoader: boolean = false
+  showMenu: boolean = false;
   identifier: string = ''
   drawId: number = 1
   channel: number = 1
@@ -59,15 +60,15 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   stepsToRegister: any[] = [{
     step: '1',
     name: 'Create Account',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed '
+    desc: 'Fill in the required details to set up your account '
   }, {
     step: '2',
     name: 'Buy Ticket',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed '
+    desc: 'Select and purchase tickets according to availability'
   }, {
     step: '3',
-    name: 'Wing Big Prizes',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed '
+    name: 'Win Big Prizes',
+    desc: 'Start winning big prizes'
   }]
 
 
@@ -91,7 +92,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
         : 'assets/home_page_image_second.svg';
     }, 5000);
   }
-  
+
   secondImage() {
     this.secondImageIntervalId = setInterval(() => {
       this.secondImageIndex = (this.secondImageIndex + 1) % 2;
@@ -110,6 +111,10 @@ export class WebsiteComponent implements OnInit, OnDestroy {
     }, 5000)
   }
 
+  selectYourProfile() {
+    this.router.navigate(['/select-your-profile'])
+  }
+
   secondIcon() {
     this.secondGiftIconIntervalId = setInterval(() => {
       this.secondGiftIndex = (this.secondGiftIndex + 1) % 2;
@@ -119,15 +124,23 @@ export class WebsiteComponent implements OnInit, OnDestroy {
     }, 5000)
   }
 
-    goNext(): void {
-      // console.log('xbjon;')
-      // debugger
-      if (this.currentIndex < this.backgroundImages.length) {
-        this.currentIndex++;
-        this.updateBackgroundImage();
-      }
-      this.resetAutoAdvance();
+  openMenu() {
+    this.showMenu = true
+  }
+
+  closeMenu() {
+    this.showMenu = false
+    // this.showMobileBtn = true
+  }
+  goNext(): void {
+    // console.log('xbjon;')
+    // debugger
+    if (this.currentIndex < this.backgroundImages.length) {
+      this.currentIndex++;
+      this.updateBackgroundImage();
     }
+    this.resetAutoAdvance();
+  }
 
 
   goPrev(): void {
@@ -218,14 +231,14 @@ export class WebsiteComponent implements OnInit, OnDestroy {
     this.showTicketPayment = true
   }
   navigateToMakePayment() {
-    if (this.identifier === '') {
-      this.showAddressError = true
-      setTimeout(() => {
-        this.showAddressError = false
-      }, 6000);
+    // if (this.identifier === '') {
+    //   this.showAddressError = true
+    //   setTimeout(() => {
+    //     this.showAddressError = false
+    //   }, 6000);
 
-      return
-    }
+    //   return
+    // }
     if (this.totalPrice === 0) {
       this.showTicketError = true
       setTimeout(() => {
@@ -237,6 +250,15 @@ export class WebsiteComponent implements OnInit, OnDestroy {
     this.showTicketPayment = false
   }
   async navigateToModal() {
+
+    if (this.identifier === '') {
+      this.showAddressError = true
+      setTimeout(() => {
+        this.showAddressError = false
+      }, 6000);
+
+      return
+    }
 
     const credentialsBuyTicket = {
       identifier: this.identifier,
@@ -267,6 +289,12 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   closeModalOnOutsideClick(event: MouseEvent): void {
     this.navigateToDashboard();
   }
+
+  navigateToTicketPayment() {
+    this.showMakePayment = false
+    this.showTicketPayment = true
+  }
+
   navigateToDashboard() {
     this.showMakePayment = false
     this.showTicketPayment = false

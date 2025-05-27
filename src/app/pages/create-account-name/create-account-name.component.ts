@@ -1,6 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { stateLgaData } from 'src/state/stateLga';
 @Component({
   selector: 'app-create-account-name',
   templateUrl: './create-account-name.component.html',
@@ -12,7 +13,14 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
     '../../../assets/Property 1=Splash Screen - Carousel 2.png',
     '../../../assets/Property 1=Splash Screen - Carousel 3.png'
   ];
+
   activeIndex = 0;
+  states = Object.keys(stateLgaData)
+  lgas: string[] = [];
+  selectedState: string = '';
+  selectedLga: string = '';
+  showStates: boolean = false;  
+  showLgas: boolean = false; 
   private intervalId: any;
   formSubmitted: boolean = false
   firstName: string = ''
@@ -22,9 +30,49 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
   referred: string = ''
   inactivityTimeout: any;
   inactivityDuration = 15 * 60 * 1000; 
+
+  // nigerianStates: string[] = [
+  //   'Abia',
+  //   'Adamawa',
+  //   'Akwa Ibom',
+  //   'Anambra',
+  //   'Bauchi',
+  //   'Bayelsa',
+  //   'Benue',
+  //   'Borno',
+  //   'Cross River',
+  //   'Delta',
+  //   'Ebonyi',
+  //   'Edo',
+  //   'Ekiti',
+  //   'Enugu',
+  //   'FCT - Abuja',
+  //   'Gombe',
+  //   'Imo',
+  //   'Jigawa',
+  //   'Kaduna',
+  //   'Kano',
+  //   'Katsina',
+  //   'Kebbi',
+  //   'Kogi',
+  //   'Kwara',
+  //   'Lagos',
+  //   'Nasarawa',
+  //   'Niger',
+  //   'Ogun',
+  //   'Ondo',
+  //   'Osun',
+  //   'Oyo',
+  //   'Plateau',
+  //   'Rivers',
+  //   'Sokoto',
+  //   'Taraba',
+  //   'Yobe',
+  //   'Zamfara'
+  // ];
   // inactivityDuration = 100000
 
-  constructor(private router: Router, private dataService: DataService) { }
+  constructor(private router: Router, private dataService: DataService, private eRef: ElementRef) { }
 
   isEmpty(value: string): boolean {
     return !value || value.trim() === '';
@@ -82,6 +130,27 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
     this.router.navigate(['/login'])
   }
 
+  onStateSelect(state: string) {
+    this.selectedState = state;
+    this.lgas = stateLgaData[state];
+    this.showStates = false
+    this.showLgas = false
+    this.selectedLga = ''; // Clear previous LGA selection
+  }
+
+  onLgaSelect(lga: string) {
+    this.selectedLga = lga;
+    this.showStates = false
+    this.showLgas = false
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: MouseEvent) {
+    if (!this.eRef.nativeElement.contains(event.target)) {
+      this.showStates = false;
+      this.showLgas = false;
+    }
+  }
 
   navigateBack() {
     sessionStorage.clear()
