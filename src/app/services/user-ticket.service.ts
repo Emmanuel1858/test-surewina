@@ -124,6 +124,23 @@ export class UserTicketService {
     return new Observable<any>()
 
   }
+
+  winnerBoardWebsite() {
+    const bearerToken = sessionStorage.getItem('token')
+    if (!bearerToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${bearerToken}`,
+        'Content-Type': 'application/json'
+      });
+      const httpOptions = { headers }
+      return this.http.get(`${this.baseUrl}${this.winnerBoardUrl}`, httpOptions)
+    } else {
+      // this.router.navigate(['/vendor-login'])
+      sessionStorage.clear()
+    }
+
+    return new Observable<any>();
+  }
   winnerBoard() {
     const bearerToken = sessionStorage.getItem('token')
     if (bearerToken) {

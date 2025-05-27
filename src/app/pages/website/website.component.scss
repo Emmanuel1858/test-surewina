@@ -1366,9 +1366,9 @@ input[type=number] {
     display: none;
   }
 
-  .fourth_section {
-    display: none;
-  }
+  // .fourth_section {
+  //   display: none;
+  // }
 
 }
 
@@ -1424,6 +1424,10 @@ input[type=number] {
 
 
 @media (max-width: 600px) {
+  .first_section_last_first_img {
+    width: 15%;
+  }
+
   .sixth_section_quote_container {
     border: 1px solid rgb(217, 217, 217);
     background-color: #fff;
@@ -1449,6 +1453,13 @@ input[type=number] {
     max-width: 65px;
   }
 
+  .sixth_section_quote_all_main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 97%;
+    overflow: auto;
+  }
 
   .sixth_section_quote_name :last-child {
     color: rgb(123, 123, 123);
@@ -1463,6 +1474,7 @@ input[type=number] {
     color: #000;
     font-weight: 500;
     font-size: 25px;
+    text-align: center;
   }
 
   .sixth_section_quote {
@@ -1473,7 +1485,7 @@ input[type=number] {
 
   .sixth_section_quote_name :first-child {
     color: rgb(0, 0, 0);
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 500;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -1483,12 +1495,47 @@ input[type=number] {
 
   .sixth_section_quote_name :last-child {
     color: rgb(123, 123, 123);
-    font-size: 7.93px;
+    font-size: 6.93px;
     font-weight: 400;
     text-overflow: ellipsis;
     overflow: hidden;
     max-width: 65px;
   }
 
+  .third_section_note {
+    color: rgb(85, 85, 85);
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .third_section_game_name_sub {
+    color: rgb(18, 40, 193);
+    font-weight: 900;
+    font-size: 48px;
+    text-align: center;
+}
+
+
+}
+
+@media (max-width: 378px) {
+  .sixth_section_quote_name :first-child {
+    color: rgb(0, 0, 0);
+    font-size: 7px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 65px;
+  }
+
+  .sixth_section_quote_name :last-child {
+    color: rgb(123, 123, 123);
+    font-size: 5.93px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 65px;
+  }
 
 }

@@ -56,6 +56,7 @@ import { ConfigureWinningsComponent } from './pages/configure-winnings/configure
 import { TestingComponent } from './pages/testing/testing.component';
 import { AdminInitiateComponent } from './pages/admin-initiate/admin-initiate.component';
 import { LoaderAdminComponent } from './components/loader-admin/loader-admin.component';
+import { WinnerBoardWebsiteComponent } from './pages/winner-board-website/winner-board-website.component';
 
 // @NgModule({
 //   declarations: [
@@ -128,7 +129,8 @@ import { LoaderAdminComponent } from './components/loader-admin/loader-admin.com
     ConfigureWinningsComponent,
     TestingComponent,
     AdminInitiateComponent,
-    LoaderAdminComponent
+    LoaderAdminComponent,
+    WinnerBoardWebsiteComponent
 
   ],
   imports: [
