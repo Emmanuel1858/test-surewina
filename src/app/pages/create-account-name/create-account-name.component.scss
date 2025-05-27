@@ -125,6 +125,7 @@
     padding: 16px;
     font-family: var(--cta-alt);
 }
+
 .input-state {
     position: relative;
     width: 205px;
@@ -180,7 +181,8 @@
 /* COMMON DROPDOWN STYLES */
 .dropdown {
     position: absolute;
-    top: 40px; /* Just below the input (44px height + 4px spacing) */
+    top: 40px;
+    /* Just below the input (44px height + 4px spacing) */
     left: 0;
     width: 100%;
     max-height: 200px;
@@ -193,31 +195,31 @@
     padding: 0;
     margin: 4px 0 0 0;
     list-style: none;
-  }
-  
-  /* EACH DROPDOWN ITEM */
-  .dropdown li {
+}
+
+/* EACH DROPDOWN ITEM */
+.dropdown li {
     padding: 10px 14px;
     cursor: pointer;
     font-family: var(--cta-alt);
     transition: background-color 0.2s ease;
-  }
-  
-  /* HOVER EFFECT */
-  .dropdown li:hover {
+}
+
+/* HOVER EFFECT */
+.dropdown li:hover {
     background-color: #f0f0f0;
-  }
-  
-  /* OPTIONAL: Scrollbar styling (if needed) */
-  .dropdown::-webkit-scrollbar {
+}
+
+/* OPTIONAL: Scrollbar styling (if needed) */
+.dropdown::-webkit-scrollbar {
     width: 6px;
-  }
-  
-  .dropdown::-webkit-scrollbar-thumb {
+}
+
+.dropdown::-webkit-scrollbar-thumb {
     background-color: #ccc;
     border-radius: 10px;
-  }
-  
+}
+
 
 .all-text {
     font-size: 14px;
@@ -305,11 +307,70 @@
 
 @media (max-width: 1000px) {
 
+    .btn-cont {
+        position: relative;
+        border: 1px solid var(--clr-blue-800);
+        color: var(--clr-white);
+        background-color: var(--clr-blue-800);
+        padding: var(--NumbersSpacingS, 16px) 20px 6px 20px;
+        border-radius: var(--rounded-xl);
+        font-family: var(--cta-alt);
+        font-weight: var(--fw-500);
+        font-size: 15px;
+        width: fit-content;
+        height: fit-content;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .btn-back {
+        border: 1px solid var(--clr-blue-800);
+        background-color: var(--clr-white);
+        color: var(--clr-blue-800);
+        padding: var(--NumbersSpacingS, 16px) 20px;
+        border-radius: var(--rounded-xl);
+        font-family: var(--cta-alt);
+        font-weight: var(--fw-400);
+        font-size: 15px;
+        width: fit-content;
+        height: fit-content;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin: 10px 0 20px;
+    }
+
+    .all-text {
+        border-bottom: 1px solid var(--color-boarder-stroke-hard);
+        padding: 10px 0 10px;
+        width: 100%;
+    }
+
+    .input-state img {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .input-lga img {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        cursor: pointer;
+    }
+
     .all-inputs-container {
         // border: 1px solid;
         max-height: 42vh;
         overflow: auto;
     }
+
     .container-img {
         display: none;
     }
@@ -328,9 +389,42 @@
         padding: 16px;
         font-family: var(--cta-alt);
     }
+
+    .state-lga {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .input-lga {
+        position: relative;
+        width: 48%;
+    }
+
+    .input-state {
+        position: relative;
+        width: 48%;
+    }
 }
 
 @media (max-width: 578px) {
+
+    .all-inputs-container {
+        max-height: none;
+        overflow: visible;
+    }
+    .input-state img {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+    .input-lga img {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
     .container-img {
         display: none;
     }
@@ -387,6 +481,28 @@
     .all-inputs input {
         width: 100%;
         height: 56px;
+        outline: none;
+        border: 1px solid var(--color-boarder-stroke);
+        border-radius: 6px;
+        background-color: #F6F6F6;
+        padding: 14px;
+        font-family: var(--cta-alt);
+    }
+
+    .input-state input {
+        width: 100%;
+        height: 44px;
+        outline: none;
+        border: 1px solid var(--color-boarder-stroke);
+        border-radius: 6px;
+        background-color: #F6F6F6;
+        padding: 14px;
+        font-family: var(--cta-alt);
+    }
+
+    .input-lga input {
+        width: 100%;
+        height: 44px;
         outline: none;
         border: 1px solid var(--color-boarder-stroke);
         border-radius: 6px;
