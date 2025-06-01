@@ -104,8 +104,8 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
     this.initials = this.initials.toUpperCase();
     sessionStorage.setItem('initial', this.initials)
     this.vendorDetails()
-    this.getVendorTicket()
-    this.showAllWinnerByMonth()
+    // this.getVendorTicket()
+    // this.showAllWinnerByMonth()
     this.sharedService.ticketBtn$.subscribe(value => {
       this.sellTicketBtn = value
     })
