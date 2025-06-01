@@ -57,6 +57,8 @@ import { TestingComponent } from './pages/testing/testing.component';
 import { AdminInitiateComponent } from './pages/admin-initiate/admin-initiate.component';
 import { LoaderAdminComponent } from './components/loader-admin/loader-admin.component';
 import { WinnerBoardWebsiteComponent } from './pages/winner-board-website/winner-board-website.component';
+import { CreateAccountAdminComponent } from './pages/create-account-admin/create-account-admin.component';
+import { AddAdminUserComponent } from './pages/add-admin-user/add-admin-user.component';
 
 // @NgModule({
 //   declarations: [
@@ -130,7 +132,9 @@ import { WinnerBoardWebsiteComponent } from './pages/winner-board-website/winner
     TestingComponent,
     AdminInitiateComponent,
     LoaderAdminComponent,
-    WinnerBoardWebsiteComponent
+    WinnerBoardWebsiteComponent,
+    CreateAccountAdminComponent,
+    AddAdminUserComponent
 
   ],
   imports: [

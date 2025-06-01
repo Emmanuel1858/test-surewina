@@ -8,7 +8,9 @@ export const environment = {
     loginUser: 'Auth/LoginUser',
     registerVendor: 'Auth/RegisterVendor',
     loginVendor: 'Auth/LoginVendor',
-    test: 'Auth/test'
+    test: 'Auth/test', 
+    registerAdmin: 'Auth/RegisterAdmin', 
+    loginAdmin: 'Auth/LoginAdmin'
   },
   prizeDepot: {
     getDepot: 'Depot/Get', 
@@ -63,6 +65,9 @@ export const environment = {
   analytics: {
     getAnalyticsAdmin: 'Analytics/GetOverallSummary?countype=2',
     getAnalyticsSalesSummary: 'Analytics/GetSalesSummary'
+  },
+  admin: {
+    getAllAdmin:'Admin/GetAll'
   }
 
 };

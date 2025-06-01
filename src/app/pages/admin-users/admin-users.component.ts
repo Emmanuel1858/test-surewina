@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
+import { AdminService } from 'src/app/services/admin.service';
 import { UserTicketService } from 'src/app/services/user-ticket.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,10 +11,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./admin-users.component.scss']
 })
 export class AdminUsersComponent implements OnInit {
-
-
- 
-
   currentRoute: string = 'User Management';
   primaryTabs: string = 'all-users-container';
   tabs: string = 'personal-information';
@@ -33,8 +31,9 @@ export class AdminUsersComponent implements OnInit {
   itemsPerPage = 5;
   showUserPagination: boolean = true
   showAgentPagination: boolean = false
+  showAdminBtn: boolean = false
 
-  
+
 
   // firstName: string = ''
   // lastName: string = ''
@@ -47,7 +46,10 @@ export class AdminUsersComponent implements OnInit {
   // totalTicketsBoughtAmount:number = 0
   // registeredOn: string = ""
 
-  constructor(private userService: UserService, private userTicket: UserTicketService) {}
+  constructor(private userService: UserService,
+    private userTicket: UserTicketService,
+    private router: Router, 
+    private adminService: AdminService) { }
 
   switchTab(tab: string) {
     this.tabs = tab;
@@ -55,7 +57,11 @@ export class AdminUsersComponent implements OnInit {
 
   switchprimaryTabs(tab: string) {
     this.primaryTabs = tab;
-    if(this.primaryTabs === 'all-users-container') {
+    this.showAdminBtn = false
+    if (this.primaryTabs == 'all-admin-container') {
+      this.showAdminBtn = true
+    }
+    if (this.primaryTabs === 'all-users-container') {
       this.showUserPagination = true
       this.showAgentPagination = false
     } else {
@@ -64,9 +70,13 @@ export class AdminUsersComponent implements OnInit {
     }
   }
 
+  addAdminBtn() {
+    this.router.navigate(['/add-admin'])
+  }
+
   async getAllUsers() {
     const getNumberOfUsers = {
-      pageNumber : this.pageNumber,
+      pageNumber: this.pageNumber,
       numberOfRecords: this.numberOfRecords
     }
     try {
@@ -83,27 +93,35 @@ export class AdminUsersComponent implements OnInit {
   }
 
   async getUserById(id: number) {
-    
     this.showBackBtn = true;
-
- 
     try {
       this.getUserTicket(id)
       this.currentRoute = 'User Details'
-      const response = await lastValueFrom(this.userService.getUserById(id)) 
+      const response = await lastValueFrom(this.userService.getUserById(id))
       this.userDetails = response.result
       // console.log(response)
-    } catch(error) {
+    } catch (error) {
       // console.log(error)
     }
 
 
   }
 
+  async getAdminUrl() {
+    try {
+      const response = await lastValueFrom(this.adminService.getAdmin(1, 5))
+      console.log(response)
+      
+
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   async getUserTicket(userId: number) {
     // debugger
     const credentials = {
-      pageNumber: this.pageNumber, 
+      pageNumber: this.pageNumber,
       numberOfRecords: this.numberOfRecords
     }
     try {
@@ -111,14 +129,14 @@ export class AdminUsersComponent implements OnInit {
       this.ticketHistory = response.result.items
       console.log(response)
 
-    } catch(error) {
+    } catch (error) {
       console.log(error)
     }
   }
 
   async getAllVendor() {
     const getNumberOfUsers = {
-      pageNumber : this.pageNumber,
+      pageNumber: this.pageNumber,
       numberOfRecords: this.numberOfRecords
     }
     try {
@@ -134,12 +152,12 @@ export class AdminUsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.getAllUsers()
-      this.getAllVendor()
+    this.getAllUsers()
+    this.getAllVendor()
   }
 
   goBack() {
-    if (this.primaryTabs == 'all-users-container' ) {
+    if (this.primaryTabs == 'all-users-container') {
       this.primaryTabs = 'all-users-container'
       this.showUserPagination = true
       this.showAgentPagination = false
@@ -151,7 +169,7 @@ export class AdminUsersComponent implements OnInit {
     }
     this.tabs = 'personal-information'
     this.showBackBtn = false;
- 
+
   }
 
   detailsPage(role: string, roleData?: any) {
@@ -171,11 +189,11 @@ export class AdminUsersComponent implements OnInit {
 
   getBtnColor(value: any) {
     if (!value) {
-      return 'null' 
-    } 
+      return 'null'
+    }
 
     const status = value.toLowerCase();
-    
+
     if (status.includes('inactive') || status.includes('pending')) {
       return 'inactive';
     } else if (status.includes('rejected')) {
@@ -183,18 +201,18 @@ export class AdminUsersComponent implements OnInit {
     } else if (status.includes('approved') || status.includes('active')) {
       return 'active';
     } else {
-      return 'transparent'; 
+      return 'transparent';
     }
   }
 
   getFillColor(value: any): string {
     if (!value) {
       this.status = 'Not Available';
-      return 'transparent'; 
+      return 'transparent';
     }
-  
+
     const status = value.toLowerCase();
-  
+
     if (status.includes('pending')) {
       this.status = 'Pending';
       return '#DC6803';
@@ -213,7 +231,7 @@ export class AdminUsersComponent implements OnInit {
     this.currentPage = page;
   }
 
-  
+
   // total pages for prizes
   get totalPagesUser(): number[] {
     return Array.from({ length: Math.ceil(this.numberOfUsers / this.itemsPerPage) }, (_, i) => i + 1);

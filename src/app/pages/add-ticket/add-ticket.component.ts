@@ -23,9 +23,6 @@ export class AddTicketComponent implements OnInit {
   loading: boolean = false
 
   constructor(private router: Router, private adminService: AdminService) { }
-
-
-  
   ngOnInit(): void {
 
   }

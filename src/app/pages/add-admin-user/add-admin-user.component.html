@@ -1,0 +1,106 @@
+<div *ngIf="showAddTicket">
+    <div class="header-container">
+        <img (click)="goToLottery()" src="../../../assets/go-back.svg" alt="">
+        <span>Create new user</span>
+    </div>
+    <div class="container-details">
+        <div class="ticket-steps">
+            <span class="ticket-steps-1">
+                <img src="../../../assets/good-tick-first.svg" alt="">
+                <span>User details</span>
+            </span>
+            <span class="ticket-steps-2">
+                <img src="../../../assets/second-tick.svg" alt="">
+                <span>Summary</span>
+
+            </span>
+        </div>
+        <div style="color: red;"> {{showError}}</div>
+        <div class="input-container">
+            <input type="text" [(ngModel)]="fullName" placeholder="Full name">
+            <input type="text" [(ngModel)]="number" placeholder="Phone number">
+            <input type="text" [(ngModel)]="email" placeholder="Email Address">
+        </div>
+    </div>
+    <div class="container-btn" >
+        <button (click)="goToSummary()" >
+            <span>CONTINUE</span>
+            <span>></span>
+        </button>
+    </div>
+</div>
+
+<div *ngIf="showBuyWhere">
+    <div class="header-container">
+        <img (click)="goToAddTicket()" src="../../../assets/go-back.svg" alt="">
+        <span>Create new user</span>
+    </div>
+    <div class="container-details">
+        <div class="ticket-steps">
+            <span class="ticket-steps-1-next">
+                <img src="../../../assets/good-tick-first.svg" alt="">
+                <span>User details</span>
+            </span>
+            <span class="ticket-steps-2-next">
+                <img src="../../../assets/good-tick-first.svg" alt="">
+                <span>Summary</span>
+
+            </span>
+        </div>
+        <div class="input-container-next">
+            <div>
+                <span>User's name</span>
+                <span> {{fullName}} </span>
+            </div>
+            <div>
+                <span> User Phone</span>
+                <span> {{number}} </span>
+            </div>
+            <div>
+                <span> User Email</span>
+                <span> {{email}} </span>
+            </div>
+            
+        </div>
+    </div>
+    <div class="container-btn">
+        <button (click)="saveData()">
+            <span>CONTINUE</span>
+            <span>></span>
+        </button>
+    </div>
+</div>
+
+<div class="ticket-container-background" *ngIf="showModal">
+    <div class="modal">
+        <div class="container-modal">
+            <div class="modal-img">
+                <img src="../../../assets/Group 1000002391.svg" alt="">
+                <img src="../../../assets/Group 1000002392.svg" alt="">
+            </div>
+            <div class="tick-container">
+                <section class="animated_check_circle">
+                    <svg viewBox="0 0 130.2 130.2" class="animated_check_circle">
+                        <circle class="path circle" fill="none" stroke="#10B981" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#10B981" stroke-width="6"
+                            stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5" />
+                    </svg>
+                </section>
+            </div>
+            <div class="modal-text">
+                <h1> User Created Successfully</h1>
+                <span>User can go ahead and login
+                </span>
+                <span></span>
+            </div>
+            <div class="modal-btn">
+                <button (click)="goToLottery()">Ok, Got it</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader" *ngIf="loading">
+    <app-loader/>
+</div>

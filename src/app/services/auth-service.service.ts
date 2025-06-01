@@ -12,29 +12,43 @@ export class AuthServiceService {
   private loginUserUrl: string = environment.authentication.loginUser
   private registerVendorUrl: string = environment.authentication.registerVendor
   private loginVendorUrl: string = environment.authentication.loginVendor
+  private registerAdminUrl: string = environment.authentication.registerAdmin
 
   constructor(private https: HttpClient) { }
 
-  registerUser(credentialsRegisterUser: {firstName: string; lastName: string; phoneNumber: string; password: string; email: string; referredBy: string; isConscient: boolean}): Observable <any> {
+  registerUser(credentialsRegisterUser: { firstName: string; lastName: string; phoneNumber: string; state: string; lga: string; password: string; email: string; referredBy: string; isConscient: boolean }): Observable<any> {
     return this.https.post(`${this.baseUrl}${this.registerUserUrl}`, credentialsRegisterUser, {
       headers: { 'Content-Type': 'application/json' },
     })
-    
+
   }
 
-  registerVendor(credentialsRegisterVendor: {firstName: string; lastName: string; phoneNumber: string; password: string; email: string; bvn: string; nin: string; referredBy: string;}): Observable <any> {
+  registerVendor(credentialsRegisterVendor: { firstName: string; lastName: string; phoneNumber: string; password: string; email: string; bvn: string; nin: string; referredBy: string; }): Observable<any> {
     return this.https.post(`${this.baseUrl}${this.registerVendorUrl}`, credentialsRegisterVendor, {
       headers: { 'Content-Type': 'application/json' },
     })
-    
+
   }
-  loginUser(credentialsLoginUser: {user: string; password: string}): Observable <any> {
+  loginUser(credentialsLoginUser: { user: string; password: string }): Observable<any> {
     return this.https.post(`${this.baseUrl}${this.loginUserUrl}`, credentialsLoginUser, {
       headers: { 'Content-Type': 'application/json' },
     })
   }
 
-  loginVendor(credentialsLoginVendor: {user: string; password: string}): Observable <any> {
+  loginVendor(credentialsLoginVendor: { user: string; password: string }): Observable<any> {
+    return this.https.post(`${this.baseUrl}${this.loginVendorUrl}`, credentialsLoginVendor, {
+      headers: { 'Content-Type': 'application/json' },
+    })
+  }
+
+  registerAdmin(credentials: { fullName: string; email: string; phoneNumber: string }): Observable<any> {
+    return this.https.post(`${this.baseUrl}${this.registerAdminUrl}`, credentials, {
+      headers: { 'Content-Type': 'application/json' }
+    }
+    )
+  }
+  
+  loginAdmin(credentialsLoginVendor: { user: string; password: string }): Observable<any> {
     return this.https.post(`${this.baseUrl}${this.loginVendorUrl}`, credentialsLoginVendor, {
       headers: { 'Content-Type': 'application/json' },
     })

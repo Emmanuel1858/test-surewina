@@ -40,15 +40,24 @@ export class WinnerBoardWebsiteComponent implements OnInit {
 
   // This will hold the draw data
   async getWinnerBoard() {
+    // debugger
     try {
       const response = await lastValueFrom(this.userTicket.winnerBoardWebsite());
       this.showLoader = false;
       this.drawResults = response.result;
+      // this.reasonForError = response.responseMessage
+
+      if(response.responseStatus === false ) {
+        alert(response.responseMessage)
+        return
+      }
 
       if (this.drawResults.length === 0) {
         this.showEmptyStateWinner = true;
         return;
       }
+
+   
 
       // Capitalize each word in drawDescription
       this.drawResults = this.drawResults.map(draw => ({
@@ -59,9 +68,10 @@ export class WinnerBoardWebsiteComponent implements OnInit {
       this.tabs = 'tab0';
 
     } catch (error) {
+      
       this.showLoader = false;
-      alert('You were logged out due to error. Try logging back in.');
-      this.router.navigate(['/login']);
+      // alert('You were logged out due to error. Try logging back in.');
+      // this.router.navigate(['/login']);
       sessionStorage.clear();
     }
   }

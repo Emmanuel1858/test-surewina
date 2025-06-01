@@ -14,6 +14,8 @@ export class CreateAccountPasswordComponent implements OnInit, OnDestroy {
   lastName: string = this.dataService.getRegisterUserData('lastName')
   phoneNumber: string = this.dataService.getRegisterUserData('phoneNumber')
   password: string = this.dataService.getRegisterUserData('password')
+  state: string = this.dataService.getRegisterUserData('state')
+  lga: string = this.dataService.getRegisterUserData('lga')
   referredBy: string = ''
   isConscent: boolean = false
   email: string = this.dataService.getRegisterUserData('emailAddress')
@@ -68,6 +70,8 @@ export class CreateAccountPasswordComponent implements OnInit, OnDestroy {
       firstName: this.firstName,
       lastName: this.lastName,
       phoneNumber: this.phoneNumber,
+      state: this.state,
+      lga: this.lga,
       password: this.password,
       email: this.email,
       referredBy: this.referredBy,

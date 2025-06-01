@@ -40,6 +40,7 @@ import { ConfigureWinningsComponent } from './pages/configure-winnings/configure
 import { AddPrizeDepotComponent } from './pages/add-prize-depot/add-prize-depot.component';
 import { TestingComponent } from './pages/testing/testing.component';
 import { AdminInitiateComponent } from './pages/admin-initiate/admin-initiate.component';
+import { AddAdminUserComponent } from './pages/add-admin-user/add-admin-user.component';
 // import { CreateAccountNameComponent } from './pages/create-account-name/create-account-name.component';
 
 
@@ -89,6 +90,7 @@ const routes: Routes = [
       { path: 'configure-tier', component: ConfigureTierComponent },
       { path: 'configure-winning', component: ConfigureWinningsComponent},
       { path: 'transactions', component: AdminTransactionsComponent },
+      { path: 'add-admin', component: AddAdminUserComponent}
     ]
   },
   { path: 'test', component: TestingComponent}

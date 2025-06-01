@@ -11,8 +11,9 @@ export class AdminService {
   private baseUrl: string = environment.baseUrl
   private addTicketUrl: string = environment.ticketDescription.addTicket
   private getAllTicketUrl: string = environment.ticketDescription.getAll
+  private getAllAdminUser: string = environment.admin.getAllAdmin
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   addTicket(credentialsAddTicket: {
     image: any,
@@ -24,10 +25,10 @@ export class AdminService {
   }
   ) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if (!bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
-        'Content-Type': 'application/json' 
+        'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
       return this.http.post(`${this.baseUrl}${this.addTicketUrl}`, credentialsAddTicket, httpOptions)
@@ -35,15 +36,28 @@ export class AdminService {
     return new Observable<any>()
   }
 
-  getAllTicket(credentials: {pageNumber: number, numberOfRecords: number}) {
+  getAllTicket(credentials: { pageNumber: number, numberOfRecords: number }) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if (!bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type': 'application/json'
       })
       const httpOptions = { headers }
       return this.http.post(`${this.baseUrl}${this.getAllTicketUrl}`, credentials, httpOptions)
+    }
+    return new Observable<any>()
+  }
+
+  getAdmin(pageNumber: number, numberOfRecords: number )  {
+    const bearerToken = sessionStorage.getItem('token')
+    if (bearerToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `bearer ${bearerToken}`,
+        'Content-Type': 'application/json'
+      })
+      const httpOptions = { headers }
+      return this.http.get(`${this.baseUrl}${this.getAllAdminUser}?PageNumber=${pageNumber}&NumberOfRecords=${numberOfRecords}`, httpOptions)
     }
     return new Observable<any>()
   }

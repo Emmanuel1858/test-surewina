@@ -1,5 +1,7 @@
 <div class="current-route-container">
   <img (click)="goBack()" *ngIf="showBackBtn" src="../../../assets/go-back.svg" alt=""><h1 class="current-route-header"> {{currentRoute}} </h1>
+  <button  class="admin-btn" *ngIf="showAdminBtn" (click)="addAdminBtn()">ADD USERS</button>
+
 </div>
 
 <div class="parent-container">
@@ -14,6 +16,10 @@
       </div>
       <div class="tab" [ngClass]="primaryTabs == 'all-agents-container' ? 'active-tab' : '' ">
         <p (click)="switchprimaryTabs('all-agents-container')"> Agents <span class="rounded-border-items"> {{numberOfVendors}} </span> </p>
+        <div  class="border-bottom"></div>
+      </div>
+      <div class="tab" [ngClass]="primaryTabs == 'all-admin-container' ? 'active-tab' : '' ">
+        <p (click)="switchprimaryTabs('all-admin-container')"> Admin User <span class="rounded-border-items"> {{numberOfVendors}} </span> </p>
         <div  class="border-bottom"></div>
       </div>
     </div>
@@ -52,6 +58,43 @@
       </div>
   
       <div *ngSwitchCase="'all-agents-container'"  class="all-agents-container">
+        <!-- collection of agent cards -->
+        <div (click)="detailsPage('agent')" class="user-details" *ngFor="let vendor of paginatedVendor">
+          <div class="name-thumbnail">
+            <img src="../../../assets/user-1.svg" alt="">
+            <div class="name">
+              <h2> {{vendor.firstName}} {{vendor.lastName}} </h2>
+              <p>{{vendor.branch === null ? 'Not Entered yet?' : vendor.branch}}</p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <p> {{vendor.phoneNumber	}} </p>
+            <p>{{vendor.email}}</p>
+          </div>
+          <div class="contact-info">
+            <p> Sold </p>
+            <p> {{vendor.ticketsSold}} </p>
+          </div>
+          <div class="contact-info">
+            <p> Oweing  </p>
+            <p> {{vendor.owing}} </p>
+          </div>
+          <button class="status-btn"[ngClass]="getBtnColor('active')">
+            <div class="dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
+              fill="none">
+              <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
+              </svg>
+            </div> 
+            {{status !== null ? status : 'Not Available'}}
+          </button>
+          <button>
+
+          </button>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'all-admin-container'"  class="all-agents-container">
         <!-- collection of agent cards -->
         <div (click)="detailsPage('agent')" class="user-details" *ngFor="let vendor of paginatedVendor">
           <div class="name-thumbnail">

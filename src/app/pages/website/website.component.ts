@@ -75,7 +75,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private drawService: DrawService, private userTicket: UserTicketService) { }
 
   ngOnInit(): void {
-    this.getTodayDraw()
+    // this.getTodayDraw()
     this.startAutoAdvance();
     this.firstImage()
     this.secondImage()
@@ -215,11 +215,11 @@ export class WebsiteComponent implements OnInit, OnDestroy {
       const response = await lastValueFrom(this.drawService.getTodayDrawWithoutToken(drawForToday))
       // console.log(response)
       this.loading = false
-      this.drawId = response.result.items[0].drawId
-      this.unitPrice = response.result.items[0].amount
+      this.drawId = response.result.items[0]?.drawId
+      this.unitPrice = response.result.items[0]?.amount
     } catch (error) {
       // this.loading = true
-      // console.log(error)
+      console.log(error)
     }
   }
 

@@ -2,6 +2,7 @@
   display: flex;
   gap: var(--Numbers-Spacing-L, 0.625rem);
   align-items: center;
+  justify-content: space-between;
   padding-top: .7rem;
   padding-bottom: 1.63rem;
 
@@ -20,6 +21,19 @@
     cursor: pointer;
   }
 }
+
+.admin-btn {
+  background-color: #1228C1;
+  color: #fff;
+  border-radius: 1000px;
+  padding: 5px 35px;
+  font-size: 14px;
+  font-family: "DM Sans";
+  font-weight: 400;
+  cursor: pointer;
+}
+
+// .admin-btn 
 
 .loader {
   position: fixed;

@@ -2,12 +2,13 @@ import { Component, OnInit, OnDestroy, ElementRef, HostListener } from '@angular
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { stateLgaData } from 'src/state/stateLga';
+
 @Component({
-  selector: 'app-create-account-name',
-  templateUrl: './create-account-name.component.html',
-  styleUrls: ['./create-account-name.component.scss']
+  selector: 'app-create-account-admin',
+  templateUrl: './create-account-admin.component.html',
+  styleUrls: ['./create-account-admin.component.scss']
 })
-export class CreateAccountNameComponent implements OnInit, OnDestroy {
+export class CreateAccountAdminComponent {
   images: string[] = [
     '../../../assets/Property 1=Splash Screen - Carousel 1.png',
     '../../../assets/Property 1=Splash Screen - Carousel 2.png',
@@ -210,5 +211,6 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
       this.activeIndex = (this.activeIndex + 1) % this.images.length;
     }, 4000);
   }
+
 
 }
