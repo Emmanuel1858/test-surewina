@@ -49,3 +49,10 @@
 
     </div>
 </div>
+
+<div class="modal-overlay" *ngIf="dueToInactivity">
+    <div class="modal-box">
+      <p>You were logged out due to inactivity.</p>
+      <button (click)="closeModal()">OK</button>
+    </div>
+  </div>

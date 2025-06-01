@@ -44,7 +44,7 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
   showTicketPayment: boolean = false;
   showMakePayment: boolean = false;
   showRedeemPrize: boolean = false
-  showGameInfo: boolean = false
+  showGameInfo: boolean = true
   showLoader: boolean = false;
   showTicketRedeemSuccessfully: boolean = false
   showBalance: boolean = true;
@@ -104,8 +104,8 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
     this.initials = this.initials.toUpperCase();
     sessionStorage.setItem('initial', this.initials)
     this.vendorDetails()
-    // this.getVendorTicket()
-    // this.showAllWinnerByMonth()
+    this.getVendorTicket()
+    this.showAllWinnerByMonth()
     this.sharedService.ticketBtn$.subscribe(value => {
       this.sellTicketBtn = value
     })

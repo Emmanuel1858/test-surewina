@@ -1066,7 +1066,7 @@ input[type=number] {
 .customer-container {
     position: absolute;
     width: 90%;
-    bottom: 0;
+    bottom: 100px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -1310,7 +1310,7 @@ input[type=number] {
     width: 90%;
     height: 60%;
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     background-color: #fff;
     display: flex;
     flex-direction: column;

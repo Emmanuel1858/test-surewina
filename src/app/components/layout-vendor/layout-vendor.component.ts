@@ -71,7 +71,7 @@ export class LayoutVendorComponent implements OnInit, OnDestroy {
 
   cancel() {
     this.showMenu = true
-    this.showLogout = true
+    this.showLogout = false
     // this.showMobileBtn = false
   }
 
