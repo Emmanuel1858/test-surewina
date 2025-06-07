@@ -66,6 +66,11 @@
     border-radius: 20px;
 }
 
+.not-active {
+    color: #9d9d9d;
+    // font-weight: 200;
+}
+
 .ongoing-ticket {
     position: relative;
 }
@@ -123,7 +128,31 @@
     top: 0;
     left: 50%;
     transform: translate(-50%, 100px);
+    text-align: center;
 }
+
+.empty-state-ticket span {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #3B82F6;
+    cursor: pointer;
+}
+
+.ticket-details-winners {
+    position: relative;
+    width: 50%;
+    // border: 1px solid #9D9D9D;
+    border-radius: 4px;
+    // background-color: #fff;
+}
+
+.empty-state-ticket-winners {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, 0);
+}
+
 
 
 .pay-with-container {
@@ -376,6 +405,18 @@
 
 }
 
+.for-mobile {
+    display: none;
+}
+
+.for-laptop {
+    // display: block;
+}
+
+.for-mobile-text {
+    display: none;
+}
+
 
 @media (max-width: 1359px) {
     .ticket-won {
@@ -462,6 +503,37 @@
     .redeem-money-prize {
         display: none;
     }
+
+    .for-laptop {
+        display: none;
+    }
+
+    .for-mobile {
+        // border: 1px solid red;
+        display: block;
+    }
+
+    .for-mobile-text {
+        display: block;
+        white-space: nowrap;
+        position: absolute;
+        top: 84px;
+        left: 50%;
+        transform: translate(-50%, 0px);
+        font-size: 11px;
+        color: #9D9D9D;
+        text-align: center;
+    }
+
+    .ticket-details-winners {
+        position: relative;
+        width: 50%;
+        // border: 1px solid #9D9D9D;
+        border-radius: 4px;
+        display: none;
+        // background-color: #fff;
+    }
+
     .container {
         background-color: #F3F3FE;
         max-height: 85vh;
@@ -469,13 +541,21 @@
         padding: 20px 40px 20px;
     }
 
-    .ticket-body {
-        width: auto;
+    // .ticket-body {
+    //     width: 100%;
 
-        // max-height: 30vh;
+    //     // max-height: 30vh;
+    //     overflow: hidden;
+    //     border: 1px solid #9D9D9D;
+    //     border-radius: 4px;
+    //     background-color: #fff;
+    // }
+
+    .ticket-body {
+        width: 100%;
         overflow: hidden;
-        border: 1px solid #9D9D9D;
+        border: 0px;
         border-radius: 4px;
-        background-color: #fff;
+        background-color: transparent;
     }
 }

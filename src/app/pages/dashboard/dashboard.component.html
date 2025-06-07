@@ -4,18 +4,54 @@
             <span>Welcome, {{firstName}}</span>
         </div>
         <div class="first-card">
-            <div class="th">
+            <div class="first-card-prize-respon" *ngIf="false">
+                <div class="first-card-prize-div">
+                    <div>
+                        <span class="first-card-prize-text">Prize Won</span>
+                    </div>
+                    <div class="first-card-prize-amount-div">
+                        <span class="first-card-prize-amount">₦ 0</span>
+                        <span class="first-card-prize-sign">~</span>
+                    </div>
+                </div>
+                <div class="first-card-prize-img">
+                    <img class="first" src="../../../assets/Rectangle 4579.svg" alt="">
+                    <img class="second" src="../../../assets/Rectangle 4580.svg" alt="">
+                    <img class="third" src="../../../assets/Rectangle 4581.svg" alt="">
+                    <img class="fourth" src="../../../assets/Rectangle 4582.svg" alt="">
+                    <img class="last" src="../../../assets/Rectangle 4583.svg" alt="">
+                </div>
+                <div class="first-card-prize-respon-img">
+                    <img src="../../../assets/circle 4579.svg" alt="">
+                    <img src="../../../assets/circle 4580.svg" alt="">
+                    <img src="../../../assets/circle 4583.svg" alt="">
+                    <!-- <img class="clickable-arrow" (click)="showMyBalance()"
+                        src="../../../assets/Frame 1000002800.svg" alt=""> -->
+                </div>
+            </div>
+            <div class="first-card-prize-empty-respon"  *ngIf="!showButtonTicket">
+                <div>
+                    <img src="../../../assets/empty-state-insight.svg" alt="">
+                </div>
+                <div class="first-card-prize-empty-respon-text">
+                    <span>No Insights Yet</span>
+                    <span>Start by buying tickets</span>
+                </div>
+                
+
+            </div>
+             <div class="th">
                 <div class="first-card-text">
                     <span>Your Insight</span>
                 </div>
                 <div class="first-card-prize" *ngIf="showButtonTicket">
                     <div class="first-card-prize-div">
                         <div>
-                            <!-- <span class="first-card-prize-text">Prize Won</span> -->
+                            <span class="first-card-prize-text">Prize Won</span>
                         </div>
                         <div class="first-card-prize-amount-div">
-                            <!-- <span class="first-card-prize-amount">₦ 0</span>
-                            <span class="first-card-prize-sign">~</span> -->
+                            <span class="first-card-prize-amount">₦ 0</span>
+                            <span class="first-card-prize-sign">~</span>
                         </div>
                     </div>
                     <div class="first-card-prize-img">
@@ -33,12 +69,12 @@
                             src="../../../assets/Frame 1000002800.svg" alt="">
                     </div>
                 </div>
-                <div class="first-card-prize-empty">
+                <div class="first-card-prize-empty"  *ngIf="!showButtonTicket">
                     <img src="../../../assets/empty-state-insight.svg" alt="">
                     <span>No Insights Yet</span>
                     <span>Start by buying tickets to join daily draws</span>
                 </div>
-                <div class="third-card-profile" >
+                <div class="third-card-profile">
                     <div class="profile-pic">
                         <img src="../../../assets/avatar.svg" alt="">
                     </div>
@@ -73,16 +109,24 @@
         <div class="second-card">
             <div class="second-card-right">
                 <div class="second-card-right-text">
+                    <img class="secord-card-gift-icon" src="../../../assets/gift-icon-mobile.svg" alt="">
                     <span class="second-card-game-text">
 
-                        {{items === [] ? 'Today’s game' : '' }}
+                        {{items.length === 0 ? '' : "Today's game" }}
                     </span>
                     <span class="second-card-jolly-text">
-                        {{items === [] ? nameGame : 'No game available today' }}
+                        <span>
+                            {{items.length === 0 ? 'No game' : nameGame }}
+                        </span>
+                        <span>
+                            {{items.length === 0 ? ' available today' : '' }}
+                        </span>
+
+
                     </span>
                     <span class="second-card-text">
-                        <div>{{items === [] ? '' : 'No action now, but tomorrow'}}</div>
-                        <div> {{items === [] ? '' : 'could be your lucky day!'}} </div>
+                        <div>{{items.length === 0 ? 'No action now, but tomorrow' : 'Buy Surewina tickets and'}}</div>
+                        <div> {{items.length === 0 ? 'could be your lucky day!' : 'win lots of great prizes'}} </div>
 
 
                     </span>
@@ -119,7 +163,7 @@
 
                 </div>
             </div>
-            <div class="empty-state-prizes">
+            <div class="empty-state-prizes" *ngIf="showEmptyStateDashboard">
 
             </div>
         </div>
@@ -195,7 +239,7 @@
         </div>
         <div class="winner-table">
             <div class="winner-button">
-                <button class="winner-btn-text">Lottery Winners Board</button>
+                <button class="winner-btn-text"> Winners Board</button>
                 <button class="winner-btn-view" *ngIf="!showEmptyStateWinner" (click)="navigateToWinnerBoard()">
                     <span>VIEW ALL</span>
                     <span> > </span>
@@ -207,7 +251,8 @@
                     <div class="header" *ngIf="showMonth">
                         <div *ngFor="let draw of drawResults; let drawIndex = index">
                             <div class="header-tickets" [ngClass]="tabs == 'tab' + drawIndex ? 'active-tab' : ''">
-                                <span (click)="switchTab('tab' + drawIndex)" [ngClass]="tabs == 'tab' + drawIndex ? 'header-tickets-text-active' : 'header-tickets-text'">
+                                <span (click)="switchTab('tab' + drawIndex)"
+                                    [ngClass]="tabs == 'tab' + drawIndex ? 'header-tickets-text-active' : 'header-tickets-text'">
                                     {{ draw.drawDescription || 'No Description' }}
                                 </span>
                                 <span class="header-tickets-number-active"
@@ -221,7 +266,7 @@
                     <div [ngSwitch]="tabs" *ngFor="let draw of drawResults; let drawIndex = index">
                         <div *ngSwitchCase="'tab' + drawIndex">
                             <div class="ticket-details-con">
-                                <div class="ticket-details" *ngFor="let item of draw.winners.items; let i = index"
+                                <div class="winner-details" *ngFor="let item of draw.winners.items; let i = index"
                                     (click)="showListWinners(draw.drawId)">
                                     <div class="ticket-details-img">
                                         <img *ngIf="draw.prizes?.[0]?.image" [src]="draw.prizes[0].image" alt="" />
@@ -242,12 +287,12 @@
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="empty-state-winners" *ngIf="showEmptyStateWinner">
                 <img src="../../../assets/empty-state-winner.svg" alt="">
             </div>
-         
+
         </div>
     </div>
 
@@ -293,6 +338,7 @@
 
     <div class="ticket-container-background" *ngIf="showTicketPayment" (click)="closeModalOnOutsideClick($event)">
         <div class="buy-ticket-container" (click)="$event.stopPropagation()">
+
             <div class="buy-ticket-header">
                 <div class="img-dashboard" (click)="navigateToDashboard()">
                     <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
@@ -306,31 +352,33 @@
                 </div>
 
             </div>
-            <div class="ticket-error" *ngIf="ticketError">
-                <span>Total ticket bought cannot be 0!</span>
-            </div>
-            <div class="img">
-                <img src="../../../assets/gift-voucher.svg" alt="">
-            </div>
-            <div class="buy-ticket-count">
-                <div class="ticket-price-container">
-                    <span>Ticket Unit Price</span>
-                    <span>₦{{unitPrice}}</span>
+            <div class="buy-ticket-container-overall">
+                <div class="ticket-error" *ngIf="ticketError">
+                    <span>Total ticket bought cannot be 0!</span>
                 </div>
-                <div class="ticket-count-container">
-                    <span class="count">How Many Tickets</span>
-                    <div class="count-number">
-                        <button (click)="decrement()">-</button>
-                        <span class="ticket-number">{{ticketCount}}</span>
-                        <button (click)="increment()">+</button>
+                <div class="img">
+                    <img src="../../../assets/big-prize-winning.png" alt="">
+                </div>
+                <div class="buy-ticket-count">
+                    <div class="ticket-price-container">
+                        <span>Ticket Unit Price</span>
+                        <span>₦{{unitPrice}}</span>
+                    </div>
+                    <div class="ticket-count-container">
+                        <span class="count">How Many Tickets</span>
+                        <div class="count-number">
+                            <button (click)="decrement()">-</button>
+                            <span class="ticket-number">{{ticketCount}}</span>
+                            <button (click)="increment()">+</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="ticket-bought-container">
-                <div>
-                    <div class="ticket-bought">
-                        <span>Total Ticket</span>
-                        <span class="ticket-amount">{{totalPrice}}</span>
+                <div class="ticket-bought-container">
+                    <div>
+                        <div class="ticket-bought">
+                            <span>Total Ticket Bought</span>
+                            <span class="ticket-amount"> ₦{{totalPrice}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -386,7 +434,7 @@
         <div class="buy-ticket-container" (click)="$event.stopPropagation()">
             <div class="buy-ticket-header">
                 <div class="img-dashboard" (click)="navigateToDashboard()">
-                    <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
+                    <img src="../../../assets/go-back-btn-icon.svg" alt="">
                 </div>
                 <div class="buy-ticket-header-text">
                     <span class="bigger-text">Make payment for this ticket</span>
@@ -405,7 +453,7 @@
                 </div>
             </div>
             <div class="pay-with-transfer-container">
-                <div class="pay-with-transfer">
+                <!-- <div class="pay-with-transfer">
                     <div class="pay-with-transfer-img">
                         <img src="../../../assets/transfer-icon.svg" alt="">
                     </div>
@@ -413,7 +461,7 @@
                         <span class="transfer-details-text">Pay with Transfer</span>
                         <span class="transfer-details-number">1000000342, Surewina LTD, Moniepoint</span>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="pay-with-credit-card">
                 <div class="pay-with-credit-card-head">

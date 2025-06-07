@@ -44,7 +44,6 @@ export class WinnerBoardComponent implements OnInit {
       const response = await lastValueFrom(this.userTicket.winnerBoardUser());
       this.showLoader = false;
       this.drawResults = response.result;
-
       if (this.drawResults.length === 0) {
         this.showEmptyStateWinner = true;
         return;

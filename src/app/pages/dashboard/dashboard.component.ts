@@ -48,7 +48,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   password: string = '';
   nameGame: string = ''
   ticketImage: string = ''
-  items = []
+  items: any = []
   showButtonTicket: boolean = true
   itemsInArrayPrevious: number = 5
   amountPrevious: number = 0
@@ -70,6 +70,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   showWinnerList: boolean = false
   ticketError: boolean = false
   showEmptyStateTicket: boolean = false
+  showEmptyStateDashboard: boolean = true
   constructor(private router: Router,
     private drawService: DrawService,
     private prizeService: PrizeService,
@@ -173,7 +174,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.initials = (this.firstName?.charAt(0) || '') + (this.lastName?.charAt(0) || '');
     this.initials = this.initials.toUpperCase();
     sessionStorage.setItem('initial', this.initials)
-    this.getWinnerBoard()
+    // this.getWinnerBoard()
     // window.location.reload()
 
   }
@@ -198,15 +199,24 @@ export class DashboardComponent implements OnInit, OnDestroy {
       const response = await lastValueFrom(this.drawService.getTodayDraw(drawForToday))
       this.loading = false
       // console.log(response)
-      this.items = response.result.items
+      // this.items = ['pkmp', 'oinoifmi']
       if (this.items.length === 0) {
+        // debugger
+        console.log('there are items here', this.items)
         this.showButtonTicket = false
+        this.showEmptyStateDashboard = true
         return
+      } else {
+        this.nameGame = response.result.items[0].name
+        // console.log(this.nameGame)
+        this.drawId = response.result.items[0].drawId
+        this.ticketImage = response.result.items[0].ticketImage
+        this.unitPrice = response.result.items[0].amount
+        // console.log(this.unitPrice)
+        this.showEmptyStateDashboard = false
       }
-      this.nameGame = response.result.items[0].name
-      this.drawId = response.result.items[0].drawId
-      this.ticketImage = response.result.items[0].ticketImage
-      this.unitPrice = response.result.items[0].amount
+
+  
 
     } catch (error) {
       // debugger
@@ -279,7 +289,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     } catch (error) {
       this.showLoader = false;
       alert('You were logged out due to error. Try logging back in.');
-      this.router.navigate(['/login']);
+      // this.router.navigate(['/login']);
       sessionStorage.clear();
     }
   }

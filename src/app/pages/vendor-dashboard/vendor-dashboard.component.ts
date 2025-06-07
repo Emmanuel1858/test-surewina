@@ -44,7 +44,7 @@ export class VendorDashboardComponent implements OnInit, OnDestroy {
   showTicketPayment: boolean = false;
   showMakePayment: boolean = false;
   showRedeemPrize: boolean = false
-  showGameInfo: boolean = true
+  showGameInfo: boolean = false
   showLoader: boolean = false;
   showTicketRedeemSuccessfully: boolean = false
   showBalance: boolean = true;

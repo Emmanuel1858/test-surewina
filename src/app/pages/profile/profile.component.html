@@ -40,76 +40,42 @@
             </div>
 
             <!-- Settings Tab -->
-            <div class="tab" [ngClass]="tabs === 'settings' ? 'active-tab' : ''">
+            <!-- <div class="tab" [ngClass]="tabs === 'settings' ? 'active-tab' : ''">
                 <p (click)="switchTab('settings')">Settings</p>
                 <div class="border-bottom"></div>
-            </div>
-
-            <!-- <div class="tab" [ngClass]="tabs === 'referrals' ? 'active-tab' : ''">
-                <p (click)="switchTab('referrals')">Referrals</p>
-                <div class="border-bottom"></div>
             </div> -->
+            <div class="tab" [ngClass]="tabs === 'referrals' ? 'active-tab' : ''">
+                <!-- <p (click)="switchTab('referrals')">Referrals</p> -->
+                 <p>Referrals</p>
+                <div class="border-bottom"></div>
+            </div>
         </div>
 
         <div class="profile">
             <div>
                 <div *ngIf="tabs === 'profile-details'">
-                    <div>
-                        <div>
-                            <div class="first-block-profile">
-                                <!-- <div class="first-block-profile-balance">
-                                    <div class="first-block-balance">
-                                        <span>Your Balance</span>
-                                        <span>₦ 0</span>
-                                    </div>
-                                    <div class="first-block-profile-border">
-
-                                    </div>
-                                    <div class="first-block-referrals">
-                                        <span>Referral Earnings</span>
-                                        <span>₦ 0</span>
-                                    </div>
-                                </div> -->
-                                <div class="first-block-profile-address">
-                                    <span>Address</span>
-                                    <span>{{address === '' ? 'To complete your profile kindly input your address': address}}</span>
-                                </div>
+                    <div class="profile-detail">
+                        <div class="state-lga-container">
+                            <div class="state-container">
+                                <span>State</span>
+                                <span>Lagos state</span>
+                            </div>
+                            <div class="lga-container">
+                                <span>Local Government</span>
+                                <span>Eti Osa Local Government</span>
                             </div>
                         </div>
-                        <div class="profile-details-complete-container">
-                            <div class="profile-details-complete">
-                                <div class="profile-complete">
-                                    <span>{{address === '' ? 'Complete your profile' : 'Profile complete'}}</span>
-                                    <span>{{address === '' ? '50%' : '100%'}}</span>
-                                </div>
-                                <div class="profile-details-progress">
-                                    <div class="profile-details-progress-bar"
-                                    [ngStyle]="{
-                                        'width': address ? '100%' : '50%',
-                                        'border': address ? '4px solid green' : '4px solid red'
-                                      }">
-
-                                    </div>
-                                </div>
+                        <div class="settings-email-container">
+                            <div class="settings-email-text">
+                                <span>Change Password</span>
                             </div>
-                            <div class="profile-details-nin-container">
-                                <div class="profile-details-nin">
-                                    <div class="img-location">
-                                        <img src="../../../assets/gallery.svg" alt="">
-                                    </div>
-                                    <div class="profile-details-nin-text">
-                                        <span>Please Update your location </span>
-                                        <span>details for verification purposes</span>
-                                    </div>
-                                </div>
-                                <div class="profile-details-nin-btn" (click)="updateLocationUpdate()">
-                                    <span>UPDATE LOCATION</span>
-                                    <span> > </span>
-                                </div>
+                            <div class="settings-email-btn" (click)="updatePassword()">
+                                <span>Proceed</span>
+                                <img src="../../../assets/proceed-icon.svg" alt="">
                             </div>
-
                         </div>
                     </div>
+
                 </div>
 
                 <div *ngIf="tabs === 'settings'">

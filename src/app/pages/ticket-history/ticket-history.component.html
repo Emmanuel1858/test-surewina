@@ -1,15 +1,17 @@
 <div class="container">
     <div class="ticket-body">
-        <div class="header">
+        <span class="for-mobile-text">This is where all the ticket you have bought shows</span>
+        <div class="header for-laptop" >
             <div class="header-tickets" (click)="switchTab('ongoing')">
                 <span class="header-tickets-text"
-                    [ngClass]="tabs == 'ongoing' ? 'header-tickets-text-active' : '' ">Ongoing Tickets</span>
+                    [ngClass]="tabs == 'ongoing' ? 'header-tickets-text-active' : 'not-active' ">Ongoing Tickets</span>
                 <span class="header-tickets-number"
                     [ngClass]="tabs == 'ongoing' ? 'header-tickets-number-active' : '' ">{{itemsInArray}}</span>
             </div>
             <div class="header-tickets" (click)="switchTab('previous')">
                 <span class="header-tickets-text"
-                    [ngClass]="tabs == 'previous' ? 'header-tickets-text-active' : '' ">Previously played tickets</span>
+                    [ngClass]="tabs == 'previous' ? 'header-tickets-text-active' : 'not-active' ">Previously played
+                    tickets</span>
                 <span class="header-tickets-number"
                     [ngClass]="tabs == 'previous' ? 'header-tickets-number-active' : '' ">{{itemsInArray}}</span>
             </div>
@@ -19,7 +21,7 @@
             <app-loader />
         </div>
 
-        <div [ngSwitch]="tabs">
+        <div [ngSwitch]="tabs" class="for-laptop">
             <div *ngSwitchCase="'ongoing'">
                 <!-- Ongoing -->
                 <div class="ongoing-ticket">
@@ -40,6 +42,7 @@
                     </div>
                     <div class="empty-state-ticket" *ngIf="showEmptyOngoingTicket">
                         <img src="../../../assets/empty-state-ticket.svg" alt="">
+                        <span>BUY TICKET > </span>
                     </div>
                 </div>
 
@@ -64,7 +67,35 @@
                     </div>
                     <div class="empty-state-ticket" *ngIf="showEmptyPreviousTicket">
                         <img src="../../../assets/empty-state-ticket.svg" alt="">
+                        <span>BUY TICKET > </span>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="for-mobile">
+            <!-- previously -->
+
+            <div class="ongoing-ticket">
+                <div class="ticket-details" *ngFor="let ticket of combinedTickets"
+                    (click)="getTicketId(ticket.ticketRef, ticket.ticketImage)">
+                    <div class="ticket-details-img">
+                        <img [src]="ticket.ticketImage" alt="">
+                    </div>
+                    <div class="ticket-details-all">
+                        <span class="ticket-date">{{ticket.created.split('T')[0]}}</span>
+                        <span class="ticket-name">{{ticket.drawName}}</span>
+                        <span class="ticket-won">
+                            <span>{{ticket.numberOfTickets}} Ticket(s)</span>
+                            <span>₦ {{ticket.amount}} </span>
+                            <span>{{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}}</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- okenrjnijn -->
+                <div class="empty-state-ticket" *ngIf="showEmptyCombinedTicket">
+                    <!-- w;komnokreom -->
+                    <img src="../../../assets/empty-state-ticket.svg" alt="">
+
                 </div>
             </div>
         </div>
@@ -87,7 +118,9 @@
         </div> -->
 
     </div>
-
+    <div class="ticket-details-winners">
+        <img class="empty-state-ticket-winners" src="../../../assets/empty-state-ticket-sub.svg" alt="">
+    </div>
     <div class="first-layer-redeem" [ngStyle]="{'background-image': 'url(' + selectedTicketImage + ')'}"
         *ngIf="redeemTicketFirst">
         <div class="first-layer-redeem-info">
@@ -102,7 +135,6 @@
             </button>
         </div> -->
     </div>
-
     <div class="redeem-money-prize" *ngIf="redeemTicketSecond">
         <!-- <div class="header">
             <span>
@@ -179,6 +211,4 @@
             </div>
         </div>
     </div>
-
-
 </div>

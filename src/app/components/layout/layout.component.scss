@@ -24,7 +24,7 @@
     display: flex;
     justify-content: space-between;
     // width: %;
-    margin: 20px 20px 0;
+    margin: 20px 40px 0;
     // border: 1px solid;
 
 }
@@ -306,6 +306,10 @@
 
 .bigger-text {
     font-size: 24px;
+}
+
+.small-text {
+    font-size: 16px;
 }
 
 .img {
@@ -762,6 +766,15 @@ input[type=number] {
 }
 
 @media (max-width: 1000px) {
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        // width: %;
+        margin: 20px 20px 0;
+        // border: 1px solid;
+    
+    }
     .header-sub {
         display: none;
     }
@@ -822,6 +835,15 @@ input[type=number] {
         font-size: 24px;
         background-color: #EEF8FF;
     }
+
+    .bigger-text {
+        font-size: 16px;
+    }
+    
+    .small-text {
+        font-size: 14px;
+    }
+    
 
     .menu-header h1 {
         color: #262626;

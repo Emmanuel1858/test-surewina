@@ -41,8 +41,10 @@ export class TicketHistoryComponent implements OnInit {
   showLocation: boolean = false
   showEmptyOngoingTicket: boolean = false
   showEmptyPreviousTicket: boolean = false
+  showEmptyCombinedTicket: boolean = false
   tabs: string = 'ongoing'
   allPreviousTicket: any[] = []
+  combinedTickets: any[] = []
   
 
   constructor(private userTicket: UserTicketService, 
@@ -52,6 +54,7 @@ export class TicketHistoryComponent implements OnInit {
   ngOnInit(): void {
       this.getOngoingTicket()
       this.getPreviouslyTicket()
+      this.loadCombinedTickets()
   }
 
   switchTab(tab: string) {
@@ -90,72 +93,172 @@ export class TicketHistoryComponent implements OnInit {
     }
   }
 
-  async getOngoingTicket() {
-    // debugger
+  // async getOngoingTicket() {
+  //   // debugger
+  //   const credentialGoingTicket = {
+  //     pageNumber: this.pageNumber,
+  //     numberOfRecords: this.numberOfRecords
+  //   }
+  //   try {
+  //     this.showLoader = true
+  //     const response = await lastValueFrom(this.userTicket.onGoingTicket(credentialGoingTicket))
+  //     // console.log(response)
+  //     this.showLoader = false
+  //     this.itemsInArray = response.result.items.length
+  //     if(this.itemsInArray === 0 ) {
+  //       this.showEmptyOngoingTicket = true
+  //       return 
+  //     }
+  //     this.amount = response.result.items[0].amount
+  //     this.created = response.result.items[0].created
+  //     this.drawName = response.result.items[0].drawName
+  //     this.numberOfTickets = response.result.items[0].numberOfTickets
+  //     this.ticketImage = response.result.items[0].ticketImage
+  //     this.tierOnePrize = response.result.items[0].tierOnePrize
+  //     this.tierTwoPrize = response.result.items[0].tierTwoPrize
+  //     this.tierThreePrize = response.result.items[0].tierThreePrize
+  //     this.allTicket = response.result.items
+  //     // console.log(this.allTicket)
+      
+  //   } catch(error) {
+  //     alert('You were logged out due to error. Try logging back in.');
+  //     this.router.navigate(['/login'])
+  //     sessionStorage.clear()
+  //     // console.log(error)
+  //   }
+  // }
+
+
+
+
+  // async getPreviouslyTicket() {
+  
+  //   const credentialGoingTicket = {
+  //     pageNumber: this.pageNumber,
+  //     numberOfRecords: this.numberOfRecords
+  //   }
+  //   try {
+  //     this.showLoader = true
+  //     const response = await lastValueFrom(this.userTicket.previouslyPlayedTicket(credentialGoingTicket))
+
+  //     this.showLoader = false
+  //     this.itemsInArrayPrevious = response.result.items.length
+  //     if(this.itemsInArrayPrevious === 0) {
+  //       this.showEmptyPreviousTicket = true
+  //       return 
+  //     }
+  //     this.amountPrevious = response.result.items[0].amount
+  //     this.createdPrevious = response.result.items[0].created
+  //     this.drawNamePrevious = response.result.items[0].drawName
+  //     this.numberOfTicketsPrevious = response.result.items[0].numberOfTickets
+  //     this.ticketImagePrevious = response.result.items[0].ticketImage
+  //     this.tierOnePrizePrevious = response.result.items[0].tierOnePrize
+  //     this.tierTwoPrizePrevious = response.result.items[0].tierTwoPrize
+  //     this.tierThreePrizePrevious = response.result.items[0].tierThreePrize
+  //     this.allPreviousTicket = response.result.items
+  //     // console.log(this.allTicket)
+      
+  //   } catch(error) {
+  //     alert('You were logged out due to error. Try logging back in.');
+  //     this.router.navigate(['/login'])
+  //     sessionStorage.clear()
+  //     // console.log(error)
+  //   }
+  // }
+
+  async getOngoingTicket(): Promise<any[]> {
     const credentialGoingTicket = {
       pageNumber: this.pageNumber,
       numberOfRecords: this.numberOfRecords
     }
+  
     try {
       this.showLoader = true
       const response = await lastValueFrom(this.userTicket.onGoingTicket(credentialGoingTicket))
-      // console.log(response)
       this.showLoader = false
-      this.itemsInArray = response.result.items.length
-      if(this.itemsInArray === 0 ) {
+  
+      const items = response.result.items
+      this.itemsInArray = items.length
+  
+      if (items.length === 0) {
         this.showEmptyOngoingTicket = true
-        return
+        return [] 
       }
-      this.amount = response.result.items[0].amount
-      this.created = response.result.items[0].created
-      this.drawName = response.result.items[0].drawName
-      this.numberOfTickets = response.result.items[0].numberOfTickets
-      this.ticketImage = response.result.items[0].ticketImage
-      this.tierOnePrize = response.result.items[0].tierOnePrize
-      this.tierTwoPrize = response.result.items[0].tierTwoPrize
-      this.tierThreePrize = response.result.items[0].tierThreePrize
-      this.allTicket = response.result.items
-      // console.log(this.allTicket)
-      
-    } catch(error) {
-      alert('You were logged out due to error. Try logging back in.');
+  
+      const first = items[0]
+      this.amount = first.amount
+      this.created = first.created
+      this.drawName = first.drawName
+      this.numberOfTickets = first.numberOfTickets
+      this.ticketImage = first.ticketImage
+      this.tierOnePrize = first.tierOnePrize
+      this.tierTwoPrize = first.tierTwoPrize
+      this.tierThreePrize = first.tierThreePrize
+  
+      this.allTicket = items
+      return items  
+  
+    } catch (error) {
+      alert('You were logged out due to error. Try logging back in.')
       this.router.navigate(['/login'])
       sessionStorage.clear()
-      // console.log(error)
+      return []  
     }
   }
-  async getPreviouslyTicket() {
-    // debugger
+
+  async getPreviouslyTicket(): Promise<any[]> {
     const credentialGoingTicket = {
       pageNumber: this.pageNumber,
       numberOfRecords: this.numberOfRecords
     }
+  
     try {
       this.showLoader = true
-      const response = await lastValueFrom(this.userTicket.onGoingTicket(credentialGoingTicket))
-      // console.log(response)
+      const response = await lastValueFrom(this.userTicket.previouslyPlayedTicket(credentialGoingTicket))  // use correct method
       this.showLoader = false
-      this.itemsInArrayPrevious = response.result.items.length
-      if(this.itemsInArrayPrevious === 0) {
+  
+      const items = response.result.items
+      this.itemsInArrayPrevious = items.length
+  
+      if (items.length === 0) {
         this.showEmptyPreviousTicket = true
-        return
+        return []
       }
-      this.amountPrevious = response.result.items[0].amount
-      this.createdPrevious = response.result.items[0].created
-      this.drawNamePrevious = response.result.items[0].drawName
-      this.numberOfTicketsPrevious = response.result.items[0].numberOfTickets
-      this.ticketImagePrevious = response.result.items[0].ticketImage
-      this.tierOnePrizePrevious = response.result.items[0].tierOnePrize
-      this.tierTwoPrizePrevious = response.result.items[0].tierTwoPrize
-      this.tierThreePrizePrevious = response.result.items[0].tierThreePrize
-      this.allPreviousTicket = response.result.items
-      // console.log(this.allTicket)
-      
-    } catch(error) {
-      alert('You were logged out due to error. Try logging back in.');
+  
+      const first = items[0]
+      this.amountPrevious = first.amount
+      this.createdPrevious = first.created
+      this.drawNamePrevious = first.drawName
+      this.numberOfTicketsPrevious = first.numberOfTickets
+      this.ticketImagePrevious = first.ticketImage
+      this.tierOnePrizePrevious = first.tierOnePrize
+      this.tierTwoPrizePrevious = first.tierTwoPrize
+      this.tierThreePrizePrevious = first.tierThreePrize
+  
+      this.allPreviousTicket = items
+      return items
+  
+    } catch (error) {
+      alert('You were logged out due to error. Try logging back in.')
       this.router.navigate(['/login'])
       sessionStorage.clear()
-      // console.log(error)
+      return []
     }
   }
+  
+  
+
+  async loadCombinedTickets() {
+    // debugger
+    const ongoing: any[] = await this.getOngoingTicket()
+    const previous: any[] = await this.getPreviouslyTicket()
+  
+    this.combinedTickets = [...ongoing, ...previous]
+    // debugger
+    console.log('combined tickets', this.combinedTickets.length)
+    if(this.combinedTickets.length === 0) {
+      this.showEmptyCombinedTicket = true
+    }
+  }
+  
 }

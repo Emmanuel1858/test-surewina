@@ -60,15 +60,15 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   stepsToRegister: any[] = [{
     step: '1',
     name: 'Create Account',
-    desc: 'Fill in the required details to set up your account '
+    desc: 'Sign up with your phone number to start winning amazing prizes daily! '
   }, {
     step: '2',
     name: 'Buy Ticket',
-    desc: 'Select and purchase tickets according to availability'
+    desc: 'Buy SureWina tickets to enter draws for exciting daily prizes easily.'
   }, {
     step: '3',
     name: 'Win Big Prizes',
-    desc: 'Start winning big prizes'
+    desc: 'Every draw brings real winners — you could be the next sure winner!'
   }]
 
 

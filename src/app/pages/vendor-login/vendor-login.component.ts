@@ -22,6 +22,12 @@ export class VendorLoginComponent implements OnInit {
   initialFromLogin: string = ''
   address: boolean = false;
   dueToInactivity: boolean = false
+  images: string[] = [
+    '../../../assets/Property 1=Splash Screen - Carousel 1.png',
+    '../../../assets/Property 1=Splash Screen - Carousel 2.png',
+    '../../../assets/Property 1=Splash Screen - Carousel 3.png'
+  ];
+  activeIndex = 0;
 
   constructor(private router: Router, private authService: AuthServiceService) { }
 
@@ -87,9 +93,6 @@ export class VendorLoginComponent implements OnInit {
       this.showLoader = false
       console.error(error)
     }
-
-
-   
   }
 
   navigateToCreateAcc() {

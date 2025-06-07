@@ -40,6 +40,7 @@ export const environment = {
     buyTicketWeb: 'UserTicket/BuyTicket',
     buyTicket: 'UserTicket/BuyTicketInApp',
     onGoingTicket: 'UserTicket/GetOngoingTickets',
+    previousTicket: 'UserTicket/GetUserTicketsHistory',
     vendorTicketHistory: 'UserTicket/GetVendorHistory',
     ticketById: 'UserTicket/GetTicketPrizesWon?ticketRefNumber=',
     winnerBoard: 'UserTicket/WinnersBoard?numberOfDraws=10',

@@ -42,9 +42,11 @@ export class CreateAccountPasswordComponent implements OnInit, OnDestroy {
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
+
   }
 
   toggleReEnterPasswordVisibility() {
+    // debugger
     this.showReEnterPassword = !this.showReEnterPassword;
   }
 

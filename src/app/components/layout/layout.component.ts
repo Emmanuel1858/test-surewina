@@ -64,7 +64,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.subWinner = this.sharedService.actionsWinnerBoard$.subscribe(() => {
       this.navigateToWinner()
     })
-    // this.getTodayDraw()
+    this.getTodayDraw()
   }
 
   ngOnDestroy(): void {
@@ -268,23 +268,23 @@ export class LayoutComponent implements OnInit, OnDestroy {
     this.router.navigate(['/ticket-history'])
   }
 
-  // async getTodayDraw() {
-  //   const drawForToday = {
-  //     pageNumber: this.pageNumber,
-  //     numberOfRecords: this.numberOfRecords
-  //   }
-  //   try {
-  //     const response = await lastValueFrom(this.drawService.getTodayDraw(drawForToday))
-  //     console.log(response)
-  //     this.items = response.result.items
-  //     this.nameGame = response.result.items[0].name
-  //     this.drawId = response.result.items[0].drawId
-  //     this.ticketImage = response.result.items[0].ticketImage
-  //     this.unitPrice = response.result.items[0].amount
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
+  async getTodayDraw() {
+    const drawForToday = {
+      pageNumber: this.pageNumber,
+      numberOfRecords: this.numberOfRecords
+    }
+    try {
+      const response = await lastValueFrom(this.drawService.getTodayDraw(drawForToday))
+      console.log(response)
+      this.items = response.result.items
+      this.nameGame = response.result.items[0].name
+      this.drawId = response.result.items[0].drawId
+      this.ticketImage = response.result.items[0].ticketImage
+      this.unitPrice = response.result.items[0].amount
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
 }

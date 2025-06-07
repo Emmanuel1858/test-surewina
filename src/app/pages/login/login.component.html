@@ -1,61 +1,64 @@
-<div class="form-group">
-    <div class="content">
-        <div class="content-top">
-            <img class="jolly-logo" (click)="navigateBack()" src="./../../../assets/Sure Wina Logo - Blue.svg" alt="">
+<div class="container">
+    <div class="container-img">
+        <img class="img" *ngFor="let image of images; let i = index" [class.active]="i === activeIndex" [src]="image"
+            alt="Carousel Image" />
 
-            <div class="login-card">
+    </div>
 
-                <div class="top">
-                    <p> User Portal </p>
+    <div class="login-details">
+        <div class="login-details-container">
+            <div class="first-details">
+                <!-- <div class="container-step">
+                    <span>STEP 1</span>
+                </div> -->
+                <div>
+                    <h1 class="heading">Login</h1>
+                    <span class="heading-sub">Provide your credentials to login</span>
+                    <div class="icons">
+                        <span>
+                            <!-- <img class="google-icon" src="../../../assets/Google Logos.svg" alt=""> -->
+                        </span>
+                        <span>
+                            <!-- <img class="facebook-icon" src="../../../assets/logos_facebook.svg" alt=""> -->
+                        </span>
+                    </div>
                 </div>
-
-                <div class="bottom">
-                    <h1> Enter your details to login </h1>
-                    <p class="error" *ngIf="formSubmitted">Both fields are required!</p>
-                    <p class="error" *ngIf="showErrorMessage">{{showError}}</p>
-                    <div class="form">
-                        <div class="all-inputs">
-                            <input type="text" placeholder="Email address or Phone number" [(ngModel)]="emailAddress"
-                                [class.error-border]="formSubmitted">
-                            <div class="input-pass">
-                                <input [type]="showPassword ? 'text' : 'password'" placeholder="Password"
-                                    [class.error-border]="formSubmitted" [(ngModel)]="password">
-                                <i class="fa eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
-                                    (click)="togglePasswordVisibility()"></i>
-                            </div>
-
-                        </div>
-                        <div class="loader" *ngIf="showLoader">
-                            <app-loader />
-                        </div>
-
-
+            </div>
+            <div class="all-inputs-container">
+                <p class="error" *ngIf="formSubmitted">Both fields are required!</p>
+                <p class="error" *ngIf="showErrorMessage">{{showError}}</p>
+                <div class="all-inputs">
+                    <input type="text" placeholder="Email address or Phone number" [(ngModel)]="emailAddress"
+                        [class.error-border]="formSubmitted">
+                    <div class="input-pass">
+                        <input [type]="showPassword ? 'text' : 'password'" placeholder="Password"
+                            [class.error-border]="formSubmitted" [(ngModel)]="password">
+                        <i class="fa eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+                            (click)="togglePasswordVisibility()"></i>
                     </div>
-
-
-
-                    <button class="btn-cont" (click)="navigateToDashboard()"> Login
-                        <img src="../../../assets/grommet-icons_form-next.svg" alt="">
-                    </button>
-                    <div>
-                        <span class="info-account">Don't have an account?</span>
-                        <span class="btn-register" (click)="navigateToCreateAcc()">Register now</span>
-                    </div>
-
-                    <!-- <p> Forgot Password? <span> Reach out to the Administrator </span> </p> -->
+                </div>
+            </div>
+            <div class="footer">
+                <div class="all-text">
+                    <span class="have-account">Already have an account?</span>
+                    <span class="log-in" (click)="navigateToCreateAcc()">Sign up</span>
+                </div>
+                <div class="buttons">
+                    <!-- <button class="btn-back" (click)="navigateBack()">Go Back</button> -->
+                    <button class="btn-cont" (click)="navigateToDashboard()">Continue <img src="../../../assets/white-arrow-next.svg" alt=""> </button>
                 </div>
             </div>
         </div>
-
-        <h2 class="footer-txt"> ©2024 Surewina.com </h2>
-
     </div>
+</div>
+
+<div class="loader" *ngIf="showLoader">
+    <app-loader/>
 </div>
 
 <div class="modal-overlay" *ngIf="dueToInactivity">
     <div class="modal-box">
-      <p>You were logged out due to inactivity.</p>
-      <button (click)="closeModal()">OK</button>
+        <p>You were logged out due to inactivity.</p>
+        <button (click)="closeModal()">OK</button>
     </div>
-  </div>
-  
+</div>

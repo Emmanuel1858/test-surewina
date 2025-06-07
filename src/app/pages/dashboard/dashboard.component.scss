@@ -18,8 +18,9 @@
 .card-container {
     background-color: #fcfcfc;
     display: flex;
-    justify-content: space-between;
-    padding: 40px 40px 20px;
+    gap: 20px;
+    /* justify-content: space-between; */
+    padding: 20px 20px 20px 40px;
 
     // width: 90%;
 }
@@ -31,6 +32,7 @@
     color: #fff;
     padding: 10px 15px;
     border-radius: 8px;
+    position: relative;
 }
 
 .first-card-text span {
@@ -48,15 +50,22 @@
     gap: 12px;
 }
 
+.first-card-prize-respon {
+    display: none;
+}
+
 .first-card-prize-empty {
     border: 2px solid #434343;
-    margin-top: 170px;
     border-radius: 2px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
+    width: 90%;
+    /* margin: 0 auto; */
+    position: absolute;
+    bottom: 100px;
 }
 
 .first-card-prize-empty :last-child {
@@ -142,6 +151,7 @@
     // background-color: #ffd;
     // width: 248px;
     height: 70vh;
+    width: 71%;
     // border-radius: 20px;
 
 
@@ -153,7 +163,7 @@
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     // width: 255px;
-    width: 340px;
+    width: 380px;
 }
 
 .second-card-right-text {
@@ -161,7 +171,12 @@
     flex-direction: column;
     margin-left: 26px;
     gap: 5px;
+    position: relative;
     // width:   170px;
+}
+
+.secord-card-gift-icon {
+    display: none;
 }
 
 .second-card-game-text {
@@ -170,8 +185,11 @@
 }
 
 .second-card-jolly-text {
+    display: flex;
+    flex-direction: column;
     color: #FF9B0F;
-    font-size: 24px;
+    font-size: 32px;
+    margin: 0;
     font-weight: var(--fw-700);
 }
 
@@ -185,9 +203,9 @@
 .button-section {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    margin: 0 auto;
+    margin-left: 26px;
     width: 100%;
     height: 100%;
 }
@@ -354,10 +372,12 @@
     align-items: center;
     color: #fff;
     background-color: #262626;
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border-radius: 5px;
     position: relative;
+    position: absolute;
+    bottom: 15px;
     margin-top: 10px;
 }
 
@@ -408,8 +428,9 @@
 
 .ticket-winner-container {
     display: flex;
-    justify-content: space-between;
-    padding: 1px 40px 50px;
+    /* justify-content: space-between; */
+    gap: 20px;
+    padding: 0px 20px 50px 40px;
 
 }
 
@@ -421,7 +442,7 @@
 
 .ticket-table {
     border: 1px solid #D9D9D9;
-    width: 650px;
+    width: 50%;
     padding: 20px;
     border-radius: 4px;
 
@@ -485,8 +506,7 @@
 
 .winner-table {
     border: 1px solid #D9D9D9;
-    width: 650px;
-    // padding: 20px;
+    width: 50%;
     border-radius: 4px;
 
 }
@@ -586,6 +606,11 @@ table {
     height: 100vh;
 }
 
+.buy-ticket-container-overall {
+    max-height: 70vh;
+    overflow: auto;
+}
+
 .buy-ticket-header {
     background-color: #FCFCFC;
     border-bottom: 1px solid #D9D9D9;
@@ -612,6 +637,11 @@ table {
 
 .bigger-text {
     font-size: 24px;
+    font-weight: 500;
+}
+
+.small-text {
+    font-weight: 400;
 }
 
 .ticket-error {
@@ -620,21 +650,23 @@ table {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     width: 100%;
 }
 
 .img {
     background-color: #fff;
-    margin: 30px auto 0;
-    // padding: 1px 0;
+    margin: 25px auto 0;
     width: 80%;
+    /* height: auto; */
     border-radius: 10px;
+    padding: 12px;
     border: 1px solid #D9D9D9;
 }
 
 .img img {
-    margin: 5px auto;
-    width: 60%;
+    width: 100%;
+    height: 278px;
 }
 
 .buy-ticket-count {
@@ -686,7 +718,12 @@ table {
 .ticket-price-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    font-weight: 500;
+    // align-items: center;
+}
+
+.ticket-price-container :first-child {
+    color: #555555;
 }
 
 .ticket-price-container span {
@@ -699,6 +736,8 @@ table {
 
 .ticket-count-container .count {
     margin-left: 20px;
+    font-weight: 500;
+    color: #555555;
 }
 
 .count-number {
@@ -742,6 +781,11 @@ table {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.ticket-bought :first-child {
+    color: #555555;
+    font-weight: 500;
 }
 
 .ticket-amount {
@@ -947,7 +991,7 @@ input[type=number] {
 
 
 .active-tab {
-    border-bottom: 4px solid ;
+    border-bottom: 4px solid;
     border-radius: 2px;
 }
 
@@ -1030,6 +1074,19 @@ input[type=number] {
     border-radius: 4px;
     width: 99%;
 
+}
+
+.winner-details {
+    // background-color: #FCFCFC;
+    // border: 1px solid #D9D9D9;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    margin: 10px auto;
+    border-radius: 4px;
+    width: 99%;
 }
 
 .ticket-details-all {
@@ -1242,6 +1299,10 @@ input[type=number] {
 }
 
 .mobile-only {
+    display: none;
+}
+
+.first-card-prize-empty-respon {
     display: none;
 }
 
@@ -1634,12 +1695,13 @@ input[type=number] {
         align-items: center;
         color: #fff;
         background-color: #262626;
-        width: 100%;
+        width: 90%;
         padding: 10px;
         border-radius: 5px;
         position: relative;
+        position: absolute;
+        bottom: 15px;
         margin-top: 10px;
-        font-size: 12px;
     }
 
     .third-card-profile .profile-pic img {
@@ -1648,14 +1710,16 @@ input[type=number] {
 
     .first-card-prize-empty {
         border: 2px solid #434343;
-        margin-top: 170px;
         border-radius: 2px;
-        padding: 13px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 6px;
-        font-size: 12px;
+        gap: 12px;
+        width: 90%;
+        /* margin: 0 auto; */
+        position: absolute;
+        bottom: 100px;
     }
 
     .button-section {
@@ -1843,6 +1907,7 @@ input[type=number] {
         color: #FF9B0F;
         font-size: 16px;
         font-weight: var(--fw-700);
+
     }
 
     .second-card-text div {
@@ -2132,6 +2197,7 @@ input[type=number] {
         color: #FF9B0F;
         font-size: 16px;
         font-weight: var(--fw-700);
+        margin: 0;
     }
 
     .second-card-text div {
@@ -2431,6 +2497,7 @@ input[type=number] {
     .second-card-jolly-text {
         color: #FF9B0F;
         font-size: 16px;
+        margin: 0;
         font-weight: var(--fw-700);
     }
 
@@ -2663,6 +2730,21 @@ input[type=number] {
 }
 
 @media (max-width: 1000px) {
+    .secord-card-gift-icon {
+        display: block;
+        position: absolute;
+        top: 14px;
+        left: -20px;
+        width: 10%;
+    }
+
+    .second-card-jolly-text {
+        color: #FF9B0F;
+        font-size: 16px;
+        margin-left: 30px;
+        font-weight: var(--fw-700);
+    }
+
     .card-container {
         display: flex;
         flex-direction: column;
@@ -2700,6 +2782,53 @@ input[type=number] {
         margin: 0;
         border-radius: 2px;
         padding: 20px 73px 20px 20px;
+        display: none;
+    }
+
+    .first-card-prize-respon {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        /* gap: 80px; */
+        border: 2px solid #434343;
+        margin: 0;
+        border-radius: 2px;
+        padding: 20px 73px 20px 20px;
+    }
+
+    .first-card-prize-empty-respon {
+        border: 2px solid #434343;
+        border-radius: 2px;
+        padding: 20px;
+        display: flex;
+        // flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .first-card-prize-empty-respon-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first-card-prize-empty-respon-text :last-child {
+        font-weight: 100;
+        // font-size: 12px;
+    }
+
+    .first-card-prize-empty {
+        border: 2px solid #434343;
+        border-radius: 2px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 90%;
+        position: absolute;
+        bottom: 100px;
+        display: none;
     }
 
     // .first-card-prize-empty {
@@ -2744,6 +2873,7 @@ input[type=number] {
         display: flex;
         flex-direction: column;
         height: auto;
+        width: 100%;
     }
 
     .second-card-right {
@@ -2769,6 +2899,10 @@ input[type=number] {
         border-bottom-left-radius: 8px;
         border-top-right-radius: 0;
         border-top-left-radius: 0;
+    }
+
+    .third-card-profile {
+        display: none;
     }
 
     .empty-state-prizes {
@@ -2807,7 +2941,7 @@ input[type=number] {
         padding: 20px;
         border-radius: 8px;
         margin: 10px 20px 100px;
-        // display: none;
+        display: none;
 
     }
 

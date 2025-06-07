@@ -54,7 +54,7 @@ export class VendorWinnerBoardComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
       this.getWinnerBoard()
       this.showAllWinnerByMonth()
-      this.showAllWinnerByMonth()
+      // this.showAllWinnerByMonth()
       this.resetInactivityTimer();
       this.addActivityListeners();
   }

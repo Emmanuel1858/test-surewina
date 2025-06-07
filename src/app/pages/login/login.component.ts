@@ -17,14 +17,22 @@ export class LoginComponent implements OnInit {
   showError: string = '';
   firstName: string = ''
   lastName: string = ''
+  private intervalId: any;
   initialFromLogin: string = ''
   address: boolean = false;
   dueToInactivity: boolean = false
+  images: string[] = [
+    '../../../assets/Property 1=Splash Screen - Carousel 1.png',
+    '../../../assets/Property 1=Splash Screen - Carousel 2.png',
+    '../../../assets/Property 1=Splash Screen - Carousel 3.png'
+  ];
+  activeIndex = 0;
 
   constructor(private router: Router, private authService: AuthServiceService) { }
 
 
   ngOnInit(): void {
+    this.startCarousel();
     sessionStorage.clear()
     const reason = localStorage.getItem('logoutReason');
     if (reason === 'inactivity') {
@@ -106,10 +114,17 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
+  startCarousel(): void {
+    this.intervalId = setInterval(() => {
+      this.activeIndex = (this.activeIndex + 1) % this.images.length;
+    }, 4000);
+  }
+
   ngOnDestroy(): void {
     this.firstName = `${sessionStorage.getItem('firstName')}`
     this.lastName = `${sessionStorage.getItem('lastName')}`
     this.initialFromLogin = (this.firstName?.charAt(0) || '') + (this.lastName?.charAt(0))
     sessionStorage.setItem('initialFromLogin', this.initialFromLogin)
+    clearInterval(this.intervalId);
   }
 }

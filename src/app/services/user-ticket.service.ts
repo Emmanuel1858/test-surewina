@@ -82,6 +82,25 @@ export class UserTicketService {
 
     return new Observable<any>();
   }
+
+  previouslyPlayedTicket(credentialPlayedTicket: { pageNumber: number, numberOfRecords: number }) {
+    const bearerToken = sessionStorage.getItem('token')
+    if (bearerToken) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${bearerToken}`,
+        'Content-Type': 'application/json'
+      });
+      const httpOptions = { headers }
+      return this.http.post(`${this.baseUrl}${this.onGoingTicketUrl}`, credentialPlayedTicket, httpOptions)
+    } else {
+      // alert('You were logged out due to error. Try logging back in.');
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
+    }
+
+    return new Observable<any>();
+  }
+
   vendorHistoryTicket(credentialGoingTicket: { pageNumber: number, numberOfRecords: number }) {
     const bearerToken = sessionStorage.getItem('token')
     if (bearerToken) {
