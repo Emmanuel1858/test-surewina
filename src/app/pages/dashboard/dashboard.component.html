@@ -357,7 +357,7 @@
                     <span>Total ticket bought cannot be 0!</span>
                 </div>
                 <div class="img">
-                    <img src="../../../assets/big-prize-winning.png" alt="">
+                    <img [src]="ticketImage" alt="">
                 </div>
                 <div class="buy-ticket-count">
                     <div class="ticket-price-container">
@@ -433,7 +433,7 @@
     <div class="ticket-container-background" *ngIf="showMakePayment" (click)="closeModalOnOutsideClick($event)">
         <div class="buy-ticket-container" (click)="$event.stopPropagation()">
             <div class="buy-ticket-header">
-                <div class="img-dashboard" (click)="navigateToDashboard()">
+                <div class="img-dashboard" (click)="closeModal()">
                     <img src="../../../assets/go-back-btn-icon.svg" alt="">
                 </div>
                 <div class="buy-ticket-header-text">

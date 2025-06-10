@@ -19,9 +19,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   currentIndex: number = 0;
   intervalId: any;
   images: string[] = []
-  backgroundImages: string[] = [
-
-  ];
+  backgroundImages: any[] = [];
   currentBackgroundImage: string = this.backgroundImages[0];
   transitioning: boolean = false;
   showTicketPayment: boolean = false;
@@ -169,12 +167,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.startAutoAdvance();
     this.getTodayDraw();
-    this.getAllPrize();
+    // this.getAllPrize();
     this.getPreviouslyTicket()
     this.initials = (this.firstName?.charAt(0) || '') + (this.lastName?.charAt(0) || '');
     this.initials = this.initials.toUpperCase();
     sessionStorage.setItem('initial', this.initials)
-    // this.getWinnerBoard()
+    this.getWinnerBoard()
     // window.location.reload()
 
   }
@@ -198,26 +196,54 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.loading = true
       const response = await lastValueFrom(this.drawService.getTodayDraw(drawForToday))
       this.loading = false
-      // console.log(response)
+      console.log(response)
+      this.items = response.result.items
       // this.items = ['pkmp', 'oinoifmi']
       if (this.items.length === 0) {
-        // debugger
-        console.log('there are items here', this.items)
-        this.showButtonTicket = false
-        this.showEmptyStateDashboard = true
-        return
+        console.log('there are items here', this.items);
+        this.showButtonTicket = false;
+        this.showEmptyStateDashboard = true;
       } else {
-        this.nameGame = response.result.items[0].name
-        // console.log(this.nameGame)
-        this.drawId = response.result.items[0].drawId
-        this.ticketImage = response.result.items[0].ticketImage
-        this.unitPrice = response.result.items[0].amount
-        // console.log(this.unitPrice)
-        this.showEmptyStateDashboard = false
+        const firstItem = response.result.items[0];
+      
+        this.nameGame = firstItem.name;
+        this.drawId = firstItem.drawId;
+      
+        // Process ticketImage
+        if (typeof firstItem.ticketImage === 'string' && firstItem.ticketImage.startsWith('data:image')) {
+          this.ticketImage = firstItem.ticketImage;
+        } else if (typeof firstItem.ticketImage === 'string') {
+          this.ticketImage = `data:image/png;base64,${firstItem.ticketImage}`;
+        } else {
+          this.ticketImage = firstItem.ticketImage;
+        }
+      
+        // Process backgroundImages (prizes)
+        this.backgroundImages = firstItem.prizes.map((prize: any) => {
+          if (typeof prize.image === 'string' && prize.image.startsWith('data:image')) {
+            return prize;
+          }
+      
+          if (typeof prize.image === 'string') {
+            return {
+              ...prize,
+              image: `data:image/png;base64,${prize.image}`,
+            };
+          }
+      
+          return prize;
+        });
+      
+        const length = this.backgroundImages.length;
+        this.bars = Array(length).fill(false);
+        this.bars[0] = true;
+        this.currentBackgroundImage = this.backgroundImages[0].image;
+      
+        // console.log(this.ticketImage);
+        this.unitPrice = firstItem.amount;
+        this.showEmptyStateDashboard = false;
       }
-
-  
-
+      
     } catch (error) {
       // debugger
       alert('You were logged out due to error. Try logging back in.');
@@ -227,23 +253,23 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
-  async getAllPrize() {
-    try {
-      const response = await lastValueFrom(this.prizeService.getAllPrize())
-      // console.log(response.result)
-      this.backgroundImages = response.result.map((prize: any) => prize.image)
-      const length = this.backgroundImages.length
-      this.bars = Array(length).fill(false)
-      this.bars[0] = true
-      // console.log(this.backgroundImages)
-    } catch (error) {
-      // debugger
-      alert('You were logged out due to error. Try logging back in.');
-      this.router.navigate(['/login'])
-      sessionStorage.clear()
-      // console.log(error)
-    }
-  }
+  // async getAllPrize() {
+  //   try {
+  //     const response = await lastValueFrom(this.prizeService.getAllPrize())
+  //     // console.log(response.result)
+  //     this.backgroundImages = response.result.map((prize: any) => prize.image)
+  //     const length = this.backgroundImages.length
+  //     this.bars = Array(length).fill(false)
+  //     this.bars[0] = true
+  //     // console.log(this.backgroundImages)
+  //   } catch (error) {
+  //     // debugger
+  //     alert('You were logged out due to error. Try logging back in.');
+  //     this.router.navigate(['/login'])
+  //     sessionStorage.clear()
+  //     // console.log(error)
+  //   }
+  // }
 
 
   // async getWinnerBoard() {
@@ -419,6 +445,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.showlocationUpdate = false
   }
 
+  closeModal() {
+    this.showMakePayment = false
+    this.showTicketPayment = true
+  }
+
   showMyBalance() {
     this.showBalance = !this.showBalance
   }
@@ -467,7 +498,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   updateBackgroundImage(): void {
-    this.currentBackgroundImage = this.backgroundImages[this.currentIndex];
+    this.currentBackgroundImage = this.backgroundImages[this.currentIndex].image;
   }
 
 
