@@ -211,10 +211,12 @@ export class WebsiteComponent implements OnInit, OnDestroy {
       pageNumber: this.pageNumber,
       numberOfRecords: this.numberOfRecords
     }
+    // debugger
     try {
       this.loading = true
       const response = await lastValueFrom(this.drawService.getTodayDrawWithoutToken(drawForToday))
       // console.log(response)
+      this.loading = false
       const firstItem = response.result.items[0];
       
       // this.nameGame = firstItem.name;
@@ -228,6 +230,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
       } else {
         this.ticketImage = firstItem.ticketImage;
       }
+      console.log(this.ticketImage)
     } catch (error) {
       // this.loading = true
       console.log(error)

@@ -58,7 +58,7 @@ export class DrawService {
     
     const bearerToken = sessionStorage.getItem('token')
     // debugger
-    if (bearerToken) {
+    if (!bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type': 'application/json' 

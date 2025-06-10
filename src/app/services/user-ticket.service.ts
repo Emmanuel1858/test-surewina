@@ -146,7 +146,7 @@ export class UserTicketService {
 
   winnerBoardWebsite() {
     const bearerToken = sessionStorage.getItem('token')
-    if (bearerToken) {
+    if (!bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
         'Content-Type': 'application/json'

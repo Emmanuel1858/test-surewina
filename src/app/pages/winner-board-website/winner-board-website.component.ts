@@ -14,7 +14,7 @@ export class WinnerBoardWebsiteComponent implements OnInit {
   ticketName: any = []
   selectedTicketIndex: number | null = null
   mobileVisibility: boolean = false
-  showLoader: boolean = true
+  showLoader: boolean = false
   tabs: string = 'jan'
   showWinnerList: boolean = false
   showMonth: boolean = true
@@ -42,6 +42,7 @@ export class WinnerBoardWebsiteComponent implements OnInit {
   async getWinnerBoard() {
     // debugger
     try {
+      this.showLoader = true
       const response = await lastValueFrom(this.userTicket.winnerBoardWebsite());
       this.showLoader = false;
       this.drawResults = response.result;
