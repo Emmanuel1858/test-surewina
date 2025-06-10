@@ -14,7 +14,7 @@ export class AnalyticsService {
   constructor(private http: HttpClient) { }
   analyticsAdmin() {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type': 'application/json' 
@@ -29,7 +29,7 @@ export class AnalyticsService {
 
   analyticsSaleSummary(pagination: {pageNumber: number, numberOfRecords: number}) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type' : 'application/json'

@@ -58,7 +58,7 @@ export class DrawService {
     
     const bearerToken = sessionStorage.getItem('token')
     // debugger
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type': 'application/json' 
@@ -72,7 +72,7 @@ export class DrawService {
 
   getDrawHistory (pagination: { pageNumber: number; numberOfRecords: number}) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       const headers = new HttpHeaders({
         'Authorization' : `bearer ${bearerToken}`, 
         'Content-Type': 'application/json' 
@@ -100,7 +100,7 @@ export class DrawService {
     } 
   ) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type': 'application/json' 
@@ -113,7 +113,7 @@ export class DrawService {
   }
   setConfigureWinnig(credentials: {drawBaseAmount: number, salesAllocationInPercent: number, tierOneAllocationInPercent: number, tierTwoAllocationInPercent: number, tierThreeAllocationInPercent: number}) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type': 'application/json'
@@ -125,7 +125,7 @@ export class DrawService {
   }
   getConfigureWin() {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       return this.http.get(`${this.baseUrl}${this.getConfigureWinnigUrl}`)
     }
     return new Observable<any>()

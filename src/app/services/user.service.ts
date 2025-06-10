@@ -19,7 +19,7 @@ export class UserService {
   ) { }
   allGetUsers( getTheNumberOfUsers: { pageNumber: number; numberOfRecords: number; }) {
     const bearerToken = sessionStorage.getItem('token');
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
         'Content-Type': 'application/json' 
@@ -33,7 +33,7 @@ export class UserService {
 
   getUserById(userId: number) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
         'Content-Type': 'application/json' 
@@ -46,7 +46,7 @@ export class UserService {
 
   allGetVendor( getTheNumberOfUsers: { pageNumber: number; numberOfRecords: number; }) {
     const bearerToken = sessionStorage.getItem('token');
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
         'Content-Type': 'application/json' 

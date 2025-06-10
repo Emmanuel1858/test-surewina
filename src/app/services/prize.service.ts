@@ -14,7 +14,7 @@ export class PrizeService {
   constructor(private http: HttpClient) { }
   getAllPrize() {
     const bearerToken = sessionStorage.getItem('token')
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders().set('Authorization', `bearer ${bearerToken}`)
       return this.http.get(`${this.baseUrl}${this.getPrizeUrl}`)
     }
@@ -28,7 +28,7 @@ export class PrizeService {
     image: string
   }) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       const headers = new HttpHeaders({
         'Authorization' : `bearer${bearerToken}`,
         'Content-Type' : 'application/json'

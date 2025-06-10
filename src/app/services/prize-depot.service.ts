@@ -17,7 +17,7 @@ export class PrizeDepotService {
 
   getPrizeDepot(pagination: {pageNumber: number; numberOfRecords: number;}) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       const headers = new HttpHeaders({
         'Authorization' : `bearer${bearerToken}`,
         'Content-Type' : 'application/json'
@@ -30,7 +30,7 @@ export class PrizeDepotService {
 
   addPrizeDepot(credentials: { name: string; address: string; image: string}) {
     const bearerToken = sessionStorage.getItem('token')
-    if(!bearerToken) {
+    if(bearerToken) {
       const headers = new HttpHeaders({
         'Authorization' : `bearer${bearerToken}`,
         'Content-Type' : 'application/json'

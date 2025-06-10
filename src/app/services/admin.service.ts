@@ -25,7 +25,7 @@ export class AdminService {
   }
   ) {
     const bearerToken = sessionStorage.getItem('token')
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type': 'application/json'
@@ -38,7 +38,7 @@ export class AdminService {
 
   getAllTicket(credentials: { pageNumber: number, numberOfRecords: number }) {
     const bearerToken = sessionStorage.getItem('token')
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type': 'application/json'

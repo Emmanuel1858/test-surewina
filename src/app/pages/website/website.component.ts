@@ -48,6 +48,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   secondImageIndex: number = 0
   imageIntervalId: any;
   secondImageIntervalId: any;
+  ticketImage: any = ''
   backgroundImages: string[] = [
     // '../../../assets/white jeep.svg', 
     '../../../assets/bike-prize.svg',
@@ -75,7 +76,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private drawService: DrawService, private userTicket: UserTicketService) { }
 
   ngOnInit(): void {
-    // this.getTodayDraw()
+    this.getTodayDraw()
     this.startAutoAdvance();
     this.firstImage()
     this.secondImage()
@@ -214,9 +215,19 @@ export class WebsiteComponent implements OnInit, OnDestroy {
       this.loading = true
       const response = await lastValueFrom(this.drawService.getTodayDrawWithoutToken(drawForToday))
       // console.log(response)
-      this.loading = false
-      this.drawId = response.result.items[0]?.drawId
-      this.unitPrice = response.result.items[0]?.amount
+      const firstItem = response.result.items[0];
+      
+      // this.nameGame = firstItem.name;
+      this.drawId = firstItem.drawId;
+    
+      // Process ticketImage
+      if (typeof firstItem.ticketImage === 'string' && firstItem.ticketImage.startsWith('data:image')) {
+        this.ticketImage = firstItem.ticketImage;
+      } else if (typeof firstItem.ticketImage === 'string') {
+        this.ticketImage = `data:image/png;base64,${firstItem.ticketImage}`;
+      } else {
+        this.ticketImage = firstItem.ticketImage;
+      }
     } catch (error) {
       // this.loading = true
       console.log(error)

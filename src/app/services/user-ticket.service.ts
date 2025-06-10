@@ -24,7 +24,7 @@ export class UserTicketService {
 
   buyTicketWeb(credentialsBuyTicket: { identifier: string, drawId: number, quantity: number, channel: number }) {
     const bearerToken = sessionStorage.getItem('token')
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `bearer ${bearerToken}`,
         'Content-Type': 'application/json'
@@ -146,7 +146,7 @@ export class UserTicketService {
 
   winnerBoardWebsite() {
     const bearerToken = sessionStorage.getItem('token')
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
         'Content-Type': 'application/json'
@@ -195,7 +195,7 @@ export class UserTicketService {
   }
   winnerBoardAdmin() {
     const bearerToken = sessionStorage.getItem('token')
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${bearerToken}`,
         'Content-Type': 'application/json'
@@ -221,7 +221,7 @@ export class UserTicketService {
 
   getUserTicketHistory(userId: number, credentialGoingTicket: { pageNumber: number, numberOfRecords: number }) {
     const bearerToken = sessionStorage.getItem('token')
-    if (!bearerToken) {
+    if (bearerToken) {
       const headers = new HttpHeaders({
         'Authorization': `${bearerToken}`,
         'Content-Type': 'application/json'
