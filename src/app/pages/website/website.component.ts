@@ -221,7 +221,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
       
       // this.nameGame = firstItem.name;
       this.drawId = firstItem.drawId;
-    
+      this.unitPrice = firstItem.amount;
       // Process ticketImage
       if (typeof firstItem.ticketImage === 'string' && firstItem.ticketImage.startsWith('data:image')) {
         this.ticketImage = firstItem.ticketImage;
