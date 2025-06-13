@@ -13,6 +13,7 @@ export class AuthServiceService {
   private registerVendorUrl: string = environment.authentication.registerVendor
   private loginVendorUrl: string = environment.authentication.loginVendor
   private registerAdminUrl: string = environment.authentication.registerAdmin
+  private loginAdminUrl: string = environment.authentication.loginAdmin
 
   constructor(private https: HttpClient) { }
 
@@ -49,7 +50,7 @@ export class AuthServiceService {
   }
   
   loginAdmin(credentialsLoginVendor: { user: string; password: string }): Observable<any> {
-    return this.https.post(`${this.baseUrl}${this.loginVendorUrl}`, credentialsLoginVendor, {
+    return this.https.post(`${this.baseUrl}${this.loginAdminUrl}`, credentialsLoginVendor, {
       headers: { 'Content-Type': 'application/json' },
     })
   }

@@ -27,15 +27,11 @@ export class AdminDashboardComponent implements OnInit {
   intervalId: any;
   loading: boolean = false
   winnersBoardTotalCount: number = 0
-
-
-
-  
   currentRoute: string = 'Your Dashboard'
-  userName: string = 'Dasola A';
-  userEmail: string = 'dasola_dzn@gmail.com';
-  totalTicketSold: string = ''
-  prizeWon: string = ''
+  userName: string = `${sessionStorage.getItem('fullname')}`;
+  userEmail: string = `${sessionStorage.getItem('userEmail')}`;
+  totalTicketSold: string = '0'
+  prizeWon: string = '0'
   summaryByChannel: any = []
   winnersBoard: any = []
 

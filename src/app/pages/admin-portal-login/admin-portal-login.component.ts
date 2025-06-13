@@ -35,16 +35,22 @@ export class AdminPortalLoginComponent {
     }
 
     try {
+      debugger
       this.showLoader = true
       const response = await lastValueFrom(this.authService.loginAdmin(credentials))
       this.showLoader = false
       if(response.responseStatus === false) {
         this.errMsg = response.responseMessage
-        return 
+       
+      } else {
+        sessionStorage.setItem('token', response.result.jwtToken)
+        sessionStorage.setItem('fullname', response.result.fullName)
+        sessionStorage.setItem('userEmail', this.user)
+        this.router.navigate(['/admin-dashboard'])
       }
 
       if (response.responseStatus === true) {
-        this.router.navigate(['/admin-dashboard'])
+
       }
     } catch (e) {
       console.log(e)

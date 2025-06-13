@@ -40,7 +40,7 @@ export class UserService {
         'Authorization': `Bearer ${bearerToken}`,
         'Content-Type': 'application/json' 
       });
-      return this.http.get(`${this.baseUrl}User/GetUser?userId=${userId}`)
+      return this.http.get(`${this.baseUrl}User/GetUser?userId=${userId}`, {headers})
     }
 
     return new Observable<any>()
