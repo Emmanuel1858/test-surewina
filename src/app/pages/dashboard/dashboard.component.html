@@ -44,13 +44,13 @@
                 <div class="first-card-text">
                     <span>Your Insight</span>
                 </div>
-                <div class="first-card-prize" *ngIf="showButtonTicket">
+                <div class="first-card-prize" *ngIf="!showEmptyStateInsight">
                     <div class="first-card-prize-div">
                         <div>
                             <span class="first-card-prize-text">Prize Won</span>
                         </div>
                         <div class="first-card-prize-amount-div">
-                            <span class="first-card-prize-amount">₦ 0</span>
+                            <span class="first-card-prize-amount">₦ {{totalAmountWon}}</span>
                             <span class="first-card-prize-sign">~</span>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                             src="../../../assets/Frame 1000002800.svg" alt="">
                     </div>
                 </div>
-                <div class="first-card-prize-empty"  *ngIf="!showButtonTicket">
+                <div class="first-card-prize-empty"  *ngIf="showEmptyStateInsight">
                     <img src="../../../assets/empty-state-insight.svg" alt="">
                     <span>No Insights Yet</span>
                     <span>Start by buying tickets to join daily draws</span>
@@ -531,7 +531,7 @@
                     <span> announcement of the lottery winners</span>
                 </div>
                 <div class="modal-btn">
-                    <button (click)="navigateToDashboard()">Ok, Got it</button>
+                    <button (click)="ticketBoughtSucess()">Ok, Got it</button>
                 </div>
             </div>
         </div>

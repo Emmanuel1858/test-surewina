@@ -101,7 +101,7 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
 
   isInvalidPhoneNumber(): boolean {
     // Allow phone numbers starting with optional '+' and 8-15 total characters
-    return !/^\+?\d{11,14}$/.test(this.phoneNumber);
+    return !/^\+?\d{11}$/.test(this.phoneNumber);
   }
 
   navigateToPassword() {
@@ -162,8 +162,8 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.startCarousel();
-    this.resetInactivityTimer();
-    this.addActivityListeners();
+    // this.resetInactivityTimer();
+    // this.addActivityListeners();
     this.firstName = this.dataService.getRegisterUserData('firstName') || ''
     this.lastName = this.dataService.getRegisterUserData('lastName') || ''
     this.phoneNumber = this.dataService.getRegisterUserData('phoneNumber') || ''
@@ -175,36 +175,11 @@ export class CreateAccountNameComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     clearInterval(this.intervalId);
-    this.removeActivityListeners();
+    // this.removeActivityListeners();
     clearTimeout(this.inactivityTimeout)
   }
 
-  addActivityListeners() {
-    const events = ['click', 'keydown'];
-    events.forEach(event =>
-      window.addEventListener(event, this.resetInactivityTimer.bind(this))
-    );
-  }
 
-  removeActivityListeners() {
-    const events = ['click', 'keydown'];
-    events.forEach(event =>
-      window.removeEventListener(event, this.resetInactivityTimer.bind(this))
-    );
-  }
-
-  resetInactivityTimer() {
-    clearTimeout(this.inactivityTimeout);
-    this.inactivityTimeout = setTimeout(() => {
-      this.handleInactivityLogout();
-    }, this.inactivityDuration);
-  }
-
-  handleInactivityLogout() {
-    localStorage.setItem('logoutReason', 'inactivity');
-    // this.authService.logout(); // your logout logic here
-    this.router.navigate(['/login']);
-  }
   startCarousel(): void {
     this.intervalId = setInterval(() => {
       this.activeIndex = (this.activeIndex + 1) % this.images.length;

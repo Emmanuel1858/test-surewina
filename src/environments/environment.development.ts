@@ -35,6 +35,7 @@ export const environment = {
     userDetails: 'UserAccount/UserDetails',
     updateAddress: 'UserAccount/UpdateAddress',
     updatePassword: 'UserAccount/UpdatePassword',
+    getUserInsight: 'UserAccount/UserInsights'
   },
   userTicket: {
     buyTicketWeb: 'UserTicket/BuyTicket',

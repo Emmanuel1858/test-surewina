@@ -71,6 +71,8 @@
 
 }
 
+
+
 .first_section_first {
   display: flex;
   flex-direction: column;
@@ -143,6 +145,16 @@
   gap: 20px;
 }
 
+.registered-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.registered-user span {
+  color: #555555;
+  font-size: 14px;
+}
 
 .first_section_last_prize {
   position: relative;
@@ -277,18 +289,20 @@
   gap: 45px;
   padding: 100px 20px;
   background-color: rgb(18, 40, 193);
+  // background-image: url(../../../assets/background-image-steps.svg);
 }
 
 .second_section_text {
   color: rgba(255, 255, 255, 1);
   font-size: 42px;
-  font-weight: 700;
+  font-weight: 600;
+  width: 36rem;
   text-align: center;
 }
 
 .step_container {
   display: flex;
-  gap: 50px;
+  gap: 25px;
   justify-content: space-between;
   // width: 55%;
 }
@@ -350,7 +364,8 @@
   font-size: 20px;
   background-color: #fff;
   border-radius: 40px;
-  padding: 16px 20px;
+  padding: 5px 17px;
+  margin-top: 45px;
   font-weight: 500;
   width: fit-content;
   cursor: pointer;
@@ -382,7 +397,7 @@
   // background-image: url(../../../assets/samsung-tv.svg);
   // background-image: url(../../../assets/yellow-paper.svg);
   // background-image: url(../../../assets/white-jeep.svg);
-  width: 50%;
+  width: 42%;
   height: 55vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -442,7 +457,7 @@
 .third_section_right {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  // gap: 15px;
 }
 
 .third_section_game_name {
@@ -460,6 +475,28 @@
 .third_section_note {
   color: rgba(85, 85, 85, 1);
   font-weight: 400;
+  font-size: 20px;
+  width: 335px;
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  gap: 5px;
+  left: 0;
+  width: 100%;
+  width: -webkit-fill-available;
+}
+
+.bar {
+  display: block;
+  border: 2px solid #fff;
+  width: 4.5rem;
+  padding: 2px;
+  background-color: white;
+  border-radius: 20px;
+  transition: all .5s ease-in-out;
 }
 
 .fourth_section {
@@ -471,6 +508,39 @@
   padding-block: 20px;
   position: relative;
   text-align: center;
+}
+
+.next-draw {
+  font-family: "DM Sans";
+  position: absolute;
+  top: 0;
+  right: 30px;
+  // width: 71px;
+  background-color: #1228C1;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #1228C1;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.next-draw-date {
+  font-weight: 700;
+}
+
+.next-draw :first-child {
+  font-size: 11px;
+  font-weight: 200;
+}
+
+.next-draw :last-child{
+  border-top: 1px solid #fff;
+  font-size: 11px;
+  font-weight: 200;
+  padding: 4px 7px;
 }
 
 .fourth_section_winner_board {
@@ -638,7 +708,7 @@
 .footer_section {
   height: 50vh;
   background-color: rgb(18, 40, 193);
-  padding: 40px 20px;
+  padding: 40px 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

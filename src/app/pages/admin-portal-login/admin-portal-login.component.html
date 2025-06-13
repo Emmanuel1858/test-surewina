@@ -12,10 +12,13 @@
         <div class="bottom">
           <h1> Enter your details to login </h1>
           <div class="form">
-            {{errMsg}}
+            <p class="error-msg" *ngIf="formSubmitted">Both fields are required!</p>
+           <span class="error-msg">{{errMsg}}</span> 
             <div class="all-inputs">
-              <input type="text" [(ngModel)]="user" placeholder="Email Address">
-              <input type="text" [(ngModel)]="password" placeholder="Password">
+              <input type="text" [(ngModel)]="user" placeholder="Email Address"
+              [class.error-border]="formSubmitted">
+              <input type="text" [(ngModel)]="password" placeholder="Password"
+              [class.error-border]="formSubmitted">
             </div>
             <div class="checkbox">
               <input class="check-box" type="checkbox" name="" id="">
@@ -23,7 +26,9 @@
             </div>
           </div>
         
-          
+          <div class="loader" *ngIf="showLoader">
+            <app-loader/>
+        </div>
   
           <button class="btn-cont" (click)="navigateToAdminDash()"> Login 
             <img src="../../../assets/grommet-icons_form-next.svg"
@@ -34,7 +39,7 @@
       </div>
     </div>
   
-    <h2 class="footer-txt"> ©2024 Jollywina.com </h2>
+    <h2 class="footer-txt"> ©2024 Surewina.com </h2>
     
   </div>
 </div>

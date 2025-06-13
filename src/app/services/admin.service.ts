@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment.development';
@@ -13,7 +14,7 @@ export class AdminService {
   private getAllTicketUrl: string = environment.ticketDescription.getAll
   private getAllAdminUser: string = environment.admin.getAllAdmin
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   addTicket(credentialsAddTicket: {
     image: any,
@@ -45,6 +46,8 @@ export class AdminService {
       })
       const httpOptions = { headers }
       return this.http.post(`${this.baseUrl}${this.getAllTicketUrl}`, credentials, httpOptions)
+    } else {
+      this.router.navigate(['/admin-dashboard'])
     }
     return new Observable<any>()
   }

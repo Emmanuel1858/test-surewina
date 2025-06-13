@@ -23,7 +23,7 @@
 
 
 .container {
-    background-color: #fcfcfc;
+    // background-color: #fcfcfc;
     max-height: 85vh;
     overflow: auto;
     padding: 20px 40px 0;
@@ -37,6 +37,7 @@
     border: 1px solid #9D9D9D;
     border-radius: 4px;
     background-color: #fff;
+    height: 40vh;
     // margin: 35px auto 10px;
     // margin-left: 40px;
     display: flex;
@@ -48,6 +49,10 @@
     width: 100%;
 }
 
+.winner-board-text {
+    font-size: 30px;
+    font-weight: 400;
+}
 
 .header {
     background-color: #EEF8FF;

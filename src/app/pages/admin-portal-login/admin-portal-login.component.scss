@@ -4,6 +4,15 @@
   height: 100vh;
 }
 
+.error-msg{
+  color: red;
+  font-family: "DM Sans";
+}
+
+.error-border {
+  border: 1px solid red !important;
+}
+
 .content {
   display: flex;
   flex-direction: column;
@@ -11,6 +20,18 @@
   align-items: center;
   height: 100vh;
   gap: 4rem;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .content-top {
@@ -32,6 +53,7 @@
   // padding: 0.75rem 2.5rem 2.5rem 2.5rem;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   gap: 1.875rem;
   border-radius: var(--Numbers-Corner-Radius-Corner-Radius---Large, 1rem);
   background: var(--white-white, #FFF);

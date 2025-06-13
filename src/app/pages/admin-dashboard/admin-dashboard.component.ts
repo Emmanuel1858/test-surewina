@@ -70,6 +70,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   async getAnalytics() {
+    // debugger
     try {
       this.loading = true
       const response = await this.analyticsService.analyticsAdmin().toPromise()

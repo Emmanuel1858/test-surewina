@@ -18,6 +18,7 @@ import { WinnerBoardComponent } from '../winner-board/winner-board.component';
 
 // }
 export class WebsiteComponent implements OnInit, OnDestroy {
+  bars: boolean[] = [];
   showTicketPayment: boolean = false
   showMakePayment: boolean = false
   showLoader: boolean = false
@@ -49,12 +50,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   imageIntervalId: any;
   secondImageIntervalId: any;
   ticketImage: any = ''
-  backgroundImages: string[] = [
-    // '../../../assets/white jeep.svg', 
-    '../../../assets/bike-prize.svg',
-    '../../../assets/samsung-tv.svg',
-    '../../../assets/yellow-paper.svg'
-  ];
+  backgroundImages: any[] = [];
   currentBackgroundImage: string = this.backgroundImages[0];
   images: string[] = []
   transitioning: boolean = false;
@@ -138,6 +134,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
     // debugger
     if (this.currentIndex < this.backgroundImages.length) {
       this.currentIndex++;
+      this.bars[this.currentIndex] = true;
       this.updateBackgroundImage();
     }
     this.resetAutoAdvance();
@@ -147,6 +144,8 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   goPrev(): void {
     if (this.currentIndex > 0) {
       this.currentIndex--;
+      this.bars[this.currentIndex] = false;
+
       this.updateBackgroundImage();
     }
     this.resetAutoAdvance();
@@ -172,7 +171,7 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   }
 
   updateBackgroundImage(): void {
-    this.currentBackgroundImage = this.backgroundImages[this.currentIndex];
+    this.currentBackgroundImage = this.backgroundImages[this.currentIndex].image;
   }
 
 
@@ -231,6 +230,25 @@ export class WebsiteComponent implements OnInit, OnDestroy {
         this.ticketImage = firstItem.ticketImage;
       }
       console.log(this.ticketImage)
+      this.backgroundImages = firstItem.prizes.map((prize: any) => {
+        if (typeof prize.image === 'string' && prize.image.startsWith('data:image')) {
+          return prize;
+        }
+    
+        if (typeof prize.image === 'string') {
+          return {
+            ...prize,
+            image: `data:image/png;base64,${prize.image}`,
+          };
+        }
+    
+        return prize;
+      });
+    
+      const length = this.backgroundImages.length;
+      this.bars = Array(length).fill(false);
+      this.bars[0] = true;
+      this.currentBackgroundImage = this.backgroundImages[0].image;
     } catch (error) {
       // this.loading = true
       console.log(error)

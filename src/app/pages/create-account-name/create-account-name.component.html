@@ -35,13 +35,13 @@
                 [class.error-border]="formSubmitted && isEmpty(firstName)">
                 <input type="text" placeholder="Last name" [(ngModel)]="lastName" 
                 [class.error-border]="formSubmitted && isEmpty(lastName)">
-                <input type="text" maxlength="15" placeholder="Phone number" [(ngModel)]="phoneNumber"
+                <input type="text" maxlength="11" placeholder="Phone number" [(ngModel)]="phoneNumber"
                 (input)="onPhoneInput($event)" 
                 [class.error-border]="formSubmitted && (isEmpty(phoneNumber) || isInvalidPhoneNumber())">
                 <input type="text" placeholder="Email Address" [(ngModel)]="emailAddress"
                 [class.error-border]="formSubmitted && (isEmpty(emailAddress) || !isValidEmail(emailAddress))">
                 <!-- <span>Optional</span> -->
-                <input type="text" placeholder="Who referred you? (Optional)"  [(ngModel)]="referred">
+                <!-- <input type="text" placeholder="Who referred you? (Optional)"  [(ngModel)]="referred"> -->
                 <div class="state-lga">
                     
                     <div class="input-state" (click)="showStates = !showStates">

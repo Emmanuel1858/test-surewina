@@ -63,7 +63,6 @@ export class UserAccountService {
     }
     return new Observable<any>();
   }
-
   userPasswordUpdate(credentialsPasswordUpdate: { oldPassword: string; newPassword: string }) {
     const bearerToken = sessionStorage.getItem('token');
     if (bearerToken) {
@@ -87,6 +86,17 @@ export class UserAccountService {
   
       const httpOptions = { headers };
       return this.http.post(`${this.baseUrl}${this.userPasswordUrl}`, credentialsPasswordUpdate, httpOptions);
+    }
+    return new Observable<any>();
+  }
+  userInsight() {
+    const bearerToken = sessionStorage.getItem('token')
+    if(bearerToken) {
+      const headers = new HttpHeaders().set('Authorization', ` bearer ${bearerToken}`)
+      return this.http.get(`${this.baseUrl}${environment.userAccount.getUserInsight}`, {headers})
+    } else {
+      this.router.navigate(['/login'])
+      sessionStorage.clear()
     }
     return new Observable<any>();
   }

@@ -42,6 +42,7 @@ export class WinnerBoardWebsiteComponent implements OnInit {
   async getWinnerBoard() {
     // debugger
     try {
+      // debugger
       this.showLoader = true
       const response = await lastValueFrom(this.userTicket.winnerBoardWebsite());
       this.showLoader = false;
@@ -71,9 +72,7 @@ export class WinnerBoardWebsiteComponent implements OnInit {
     } catch (error) {
       
       this.showLoader = false;
-      // alert('You were logged out due to error. Try logging back in.');
-      // this.router.navigate(['/login']);
-      sessionStorage.clear();
+      this.showEmptyStateWinner = true;
     }
   }
 

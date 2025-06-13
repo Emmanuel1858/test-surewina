@@ -32,6 +32,10 @@
           <span>BUY YOUR TICKET NOW</span>
           <span> > </span>
         </button>
+        <div class="registered-user">
+          <img src="../../../assets/joined-partner.svg" alt="">
+          <span>60k+ users already joined</span>
+        </div>
       </div>
       <div class="first_section_last">
         <div class="first_section_last_first">
@@ -81,8 +85,7 @@
     </div>
     <div class="second_section">
       <div class="second_section_text">
-        Register within 5minutes
-        to become a winner
+        REGISTER WITHIN 5MINUTES TO BECOME A WINNER
       </div>
       <div class="step_container">
         <div class="second_section_step" *ngFor="let step of stepsToRegister">
@@ -118,11 +121,19 @@
                 > </span>
             </span>
         </div>
+        <div class="progress-bar">
+          <span class="bar" *ngFor="let bar of bars; let i = index"
+              [style.backgroundColor]="bar ? 'white' : 'transparent'">
+
+          </span>
+
+
+      </div>
       </div>
       <div class="third_section_right">
         <span class="first_child">Everyone is a winner</span>
         <span class="third_section_game_name">Play today’s game</span>
-        <span class="third_section_game_name_sub">JOLLY JACKPOT</span>
+        <span class="third_section_game_name_sub">SURE JACKPOT</span>
         <span class="third_section_note">Affordable tickets, amazing prizes – a chance to change your life</span>
         <div class="second_section_btn">
           <button (click)="navigateToPaymentTicket()">BUY YOUR TICKET NOW > </button>
@@ -130,6 +141,11 @@
       </div>
     </div>
     <div class="fourth_section">
+      <div class="next-draw">
+        <span>November</span>
+        <span class="next-draw-date">16</span>
+        <span>NEXT DRAW</span>
+      </div>
       <div class="fourth_section_winner_board">
 
         <app-winner-board-website />
@@ -234,7 +250,7 @@
       </div>
       <div class="footer_section_lower">
         <div>© 2024 All rights Reservered</div>
-        <div>surewina.com</div>
+        <div>Surewina.com</div>
       </div>
     </div>
   </div>
@@ -278,7 +294,8 @@
     </div>
     <div class="buy-ticket-container-scroll">
       <div class="img">
-        <img [src]="ticketImage" alt="">
+        <img *ngIf="!ticketImage" src="../../../assets/empty-state-ticket.svg" alt="">
+        <img *ngIf="ticketImage" [src]="ticketImage" alt="">
       </div>
       <div class="buy-ticket-count">
         <div class="ticket-price-container">

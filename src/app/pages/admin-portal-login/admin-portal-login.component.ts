@@ -13,17 +13,31 @@ export class AdminPortalLoginComponent {
   user: string = ''
   password: string = ''
   errMsg: string = ''
+  formSubmitted: boolean = false;
+  showLoader: boolean = false
+  // formSubmittedPass: boolean =
 
   constructor(private router: Router, private authService: AuthServiceService){}
 
   async navigateToAdminDash() {
+    this.formSubmitted = false;
+    // formSubmittedPass
+    if (!this.user || !this.password ) {
+      this.formSubmitted = true;
+      setTimeout(() => {
+        this.formSubmitted = false;
+      }, 10000);
+      return
+    }
     const credentials = {
       user: this.user,
       password: this.password
     }
 
     try {
+      this.showLoader = true
       const response = await lastValueFrom(this.authService.loginAdmin(credentials))
+      this.showLoader = false
       if(response.responseStatus === false) {
         this.errMsg = response.responseMessage
         return 

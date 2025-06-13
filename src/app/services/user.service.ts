@@ -27,6 +27,8 @@ export class UserService {
   
       const httpOptions = { headers };
       return this.http.post(`${this.baseUrl}${this.getAllUsers}`, getTheNumberOfUsers, httpOptions);
+    } else {
+      this.router.navigate(['/admin-login'])
     }
     return new Observable<any>();
   }

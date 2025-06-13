@@ -1,30 +1,38 @@
 <div class="container">
-    <div class="container-text">
-        <h3>Join us Today</h3>
-        <span>Join JollyWina as a player or agent. 
-            Choose your role to get started.</span>
+    <div>
+        <div class="container-img">
+            <img class="img" *ngFor="let image of images; let i = index" [class.active]="i === activeIndex" [src]="image"
+                alt="Carousel Image" />
+        </div>
     </div>
-    <div class="second-card">
-        <div class="second-card-right">
-            <div class="second-card-right-ticket" (click)="naviagteToUserLogin()">
-                <div class="sell-ticket-img">
-                    <img src="../../../assets/user-account.svg" alt="">
+
+    <div class="container-join">
+        <div class="container-text">
+            <h3>Join us Today</h3>
+            <span>Join JollyWina as a player or agent.
+                Choose your role to get started.</span>
+        </div>
+        <div class="second-card">
+            <div class="second-card-right">
+                <div class="second-card-right-ticket" (click)="naviagteToUserLogin()">
+                    <div class="sell-ticket-img">
+                        <img src="../../../assets/user-account.svg" alt="">
+                    </div>
+                    <div class="second-card-right-text">
+                        <span>Join as an Individual</span>
+                        <span>Sign up to buy tickets, track results, and claim prizes</span>
+                    </div>
                 </div>
-                <div class="second-card-right-text">
-                    <span>Join as an Individual</span>
-                    <span>Sign up to buy tickets, track results, and claim prizes</span>
+                <div class="second-card-right-ticket-second" (click)="navigateToVendorLogin()">
+                    <div class="sell-ticket-img">
+                        <img src="../../../assets/headphones.svg" alt="">
+                    </div>
+                    <div class="second-card-right-text">
+                        <span>Join as an Agent</span>
+                        <span>Register to manage players and earn commissions</span>
+                    </div>
                 </div>
-            </div>
-            <div class="second-card-right-ticket-second" (click)="navigateToVendorLogin()">
-                <div class="sell-ticket-img">
-                    <img src="../../../assets/headphones.svg" alt="">
-                </div>
-                <div class="second-card-right-text">
-                    <span>Join as an Agent</span>
-                    <span>Register to manage players and earn commissions</span>
-                </div>
-            </div>
-            <!-- <div class="second-card-right-ticket" (click)="navigateToAdminLogin()">
+                <!-- <div class="second-card-right-ticket" (click)="navigateToAdminLogin()">
                 <div class="sell-ticket-img">
                     <img src="../../../assets/user-account-mobile.svg" alt="">
                 </div>
@@ -34,7 +42,7 @@
                 </div>
             </div> -->
 
+            </div>
         </div>
     </div>
-
 </div>

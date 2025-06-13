@@ -9,9 +9,10 @@
    -->
   
   <div>
-    Our Hall of Fame
+ 
   </div>
   <div class="container">
+
     <!-- <div class="ticket-body">
           <div class="header">
               <div class="header-tickets">
@@ -50,8 +51,10 @@
           </div>
       </div> -->
     <div class="ticket-body">
+     
       <div class="ticket-body-inner">
         <!-- HEADER SECTION -->
+         <span class="winner-board-text">Winners Board</span>
         <div class="header" *ngIf="showMonth">
           <div *ngFor="let draw of drawResults; let drawIndex = index">
             <div class="header-tickets" [ngClass]="tabs == 'tab' + drawIndex ? 'active-tab' : ''">

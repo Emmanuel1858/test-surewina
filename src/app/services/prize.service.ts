@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
@@ -11,12 +12,17 @@ export class PrizeService {
   private addPrizeUrl = environment.prize.addPrize
   private getPrizeUrl = environment.prize.getAllPrize
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, 
+    private router: Router
+  ) { }
   getAllPrize() {
     const bearerToken = sessionStorage.getItem('token')
     if (bearerToken) {
       const headers = new HttpHeaders().set('Authorization', `bearer ${bearerToken}`)
-      return this.http.get(`${this.baseUrl}${this.getPrizeUrl}`)
+      return this.http.get(`${this.baseUrl}${this.getPrizeUrl}`, {headers})
+    } else {
+      this.router.navigate(['/admin-login'])
     }
     return new Observable<any>();
   }

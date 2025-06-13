@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
@@ -11,8 +12,9 @@ export class AnalyticsService {
   private analyticsAdminUrl = environment.analytics
   private analyticsSaleSummaryUrl = environment.analytics.getAnalyticsSalesSummary
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
   analyticsAdmin() {
+    // debugger
     const bearerToken = sessionStorage.getItem('token')
     if(bearerToken) {
       const headers = new HttpHeaders({
@@ -22,8 +24,12 @@ export class AnalyticsService {
 
       const httpOptions = { headers }
       // debugger
-      return this.http.get(`${this.baseUrl}Analytics/GetOverallSummary?countype=2`)
+      return this.http.get(`${this.baseUrl}Analytics/GetOverallSummary?countype=2`, httpOptions)
+    } else {
+      // console.log(bearerToken, 'pknoibh')
+      this.router.navigate(['/admin-login'])
     }
+    // this.router.navigate(['/admin-dashboard'])
     return new Observable<any>();
   }
 
@@ -37,6 +43,8 @@ export class AnalyticsService {
 
       const httpOptions = { headers }
       return this.http.post(`${this.baseUrl}${this.analyticsSaleSummaryUrl}`, pagination, httpOptions)
+    } else {
+      this.router.navigate(['/admin-login'])
     }
     return new Observable<any>()
   }

@@ -12,6 +12,7 @@ export class UserTicketService {
   private buyTicketWebUrl: string = environment.userTicket.buyTicketWeb
   private buyTicketUrl: string = environment.userTicket.buyTicket
   private onGoingTicketUrl: string = environment.userTicket.onGoingTicket
+  private previouslyPlayedTicketUrl: string = environment.userTicket.previousTicket
   private vendorOnGoingTicketUrl: string = environment.userTicket.vendorTicketHistory
   private getTicketByIdUrl: string = environment.userTicket.ticketById
   private winnerBoardUrl: string = environment.userTicket.winnerBoard
@@ -91,7 +92,7 @@ export class UserTicketService {
         'Content-Type': 'application/json'
       });
       const httpOptions = { headers }
-      return this.http.post(`${this.baseUrl}${this.onGoingTicketUrl}`, credentialPlayedTicket, httpOptions)
+      return this.http.post(`${this.baseUrl}${this.previouslyPlayedTicketUrl}`, credentialPlayedTicket, httpOptions)
     } else {
       // alert('You were logged out due to error. Try logging back in.');
       this.router.navigate(['/login'])

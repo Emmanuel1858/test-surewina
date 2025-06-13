@@ -69,6 +69,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ticketError: boolean = false
   showEmptyStateTicket: boolean = false
   showEmptyStateDashboard: boolean = true
+  totalAmountWon: number = 0
+  prizesWonImage: any = ''
+  showEmptyStateInsight: boolean = false
   constructor(private router: Router,
     private drawService: DrawService,
     private prizeService: PrizeService,
@@ -173,6 +176,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.initials = this.initials.toUpperCase();
     sessionStorage.setItem('initial', this.initials)
     this.getWinnerBoard()
+    this.getInsight()
     // window.location.reload()
 
   }
@@ -253,14 +257,30 @@ export class DashboardComponent implements OnInit, OnDestroy {
     }
   }
 
+  async getInsight() {
+    try {
+      const response = await lastValueFrom(this.userAccountService.userInsight())
+      console.log(response)
+      this.totalAmountWon = response.result.totalAmountWon
+      this.prizesWonImage = response.result.prizesWonImageBytes
+      if(this.totalAmountWon === 0) {
+        this.showEmptyStateInsight = true
+      } else {
+        this.showEmptyStateInsight = false
+      }
+    } catch (e) {
+      return
+
+    }
+  }
+
   // async getAllPrize() {
   //   try {
   //     const response = await lastValueFrom(this.prizeService.getAllPrize())
   //     // console.log(response.result)
   //     this.backgroundImages = response.result.map((prize: any) => prize.image)
   //     const length = this.backgroundImages.length
-  //     this.bars = Array(length).fill(false)
-  //     this.bars[0] = true
+
   //     // console.log(this.backgroundImages)
   //   } catch (error) {
   //     // debugger
@@ -318,6 +338,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
       // this.router.navigate(['/login']);
       sessionStorage.clear();
     }
+  }
+
+  ticketBoughtSucess() {
+    location.reload()
   }
 
   capitalizeWords(text: string): string {
