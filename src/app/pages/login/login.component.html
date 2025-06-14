@@ -29,17 +29,23 @@
                 <div class="all-inputs">
                     <input type="text" placeholder="Email address or Phone number" [(ngModel)]="emailAddress"
                         [class.error-border]="formSubmitted">
-                    <div class="input-pass">
-                        <input [type]="showPassword ? 'text' : 'password'" placeholder="Password"
-                            [class.error-border]="formSubmitted" [(ngModel)]="password">
-                        <i class="fa eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
-                            (click)="togglePasswordVisibility()"></i>
-                    </div>
+                        <div class="input-pass">
+                            <input [type]="showPassword ? 'text' : 'password'" placeholder="Password"
+                                [class.error-border]="formSubmitted" [(ngModel)]="password">
+                        
+                            <img 
+                                class="eye-icon" 
+                                [src]="showPassword ? 'assets/view-off.svg' : 'assets/view.svg'" 
+                                (click)="togglePasswordVisibility()" 
+                                alt="Toggle Password Visibility"
+                            />
+                        </div>
+                        
                 </div>
             </div>
             <div class="footer">
                 <div class="all-text">
-                    <span class="have-account">Already have an account?</span>
+                    <span class="have-account">Don't have an account?</span>
                     <span class="log-in" (click)="navigateToCreateAcc()">Sign up</span>
                 </div>
                 <div class="buttons">

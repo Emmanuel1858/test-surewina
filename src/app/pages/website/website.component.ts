@@ -18,7 +18,7 @@ import { WinnerBoardComponent } from '../winner-board/winner-board.component';
 
 // }
 export class WebsiteComponent implements OnInit, OnDestroy {
-  bars: boolean[] = [];
+  bars: boolean[] = [true, false, false, false];
   showTicketPayment: boolean = false
   showMakePayment: boolean = false
   showLoader: boolean = false
@@ -50,8 +50,14 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   imageIntervalId: any;
   secondImageIntervalId: any;
   ticketImage: any = ''
-  backgroundImages: any[] = [];
+  backgroundImages: string[] = [
+    '../../../assets/keke-website-label.png',
+    '../../../assets/bike-website-label.png',
+    '../../../assets/tv-website-label.png',
+    '../../../assets/keke-website-label.png'
+  ];
   currentBackgroundImage: string = this.backgroundImages[0];
+  // currentBackgroundImage: string = this.backgroundImages[0];
   images: string[] = []
   transitioning: boolean = false;
   stepsToRegister: any[] = [{
@@ -130,25 +136,47 @@ export class WebsiteComponent implements OnInit, OnDestroy {
     // this.showMobileBtn = true
   }
   goNext(): void {
-    // console.log('xbjon;')
-    // debugger
-    if (this.currentIndex < this.backgroundImages.length) {
+    if (this.currentIndex < this.backgroundImages.length - 1) {
       this.currentIndex++;
-      this.bars[this.currentIndex] = true;
-      this.updateBackgroundImage();
+    } else {
+      this.currentIndex = 0; 
+      this.bars = [true, false, false, false]
     }
+    
+    this.bars[this.currentIndex] = true;
+    this.updateBackgroundImage();
     this.resetAutoAdvance();
   }
 
 
   goPrev(): void {
-    if (this.currentIndex > 0) {
+    if (this.currentIndex === 0) {
+      this.currentIndex = this.backgroundImages.length - 1; // Go to last image
+    } else {
       this.currentIndex--;
-      this.bars[this.currentIndex] = false;
 
-      this.updateBackgroundImage();
     }
+
+    switch (this.currentIndex) {
+      case 0:
+      this.bars[1] = false   
+        break;
+      case 1: 
+      this.bars[2] = false
+        break
+      case 2: 
+      this.bars[3] = false
+        break;
+      case 3:
+      this.bars[3] = false
+        break
+      default:
+        break;
+    }
+    // this.bars[2] = false;
+    this.updateBackgroundImage();
     this.resetAutoAdvance();
+  
   }
 
   startAutoAdvance(): void {
@@ -171,7 +199,9 @@ export class WebsiteComponent implements OnInit, OnDestroy {
   }
 
   updateBackgroundImage(): void {
-    this.currentBackgroundImage = this.backgroundImages[this.currentIndex].image;
+    console.log(this.currentIndex, this.intervalId)
+
+    this.currentBackgroundImage = this.backgroundImages[this.currentIndex];
   }
 
 
@@ -230,25 +260,25 @@ export class WebsiteComponent implements OnInit, OnDestroy {
         this.ticketImage = firstItem.ticketImage;
       }
       console.log(this.ticketImage)
-      this.backgroundImages = firstItem.prizes.map((prize: any) => {
-        if (typeof prize.image === 'string' && prize.image.startsWith('data:image')) {
-          return prize;
-        }
+      // this.backgroundImages = firstItem.prizes.map((prize: any) => {
+      //   if (typeof prize.image === 'string' && prize.image.startsWith('data:image')) {
+      //     return prize;
+      //   }
     
-        if (typeof prize.image === 'string') {
-          return {
-            ...prize,
-            image: `data:image/png;base64,${prize.image}`,
-          };
-        }
+      //   if (typeof prize.image === 'string') {
+      //     return {
+      //       ...prize,
+      //       image: `data:image/png;base64,${prize.image}`,
+      //     };
+      //   }
     
-        return prize;
-      });
+      //   return prize;
+      // });
     
-      const length = this.backgroundImages.length;
-      this.bars = Array(length).fill(false);
-      this.bars[0] = true;
-      this.currentBackgroundImage = this.backgroundImages[0].image;
+      // const length = this.backgroundImages.length;
+      // this.bars = [true, false, false, false];
+      // this.bars[3] = true;
+      // this.currentBackgroundImage = this.backgroundImages[0];
     } catch (error) {
       // this.loading = true
       console.log(error)

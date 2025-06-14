@@ -87,7 +87,7 @@
 
 .first_section_last_first {
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
 .registered-user {
@@ -119,7 +119,7 @@
   padding: 10px 20px;
   margin-top: 20px;
   border-radius: 10px;
-  width: 220px;
+  width: 238px;
 }
 
 .first_section_amount_prize {
@@ -140,23 +140,29 @@
 .first_section_last_second {
   display: flex;
   margin-top: 10px;
-  gap: 15px;
+  gap: 10px;
 }
 
 .ticket_bought {
   border: 1px solid rgba(217, 217, 217, 1);
   display: flex;
   align-items: center;
-  width: fit-content;
+  // width: fit-content;
   gap: 5px;
   padding: 5px;
   border-radius: 5px;
   background-color: #fff;
 }
 
+.ticket_body_img {
+  height: 62px;
+}
+
 .ticket_bought_details {
   display: flex;
   flex-direction: column;
+  font-size: 9px;
+  justify-content: space-between;
 }
 
 .ticket_bought_details_date {
@@ -189,9 +195,15 @@
   align-items: center;
   gap: 45px;
   padding: 100px 20px;
-  background-color: rgb(18, 40, 193);
-  // background-image: url(../../../assets/background-image-steps.svg);
+  background: linear-gradient(to bottom, rgba(18, 40, 193, 0.9), rgba(18, 40, 193, 1)),
+    url(../../../assets/background-image-blue.svg);
+
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  // height: 651px;
 }
+
 
 .second_section_text {
   color: rgba(255, 255, 255, 1);
@@ -214,10 +226,10 @@
   border: 1px solid rgb(49, 72, 228);
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   background-color: rgb(0, 9, 176);
   border-radius: 17px;
-  padding: 10px 20px;
+  padding: 20px 20px;
   width: 250px;
 }
 
@@ -264,7 +276,7 @@
   font-size: 20px;
   background-color: #fff;
   border-radius: 40px;
-  padding: 5px 17px;
+  padding: 10px 20px;
   margin-top: 45px;
   font-weight: 500;
   width: fit-content;
@@ -349,13 +361,14 @@
 .third_section_right {
   display: flex;
   flex-direction: column;
+  line-height: 1.2;
   // gap: 15px;
 }
 
 .third_section_game_name {
   color: rgba(0, 0, 0, 1);
   font-weight: 900;
-  font-size: 20px;
+  font-size: 36px;
 }
 
 .third_section_game_name_sub {
@@ -373,10 +386,10 @@
 
 .progress-bar {
   position: absolute;
-  bottom: 20px;
+  bottom: 8px;
   display: flex;
   gap: 5px;
-  left: 0;
+  left: 13px;
   width: 100%;
   width: -webkit-fill-available;
 }
@@ -541,21 +554,29 @@
 .sixth_section_quote_all_main {
   display: flex;
   justify-content: center;
+  max-width: 50vw;
+  overflow-x: auto;
+}
+
+.sixth_section_quote_all_main::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 .sixth_section_quote_all {
   display: flex;
   gap: 20px;
-  width: 70%;
+  // width: 70%;
 }
 
 .sixth_section_quote_container {
-  border: 1px solid rgba(217, 217, 217, 1);
+  border: 1px solid rgb(217, 217, 217);
   background-color: #fff;
   border-radius: 17px;
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
+  width: 25rem;
   gap: 30px;
 }
 
@@ -597,7 +618,7 @@
 }
 
 .footer_section {
-  height: 50vh;
+  height: 72vh;
   background-color: rgb(18, 40, 193);
   padding: 40px 80px;
   display: flex;
@@ -1415,7 +1436,8 @@ input[type="number"] {
     display: flex;
     flex-direction: column;
     margin: 35px auto;
-    gap: 20px;
+    gap: 10px;
+
   }
 
   .step_container {
@@ -1443,9 +1465,14 @@ input[type="number"] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 45px;
-    padding: 100px 20px;
-    background-color: rgb(18, 40, 193);
+    gap: 0;
+    padding: 50px 20px;
+    background: linear-gradient(to bottom, rgba(18, 40, 193, 0.9), rgba(18, 40, 193, 1)),
+      url(../../../assets/background-image-blue.svg);
+
+    // background-position: center;
+    // background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .third_section {
@@ -1473,7 +1500,7 @@ input[type="number"] {
     padding: 20px;
     width: 90%;
     margin-block: 30px;
-    height: 55vh;
+    height: 30vh;
     /* padding: 32px 20px 80px; */
     background-size: cover;
     background-position: center;
@@ -1492,6 +1519,10 @@ input[type="number"] {
     overflow: auto;
   }
 
+  .second_section_text {
+    width: auto;
+  }
+
   .buy-ticket-container {
     position: absolute;
     top: 0;
@@ -1500,6 +1531,14 @@ input[type="number"] {
     background-color: #f6f6f6;
     height: 100vh;
   }
+
+  .registered-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
 
   // .fourth_section {
   //   display: none;
@@ -1545,7 +1584,7 @@ input[type="number"] {
   .sixth_section_quote_all {
     display: flex;
     gap: 20px;
-    width: 100%;
+    // width: 100%;
   }
 
   .sixth_section_btn {
@@ -1565,6 +1604,15 @@ input[type="number"] {
   .ticket-amount {
     font-weight: var(--fw-500);
     font-size: 20px;
+  }
+
+  .footer_section {
+    height: 45vh;
+    background-color: rgb(18, 40, 193);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .footer-ticket button {
@@ -1649,10 +1697,11 @@ input[type="number"] {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    width: 20rem;
   }
 
   .sixth_section_quote_details img {
-    width: 30%;
+    width: 15%;
   }
 
   .sixth_section_quote_name :first-child {
@@ -1693,7 +1742,7 @@ input[type="number"] {
   .sixth_section_quote {
     color: rgb(85, 85, 85);
     font-weight: 400;
-    font-size: 7px;
+    font-size: 20px;
   }
 
   .sixth_section_quote_name :first-child {
