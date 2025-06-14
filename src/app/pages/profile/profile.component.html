@@ -1,0 +1,283 @@
+<div>
+    <app-header />
+</div>
+<div class="html-container">
+    <div>
+        <div class="profile-head">
+            <div>
+                <span class="header-initials">
+                    {{initial}}
+                </span>
+            </div>
+            <div class="complete-profile">
+                <h1 class="header-name">{{firstName}} {{lastName}}</h1>
+                <div class="complete-profile-div">
+                    <div class="header-status">
+                        <img src="../../../assets/verified-dot.svg" alt="">
+                        <span class="header-status">Verified</span>
+                    </div>
+                    <div class="header-points">
+                        <img src="../../../assets/award-icon.svg" alt="">
+                        <span >{{jollyPoints}} Jolly Point(s)</span>
+                    </div>
+                    <span class="header-email">{{email}}</span>
+                    <span class="header-phone">{{phoneNumber}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loader" *ngIf="showLoader">
+        <app-loader/>
+    </div>
+  
+
+    <div class="parent-container">
+        <div class="tab-container">
+            <!-- Profile Details Tab -->
+            <div class="tab" [ngClass]="tabs === 'profile-details' ? 'active-tab' : ''">
+                <p (click)="switchTab('profile-details')">Profile Details</p>
+                <div class="border-bottom"></div>
+            </div>
+
+            <!-- Settings Tab -->
+            <!-- <div class="tab" [ngClass]="tabs === 'settings' ? 'active-tab' : ''">
+                <p (click)="switchTab('settings')">Settings</p>
+                <div class="border-bottom"></div>
+            </div> -->
+            <div class="tab" [ngClass]="tabs === 'referrals' ? 'active-tab' : ''">
+                <!-- <p (click)="switchTab('referrals')">Referrals</p> -->
+                 <p>Referrals</p>
+                <div class="border-bottom"></div>
+            </div>
+        </div>
+
+        <div class="profile">
+            <div>
+                <div *ngIf="tabs === 'profile-details'">
+                    <div class="profile-detail">
+                        <div class="state-lga-container">
+                            <div class="state-container">
+                                <span>State</span>
+                                <span>Lagos state</span>
+                            </div>
+                            <div class="lga-container">
+                                <span>Local Government</span>
+                                <span>Eti Osa Local Government</span>
+                            </div>
+                        </div>
+                        <div class="settings-email-container">
+                            <div class="settings-email-text">
+                                <span>Change Password</span>
+                            </div>
+                            <div class="settings-email-btn" (click)="updatePassword()">
+                                <span>Proceed</span>
+                                <img src="../../../assets/proceed-icon.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div *ngIf="tabs === 'settings'">
+                    <div class="settings-container">
+                        
+                        <div class="settings-email-container">
+                            <div class="settings-email-text">
+                                <span>Change Password</span>
+                            </div>
+                            <div class="settings-email-btn" (click)="updatePassword()">
+                                <span>Proceed</span>
+                                <img src="../../../assets/proceed-icon.svg" alt="">
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+
+                <div *ngIf="tabs === 'referrals'">
+                    <div>
+                        <div>
+                            <div class="referral-main-text">
+                                <span>How to refer a user</span>
+                            </div>
+                            <div class="referral-box">
+                                <div class="referral-box-first">
+                                    <div>
+                                        <span class="referral-box-number">1</span>
+                                        <span class="referral-box-dash">--------------</span>
+                                    </div>
+                                    <div class="referral-box-text">
+                                        <span>Invite Someone</span>
+                                        <span>Share the referral link</span>
+                                    </div>
+
+                                </div>
+                                <div class="referral-box-first">
+                                    <div>
+                                        <span class="referral-box-number">2</span>
+                                        <span class="referral-box-dash-second">-------------</span>
+                                    </div>
+                                    <div class="referral-box-text">
+                                        <span>They Register</span>
+                                        <span>Using your referral link</span>
+                                    </div>
+
+                                </div>
+                                <div class="referral-box-first">
+                                    <div>
+                                        <span class="referral-box-number">3</span>
+                                        <span class="referral-box-dash"></span>
+                                    </div>
+                                    <div class="referral-box-text">
+                                        <span>Referral Bonus</span>
+                                        <span>Earn referral bonus</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="referral-link">
+                            <div class="referral-main-text">
+                                <span>Your Referral link</span>
+                            </div>
+                            <div class="referral-link-box">
+                                <div class="referral-link-text">
+                                    http://www.jollywina.com/Issa/invitetowinaprize
+                                </div>
+                                <div class="referral-link-copy">
+                                    <img src="../../../assets/copy-icon.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="referral-link-sub">
+                                If you are not a fan of links, tell who you are referring to use your name when signing
+                                up
+                            </div>
+                        </div>
+
+                        <div class="your-links">
+                            <div class="your-links-table">
+                                <table>
+                                    <thead class="your-link-head">
+                                        <th>Name</th>
+                                        <th>Earnings</th>
+                                    </thead>
+                                    <tbody>
+                                        <td></td>
+                                        <td></td>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="ticket-container-background" *ngIf="showlocationUpdate" (click)="closeModalOnOutsideClick($event)">
+        <div class="buy-ticket-container" (click)="$event.stopPropagation()">
+            <div class="buy-ticket-header">
+                <div class="img-dashboard" (click)="closeAllModal()">
+                    <img src="../../../assets/go-back-btn-icon.svg" alt="">
+                </div>
+                <div class="buy-ticket-header-text">
+                    <span class="bigger-text">Update your Location</span>
+                </div>
+                <div class="img-question">
+                    <img src="../../../assets/question-ticket.svg" alt="">
+                </div>
+
+            </div>
+
+            <div class="input">
+                <p class="error"> {{showError}}</p>
+               
+                <input type="text" placeholder="Enter your location" [(ngModel)]="updateAddress" >
+                <input type="password" placeholder="Enter your password" [(ngModel)]="password">
+            </div>
+
+            <div class="note">
+                <img src="../../../assets/info-disclaimer.svg" alt="">
+                <span>Kindly note that all the information you provided is safe with us.
+                    We will not share your information to any third party without your concent</span>
+            </div>
+
+            <div class="footer-ticket">
+                <button (click)="completeLocation()">
+                    <span>COMPLETE PROFILE SETUP</span>
+                    <span> > </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="ticket-container-background" *ngIf="showPasswordUpdate">
+        <div class="buy-ticket-container">
+            <div class="buy-ticket-header">
+                <div class="img-dashboard" (click)="closeAllModal()">
+                    <img src="../../../assets/go-back-btn-icon.svg" alt="">
+                </div>
+                <div class="buy-ticket-header-text">
+                    <span class="bigger-text">Update your password</span>
+                </div>
+                <div class="img-question">
+                    <img src="../../../assets/question-ticket.svg" alt="">
+                </div>
+
+            </div>
+
+            <div class="input">
+                <p *ngIf="showPassError" class="error">New password does not match!</p>
+                <p class="error">{{showError}}</p>
+                {{showError}}
+                <input type="password" placeholder="Password" [(ngModel)]="oldPassword">
+                <input type="password" placeholder="New password" [(ngModel)]="newPassword">
+                <input type="password" placeholder="Confirm new password" [(ngModel)]="confirmNewPassword">
+            </div>
+
+            <div class="note">
+                <span>Kindly note that all the information you provided is safe with us.
+                    We will not share your information to any third party without your concent</span>
+            </div>
+
+            <div class="footer-ticket">
+                <button (click)="updateNewPassword()">
+                    <span>Continue</span>
+                    <span> > </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="overlay-modal" *ngIf="modalVisibility" >
+        <div class="modal">
+            <div class="container-modal">
+                <div class="modal-img">
+                    <img src="../../../assets/Group 1000002391.svg" alt="">
+                    <img src="../../../assets/Group 1000002392.svg" alt="">
+                </div>
+                <div class="tick-container">
+                    <section class="animated_check_circle">
+                        <svg viewBox="0 0 130.2 130.2" class="animated_check_circle">
+                            <circle class="path circle" fill="none" stroke="#10B981" stroke-width="6" stroke-miterlimit="10"
+                                cx="65.1" cy="65.1" r="62.1" />
+                            <polyline class="path check" fill="none" stroke="#10B981" stroke-width="6"
+                                stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5" />
+                        </svg>
+                    </section>
+                </div>
+                <div class="modal-text">
+                    <h1>Profile setup complete</h1>
+                    <span>Start buying tickets and winning prizes now</span>
+                </div>
+                <div class="modal-btn" (click)="reloadPage()">
+                    <button >Ok, Got it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

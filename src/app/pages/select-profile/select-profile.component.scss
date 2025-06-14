@@ -1,0 +1,171 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.container-join {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    width: 58%;
+    height: 100vh;
+    // background-color: #fbfbfb;
+
+}
+
+.container-text h3 {
+    margin: 0;
+    font-weight: 400;
+    // font-size: 16px;
+    display: flex;
+    font-size: 32px;
+    // justify-content: center;
+    align-items: center;
+}
+
+.container-text span {
+    color: #262626;
+}
+
+.second-card {
+    display: flex;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: auto;
+    margin-top: 10px;
+    // border-radius: 20px;
+}
+
+.second-card-right {
+    display: flex;
+    flex-direction: column;
+    /* gap: 10px; */
+    /* padding: 10px; */
+    background: #f6f6f6;
+    border-radius: 8px;
+    width: 80%;
+}
+
+.second-card-right-ticket {
+    display: flex;
+    gap: 10px;
+    color: #000;
+    align-items: center;
+    /* background-color: #d9d9d9; */
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #d9d9d9;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.second-card-right-ticket-second {
+    display: flex;
+    gap: 10px;
+    color: #000;
+    align-items: center;
+    /* background-color: #d9d9d9; */
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid #d9d9d9;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.sell-ticket-img {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #e9e9e9;
+    border: 1px solid #e9e9e9;
+}
+
+.second-card-right-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.second-card-right-text :first-child {
+    font-size: 20px;
+    color: #434343;
+    font-weight: 500;
+}
+
+.second-card-right-text :last-child {
+    color: #7B7B7B;
+    font-weight: 400;
+}
+
+.second-card-game-text {
+    color: #fff;
+    font-size: 24px;
+}
+
+.second-card-jolly-text {
+    color: #FF9B0F;
+    font-size: 24px;
+    font-weight: var(--fw-700);
+}
+
+.second-card-text {
+    color: #D9D9D9;
+    font-family: var(--fw-400);
+    size: 14px;
+    // width: 200px;
+}
+
+.container-img {
+    // position: relative;
+    width: 36%;
+    height: 100%;
+}
+
+.img {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    width: 40%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+}
+
+.img.active {
+    opacity: 1;
+}
+
+@media (max-width: 1000px) {
+    .second-card-right {
+        display: flex;
+        flex-direction: column;
+        /* gap: 10px; */
+        /* padding: 10px; */
+        background: #f6f6f6;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    .container-join {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px;
+        width: 100%;
+        height: 100vh;
+        // background-color: #fbfbfb;
+    
+    }
+
+    .container-img {
+        // position: relative;
+        width: 36%;
+        height: 100%;
+        display: none;
+    }
+}

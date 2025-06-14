@@ -1,0 +1,176 @@
+<h1 class="current-route-header"> {{currentRoute}} </h1>
+
+<div class="parent-container">
+  <div class="first-row">
+    <div class="sm-card card card-1">
+      <div class="card-top">
+        <p> Total Tickets Sold </p>
+      </div>
+      <div class="card-bottom">
+        <p class="item-1"> {{totalTicketSold}} </p>
+        <div class="item-2">
+          <div class="sub-item-1">
+            <!-- arrow icon that shows increase or decrease -->
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M11.5 10.1667V4.5H5.83333M11.3333 4.66667L4.5 11.5" stroke="#111519" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg> -->
+            <p class="percentage-value"> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sm-wide-card card card-2">
+      <div class="card-top">
+        <p> Tickets sold by channels </p>
+      </div>
+      <div class="card-channels" >
+        <div class="card-bottom" *ngFor="let data of summaryByChannel">
+          <div class="card-item-collection">
+            <p> {{data.channel}}  </p>
+            <h2> ₦{{data.count}} </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="second-row">
+    <div class="left-side">
+      <div class="sm-card card card-3">
+        <div class="card-top">
+          <p> Prizes Won </p>
+        </div>
+        <div class="card-bottom">
+          <div class="card-bottom">
+            <p class="item-1"> ₦ {{prizeWon}}</p>
+            <div class="item-2">
+              <div class="sub-item-1">
+                <!-- arrow icon that shows increase or decrease -->
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M11.5 10.1667V4.5H5.83333M11.3333 4.66667L4.5 11.5" stroke="#111519" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg> -->
+                <p class="percentage-value"> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sm-long-card card card-4">
+        <img [src]="imgSrc" alt="Set a draw" class="fade-img" (click)="setUpDraw()">
+
+        <div class="text-content">
+          <h2> {{h2ctaText}} </h2>
+          <p> {{pctaText}} </p>
+
+          <div class="dots-slider">
+            <div class="dot" [ngClass]="ctaPosition === 1 ? 'dot wider-dot' : ''"></div>
+            <div class="dot" [ngClass]="ctaPosition === 2 ? 'wider-dot' : ''"></div>
+            <div class="dot" [ngClass]="ctaPosition === 3 ? 'wider-dot' : ''"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="lg-card card card-5">
+      <div class="table">
+        <div class="table-head">
+          <!-- the class active-tab will add dynamic class features to the tab -->
+          <div class="tab" [ngClass]="tabs == 'prizes' ? 'active-tab' : '' ">
+            <p (click)="switchTab('prizes') "> Prizes </p>
+            <!-- add or remove based on the active tab -->
+            <div class="border-bottom"></div>
+          </div>
+          <div class="tab" [ngClass]="tabs == 'winners' ? 'active-tab' : '' ">
+            <p (click)="switchTab('winners')"> Winners </p>
+            <div class="border-bottom"></div>
+          </div>
+
+        </div>
+        <div [ngSwitch]="tabs" class="table-content">
+          <!-- show content based on active tap *ngSwitch -->
+          <div *ngSwitchCase="'prizes'" class="tab-1-content">
+            <div class="items" *ngFor="let prize of paginatedPrizes">
+              <div class="item-collection">
+                <!-- will back-end provide images -->
+                <div class="item-image">
+                  <img [src]="prize.image" alt="">
+                </div>
+                <div class="item-details">
+                  <p> Jan 1st - Jan 14th </p>
+                  <h2> {{prize.name}} </h2>
+                  <div class="item-extra-details">
+                    <p> Suprize Lottery </p>
+                    <ul>
+                      <li> ₦ {{prize.amount}} per ticket </li>
+                      <!-- <li> 11,762 tickets bought </li> -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+            <!-- Pagination Controls -->
+            <div class="pagination">
+              <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+                « Prev
+              </button>
+            
+              <button
+                *ngFor="let page of totalPages"
+                (click)="changePage(page)"
+                [class.active]="page === currentPage">
+                {{ page }}
+              </button>
+            
+              <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages.length">
+                Next »
+              </button>
+            </div>
+            
+          </div>
+          
+
+          <div *ngSwitchCase="'winners'" class="tab-2-content">
+
+            <div class="row-content" *ngFor="let winner of paginatedWinners">
+              <div class="user-name">
+                <div class="circle">
+                  <h2> </h2>
+                </div>
+                <h2> {{winner.ticketRefNo}} </h2>
+              </div>
+              <div class="rounded-border-items">
+                <p> {{winner.location ? winner.location : 'Not Inputted'}} </p>
+                <p> Played ₦{{winner.totalAmount}} </p>
+                <p> Won {{winner.prize}} </p>
+              </div>
+            </div>
+            <div class="pagination">
+              <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+                « Prev
+              </button>
+            
+              <button
+                *ngFor="let page of totalPagesWinner"
+                (click)="changePage(page)"
+                [class.active]="page === currentPage">
+                {{ page }}
+              </button>
+            
+              <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPagesWinner.length">
+                Next »
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="loader" *ngIf="loading">
+    <app-loader-admin />
+  </div>
+
+</div>

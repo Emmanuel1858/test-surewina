@@ -1,0 +1,100 @@
+<div *ngIf="showAddTicket">
+    <div class="header-container">
+        <img (click)="goToLottery()" src="../../../assets/go-back.svg" alt="">
+        <span>Add a new prize</span>
+    </div>
+    <div class="container-details">
+        <div class="ticket-steps">
+            <span class="ticket-steps-1">
+                <img src="../../../assets/first-step.svg" alt="">
+                <span>Step 1 - Prize Properties</span>
+            </span>
+        </div>
+        <!-- <div style="color: red;"> {{showError}}</div> -->
+        <div class="upload-container">
+
+            <div class="upload-container-first">
+                <div>
+                    <img src="../../../assets/Filetypes.svg" alt="">
+                </div>
+                <div class="upload-container-text">
+                    <span>Upload Prize Image</span>
+                    <span>Click here to select Image</span>
+                </div>
+            </div>
+            <div>
+                <input type="file" #fileInput accept="image/png, image/jpeg, image/svg+xml" style="display: none;"
+                    (change)="onFileSelected($event)" />
+                <div *ngIf="selectedFileName" style="font-family: var(--cta-alt);">
+                    Selected File: {{ selectedFileName }}
+                </div>
+                <div class="upload-container-btn" (click)="triggerFileInput(fileInput)">
+                    <img src="../../../assets/download.svg" alt="">
+                    <span>Upload</span>
+                </div>
+            </div>
+        </div>
+        <div class="container-draw-details">
+            <div class="container-draw-input">
+                <input type="text" placeholder="Enter Prize Name" [(ngModel)]="prizeName">
+            </div>
+            <div class="container-draw-input">
+                <input type="text" placeholder="Estimated Value of Prize" [(ngModel)]="estimatedPrice">
+            </div>
+            <div class="container-dropdown">
+                <div class="container-draw-dropdown">
+                    <div class="input" (click)="toggleDropdown()">
+                        <input type="text" [value]="selectedDay" [(ngModel)]="prizeTier" readonly placeholder="Select prize tier">
+                        <span class="dropdown-icon"><img src="../../../assets/dropdown-arrow.svg" alt=""></span>
+                    </div>
+                    <div class="dropdown-items" *ngIf="isDropdownOpen">
+                        <span *ngFor="let day of days" (click)="selectDay(day)">{{ day }}</span>
+                    </div>
+
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <div class="container-btn">
+        <button (click)="createPrize()">
+            <span>CREATE PRIZE</span>
+            <span>></span>
+        </button>
+    </div>
+</div>
+
+
+<div class="ticket-container-background" *ngIf="showModal">
+    <div class="modal">
+        <div class="container-modal">
+            <div class="modal-img">
+                <img src="../../../assets/Group 1000002391.svg" alt="">
+                <img src="../../../assets/Group 1000002392.svg" alt="">
+            </div>
+            <div class="tick-container">
+                <section class="animated_check_circle">
+                    <svg viewBox="0 0 130.2 130.2" class="animated_check_circle">
+                        <circle class="path circle" fill="none" stroke="#10B981" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#10B981" stroke-width="6"
+                            stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5" />
+                    </svg>
+                </section>
+            </div>
+            <div class="modal-text">
+                <h1>Prize Created Successfully</h1>
+                <span>You've successfully created a new winning prize
+                </span>
+                <!-- <span>and easily purchase the tickets</span> -->
+            </div>
+            <div class="modal-btn">
+                <button (click)="goToLottery()">Ok, Got it</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader" *ngIf="loading">
+    <app-loader />
+</div>

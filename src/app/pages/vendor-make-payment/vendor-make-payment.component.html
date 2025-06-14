@@ -1,0 +1,107 @@
+<div class="header">
+    <span (click)="navigateToVendorSellTicket()">
+        <img src="../../../assets/go-back.svg" alt="">
+    </span>
+    <span>
+        Make Payment
+    </span>
+    <span>
+        <!-- <img src="../../../assets/menu.svg" alt=""> -->
+    </span>
+</div>
+
+<div class="loader" *ngIf="loading" >
+    <app-loader/>
+</div>
+
+<div class="pay-with-container">
+    <div class="pay-with-container-text">
+        <span>How does the customer wants to pay?</span>
+    </div>
+    <div>
+        <span style="color: red;">{{showError}}</span>
+    </div>
+    <div class="pay-with-cash" (click)="showCash()">
+        <div class="pay-with-cash-img">
+          <img src="../../../assets/cash.svg" alt="">
+        </div>
+        <div class="pay-with-cash-text">
+            <span>Pay with cash </span>
+            <span>Make sure you collect cash from user</span>
+        </div>
+    </div>
+    <div class="pay-with-cash" (click)="showAlert()">
+        <div class="pay-with-cash-img">
+          <img src="../../../assets/transfer.svg" alt="">
+        </div>
+        <div class="pay-with-cash-text">
+            <span>Pay with transfer </span>
+            <span>1000048943, Dasola (Jolly winna)</span>
+        </div>
+    </div>
+
+    <div class="pay-with-note" *ngIf="ifCash">
+        <span>Simply collect the amount to finalize your ticket purchase.</span>
+        <span>
+            Equivalent of the cash wil be deducted from your wallet.
+        </span>
+    </div>
+    <div class="pay-with-note" *ngIf="ifAlert">
+        <span>Account number: 1000235210</span>
+        <span>Account name: Sure winna</span>
+        <span>
+            Bank: Zenith Bank.
+        </span>
+    </div>
+    <div class="pay-with-agreement" *ngIf="ifCash">
+        <div>
+            <input type="checkbox" name="" id="">
+        </div>
+        <div>
+            <span>By checking this box, I confirm that I have gotten the cash payment.</span>
+        </div>
+    </div>
+    <div class="pay-with-agreement" *ngIf="ifAlert">
+        <div>
+            <input type="checkbox" name="" id="">
+        </div>
+        <div>
+            <span>By checking this box, I confirm that I have gotten the alert payment.</span>
+        </div>
+    </div>
+    <div class="footer" (click)="navigateToModal()">
+        <button>
+            SELL TICKET >
+        </button>
+    </div>
+</div>
+
+<div class="ticket-container-background" *ngIf="showModal">
+    <div class="modal" >
+        <div class="container-modal">
+            <div class="modal-img">
+                <img src="../../../assets/Group 1000002391.svg" alt="">
+                <img src="../../../assets/Group 1000002392.svg" alt="">
+            </div>
+            <div class="tick-container">
+                <section class="animated_check_circle">
+                    <svg viewBox="0 0 130.2 130.2" class="animated_check_circle">
+                        <circle class="path circle" fill="none" stroke="#10B981" stroke-width="6" stroke-miterlimit="10"
+                            cx="65.1" cy="65.1" r="62.1" />
+                        <polyline class="path check" fill="none" stroke="#10B981" stroke-width="6"
+                            stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5" />
+                    </svg>
+                </section>
+            </div>
+            <div class="modal-text">
+                <h1>You have successfully</h1>
+                  <h1>  bought your winning ticket</h1>
+                <span>Sit back, relax and stay tuned for our monthly </span>
+                   <span> announcement of the lottery winners</span>
+            </div>
+            <div class="modal-btn" (click)="goToDashboard()">
+                <button >Ok, Got it</button>
+            </div>
+        </div>
+    </div>
+</div>

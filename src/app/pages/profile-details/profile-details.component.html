@@ -1,0 +1,115 @@
+<mat-tab-group [(selectedIndex)]="activeTabIndex">
+    <mat-tab label="Profile Details">
+        <div>
+            <div>
+                <div class="first-block-profile"> 
+                    <div class="first-block-profile-balance">
+                        <div>
+                            <span>Your Balance</span>
+                            <span>₦ 40,000</span>
+                        </div>
+                        <div>
+                            <span>Referral Earnings</span>
+                            <span>₦ 1,000</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span>Address</span>
+                        <span>29, Adeyemo Alakija, Victoria Island, Lagos, Nigeria</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <span>complete your profile</span>
+                    <span></span>
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                        <div>
+                            <span>Please Provide your NIN</span>
+                            <span>details for verification purposes</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span>Update NIN</span>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <img src="" alt="">
+                        </div>
+                        <div>
+                            <span>Please Update your location </span>
+                            <span>details for verification purposes</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span>Update Location</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Settings">
+        <div class="container-table">
+            <table mat-table [dataSource]="department" class="full-width-table">
+                <ng-container matColumnDef="department">
+                    <th mat-header-cell *matHeaderCellDef> Department </th>
+                    <td mat-cell *matCellDef="let item">{{ item.department }}</td>
+                </ng-container>
+                <ng-container matColumnDef="recipientName">
+                    <th mat-header-cell *matHeaderCellDef> Department Head </th>
+                    <td mat-cell *matCellDef="let item">{{ item.recipientName }}</td>
+                </ng-container>
+                <ng-container matColumnDef="recipientEmail">
+                    <th mat-header-cell *matHeaderCellDef> Email Address </th>
+                    <td mat-cell *matCellDef="let item">{{ item.recipientEmail }}</td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let item">
+                        <span class="edit-btn" (click)="goToEditDept(item)">Edit</span>
+                        <mat-icon class="del-icon" (click)="deleteDepartmentBranch(item.id)">close</mat-icon>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="deptColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: deptColumns;"></tr>
+            </table>
+        </div>
+    </mat-tab>
+
+    <mat-tab label="Referrals">
+        <div class="container-table">
+            <table mat-table [dataSource]="branches" class="full-width-table">
+                <ng-container matColumnDef="branch">
+                    <th mat-header-cell *matHeaderCellDef> Branch </th>
+                    <td mat-cell *matCellDef="let item">{{ item.branch }}</td>
+                </ng-container>
+                <ng-container matColumnDef="recipientName">
+                    <th mat-header-cell *matHeaderCellDef> Branch Head </th>
+                    <td mat-cell *matCellDef="let item">{{ item.recipientName }}</td>
+                </ng-container>
+                <ng-container matColumnDef="recipientEmail">
+                    <th mat-header-cell *matHeaderCellDef> Email Address </th>
+                    <td mat-cell *matCellDef="let item">{{ item.recipientEmail }}</td>
+                </ng-container>
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let item">
+                        <span class="edit-btn" (click)="goToEditBranch(item)">Edit</span>
+                        <mat-icon class="del-icon" (click)="deleteDepartmentBranch(item.id)">close</mat-icon>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="branchColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: branchColumns;"></tr>
+            </table>
+        </div>
+    </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,162 @@
+<!-- <div class="ticket-body" *ngIf="showMonth">
+    <div *ngFor="let draw of drawResults; let drawIndex = index">
+
+      <div class="header">
+        <div class="header-tickets" [ngClass]="tabs == 'tab' + drawIndex ? 'active-tab' : ''">
+          <span (click)="switchTab('tab' + drawIndex)" class="header-tickets-text-active">
+            {{ draw.drawDescription || 'No Description' }}
+          </span>
+          <span class="header-tickets-number-active">{{ draw.totalWinners }}</span>
+        </div>
+      </div>
+  
+      
+      <div [ngSwitch]="tabs">
+        <div *ngSwitchCase="'tab' + drawIndex">
+          <div class="ticket-details-con">
+            <div
+              class="ticket-details"
+              *ngFor="let item of draw.winners.items; let i = index"
+              (click)="showListWinners(draw.drawId)"
+            >
+              <div class="ticket-details-img">
+                <img *ngIf="draw.prizes?.[0]?.image" [src]="draw.prizes[0].image" alt="" />
+              </div>
+              <div class="ticket-details-all">
+                <span class="ticket-date">
+                  {{ draw.drawDate?.split('T')[0] || 'No Date' }}
+                </span>
+                <span class="ticket-name">
+                  {{ item.ticketRefNo || 'No Name' }}
+                </span>
+                <span class="ticket-won">
+                  <span>{{ item.prize }}</span>
+                  <span>₦{{ item.totalAmount }}</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div> -->
+
+<!-- <div class="ticket-body" >
+    <div>
+       
+        <div class="header">
+            <div class="header-tickets">
+                <span (click)="switchTab('saturday')" class="header-tickets-text-active">
+                    sure saturday
+                </span>
+                <span class="header-tickets-number-active">3</span>
+            </div>
+            <div class="header-tickets">
+                <span (click)="switchTab('tuesday')" class="header-tickets-text-active">
+                    sure tuesday
+                </span>
+                <span class="header-tickets-number-active">20</span>
+            </div>
+            <div class="header-tickets">
+                <span (click)="switchTab('monday')" class="header-tickets-text-active">
+                    sure monday
+                </span>
+                <span class="header-tickets-number-active">13</span>
+            </div>
+            <div class="header-tickets">
+                <span (click)="switchTab('wednesday')" class="header-tickets-text-active">
+                    sure wednesday
+                </span>
+                <span class="header-tickets-number-active">23</span>
+            </div>
+        </div>
+
+      
+        <div [ngSwitch]="tabs">
+            <div *ngSwitchCase="saturday">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" >
+                        <div class="ticket-details-img">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">
+                                 draw.drawDate?.split('T')[0] || 'No Date' 
+                            </span>
+                            <span class="ticket-name">
+                               | 'No Name' 
+                            </span>
+                            <span class="ticket-won">
+                                <span> item.prize </span>
+                                <span>₦ item.totalAmount </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="tuesday">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" >
+                        <div class="ticket-details-img">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">
+                                 draw.drawDate?.split('T')[0] || 'No Date' 
+                            </span>
+                            <span class="ticket-name">
+                               | 'No Name' 
+                            </span>
+                            <span class="ticket-won">
+                                <span> item.prize </span>
+                                <span>₦ item.totalAmount </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="monday">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" >
+                        <div class="ticket-details-img">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">
+                                 draw.drawDate?.split('T')[0] || 'No Date' 
+                            </span>
+                            <span class="ticket-name">
+                               | 'No Name' 
+                            </span>
+                            <span class="ticket-won">
+                                <span> item.prize </span>
+                                <span>₦ item.totalAmount </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="wednesday">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" >
+                        <div class="ticket-details-img">
+                            <img src="" alt="" />
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">
+                                 draw.drawDate?.split('T')[0] || 'No Date' 
+                            </span>
+                            <span class="ticket-name">
+                               | 'No Name' 
+                            </span>
+                            <span class="ticket-won">
+                                <span> item.prize </span>
+                                <span>₦ item.totalAmount </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

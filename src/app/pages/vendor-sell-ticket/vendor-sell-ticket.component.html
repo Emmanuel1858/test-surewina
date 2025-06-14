@@ -1,0 +1,61 @@
+<div class="header">
+    <span (click)="naviagteToVendorDashboard()">
+        <img src="../../../assets/go-back.svg" alt="">
+    </span>
+    <span>
+        Sell Ticket
+    </span>
+    <span>
+        <img src="../../../assets/menu.svg" alt="">
+    </span>
+</div>
+
+<div class="container-ticket">
+    <div class="ticket-img">
+        <img src="../../../assets/gift-voucher.svg" alt="">
+    </div>
+    <div class="customer-info-container">
+        <div class="customer-info-container-text">
+            <span>Input customer's information</span>
+            <span>Enter customer details to proceed, Email is optional</span>
+        </div>
+        <div style="color: red; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <div *ngIf="showEmptyError">Phone number is required!</div>
+            <div *ngIf="showZeroError">Total ticket cannot be 0!</div>
+            <span>{{showError}}</span>
+        </div>
+        <div class="all-input">
+            <input type="text" placeholder="Enter Customer's Phone No" [(ngModel)]="phoneNumber">
+            <input type="text" placeholder="Enter Customer's Email" [(ngModel)]="email">
+        </div>
+    </div>
+    <div class="customer-info-container-price">
+        <div class="ticket-unit-price">
+            <div class="ticket-unit-text">
+                <span>Ticket Unit Price</span>
+                <span>₦ {{unitPrice}}</span>
+            </div>
+            <div  class="ticket-unit-border">
+
+            </div>
+            <div class="ticket-unit-text-sub">
+                <span>How Many Tickets</span>
+                <div class="btn">
+                    <button (click)="decrement()">-</button>
+                    <span>{{ticketCount}}</span>
+                    <button (click)="increment()">+</button>
+                </div>
+            </div>
+        </div>
+        <div class="ticket-bought">
+            <span>Total Ticket </span>
+            <span> ₦ {{totalPrice}}</span>
+           
+        </div>
+    </div>
+    <div class="footer">
+        <button (click)="navigateToPayment()">
+            SELL TICKET >
+        </button>
+    </div>
+</div>

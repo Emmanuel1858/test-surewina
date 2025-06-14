@@ -1,0 +1,540 @@
+<div class="container">
+    <div class="card-container">
+        <div class="mobile-only">
+            <span>Welcome, {{firstName}}</span>
+        </div>
+        <div class="first-card">
+            <div class="first-card-prize-respon" *ngIf="false">
+                <div class="first-card-prize-div">
+                    <div>
+                        <span class="first-card-prize-text">Prize Won</span>
+                    </div>
+                    <div class="first-card-prize-amount-div">
+                        <span class="first-card-prize-amount">₦ 0</span>
+                        <span class="first-card-prize-sign">~</span>
+                    </div>
+                </div>
+                <div class="first-card-prize-img">
+                    <img class="first" src="../../../assets/Rectangle 4579.svg" alt="">
+                    <img class="second" src="../../../assets/Rectangle 4580.svg" alt="">
+                    <img class="third" src="../../../assets/Rectangle 4581.svg" alt="">
+                    <img class="fourth" src="../../../assets/Rectangle 4582.svg" alt="">
+                    <img class="last" src="../../../assets/Rectangle 4583.svg" alt="">
+                </div>
+                <div class="first-card-prize-respon-img">
+                    <img src="../../../assets/circle 4579.svg" alt="">
+                    <img src="../../../assets/circle 4580.svg" alt="">
+                    <img src="../../../assets/circle 4583.svg" alt="">
+                    <!-- <img class="clickable-arrow" (click)="showMyBalance()"
+                        src="../../../assets/Frame 1000002800.svg" alt=""> -->
+                </div>
+            </div>
+            <div class="first-card-prize-empty-respon"  *ngIf="!showButtonTicket">
+                <div>
+                    <img src="../../../assets/empty-state-insight.svg" alt="">
+                </div>
+                <div class="first-card-prize-empty-respon-text">
+                    <span>No Insights Yet</span>
+                    <span>Start by buying tickets</span>
+                </div>
+                
+
+            </div>
+             <div class="th">
+                <div class="first-card-text">
+                    <span>Your Insight</span>
+                </div>
+                <div class="first-card-prize" *ngIf="!showEmptyStateInsight">
+                    <div class="first-card-prize-div">
+                        <div>
+                            <span class="first-card-prize-text">Prize Won</span>
+                        </div>
+                        <div class="first-card-prize-amount-div">
+                            <span class="first-card-prize-amount">₦ {{totalAmountWon}}</span>
+                            <span class="first-card-prize-sign">~</span>
+                        </div>
+                    </div>
+                    <div class="first-card-prize-img">
+                        <img class="first" src="../../../assets/Rectangle 4579.svg" alt="">
+                        <img class="second" src="../../../assets/Rectangle 4580.svg" alt="">
+                        <img class="third" src="../../../assets/Rectangle 4581.svg" alt="">
+                        <img class="fourth" src="../../../assets/Rectangle 4582.svg" alt="">
+                        <img class="last" src="../../../assets/Rectangle 4583.svg" alt="">
+                    </div>
+                    <div class="first-card-prize-respon-img">
+                        <img src="../../../assets/circle 4579.svg" alt="">
+                        <img src="../../../assets/circle 4580.svg" alt="">
+                        <img src="../../../assets/circle 4583.svg" alt="">
+                        <img class="clickable-arrow" (click)="showMyBalance()"
+                            src="../../../assets/Frame 1000002800.svg" alt="">
+                    </div>
+                </div>
+                <div class="first-card-prize-empty"  *ngIf="showEmptyStateInsight">
+                    <img src="../../../assets/empty-state-insight.svg" alt="">
+                    <span>No Insights Yet</span>
+                    <span>Start by buying tickets to join daily draws</span>
+                </div>
+                <div class="third-card-profile">
+                    <div class="profile-pic">
+                        <img src="../../../assets/avatar.svg" alt="">
+                    </div>
+                    <div class="profile-details">
+                        <div class="profile-name">{{firstName}} {{lastName}}</div>
+                        <div class="profile-number">{{phoneNumber}}</div>
+                    </div>
+                    <div class="img-arrow" (click)="navigateToProfile()">
+                        <img src="../../../assets/arrow-profile.svg" alt="">
+                    </div>
+                </div>
+                <!-- <div class="first-card-balance" *ngIf="showBalance">
+                    <div class="first-card-balance-wallet">
+                        <span class="first-card-balance-text">Wallet Balance</span>
+                        <span class="first-card-balance-amount">₦12,000</span>
+                    </div>
+                    <div class="first-card-balance-referal">
+                        <span class="first-card-balance-text">Referal Balance</span>
+                        <span class="first-card-balance-amount">₦1,000</span>
+                    </div>
+                </div> -->
+
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+        </div>
+        <div class="second-card">
+            <div class="second-card-right">
+                <div class="second-card-right-text">
+                    <img class="secord-card-gift-icon" src="../../../assets/gift-icon-mobile.svg" alt="">
+                    <span class="second-card-game-text">
+
+                        {{items.length === 0 ? '' : "Today's game" }}
+                    </span>
+                    <span class="second-card-jolly-text">
+                        <span>
+                            {{items.length === 0 ? 'No game' : nameGame }}
+                        </span>
+                        <span>
+                            {{items.length === 0 ? ' available today' : '' }}
+                        </span>
+
+
+                    </span>
+                    <span class="second-card-text">
+                        <div>{{items.length === 0 ? 'No action now, but tomorrow' : 'Buy Surewina tickets and'}}</div>
+                        <div> {{items.length === 0 ? 'could be your lucky day!' : 'win lots of great prizes'}} </div>
+
+
+                    </span>
+                </div>
+                <div class="button-section">
+                    <img src="../../../assets/dashboard-icon.svg" alt="">
+                    <button *ngIf="showButtonTicket" class="btn-buy-ticket" (click)="navigateToPaymentTicket()">
+                        <span>BUY TICKET</span>
+                        <span>></span>
+                    </button>
+                </div>
+            </div>
+            <div class="second-card-prize" *ngIf="showButtonTicket"
+                [style.background-image]="'url(' + currentBackgroundImage + ')'" [class.fade]="true">
+                <!-- <img src="../../../assets/Property 1=Samsung HD Monitor - 4th Gen - Default.svg" alt=""> -->
+                <div class="">
+                    <button class="second-card-prize-text">Prizes</button>
+                </div>
+                <div class="arrow-section">
+                    <span class="arrow" (click)="goNext()">
+                        <span>></span>
+                    </span>
+                    <span class="arrow" (click)="goPrev()">
+                        <span>
+                            < </span>
+                        </span>
+                </div>
+                <div class="progress-bar">
+                    <span class="bar" *ngFor="let bar of bars; let i = index"
+                        [style.backgroundColor]="bar ? 'white' : 'transparent'">
+
+                    </span>
+
+
+                </div>
+            </div>
+            <div class="empty-state-prizes" *ngIf="showEmptyStateDashboard">
+
+            </div>
+        </div>
+        <!-- <div class="third-card">
+            <div class="third-card-profile-text">
+                Profile summary
+            </div>
+            <div class="third-card-complete">
+                <span>{{address ? 'Profile Complete ' : 'Complete your profile'}}</span>
+                <span> {{address ? '100%' : '50%'}}</span>
+
+            </div>
+            <div class="third-card-progress">
+                <div class="third-card-progress-bar" [ngStyle]="{
+                    'width': address ? '100%' : '50%',
+                  }">
+
+                </div>
+            </div>
+            <div class="details-container">
+                <div class="third-card-profile" (click)="navigateToProfile()">
+                    <div class="profile-pic">
+                        <img src="../../../assets/avatar.svg" alt="">
+                    </div>
+                    <div class="profile-details">
+                        <div class="profile-name">{{firstName}} {{lastName}}</div>
+                        <div class="profile-number">{{phoneNumber}}</div>
+                    </div>
+                </div>
+                <div class="location-details" (click)="updateLocationUpdate()">
+                    <div class="location-pic">
+                        <img src="../../../assets/location.svg" alt="">
+                    </div>
+                    <div>
+                        <div>Update Your</div>
+                        <div>location details</div>
+                    </div>
+                </div>
+
+            </div>
+        </div> -->
+    </div>
+
+    <div class="ticket-winner-container">
+        <div class="ticket-table">
+            <div class="ticket-button">
+                <button class="ticket-btn-text">Your Ticket History</button>
+                <button class="ticket-btn-view" *ngIf="!showEmptyStateTicket" (click)="navigateToTicketHistory()">
+                    <span>VIEW ALL</span>
+                    <span> > </span>
+                </button>
+            </div>
+            <div>
+                <div class="ticket-details" *ngFor="let ticket of allPreviousTicket">
+                    <div>
+                        <img [src]="ticket.ticketImage" alt="">
+                    </div>
+                    <div class="ticket-details-all">
+                        <span class="ticket-date">{{ticket.created.split('T')[0]}}</span>
+                        <span class="ticket-name">{{ticket.drawName}}</span>
+                        <span class="ticket-won">
+                            <span>{{ticket.numberOfTickets}} Ticket(s)</span>
+                            <span>₦ {{ticket.amount}}</span>
+                            <span>{{ticket.tierOnePrize}}, {{ticket.tierTwoPrize}}, {{ticket.tierThreePrize}}</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="empty-state-ticket" *ngIf="showEmptyStateTicket">
+                    <img src="../../../assets/empty-state-ticket.svg" alt="">
+                    <span (click)="navigateToPaymentTicket()">BUY TICKET > </span>
+                </div>
+            </div>
+        </div>
+        <div class="winner-table">
+            <div class="winner-button">
+                <button class="winner-btn-text"> Winners Board</button>
+                <button class="winner-btn-view" *ngIf="!showEmptyStateWinner" (click)="navigateToWinnerBoard()">
+                    <span>VIEW ALL</span>
+                    <span> > </span>
+                </button>
+            </div>
+            <div class="ticket-body">
+                <div class="ticket-body-inner">
+                    <!-- HEADER SECTION -->
+                    <div class="header" *ngIf="showMonth">
+                        <div *ngFor="let draw of drawResults; let drawIndex = index">
+                            <div class="header-tickets" [ngClass]="tabs == 'tab' + drawIndex ? 'active-tab' : ''">
+                                <span (click)="switchTab('tab' + drawIndex)"
+                                    [ngClass]="tabs == 'tab' + drawIndex ? 'header-tickets-text-active' : 'header-tickets-text'">
+                                    {{ draw.drawDescription || 'No Description' }}
+                                </span>
+                                <span class="header-tickets-number-active"
+                                    [ngClass]="tabs == 'tab' + drawIndex ? 'active-tab-number' : 'inactive-tab-number'">{{
+                                    draw.totalWinners }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BODY SECTION -->
+                    <div [ngSwitch]="tabs" *ngFor="let draw of drawResults; let drawIndex = index">
+                        <div *ngSwitchCase="'tab' + drawIndex">
+                            <div class="ticket-details-con">
+                                <div class="winner-details" *ngFor="let item of draw.winners.items; let i = index"
+                                    (click)="showListWinners(draw.drawId)">
+                                    <div class="ticket-details-img">
+                                        <img *ngIf="draw.prizes?.[0]?.image" [src]="draw.prizes[0].image" alt="" />
+                                    </div>
+                                    <div class="ticket-details-all">
+                                        <!-- <span class="ticket-date">
+                                            {{ draw.drawDate?.split('T')[0] || 'No Date' }}
+                                        </span>
+                                        <span class="ticket-name">
+                                            {{ item.ticketRefNo || 'No Name' }}
+                                        </span> -->
+                                        <span class="ticket-won">
+                                            <span> Won {{ item.prize }}</span>
+                                            <span>Played ₦{{ item.totalAmount }}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="empty-state-winners" *ngIf="showEmptyStateWinner">
+                <img src="../../../assets/empty-state-winner.svg" alt="">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="third-card-response">
+        <div class="third-card-profile-text">
+            Profile summary
+        </div>
+        <div class="third-card-complete">
+            <span>{{address ? 'Profile Complete ' : 'Complete your profile'}}</span>
+            <span>{{address ? '100%' : '50%'}}</span>
+
+        </div>
+        <div class="third-card-progress">
+            <div class="third-card-progress-bar" [ngStyle]="{
+                'width': address ? '100%' : '50%',
+              }">
+
+            </div>
+        </div>
+        <div class="details-container">
+
+            <div class="third-card-profile" (click)="navigateToProfile()">
+
+                <div class="profile-pic">
+                    <img src="../../../assets/avatar.svg" alt="">
+                </div>
+                <div class="profile-details">
+                    <div class="profile-name">{{firstName}} {{lastName}}</div>
+                    <div class="profile-number">{{phoneNumber}}</div>
+                </div>
+            </div>
+            <div class="location-details" (click)="updateLocationUpdate()">
+                <div class="location-pic">
+                    <img src="../../../assets/location.svg" alt="">
+                </div>
+                <div>
+                    <div>Update Your</div>
+                    <div>location details</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ticket-container-background" *ngIf="showTicketPayment" (click)="closeModalOnOutsideClick($event)">
+        <div class="buy-ticket-container" (click)="$event.stopPropagation()">
+
+            <div class="buy-ticket-header">
+                <div class="img-dashboard" (click)="navigateToDashboard()">
+                    <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
+                </div>
+                <div class="buy-ticket-header-text">
+                    <span class="bigger-text">Win something big today</span>
+                    <span class="small-text">The more tickets you buy, the more your chances of winning</span>
+                </div>
+                <div class="img-question">
+                    <img src="../../../assets/question-ticket.svg" alt="">
+                </div>
+
+            </div>
+            <div class="buy-ticket-container-overall">
+                <div class="ticket-error" *ngIf="ticketError">
+                    <span>Total ticket bought cannot be 0!</span>
+                </div>
+                <div class="img">
+                    <img [src]="ticketImage" alt="">
+                </div>
+                <div class="buy-ticket-count">
+                    <div class="ticket-price-container">
+                        <span>Ticket Unit Price</span>
+                        <span>₦{{unitPrice}}</span>
+                    </div>
+                    <div class="ticket-count-container">
+                        <span class="count">How Many Tickets</span>
+                        <div class="count-number">
+                            <button (click)="decrement()">-</button>
+                            <span class="ticket-number">{{ticketCount}}</span>
+                            <button (click)="increment()">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ticket-bought-container">
+                    <div>
+                        <div class="ticket-bought">
+                            <span>Total Ticket Bought</span>
+                            <span class="ticket-amount"> ₦{{totalPrice}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-ticket">
+                <button (click)="navigateToMakePayment()">
+                    <span>PAY FOR TICKET</span>
+                    <span> > </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="loader" *ngIf="loading">
+        <app-loader />
+    </div>
+    <div class="ticket-container-background" *ngIf="showlocationUpdate" (click)="closeModalOnOutsideClick($event)">
+        <div class="buy-ticket-container" (click)="$event.stopPropagation()">
+            <div class="buy-ticket-header">
+                <div class="img-dashboard" (click)="closeAllModal()">
+                    <img src="../../../assets/dashboard-icon-ticket.svg" alt="">
+                </div>
+                <div class="buy-ticket-header-text">
+                    <span class="bigger-text">Update your Location</span>
+                </div>
+                <div class="img-question">
+                    <img src="../../../assets/question-ticket.svg" alt="">
+                </div>
+
+            </div>
+
+            <div class="input">
+                <p class="error"> {{showError}}</p>
+
+                <input type="text" placeholder="Enter your location" [(ngModel)]="updateAddress">
+                <input type="password" placeholder="Enter your password" [(ngModel)]="password">
+            </div>
+
+            <div class="note">
+                <span>Kindly note that all the information you provided is safe with us.
+                    We will not share your information to any third party without your concent</span>
+            </div>
+
+            <div class="footer-ticket">
+                <button (click)="completeLocation()">
+                    <span>COMPLETE PROFILE SETUP</span>
+                    <span> > </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="ticket-container-background" *ngIf="showMakePayment" (click)="closeModalOnOutsideClick($event)">
+        <div class="buy-ticket-container" (click)="$event.stopPropagation()">
+            <div class="buy-ticket-header">
+                <div class="img-dashboard" (click)="closeModal()">
+                    <img src="../../../assets/go-back-btn-icon.svg" alt="">
+                </div>
+                <div class="buy-ticket-header-text">
+                    <span class="bigger-text">Make payment for this ticket</span>
+                    <span class="small-text">Select your payment method and make payment</span>
+                </div>
+                <div class="img-question">
+                    <img src="../../../assets/question-ticket.svg" alt="">
+                </div>
+
+            </div>
+            <div>
+                <div class="total-ticket-container">
+                    <span style="color: red;">{{showError}}</span>
+                    <span class="total-ticket-name">Total Ticket </span>
+                    <span class="total-ticket-number">₦{{totalPrice}}</span>
+                </div>
+            </div>
+            <div class="pay-with-transfer-container">
+                <!-- <div class="pay-with-transfer">
+                    <div class="pay-with-transfer-img">
+                        <img src="../../../assets/transfer-icon.svg" alt="">
+                    </div>
+                    <div class="transfer-details">
+                        <span class="transfer-details-text">Pay with Transfer</span>
+                        <span class="transfer-details-number">1000000342, Surewina LTD, Moniepoint</span>
+                    </div>
+                </div> -->
+            </div>
+            <div class="pay-with-credit-card">
+                <div class="pay-with-credit-card-head">
+                    <img src="../../../assets/Credit-Cards.svg" alt="">
+                    <span>New credit or debit card</span>
+                </div>
+                <div>
+                    <form>
+                        <div class="card-number-container">
+                            <label for="">Card Number</label>
+                            <input type="number" placeholder="Enter your card number">
+                            <div class="img-card-type">
+                                <img src="../../../assets/Credit-Cards.svg" alt="">
+                            </div>
+                        </div>
+                        <div class="card-details-container">
+                            <div class="card-details">
+                                <label>Expiry Date</label>
+                                <input type="text" placeholder="Enter Expiry date" name="" id="">
+                            </div>
+                            <div class="card-details">
+                                <label>CVV</label>
+                                <input type="number" placeholder="Enter CVV" name="" id="">
+                            </div>
+                            <div class="card-details">
+                                <label>Postal Code</label>
+                                <input type="number" placeholder="Enter Postal Code" name="" id="">
+                            </div>
+                        </div>
+                        <div class="save-card-details">
+                            <input type="checkbox" name="" id="">
+                            <span>Save this credit card for future use</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-ticket">
+                <button (click)="navigateToModal()">
+                    <span>MAKE PAYMENT</span>
+                    <span> > </span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <div class="ticket-container-background" *ngIf="showLoader">
+        <div class="modal">
+            <div class="container-modal">
+                <div class="modal-img">
+                    <img src="../../../assets/Group 1000002391.svg" alt="">
+                    <img src="../../../assets/Group 1000002392.svg" alt="">
+                </div>
+                <div class="tick-container">
+                    <section class="animated_check_circle">
+                        <svg viewBox="0 0 130.2 130.2" class="animated_check_circle">
+                            <circle class="path circle" fill="none" stroke="#10B981" stroke-width="6"
+                                stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1" />
+                            <polyline class="path check" fill="none" stroke="#10B981" stroke-width="6"
+                                stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5" />
+                        </svg>
+                    </section>
+                </div>
+                <div class="modal-text">
+                    <h1>You have successfully</h1>
+                    <h1> bought your winning ticket</h1>
+                    <span>Sit back, relax and stay tuned for our monthly </span>
+                    <span> announcement of the lottery winners</span>
+                </div>
+                <div class="modal-btn">
+                    <button (click)="ticketBoughtSucess()">Ok, Got it</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
