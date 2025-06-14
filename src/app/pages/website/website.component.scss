@@ -61,6 +61,10 @@
   overflow-x: hidden;
 }
 
+.container::-webkit-scrollbar {
+  width: 0;
+}
+
 .first_section {
   background-image: url(../../../assets/background_pattern.svg);
   background-repeat: no-repeat;
