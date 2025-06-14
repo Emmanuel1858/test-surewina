@@ -1,22 +1,13 @@
-<div class="body_container">
-  <div class="header">
-    <div>
-      <img src="../../../assets/Sure Wina Logo - Blue.svg" alt="">
+<header>
+  <div class="container header">
+    <img src="./assets/jollywina-logo.svg">
+    <div class="links">
+      <a>Home</a>
+      <a>FAQ's</a>
     </div>
-    <div class="header_text">
-      <span>Home</span>
-      <!-- <span>FAQ’s</span> -->
-    </div>
-
-    <div class="header_btn_mobile" (click)="openMenu()">
-      <img src="../../../assets/hamburger-icon-website.svg" alt="">
-    </div>
-    <div class="header_btn_laptop">
-      <button (click)="navigateToCreatAccount()">
-        <span class="header_btn_text">GET STARTED</span>
-        <span><img src="../../../assets/grommet-icons_form-next.svg" alt=""></span>
-      </button>
-    </div>
+    <button (click)="navigateToCreatAccount()" class="btn outline-blue">
+      <a> GET STARTED <img src="./assets/right-arrow-icon.png" alt=""> </a>
+    </button>
   </div>
   <div class="container">
     <div class="first_section">
@@ -37,442 +28,256 @@
           <span>60k+ users already joined</span>
         </div>
       </div>
-      <div class="first_section_last">
-        <div class="first_section_last_first">
-          <div class="first_section_last_first_img">
-            <img [src]="currentImage" alt="">
+
+      <div class="right-side">
+        <div class="right-top">
+          <img src="./assets/jolly-user-man.png" alt="">
+          <div class="prize-collection">
+            <img class="gift-icon" src="./assets/gift-box-icon.svg" alt="">
+            <div class="prize-details-medium">
+              <div class="prize-earnings">
+                <p> Prizes Won </p>
+                <h2> ₦738k <span>~</span> </h2>
+              </div>
+              <div class="prize-carousel">
+                <img src="./assets/prize-carousel.png" alt="">
+              </div>
+            </div>
           </div>
-          <div class="first_section_last_prize">
-            <div>
-              <img class="first_section_last_prize_gift" [src]="giftIcon" alt="">
-              <div class="first_section_last_prize_sub">
-                <div class="first_section_amount_prize">
-                  <span class="first_section_last_prize_sub_text">Prize won</span>
-                  <span class="first_section_last_prize_sub_amount">₦ 738k <span style="color: #FFB951;">~</span> </span>
+        </div>
+        <div class="right-bottom">
+          <div class="ticket-collection">
+            <div class="prize-details-small">
+              <img class="prize-item" src="../../../assets/prize-item.png" alt="">
+              <div class="prize-details">
+                <p class="date"> 03rd June, 2024 </p>
+                <p class="lottery-name"> Jolly Jackpot Lottery </p>
+                <div class="ticket-btn-details">
+                  <button class="ticket-btn">
+                    11 tickets
+                  </button>
+                  <button class="ticket-btn">
+                    ₦ 11,000
+                  </button>
                 </div>
-                <div>
-                  <img src="../../../assets/all_prizes_won.svg" alt="">
-                </div>
               </div>
             </div>
-
+            <img class="gift-icon" src="./assets/ticket-icon.png" alt="">
           </div>
-        </div>
-        <div class="first_section_last_second">
-          <div>
-            <div class="ticket_bought">
-              <div><img class="ticket_body_img" src="../../../assets/blender-tier1.svg" alt=""></div>
-              <div class="ticket_bought_details">
-                <span class="ticket_bought_details_date">03rd June, 2024</span>
-                <span>Jolly Jackpot Lottery</span>
-                <div class="ticket_bought_amount">
-                  <span>11 tickets</span>
-                  <span>₦ 11,000</span>
-                </div>
-              </div>
-            </div>
-            <div class="gifts-icon"> <img class="second_prize_gift" [src]="secondGiftIcon" alt=""></div>
-          </div>
-          <div class="first_section_last_first_img">
-            <img [src]="secondCurrentImage" alt="">
-          </div>
-        </div>
-      </div>
-      <div class="first_section_last_mobile">
-        <img src="../../../assets/first_img_placeholder.svg" alt="">
-        <img src="../../../assets/second_img_placeholder.svg" alt="">
-      </div>
-    </div>
-    <div class="second_section">
-      <div class="second_section_text">
-        REGISTER WITHIN 5MINUTES TO BECOME A WINNER
-      </div>
-      <div class="step_container">
-        <div class="second_section_step" *ngFor="let step of stepsToRegister">
-          <div class="step_number">
-            {{step.step}}
-          </div>
-          <div class="step_name">
-            {{step.name}}
-          </div>
-          <div class="step_direction">
-            {{step.desc}}
-          </div>
-        </div>
-      </div>
-      <div class="second_section_btn">
-        <button (click)="selectYourProfile()"> GET STARTED > </button>
-      </div>
-    </div>
-    <div class="third_section">
-      <div class="second-card-prize" [style.background-image]="'url(' + currentBackgroundImage + ')'"
-        [class.fade]="true">
-        <!-- <img src="../../../assets/Property 1=Samsung HD Monitor - 4th Gen - Default.svg" alt=""> -->
-        <div class="">
-          <button class="second-card-prize-text">Prizes</button>
-        </div>
-        <div class="arrow-section">
-          <span class="arrow" (click)="goPrev()">
-            <span>
-              < </span>
-            </span>
-            <span class="arrow" (click)="goNext()">
-              <span>
-                > </span>
-            </span>
-        </div>
-        <div class="progress-bar">
-          <span class="bar" *ngFor="let bar of bars; let i = index"
-              [style.backgroundColor]="bar ? 'white' : 'transparent'">
-
-          </span>
-
-
-      </div>
-      </div>
-      <div class="third_section_right">
-        <span class="first_child">Everyone is a winner</span>
-        <span class="third_section_game_name">Play today’s game</span>
-        <span class="third_section_game_name_sub">SURE JACKPOT</span>
-        <span class="third_section_note">Affordable tickets, amazing prizes – a chance to change your life</span>
-        <div class="second_section_btn">
-          <button (click)="navigateToPaymentTicket()">BUY YOUR TICKET NOW > </button>
+          <img src="../../../assets/jolly-user-woman.png" alt="">
         </div>
       </div>
     </div>
-    <div class="fourth_section">
-      <div class="next-draw">
-        <span>November</span>
-        <span class="next-draw-date">16</span>
-        <span>NEXT DRAW</span>
-      </div>
-      <div class="fourth_section_winner_board">
+  </section>
+  <!-- section-2 -->
+  <section class="blue-gradient">
+    <div class="section section-2">
+      <ng-container class="section-2-content">
+        <h2> Register within 5minutes
+          to become a winner
+        </h2>
+        <div class="how-to-container">
+          <div class="how-to-box">
+            <h3> 1 </h3>
 
-        <app-winner-board-website />
-      </div>
-      <div class="fourth_section_statistics">
-        <div>
-          <img src="../../../assets/winners_board_icon.svg" alt="">
+            <h4> Create Account </h4>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed </p>
+          </div>
+          <div class="how-to-box">
+            <h3> 2 </h3>
+            <h4> Buy Ticket </h4>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed </p>
+          </div>
+          <div class="how-to-box">
+            <h3> 3 </h3>
+            <h4> Win Big Prizes </h4>
+            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed </p>
+          </div>
         </div>
-        <div class="fourth_winner_stats">
-          <span>Total Payout</span>
-          <span>₦ 1,212,000</span>
-        </div>
-        <div class="fourth_winner_stats">
-          <span>Winners</span>
-          <span>2.5k</span>
-        </div>
+        <button class="btn-white-bg">
+          <a> Buy Your Ticket Now <img src="./assets/right-arrow-icon.png" alt=""> </a>
 
+        </button>
+      </ng-container>
+    </div>
+  </section>
+  <!-- section-3 -->
+  <section>
+    <div class="section section-3">
+      <img class="half-gift" src="../../../assets/half-gift.png" alt="">
+      <div class="section-3-content">
+        <div class="content-1">
+          <div class="content-1-top">
+            <button class="pseudo-btn"> Prizes </button>
+            <div class="switch-cta-btn">
+              <img src="../../../assets/cta-arrow-left.png" alt="">
+              <img src="../../../assets/cta-arrow-right.png" alt="">
+            </div>
+          </div>
+          <div class="content-1-bottom">
+            <h2> Suzuki Tricycle - Keke napep </h2>
+            <div class="directionals">
+            </div>
+            </div>
+            </div>
+
+        <div class="content-2">
+          <div class="top">
+            <button class="btn">
+              <a> Everyone is a winner </a>
+            </button>
+            <p>Play today’s game <br> <span> JOLLY JACKPOT </span></p>
+          </div>
+          <div class="bottom">
+            <p> Affordable tickets, amazing prizes – a chance to change your life </p>
+            <button class="btn outline-blue">
+              <a> BUY YOUR TICKET NOW <img src="./assets/right-arrow-icon.png" alt=""> </a>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="fifth_section">
-      <div class="fifth_section_heading">
-        <span>What people are saying about Surewina</span>
-        <span>Hear from our lucky winners</span>
+  </section>
+  <!-- section-4 -->
+  <section>
+    <div class="draw-details">
+      <div class="draw-top">
+        <p> November </p>
+        <h2> 16 </h2>
       </div>
-      <div class="fifth_section_video">
-        <span style="cursor: pointer;">
-          <img src="../../../assets/left-arrow.svg" alt="">
-        </span>
-        <video width="600" height="365" controls>
-          <source src="../../../assets/movie.mp4" type="video/mp4">
-        </video>
-        <span style="cursor: pointer;">
-          <img src="../../../assets/right-arrow.svg" alt="">
-        </span>
+      <div class="draw-bottom">
+        <p> next draw </p>
       </div>
+    </div>
+    <div class="section-4">
+      <div class="top">
+        <img src="../../../assets/dashboard-sample.png" alt="">
+      </div>
+      <hr>
+      <div class="bottom">
+        <div class="circle-img">
+          <img src="../../../assets/circle-img.png" alt="">
+        </div>
+        <div class="details-container">
+          <div class="details">
+            <p> Total Payout </p>
+            <h2> ₦ 1,212,000 </h2>
+          </div>
+          <div class="details">
+            <p> Winners </p>
+            <h2> 2.5k </h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- section-5 -->
+  <section class="blue-gradient">
+    <div class="section section-5">
+      <div class="text-header">
+        <h2> What people are saying about JollyWina </h2>
+        <p> Hear from our lucky winners </p>
+      </div>
+      <div class="video-testimonies">
+        <img src="../../../assets/cta-arrow-left.png" alt="">
+        <div class="video-container">
+          <img src="../../../assets/video-group.png" alt="">
+        </div>
+        <img src="../../../assets/cta-arrow-right.png" alt="">
+      </div>
+    </div>
+  </section>
+  <!-- section-6 -->
+  <section>
+    <div class="section section-6">
+      <div class="text-container">
+        <button class="btn">
+          DON’T JUST TAKE OUR WORD FOR IT 
+        </button>
+        <h2> More thoughts from our users </h2>
+      </div>
+      <div class="card-slides-container">
+        <div class="card-slides">
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min.</h3>
+          <div class="user">
+            <img src="assets/avatar-icon-3.png" alt="">
+            <div class="user-details">
+              <h3>Chidozie Kolawole</h3>
+              <p>CEO Chidoz Interiors</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-slides">
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min.</h3>
+          <div class="user">
+            <img src="assets/avatar-icon-1.png" alt="">
+            <div class="user-details">
+              <h3>Chidozie Kolawole</h3>
+              <p>CEO Chidoz Interiors</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-slides">
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min.</h3>
+          <div class="user">
+            <img src="assets/avatar-icon-2.png" alt="">
+            <div class="user-details">
+              <h3>Chidozie Kolawole</h3>
+              <p>CEO Chidoz Interiors</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-slides">
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min.</h3>
+          <div class="user">
+            <img src="assets/avatar-icon-3.png" alt="">
+            <div class="user-details">
+              <h3>Chidozie Kolawole</h3>
+              <p>CEO Chidoz Interiors</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-slides">
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min.</h3>
+          <div class="user">
+            <img src="assets/avatar-icon-2.png" alt="">
+            <div class="user-details">
+              <h3>Chidozie Kolawole</h3>
+              <p>CEO Chidoz Interiors</p>
+            </div>
+          </div>
+        </div>
+        <div class="card-slides">
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad min.</h3>
+          <div class="user">
+            <img src="assets/avatar-icon-1.png" alt="">
+            <div class="user-details">
+              <h3>Chidozie Kolawole</h3>
+              <p>CEO Chidoz Interiors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-    </div>
-    <div class="sixth_section">
-      <div class="sixth_section_text">DON’T JUST TAKE OUR WORD FOR IT</div>
-      <div class="sixth_section_text_sub">More thoughts from our users</div>
-      <div class="sixth_section_quote_all_main">
-        <div class="sixth_section_quote_all">
-          <div class="sixth_section_quote_container">
-            <span class="sixth_section_quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad min.</span>
-            <div class="sixth_section_quote_details">
-              <img src="../../../assets/Male.svg" alt="">
-              <div class="sixth_section_quote_name">
-                <span>Isiak Kolawole</span>
-                <span>eazy@gmail.com</span>
-              </div>
-            </div>
-          </div>
-          <div class="sixth_section_quote_container">
-            <span class="sixth_section_quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad min.</span>
-            <div class="sixth_section_quote_details">
-              <img src="../../../assets/Male.svg" alt="">
-              <div class="sixth_section_quote_name">
-                <span>Isiak Kolawole</span>
-                <span>eazy@gmail.com</span>
-              </div>
-            </div>
-          </div>
-          <div class="sixth_section_quote_container">
-            <span class="sixth_section_quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad min.</span>
-            <div class="sixth_section_quote_details">
-              <img src="../../../assets/Male.svg" alt="">
-              <div class="sixth_section_quote_name">
-                <span>Isiak Kolawole</span>
-                <span>eazy@gmail.com</span>
-              </div>
-            </div>
-          </div>
-          <div class="sixth_section_quote_container">
-            <span class="sixth_section_quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad min.</span>
-            <div class="sixth_section_quote_details">
-              <img src="../../../assets/Male.svg" alt="">
-              <div class="sixth_section_quote_name">
-                <span>Isiak Kolawole</span>
-                <span>eazy@gmail.com</span>
-              </div>
-            </div>
-          </div>
-          <div class="sixth_section_quote_container">
-            <span class="sixth_section_quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad min.</span>
-            <div class="sixth_section_quote_details">
-              <img src="../../../assets/Male.svg" alt="">
-              <div class="sixth_section_quote_name">
-                <span>Isiak Kolawole</span>
-                <span>eazy@gmail.com</span>
-              </div>
-            </div>
-          </div>
-        </div>
+<footer>
+  <div class="footer">
+    <div class="footer-top"> 
+      <div class="left-group">
+        <img src="../../../assets/jolly-winna-footer-logo.svg" alt="">
+        <img src="../../../assets/social-icons-group.png" alt="">
       </div>
-      <div class="sixth_section_btn">
-        <span><img src="../../../assets/Back.svg" alt=""></span>
-        <span><img src="../../../assets/Next.svg" alt=""></span>
+      <div class="right-group">
+        <h2> Quicklinks </h2>
+        <p> FAQ's </p>
+        <p> Resources </p>
       </div>
     </div>
-    <div class="footer_section">
-      <div class="footer_section_upper">
-        <div class="footer_section_container">
-          <div><img src="../../../assets/footer-logo.svg" alt=""></div>
-          <div class="footer_socials">
-            <img src="./../../../assets/gmail_icon.svg" alt="">
-            <img src="../../../assets/instagram_icon.svg" alt="">
-            <img src="../../../assets/twitter_icon.svg" alt="">
-            <img src="../../../assets/facebook_icon.svg" alt="">
-          </div>
-        </div>
-        <div class="footer_link">
-          <span>Quicklinks</span>
-          <span>FAQ’s</span>
-          <span>Resources</span>
-        </div>
-      </div>
-      <div class="footer_section_lower">
-        <div>© 2024 All rights Reservered</div>
-        <div>Surewina.com</div>
-      </div>
+    <div class="footer-bottom">
+      <p> © 2024 All rights Reservered </p>
+      <p> Jollywina.com </p>
     </div>
   </div>
-</div>
-
-<div class="menu-container" *ngIf="showMenu">
-  <div class="menu-header">
-      <h1>Menu</h1>
-      <img (click)="closeMenu()" src="../../../assets/Frame 1000003973.svg" alt="">
-  </div>
-  <div class="menu-options">
-      <!-- <div class="all-options" >
-          <img src="../../../assets/home-icon.svg" alt="">
-          <span>Home</span>
-      </div> -->
-      <button (click)="selectYourProfile()">
-        <span>GET STARTED</span>
-        <span> <img src="../../../assets/grommet-icons_form-next.svg" alt=""> </span>
-      </button>
-  </div>
-</div>
-
-<!-- <div class="loader" *ngIf="loading">
-  <app-loader />
-</div> -->
-
-<div class="ticket-container-background" *ngIf="showTicketPayment" (click)="closeModalOnOutsideClick($event)">
-  <div class="buy-ticket-container" (click)="$event.stopPropagation()">
-    <div class="buy-ticket-header">
-      <div class="img-dashboard" (click)="navigateToDashboard()">
-        <img src="../../../assets/go-back-btn-icon.svg" alt="">
-      </div>
-      <div class="buy-ticket-header-text">
-        <span class="bigger-text">Win something big today</span>
-        <span class="small-text">The more tickets you buy, the more your chances of winning</span>
-      </div>
-      <div class="img-question">
-        <img src="../../../assets/question-ticket.svg" alt="">
-      </div>
-
-    </div>
-    <div class="buy-ticket-container-scroll">
-      <div class="img">
-        <img *ngIf="!ticketImage" src="../../../assets/empty-state-ticket.svg" alt="">
-        <img *ngIf="ticketImage" [src]="ticketImage" alt="">
-      </div>
-      <div class="buy-ticket-count">
-        <div class="ticket-price-container">
-          <span>Ticket Unit Price</span>
-          <span>₦ {{unitPrice}}</span>
-        </div>
-        <div class="ticket-count-container">
-          <span class="count">How Many Tickets</span>
-          <div class="count-number">
-            <button (click)="decrement()">-</button>
-            <span class="ticket-number">{{ticketCount}}</span>
-            <button (click)="increment()">+</button>
-          </div>
-        </div>
-      </div>
-      <div class="ticket-bought-container">
-        <div>
-          <div class="ticket-bought">
-            <span>Total Ticket </span>
-            <span class="ticket-amount">₦{{totalPrice}}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="input">
-        <!-- <span *ngIf="showAddressError" style="color: red;">Email or phone number is required!</span> -->
-        <span *ngIf="showTicketError" style="color: red;">Total ticket bought cannot be zero!</span>
-        <!-- <span>Note: If you register you won't have to fill this again</span> -->
-        <!-- <input [(ngModel)]="identifier" type="text" name="" id=""
-          placeholder="Enter your email address or phone number"> -->
-      </div>
-    </div>
-    <div class="footer-ticket">
-      <button (click)="navigateToMakePayment()">
-        <span>PAY FOR TICKET</span>
-        <span> > </span>
-      </button>
-    </div>
-
-  </div>
-</div>
-<div class="ticket-container-background" *ngIf="showMakePayment" (click)="closeModalOnOutsideClick($event)">
-  <div class="buy-ticket-container" (click)="$event.stopPropagation()">
-    <div class="buy-ticket-container-scroll">
-    <div class="buy-ticket-header">
-      <div class="img-dashboard" (click)="navigateToTicketPayment()">
-        <img src="../../../assets/go-back-btn-icon.svg" alt="">
-      </div>
-      <div class="buy-ticket-header-text">
-        <span style="color: red;">{{showError}}</span>
-        <span class="bigger-text">Make payment for this ticket</span>
-        <span class="small-text">Select your payment method and make payment</span>
-      </div>
-      <div class="img-question">
-        <img src="../../../assets/question-ticket.svg" alt="">
-      </div>
-
-    </div>
-    <div>
-      <div class="total-ticket-container">
-        <span class="total-ticket-name">Total Ticket</span>
-        <span class="total-ticket-number">₦{{totalPrice}}</span>
-      </div>
-    </div>
-    <!-- <div class="pay-with-transfer-container">
-      <div class="pay-with-transfer">
-        <div class="pay-with-transfer-img">
-          <img src="../../../assets/transfer-icon.svg" alt="">
-        </div>
-        <div class="transfer-details">
-          <span class="transfer-details-text">Pay with Transfer</span>
-          <span class="transfer-details-number">1000000342, Surewina LTD, Moniepoint</span>
-        </div>
-      </div>
-    </div> -->
-    <div class="pay-with-credit-card">
-      <div class="pay-with-credit-card-head">
-        <img src="../../../assets/Credit-Cards.svg" alt="">
-        <span>New credit or debit card</span>
-      </div>
-      <div>
-        <form>
-          <div class="card-number-container">
-            <label for="">Card Number</label>
-            <input type="number" placeholder="Enter your card number">
-            <div class="img-card-type">
-              <img src="../../../assets/Credit-Cards.svg" alt="">
-            </div>
-          </div>
-          <div class="card-details-container">
-            <div class="card-details">
-              <label>Expiry Date</label>
-              <input type="text" placeholder="Enter Expiry date" name="" id="">
-            </div>
-            <div class="card-details">
-              <label>CVV</label>
-              <input type="number" placeholder="Enter CVV" name="" id="">
-            </div>
-            <div class="card-details">
-              <label>Postal Code</label>
-              <input type="number" placeholder="Enter Postal Code" name="" id="">
-            </div>
-          </div>
-          <div class="save-card-details">
-            <input type="checkbox" name="" id="">
-            <span>Save this credit card for future use</span>
-          </div>
-        </form>
-      </div>
-      <div class="input">
-        <span *ngIf="showAddressError" style="color: red;">Email is required!</span>
-        <!-- <span *ngIf="showTicketError" style="color: red;">Total ticket bought cannot be zero!</span> -->
-        <span class="note">Note: If you register, you won't have to fill this again</span>
-        <input [(ngModel)]="identifier" type="text" name="" id="" placeholder="Enter your email address">
-        <input type="text" placeholder="Enter your phone number (Optional)">
-      </div>
-    </div>
-  </div>
-    <div class="footer-ticket">
-      <button (click)="navigateToModal()">
-        <span>MAKE PAYMENT</span>
-        <span> > </span>
-      </button>
-    </div>
-
-  </div>
-</div>
-<div class="ticket-container-background" *ngIf="showLoader">
-  <div class="modal">
-    <div class="container-modal">
-      <div class="modal-img">
-        <img src="../../../assets/Group 1000002391.svg" alt="">
-        <img src="../../../assets/Group 1000002392.svg" alt="">
-      </div>
-      <div class="tick-container">
-        <section class="animated_check_circle">
-          <svg viewBox="0 0 130.2 130.2" class="animated_check_circle">
-            <circle class="path circle" fill="none" stroke="#10B981" stroke-width="6" stroke-miterlimit="10" cx="65.1"
-              cy="65.1" r="62.1" />
-            <polyline class="path check" fill="none" stroke="#10B981" stroke-width="6" stroke-linecap="round"
-              stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5" />
-          </svg>
-        </section>
-      </div>
-      <div class="modal-text">
-        <h1>You have successfully</h1>
-        <h1> bought your winning ticket</h1>
-        <span>Sit back, relax and stay tuned for our monthly </span>
-        <span> announcement of the lottery winners</span>
-      </div>
-      <div class="modal-btn">
-        <button (click)="navigateToDashboard()">Ok, Got it</button>
-      </div>
-    </div>
-  </div>
-</div>
+</footer>
