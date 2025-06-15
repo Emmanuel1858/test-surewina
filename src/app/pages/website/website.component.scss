@@ -74,12 +74,12 @@
 
 .first_section {
   background-image: url(../../../assets/background_pattern.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 97vh;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // height: 97vh;
   display: flex;
   justify-content: space-between;
-  padding: 80px 55px 30px;
+  padding: 102px 55px 30px;
 }
 
 .first_section_first {
@@ -103,7 +103,8 @@
   color: #000;
   font-weight: 900;
   font-size: 71px;
-  width: 100%;
+  // width: 100%;
+  width: 38rem;
   line-height: 80px;
 }
 
@@ -1367,7 +1368,7 @@ input[type=number] {
     color: #000;
     font-weight: 900;
     font-size: 53px;
-    width: 100%;
+    width: 28rem;
     line-height: 60px;
   }
 
@@ -1410,12 +1411,12 @@ input[type=number] {
   }
 
   .first_section_last_first_img {
-    width: 31%;
+    // width: 31%;
   }
 
   .first_section_last_second {
     display: flex;
-    margin-top: 50px;
+    // margin-top: 50px;
     gap: 15px;
     justify-content: flex-end;
   }
@@ -1432,7 +1433,7 @@ input[type=number] {
 @media (max-width: 1252px) {
 
   .first_section_last_first_img {
-    width: 25%;
+    // width: 25%;
   }
 
   .first_section_last_prize_sub {
@@ -1453,7 +1454,7 @@ input[type=number] {
     color: #000;
     font-weight: 900;
     font-size: 41px;
-    width: 100%;
+    width: 20rem;
     line-height: 48px;
   }
 
@@ -1478,33 +1479,33 @@ input[type=number] {
     padding: 10px 20px;
     margin-top: 20px;
     border-radius: 10px;
-    width: auto;
+    // width: auto;
   }
 
   .first_section_last_second {
     display: flex;
-    margin-top: 50px;
-    gap: 15px;
+    // margin-top: 50px;
+    gap: 10px;
     justify-content: flex-end;
   }
 
   .first_section_last_first {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     justify-content: flex-end;
   }
 
   .first_section_last_first_img {
-    width: 20%;
+    // width: 20%;
   }
 
   .first_section {
     // background-image: url(background_pattern.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
+    // background-repeat: no-repeat;
+    // background-size: cover;
     display: flex;
     justify-content: space-between;
-    height: 73vh;
+    // height: 73vh;
     padding: 40px 30px 30px;
   }
 
