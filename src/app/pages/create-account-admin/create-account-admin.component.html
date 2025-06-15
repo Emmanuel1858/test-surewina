@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="container-img">
+        <img
+        class="img"
+        *ngFor="let image of images; let i = index"
+        [class.active]="i === activeIndex"
+        [src]="image"
+        alt="Carousel Image"
+      />
+
+    </div>
+
+    <div class="login-details">
+        <div class="login-details-container">
+            <div class="first-details">
+                <div class="container-step">
+                    <span>STEP 1</span>
+                </div>
+                <div>
+                    <h1 class="heading">Lets Get Started</h1>
+                    <span class="heading-sub">Please provide your personal information</span>
+                    <div class="icons">
+                        <span>
+                            <!-- <img class="google-icon" src="../../../assets/Google Logos.svg" alt=""> -->
+                        </span>
+                        <span>
+                            <!-- <img class="facebook-icon" src="../../../assets/logos_facebook.svg" alt=""> -->
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="all-inputs-container">
+            <div class="all-inputs">
+                <input type="text" placeholder="First name" [(ngModel)]="firstName" 
+                [class.error-border]="formSubmitted && isEmpty(firstName)">
+                <input type="text" placeholder="Last name" [(ngModel)]="lastName" 
+                [class.error-border]="formSubmitted && isEmpty(lastName)">
+                <input type="text" maxlength="15" placeholder="Phone number" [(ngModel)]="phoneNumber"
+                (input)="onPhoneInput($event)" 
+                [class.error-border]="formSubmitted && (isEmpty(phoneNumber) || isInvalidPhoneNumber())">
+                <input type="text" placeholder="Email Address" [(ngModel)]="emailAddress"
+                [class.error-border]="formSubmitted && (isEmpty(emailAddress) || !isValidEmail(emailAddress))">
+                <!-- <span>Optional</span> -->
+                <input type="text" placeholder="Who referred you? (Optional)"  [(ngModel)]="referred">
+                <div class="state-lga">
+                    
+                    <div class="input-state" (click)="showStates = !showStates">
+                      <input  [class.error-border]="formSubmitted && isEmpty(selectedState)" type="text" placeholder="Select state" [value]="selectedState" [(ngModel)]="selectedState" readonly>
+                      <img src="../../../assets/dropdown-icon-login.svg" alt="">
+                      <ul *ngIf="showStates" class="dropdown">
+                        <li *ngFor="let state of states" (click)="onStateSelect(state); showStates = false">{{ state }}</li>
+                      </ul>
+                    </div>
+                  
+                    <!-- LGA DROPDOWN -->
+                    <div class="input-lga" (click)="showLgas = !showLgas" >
+                      <input [class.error-border]="formSubmitted && isEmpty(selectedLga)" type="text" placeholder="Local Government" [value]="selectedLga" [(ngModel)]="selectedLga" readonly>
+                      <img src="../../../assets/dropdown-icon-login.svg" alt="">
+                      <ul *ngIf="showLgas" class="dropdown">
+                        <li *ngFor="let lga of lgas" (click)="onLgaSelect(lga); showLgas = false">{{ lga }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+            </div>
+        </div>
+            <div class="footer">
+                <div class="all-text">
+                    <span class="have-account">Already have an account?</span>
+                    <span class="log-in" (click)="navigateToLogin()">Log in</span>
+                </div>
+                <div class="buttons">
+                    <button class="btn-back" (click)="navigateBack()">Go Back</button>
+                    <button class="btn-cont" (click)="navigateToPassword()">Continue <img src="../../../assets/grommet-icons_form-next.svg"
+                            alt=""></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="loader" *ngIf="showLoader">
+    <app-loader/>
+</div>
+
+<div class="container">
+    <div class="container-img">
+        <img class="img" *ngFor="let image of images; let i = index" [class.active]="i === activeIndex" [src]="image"
+            alt="Carousel Image" />
+
+    </div>
+
+    <div class="login-details">
+        <div class="login-details-container">
+            <div class="first-details">
+                <!-- <div class="container-step">
+                    <span>STEP 1</span>
+                </div> -->
+                <div>
+                    <h1 class="heading">Login</h1>
+                    <span class="heading-sub">Provide your credentials to login</span>
+                    <div class="icons">
+                        <span>
+                            <!-- <img class="google-icon" src="../../../assets/Google Logos.svg" alt=""> -->
+                        </span>
+                        <span>
+                            <!-- <img class="facebook-icon" src="../../../assets/logos_facebook.svg" alt=""> -->
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="all-inputs-container">
+                <p class="error" *ngIf="formSubmitted">Both fields are required!</p>
+                <p class="error" *ngIf="showErrorMessage">{{showError}}</p>
+                <div class="all-inputs">
+                    <input type="text" placeholder="Email address or Phone number" [(ngModel)]="emailAddress"
+                        [class.error-border]="formSubmitted">
+                    <div class="input-pass">
+                        <input [type]="showPassword ? 'text' : 'password'" placeholder="Password"
+                            [class.error-border]="formSubmitted" [(ngModel)]="password">
+                        <!-- <i class="fa eye-icon" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+                            (click)="togglePasswordVisibility()"></i> -->
+                            <img 
+                            class="eye-icon" 
+                            [src]="showPassword ? 'assets/view-off.svg' : 'assets/view.svg'" 
+                            (click)="togglePasswordVisibility()" 
+                            alt="Toggle Password Visibility"
+                        />
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="all-text">
+                    <span class="have-account">Don't have an account?</span>
+                    <span class="log-in" (click)="navigateToCreateAcc()">Sign up</span>
+                </div>
+                <div class="buttons">
+                    <!-- <button class="btn-back" (click)="navigateBack()">Go Back</button> -->
+                    <button class="btn-cont" (click)="navigateToDashboard()">Continue <img src="../../../assets/white-arrow-next.svg" alt=""> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="dueToInactivity">
+    <div class="modal-box">
+      <p>You were logged out due to inactivity.</p>
+      <button (click)="closeModal()">OK</button>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="side-nav-container">
+  <div class="side-nav-top">
+    <img src="../../../assets/Sure Wina Logo - Blue.svg" alt="">
+  </div>
+  <div class="side-nav-bottom">
+    <nav>
+      <a routerLink="/admin-dashboard" routerLinkActive="active" #dashboardRLA="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }">
+        <img [src]="dashboardRLA.isActive ? '../../../assets/active-dashboard-admin.svg' : '../../../assets/home-02.svg'" alt="">
+        Dashboard
+      </a>
+      <a routerLink="/users" routerLinkActive="active" #usersRLA="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }">
+        <img [src]="usersRLA.isActive ? '../../../assets/active-user-admin.svg' : '../../../assets/user-circle.svg'" alt="">
+        Users
+      </a>
+  
+      <a routerLink="/lottery" routerLinkActive="active" #lotteryRLA="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }">
+        <img [src]="lotteryRLA.isActive ? '../../../assets/active-lottery-admin.svg' : '../../../assets/lottery-02.svg'" alt="">
+        Lottery
+      </a>
+  
+      <a routerLink="/transactions" routerLinkActive="active" #transactionsRLA="routerLinkActive" [routerLinkActiveOptions]="{ exact: true }">
+        <img [src]="transactionsRLA.isActive ? '../../../assets/active-trans-admin.svg' : '../../../assets/transactions-icon.svg'" alt="">
+        Transactions
+      </a>
+    </nav>
+  
+    <div class="support">
+      <div class="top">
+        <img src="../../../assets/help-circle.svg" alt="">
+        <p> Support </p>
+      </div>
+      <div class="profile-card">
+        <img src="../../../assets/profile-card-img.svg" alt="">
+        <div class="profile-name">
+          <h2> {{userName}} </h2>
+          <p> {{userEmail}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

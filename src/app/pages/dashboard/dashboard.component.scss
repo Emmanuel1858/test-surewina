@@ -1,0 +1,2971 @@
+.container {
+    max-height: 85vh;
+    overflow: auto;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.card-container {
+    background-color: #fcfcfc;
+    display: flex;
+    gap: 20px;
+    /* justify-content: space-between; */
+    padding: 20px 20px 20px 40px;
+
+    // width: 90%;
+}
+
+.first-card {
+    background-color: #000;
+    width: 400px;
+    height: 70vh;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.first-card-text span {
+    font-family: var(--cta-alt);
+    font-weight: var(--fw-400);
+}
+
+.first-card-prize {
+    border: 2px solid #434343;
+    margin-top: 170px;
+    border-radius: 2px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.first-card-prize-respon {
+    display: none;
+}
+
+.first-card-prize-empty {
+    border: 2px solid #434343;
+    border-radius: 2px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 90%;
+    /* margin: 0 auto; */
+    position: absolute;
+    bottom: 100px;
+}
+
+.first-card-prize-empty :last-child {
+    font-weight: 300;
+    color: #aaa;
+}
+
+.first-card-prize-div {
+    display: flex;
+    flex-direction: column;
+    // gap: 3px;
+}
+
+.first-card-prize-text {
+    font-family: var(--cta-alt);
+    font-weight: var(--fw-400);
+    color: #C4C4C4;
+}
+
+.first-card-prize-amount-div {
+    display: flex;
+    gap: 15px;
+}
+
+.first-card-prize-amount {
+    font-weight: var(--fw-500);
+    font-family: var(--cta-alt);
+    font-size: 32px;
+    // font-size: var(--fs-32);
+}
+
+.first-card-prize-sign {
+    font-size: 30px;
+    color: #FFB951;
+    font-weight: var(--fw-700);
+    font-family: var(--cta-alt);
+}
+
+.first-card-prize-img {
+    display: flex;
+    gap: var(--NumbersSpacingS);
+}
+
+.first-card-prize-respon-img {
+    display: none;
+}
+
+.first-card-balance {
+    display: flex;
+    gap: 18px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    // justify-content: space-between;
+    background-color: #434343;
+    margin-top: var(--NumbersSpacingXL);
+}
+
+.first-card-balance-wallet {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-card-balance-text {
+    font-weight: var(--fw-400);
+    font-family: var(--cta-alt);
+    font-size: 14px;
+    color: #C4C4C4;
+}
+
+.first-card-balance-amount {
+    font-weight: var(--fw-500);
+    font-family: var(--cta-alt);
+    font-size: 18px;
+}
+
+.first-card-balance-referal {
+    display: flex;
+    flex-direction: column;
+}
+
+.second-card {
+    display: flex;
+    // background-color: #ffd;
+    // width: 248px;
+    height: 70vh;
+    width: 71%;
+    // border-radius: 20px;
+
+
+}
+
+.second-card-right {
+    background-color: #000;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    // width: 255px;
+    width: 380px;
+}
+
+.second-card-right-text {
+    display: flex;
+    flex-direction: column;
+    margin-left: 26px;
+    gap: 5px;
+    position: relative;
+    // width:   170px;
+}
+
+.secord-card-gift-icon {
+    display: none;
+}
+
+.second-card-game-text {
+    color: #fff;
+    font-size: 24px;
+}
+
+.second-card-jolly-text {
+    display: flex;
+    flex-direction: column;
+    color: #FF9B0F;
+    font-size: 32px;
+    margin: 0;
+    font-weight: var(--fw-700);
+}
+
+.second-card-text {
+    color: #D9D9D9;
+    font-family: var(--fw-400);
+    size: 14px;
+    // width: 200px;
+}
+
+.button-section {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 26px;
+    width: 100%;
+    height: 100%;
+}
+
+.btn-buy-ticket {
+    position: absolute;
+    top: 52%;
+    display: flex;
+    gap: 5px;
+    background-color: #000;
+    border: 1px solid #fff;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: #fff;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.btn-buy-ticket:hover {
+    background-color: #1228C1;
+}
+
+.second-card-prize {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    // justify-content: space-between;
+    // background-image: url(../../../assets/samsung-tv.svg);
+    // background-image: url(../../../assets/yellow-paper.svg);
+    // background-image: url(../../../assets/white-jeep.svg);
+    // width: 425px;
+    width: 640px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    color: #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+
+.empty-state-prizes {
+    background-image: url(../../../assets/empty-state-prize.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    // width: 425px;
+    width: 640px;
+}
+
+.second-card-prize-text {
+    border: 1px solid #C4C4C4;
+    backdrop-filter: blur(2px);
+    padding: 2px 30px;
+    color: #fff;
+    border-radius: 20px;
+    outline: none;
+    margin-top: 15px;
+
+
+}
+
+.arrow-section {
+    margin-top: 15px;
+    position: absolute;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.arrow {
+    display: block;
+    background-color: #fff;
+    color: #000;
+    // padding: 5px;
+    width: 25px;
+    height: 25px;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.arrow span {
+    position: relative;
+    left: 6px;
+    bottom: 4px;
+}
+
+.arrow:hover {
+    background-color: #000;
+    color: #fff;
+    // font-size: 22px;
+    // font-weight: 800;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 5px;
+    left: 0;
+    width: 100%;
+    width: -webkit-fill-available;
+}
+
+.bar {
+    display: block;
+    border: 2px solid #fff;
+    width: 4.5rem;
+    padding: 2px;
+    background-color: white;
+    border-radius: 20px;
+    transition: all .5s ease-in-out;
+}
+
+.third-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #1228C1;
+    color: #fff;
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    height: 70vh;
+    display: none;
+}
+
+.third-card-profile-text {
+    font-family: var(--cta-alt);
+    font-weight: var(--fw-400);
+}
+
+.third-card-complete {
+    margin-top: 130px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.third-card-progress {
+    border: 3px solid #000896;
+    border-radius: 10px;
+    background-color: #000896;
+    width: 100%;
+}
+
+.details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.third-card-progress-bar {
+    border: 4px solid #fff;
+    border-radius: 10px;
+    // background-color: #000896;
+
+}
+
+.third-card-profile {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: #fff;
+    background-color: #262626;
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    position: absolute;
+    bottom: 15px;
+    margin-top: 10px;
+}
+
+.img-arrow img {
+    position: absolute;
+    right: 15px;
+    top: 30%;
+    cursor: pointer;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+}
+
+// .profile-name {
+//     color: #262626;
+// }
+
+// .profile-number {
+//     color: #555555;
+// }
+
+.location-details {
+    display: flex;
+    gap: 8px;
+    background-color: #3148E4;
+    align-items: center;
+    color: #000;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nin-details {
+    display: flex;
+    gap: 8px;
+    background-color: #3148E4;
+    color: #000;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.ticket-winner-container {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 20px;
+    padding: 0px 20px 50px 40px;
+
+}
+
+.winner-body-name {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.ticket-table {
+    border: 1px solid #D9D9D9;
+    width: 50%;
+    padding: 20px;
+    border-radius: 4px;
+
+}
+
+.ticket-button {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-btn-text {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px;
+}
+
+.ticket-btn-view {
+    color: #3B82F6;
+    cursor: pointer;
+}
+
+.ticket-details {
+    background-color: #FCFCFC;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.ticket-details-all {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-date {
+    font-size: 12px;
+    font-weight: var(--fw-400);
+    color: #9D9D9D;
+}
+
+.ticket-name {
+    font-size: 18px;
+    font-weight: var(--fw-400);
+    color: #262626;
+}
+
+.ticket-won {
+    font-size: 14px;
+    font-weight: var(--fw-400);
+    display: flex;
+    gap: 5px;
+}
+
+.ticket-won span {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px;
+}
+
+.winner-table {
+    border: 1px solid #D9D9D9;
+    width: 50%;
+    border-radius: 4px;
+
+}
+
+.winner-button {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+
+.winner-btn-text {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px;
+}
+
+.winner-btn-view {
+    color: #3B82F6;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.winner-table-head {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #E9E9E9;
+    background-color: #EEF8FF;
+    font-size: 14px;
+    width: 100%;
+    padding: 5px 20px;
+}
+
+.thead-active {
+    border-bottom: 4px solid #262626;
+    border-radius: 4px;
+}
+
+.thead {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+
+}
+
+.winner-jolly-number {
+    border: 1px solid #D9D9D9;
+    color: #1228C1;
+    padding: 1px 8px;
+    border-radius: 20px;
+}
+
+.winner-jolly-num {
+    border: 1px solid #D9D9D9;
+    color: #555555;
+    padding: 1px 8px;
+    border-radius: 20px;
+}
+
+.winner-table-body {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 20px;
+}
+
+.winner-body {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+}
+
+.ticket-container-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    /* background: rgba(7, 93, 178, 0.7); */
+    backdrop-filter: blur(5px);
+}
+
+.buy-ticket-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    background-color: #F6F6F6;
+    height: 100vh;
+}
+
+.buy-ticket-container-overall {
+    max-height: 70vh;
+    overflow: auto;
+}
+
+.buy-ticket-header {
+    background-color: #FCFCFC;
+    border-bottom: 1px solid #D9D9D9;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 0 10px 0;
+}
+
+.img-dashboard {
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.img-question {
+    margin-right: 30px;
+}
+
+.buy-ticket-header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bigger-text {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.small-text {
+    font-weight: 400;
+}
+
+.ticket-error {
+    color: #f03;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.img {
+    background-color: #fff;
+    margin: 25px auto 0;
+    width: 80%;
+    /* height: auto; */
+    border-radius: 10px;
+    padding: 12px;
+    border: 1px solid #D9D9D9;
+}
+
+.img img {
+    width: 100%;
+    height: 278px;
+}
+
+.buy-ticket-count {
+    display: flex;
+    gap: 150px;
+    // justify-content: space-between;
+    background-color: #fff;
+    border: 1px solid #D9D9D9;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    height: 50vh;
+    font-family: var(--cta-alt);
+}
+
+.input input {
+    width: 85%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    outline: none;
+}
+
+.note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // height: 40vh;
+}
+
+.note span {
+    width: 85%;
+    color: #555555;
+    font-family: var(--cta-alt);
+
+}
+
+
+.ticket-price-container {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    // align-items: center;
+}
+
+.ticket-price-container :first-child {
+    color: #555555;
+}
+
+.ticket-price-container span {
+    margin-left: 20px;
+}
+
+.ticket-count-container {
+    border-left: 1px solid #E9E9E9;
+}
+
+.ticket-count-container .count {
+    margin-left: 20px;
+    font-weight: 500;
+    color: #555555;
+}
+
+.count-number {
+    display: flex;
+    border: 1px solid #D9D9D9;
+    border-radius: 10px;
+    margin-left: 20px;
+}
+
+.count-number button {
+    background-color: #1228C1;
+    color: #fff;
+    height: 37px;
+    width: 37px;
+    font-size: 25px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.ticket-number {
+    /* display: block; */
+    margin-top: 2px;
+    /* border: 1px solid #E9E9E9; */
+    width: 65px;
+    height: 35px;
+    font-size: 14px;
+    padding: 7px 0px 0px 25px;
+}
+
+.ticket-bought-container {
+    background-color: #fff;
+    border: 1px solid #D9D9D9;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    width: 80%;
+    margin: 0 auto 20px;
+}
+
+.ticket-bought {
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ticket-bought :first-child {
+    color: #555555;
+    font-weight: 500;
+}
+
+.ticket-amount {
+    font-weight: var(--fw-500);
+    font-size: 32px;
+}
+
+.footer-ticket {
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    border: 1px solid #D9D9D9;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.footer-ticket button {
+    // width: 30%;
+    padding: 10px 20px;
+    background-color: #1228C1;
+    border-radius: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.total-ticket-container {
+    background-color: #fff;
+    width: 80%;
+    border: 1px solid #9D9D9D;
+    margin: 35px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 16px;
+    height: 90px;
+}
+
+.total-ticket-name {
+    color: #555555;
+}
+
+.total-ticket-number {
+    font-weight: var(--fw-500);
+    font-size: 32px;
+}
+
+.pay-with-transfer {
+    background-color: #fff;
+    width: 80%;
+    border: 1px solid #E9E9E9;
+    margin: 7px auto 0;
+    display: flex;
+    gap: 10px;
+    border-radius: 10px;
+    padding: 10px 20px;
+    // height: 0px;
+
+}
+
+.pay-with-transfer-img img {
+    position: relative;
+    top: 4px;
+
+}
+
+.transfer-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.transfer-details-text {
+    color: #434343;
+    font-weight: var(--fw-400);
+}
+
+.transfer-details-number {
+    color: #9D9D9D;
+    font-size: 14px;
+    font-weight: var(--fw-400);
+}
+
+.pay-with-credit-card {
+    background-color: #fff;
+    width: 80%;
+    border: 1px solid #E9E9E9;
+    margin: 7px auto 0;
+    // display: flex;
+    // gap: 10px;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.pay-with-credit-card-head {
+    display: flex;
+    gap: 8px;
+    color: #434343;
+
+}
+
+form {
+    padding-left: 38px;
+}
+
+.card-number-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.card-number-container label {
+    margin-top: 10px;
+    color: #7B7B7B;
+}
+
+.card-number-container input {
+    height: 36px;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    outline: none;
+    padding-left: 50px;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.img-card-type {
+    position: absolute;
+    top: 27px;
+    background-color: #F1F5F9;
+    width: 45px;
+    height: 36px;
+    // border-radius: 6px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+
+}
+
+.ticket-body {
+    width: 100%;
+    // border: 1px solid #9D9D9D;
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 0 auto;
+    // margin-left: 40px;
+    display: flex;
+}
+
+.empty-state-winners {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket-body-inner {
+    width: 100%;
+}
+
+.empty-state-ticket {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-state-ticket span {
+    margin-top: 10px;
+    font-weight: 700;
+    color: #3B82F6;
+    cursor: pointer;
+}
+
+
+.header {
+    background-color: #EEF8FF;
+    border-bottom: 1px solid #E9E9E9;
+    border-top: 1px solid #e9e9e9;
+    display: flex;
+    gap: 30px;
+    padding: 10px 18px 0;
+    width: 100%;
+    margin: 5px auto 0;
+    border-radius: 4px;
+    overflow-x: auto;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+.active-tab {
+    border-bottom: 4px solid;
+    border-radius: 2px;
+}
+
+.active-tab-number {
+    color: #1228C1;
+}
+
+.header-tickets {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.header-tickets-text {
+    color: #555555;
+    font-weight: 400;
+    font-size: 14px;
+
+}
+
+.header-tickets-text-active {
+    color: #000;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+
+
+
+
+.header-tickets-number-active.active-tab-number {
+    border: 1px solid #D9D9D9;
+    color: #1228C1;
+    padding: 1px 8px;
+    border-radius: 20px;
+    background-color: #FCFCFC;
+}
+
+.inactive-tab-number {
+    border: 1px solid #D9D9D9 !important;
+    // color: #1228C1;
+    padding: 1px 8px;
+    border-radius: 20px;
+    background-color: #FCFCFC;
+}
+
+.header-tickets-number-active {
+    border-color: #1228C1;
+}
+
+.header-tickets-number {
+    border: 1px solid #D9D9D9;
+    background-color: #FCFCFC;
+    padding: 1px 8px;
+    border-radius: 20px;
+}
+
+
+.ticket-details-con {
+    max-height: 70vh;
+    overflow-y: auto;
+    // width: 95%;
+    /* updated */
+    margin: 0 auto;
+    /* center horizontally */
+}
+
+
+.ticket-details {
+    background-color: #FCFCFC;
+    border: 1px solid #D9D9D9;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    margin: 10px auto;
+    border-radius: 4px;
+    width: 99%;
+
+}
+
+.winner-details {
+    // background-color: #FCFCFC;
+    // border: 1px solid #D9D9D9;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    margin: 10px auto;
+    border-radius: 4px;
+    width: 99%;
+}
+
+.ticket-details-all {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-date {
+    font-size: 12px;
+    font-weight: var(--fw-400);
+    color: #9D9D9D;
+}
+
+.ticket-name {
+    font-size: 18px;
+    font-weight: var(--fw-400);
+    color: #262626;
+}
+
+.ticket-won {
+    font-size: 14px;
+    font-weight: var(--fw-400);
+    display: flex;
+    gap: 5px;
+    max-width: 100%;
+    /* Ensure it doesn't overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #7B7B7B;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.ticket-won span {
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    padding: 5px 8px;
+    max-width: 100%;
+    /* Ensure it doesn't overflow */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+
+.img-card-type img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 4px;
+    left: 7px;
+}
+
+.card-details-container {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+    // gap: 8px;
+}
+
+
+.card-details label {
+    margin-top: 10px;
+    color: #7B7B7B;
+}
+
+
+.card-details input {
+    height: 36px;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    outline: none;
+    padding-left: 5px;
+    width: 100%;
+}
+
+.save-card-details {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    color: #555555;
+}
+
+
+.modal {
+    width: 50%;
+    height: 100%;
+    background-color: var(--clr-dark-20);
+    border: 1px solid var(--color-boarder-stroke-hard);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.container-modal {
+    // margin-top: 50px;
+
+    width: 70%;
+    height: 70%;
+    margin: 10rem auto 0;
+}
+
+.modal-img {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+
+.animated_check_circle svg {
+    width: 60px;
+    display: block;
+    stroke: red;
+    margin: 40px auto 0;
+}
+
+.animated_check_circle .path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 0;
+}
+
+.animated_check_circle .path.circle {
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+.animated_check_circle .path.check {
+    stroke-dashoffset: -100;
+    animation: dash-check 1.5s 0.35s ease-in-out infinite;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 1000;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes dash-check {
+    0% {
+        stroke-dashoffset: -100;
+    }
+
+    100% {
+        stroke-dashoffset: 900;
+    }
+}
+
+
+.modal-text {
+    margin-top: 50px;
+    font-family: var(--cta-alt);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // gap: 10px;
+    // font-weight: var(--fw-700);
+}
+
+.modal-text h1 {
+    font-weight: var(--fw-700);
+    font-size: 32px;
+    // font-size: var(--fs-32);
+}
+
+.modal-text span {
+    font-weight: var(--fw-400);
+    font-size: 16px;
+    // font-size: var(--fs-32);
+}
+
+.modal-btn {
+    display: flex;
+    align-items: center;
+
+}
+
+.modal-btn button {
+    margin: 10px auto 0;
+    position: relative;
+    border: 1px solid var(--clr-blue-800);
+    color: var(--clr-white);
+    background-color: var(--clr-blue-800);
+    // padding: var(--NumbersSpacingS, 16px) 20px;
+    // padding: var(--NumbersSpacingS, 16px) 20px 6px 0px;
+    border-radius: var(--rounded-xl);
+    font-family: var(--cta-alt);
+    font-weight: var(--fw-500);
+    font-size: 20px;
+    width: 226px;
+    height: 58px;
+    cursor: pointer;
+    outline: none;
+
+}
+
+.third-card-response {
+    display: none;
+}
+
+.mobile-only {
+    display: none;
+}
+
+.first-card-prize-empty-respon {
+    display: none;
+}
+
+@media (max-width: 1490px) {
+    .first-card {
+        background-color: #000;
+        width: 315px;
+        height: 70vh;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+    .second-card-right {
+        background-color: #000;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        // width: 235px;
+        width: 300px;
+    }
+
+    .second-card-prize {
+        position: relative;
+        display: flex;
+        padding: 20px;
+        // width: 416px;
+        width: 600px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        width: 600px;
+    }
+
+    .third-card-response {
+        display: none;
+    }
+
+    .third-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1228C1;
+        color: #fff;
+        width: 250px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+}
+
+@media (max-width: 1359px) {
+    .first-card {
+        background-color: #000;
+        width: 315px;
+        height: 70vh;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+
+    .first-card-prize-amount {
+        font-weight: var(--fw-500);
+        font-family: var(--cta-alt);
+        font-size: 24px;
+        // font-size: var(--fs-32);
+    }
+
+    .first-card-prize-sign {
+        font-size: 24px;
+        color: #FFB951;
+        font-weight: var(--fw-700);
+        font-family: var(--cta-alt);
+    }
+
+
+
+    .second-card-right {
+        background-color: #000;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        // width: 235px;
+        width: 300px;
+    }
+
+    .second-card-game-text {
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .second-card-jolly-text {
+        color: #FF9B0F;
+        font-size: 20px;
+        font-weight: var(--fw-700);
+    }
+
+    .second-card-text div {
+        color: #D9D9D9;
+        font-family: var(--fw-400);
+        size: 14px;
+    }
+
+    .second-card-prize-text {
+        position: relative;
+        display: flex;
+        // padding: 20px;
+        // width: 387px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        // border-top-right-radius: 8px;
+        // border-bottom-right-radius: 8px;
+    }
+
+    .second-card-prize {
+        position: relative;
+        display: flex;
+        padding: 20px;
+        // width: 416px;
+        width: 600px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 600px;
+    }
+
+    .third-card-response {
+        display: none;
+    }
+
+    .third-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1228C1;
+        color: #fff;
+        width: 250px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .button-section {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // margin: 0 auto;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .btn-buy-ticket {
+        position: absolute;
+        top: 52%;
+        display: flex;
+        gap: 5px;
+        background-color: #000;
+        border: 1px solid #fff;
+        padding: 5px 15px;
+        border-radius: 20px;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .arrow-section {
+        margin-top: 15px;
+        position: absolute;
+        right: 22px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .details-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .bar {
+        display: block;
+        border: 2px solid #fff;
+        width: 4rem;
+        padding: 2px;
+        background-color: white;
+        border-radius: 20px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .third-card-complete {
+        margin-top: 172px;
+    }
+
+    .third-card-complete span {
+        font-size: 14px;
+    }
+
+    .ticket-winner-container {
+        display: flex;
+        gap: 30px;
+        padding: 1px 40px 50px;
+    }
+
+    .ticket-button {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+    }
+
+    .ticket-date {
+        font-size: 12px;
+        font-weight: var(--fw-400);
+        color: #9D9D9D;
+    }
+
+    .ticket-name {
+        font-size: 14px;
+        font-weight: var(--fw-400);
+        color: #262626;
+    }
+
+    .ticket-won {
+        font-size: 12px;
+        font-weight: var(--fw-400);
+        display: flex;
+        gap: 5px;
+    }
+
+    .ticket-table {
+        border: 1px solid #D9D9D9;
+        width: 650px;
+        padding: 15px;
+        border-radius: 4px;
+    }
+
+    .winner-button {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .winner-table-body {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 14px;
+        font-size: 14px;
+    }
+
+
+}
+
+@media (max-width: 1321px) {
+    .card-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .first-card {
+        background-color: #000;
+        width: 320px;
+        height: 70vh;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+
+    .first-card-prize-amount {
+        font-weight: var(--fw-500);
+        font-family: var(--cta-alt);
+        font-size: 24px;
+        // font-size: var(--fs-32);
+    }
+
+    .last {
+        display: none;
+    }
+
+    .first-card-prize-sign {
+        font-size: 24px;
+        color: #FFB951;
+        font-weight: var(--fw-700);
+        font-family: var(--cta-alt);
+    }
+
+
+
+    .second-card-right {
+        background-color: #000;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        // width: 235px;
+        width: 320px;
+    }
+
+    .second-card-game-text {
+        color: #fff;
+        font-size: 20px;
+    }
+
+    .second-card-jolly-text {
+        color: #FF9B0F;
+        font-size: 20px;
+        font-weight: var(--fw-700);
+    }
+
+    .second-card-text div {
+        color: #D9D9D9;
+        font-family: var(--fw-400);
+        size: 14px;
+    }
+
+    .second-card-prize-text {
+        position: relative;
+        display: flex;
+        // padding: 20px;
+        // width: 387px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        // border-top-right-radius: 8px;
+        // border-bottom-right-radius: 8px;
+    }
+
+    .second-card-prize {
+        position: relative;
+        display: flex;
+        padding: 20px;
+        // width: 416px;
+        width: 630px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 630px;
+    }
+
+    .third-card-response {
+        display: none;
+    }
+
+    .third-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1228C1;
+        color: #fff;
+        width: 250px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .third-card-profile {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        color: #fff;
+        background-color: #262626;
+        width: 90%;
+        padding: 10px;
+        border-radius: 5px;
+        position: relative;
+        position: absolute;
+        bottom: 15px;
+        margin-top: 10px;
+    }
+
+    .third-card-profile .profile-pic img {
+        width: 80%;
+    }
+
+    .first-card-prize-empty {
+        border: 2px solid #434343;
+        border-radius: 2px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 90%;
+        /* margin: 0 auto; */
+        position: absolute;
+        bottom: 100px;
+    }
+
+    .button-section {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // margin: 0 auto;
+        width: 100%;
+        height: 100%;
+    }
+
+
+    .btn-buy-ticket {
+        position: absolute;
+        top: 52%;
+        display: flex;
+        gap: 5px;
+        background-color: #000;
+        border: 1px solid #fff;
+        padding: 5px 15px;
+        border-radius: 20px;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .arrow-section {
+        margin-top: 15px;
+        position: absolute;
+        right: 22px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .details-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .bar {
+        display: block;
+        border: 2px solid #fff;
+        width: 4rem;
+        padding: 2px;
+        background-color: white;
+        border-radius: 20px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .third-card-complete {
+        margin-top: 172px;
+    }
+
+    .third-card-complete span {
+        font-size: 14px;
+    }
+
+    .ticket-winner-container {
+        display: flex;
+        gap: 30px;
+        padding: 1px 40px 50px;
+    }
+
+    .ticket-button {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+    }
+
+    .ticket-date {
+        font-size: 12px;
+        font-weight: var(--fw-400);
+        color: #9D9D9D;
+    }
+
+    .ticket-name {
+        font-size: 14px;
+        font-weight: var(--fw-400);
+        color: #262626;
+    }
+
+    .ticket-won {
+        font-size: 12px;
+        font-weight: var(--fw-400);
+        display: flex;
+        gap: 5px;
+    }
+
+    .ticket-table {
+        border: 1px solid #D9D9D9;
+        width: 650px;
+        padding: 15px;
+        border-radius: 4px;
+    }
+
+    .winner-button {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .winner-table-body {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 14px;
+        font-size: 14px;
+    }
+
+
+}
+
+@media (max-width: 1229px) {
+    .card-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .first-card {
+        background-color: #000;
+        width: 320px;
+        height: 70vh;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+
+    .first-card-prize-amount {
+        font-weight: var(--fw-500);
+        font-family: var(--cta-alt);
+        font-size: 24px;
+        // font-size: var(--fs-32);
+    }
+
+    .first-card-balance-amount {
+        font-weight: var(--fw-500);
+        font-family: var(--cta-alt);
+        font-size: 14px;
+    }
+
+
+    .first-card-balance-text {
+        font-weight: var(--fw-400);
+        font-family: var(--cta-alt);
+        font-size: 12px;
+        color: #C4C4C4;
+    }
+
+    .third {
+        display: none;
+    }
+
+    .last {
+        display: none;
+    }
+
+    .first-card-prize-sign {
+        font-size: 24px;
+        color: #FFB951;
+        font-weight: var(--fw-700);
+        font-family: var(--cta-alt);
+    }
+
+
+
+    .second-card-right {
+        background-color: #000;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        // width: 235px;
+        width: 320px;
+    }
+
+    .second-card-game-text {
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .second-card-jolly-text {
+        color: #FF9B0F;
+        font-size: 16px;
+        font-weight: var(--fw-700);
+
+    }
+
+    .second-card-text div {
+        color: #D9D9D9;
+        font-family: var(--fw-400);
+        font-size: 12px;
+    }
+
+    .btn-buy-ticket {
+        position: absolute;
+        top: 53%;
+        display: flex;
+        gap: 5px;
+        background-color: #000;
+        border: 1px solid #fff;
+        padding: 4px 9px;
+        border-radius: 20px;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+
+    .second-card-prize-text {
+        position: relative;
+        display: flex;
+        // padding: 20px;
+        // width: 387px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        // border-top-right-radius: 8px;
+        // border-bottom-right-radius: 8px;
+    }
+
+    .second-card-prize {
+        position: relative;
+        display: flex;
+        padding: 20px;
+        // width: 416px;
+        width: 630px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 630px;
+    }
+
+    .profile-pic {
+        width: 30px;
+    }
+
+    .location-pic {
+        width: 30px;
+    }
+
+    .nin-pic {
+        width: 30px;
+    }
+
+    .third-card-response {
+        display: none;
+    }
+
+    .third-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1228C1;
+        color: #fff;
+        width: 250px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .button-section {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // margin: 0 auto;
+        width: 60%;
+        height: 100%;
+    }
+
+
+    .btn-buy-ticket {
+        position: absolute;
+        top: 52%;
+        display: flex;
+        gap: 5px;
+        background-color: #000;
+        border: 1px solid #fff;
+        padding: 6px 8px;
+        border-radius: 20px;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .arrow-section {
+        margin-top: 15px;
+        position: absolute;
+        right: 22px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .details-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    .bar {
+        display: block;
+        border: 2px solid #fff;
+        width: 4rem;
+        padding: 2px;
+        background-color: white;
+        border-radius: 20px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .third-card-complete {
+        margin-top: 93px;
+    }
+
+    .third-card-complete span {
+        font-size: 12px;
+    }
+
+    .ticket-winner-container {
+        display: flex;
+        gap: 30px;
+        padding: 1px 40px 50px;
+    }
+
+    .ticket-button {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+    }
+
+    .ticket-date {
+        font-size: 10px;
+        font-weight: var(--fw-400);
+        color: #9D9D9D;
+    }
+
+    .ticket-name {
+        font-size: 12px;
+        font-weight: var(--fw-400);
+        color: #262626;
+    }
+
+    .ticket-won {
+        font-size: 9px;
+        font-weight: var(--fw-400);
+        display: flex;
+        gap: 5px;
+    }
+
+    .ticket-table {
+        border: 1px solid #D9D9D9;
+        width: 650px;
+        padding: 15px;
+        border-radius: 4px;
+    }
+
+    .winner-button {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+
+    .winner-table-head {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #E9E9E9;
+        background-color: #EEF8FF;
+        font-size: 12px;
+        width: 100%;
+        padding: 5px 20px;
+    }
+
+    .winner-table-body {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 14px;
+        font-size: 12px;
+    }
+
+
+}
+
+@media (max-width: 1125px) {
+    .card-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .first-card {
+        background-color: #000;
+        width: 320px;
+        height: 70vh;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+
+    .first-card-prize-amount {
+        font-weight: var(--fw-500);
+        font-family: var(--cta-alt);
+        font-size: 18px;
+        // font-size: var(--fs-32);
+    }
+
+    .first-card-balance-amount {
+        font-weight: var(--fw-500);
+        font-family: var(--cta-alt);
+        font-size: 14px;
+    }
+
+    .first-card-prize-text {
+        font-family: var(--cta-alt);
+        font-weight: var(--fw-400);
+        color: #C4C4C4;
+        font-size: 14px;
+    }
+
+    .first-card-balance-text {
+        font-weight: var(--fw-400);
+        font-family: var(--cta-alt);
+        font-size: 12px;
+        color: #C4C4C4;
+    }
+
+    // .second {
+    //     display: none;
+    // }
+
+    .third {
+        display: none;
+    }
+
+    .last {
+        display: none;
+    }
+
+    .first-card-prize-sign {
+        font-size: 18px;
+        color: #FFB951;
+        font-weight: var(--fw-700);
+        font-family: var(--cta-alt);
+    }
+
+
+
+    .second-card-right {
+        background-color: #000;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        // width: 190px;
+        width: 275px;
+    }
+
+    .second-card-game-text {
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .second-card-jolly-text {
+        color: #FF9B0F;
+        font-size: 16px;
+        font-weight: var(--fw-700);
+        margin: 0;
+    }
+
+    .second-card-text div {
+        color: #D9D9D9;
+        font-family: var(--fw-400);
+        font-size: 12px;
+    }
+
+    .btn-buy-ticket {
+        position: absolute;
+        top: 53%;
+        display: flex;
+        gap: 5px;
+        background-color: #000;
+        border: 1px solid #fff;
+        padding: 4px 9px;
+        border-radius: 20px;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+
+    .second-card-prize-text {
+        position: relative;
+        display: flex;
+        // padding: 20px;
+        // width: 387px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        // border-top-right-radius: 8px;
+        // border-bottom-right-radius: 8px;
+    }
+
+    .second-card-prize {
+        position: relative;
+        display: flex;
+        padding: 20px;
+        // width: 416px;
+        width: 630px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 630px;
+    }
+
+    .profile-pic {
+        width: 20px;
+    }
+
+    .location-pic {
+        width: 20px;
+    }
+
+    .nin-pic {
+        width: 20px;
+    }
+
+    .third-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1228C1;
+        color: #fff;
+        width: 250px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .third-card-response {
+        display: none;
+    }
+
+    .third-card-profile-text {
+        font-family: var(--cta-alt);
+        font-weight: var(--fw-400);
+        font-size: 11px;
+    }
+
+    .third-card-progress-bar {
+        border: 2px solid #fff;
+        border-radius: 10px;
+        width: 50%;
+    }
+
+    .third-card-progress {
+        border: 1px solid #000896;
+        border-radius: 10px;
+        background-color: #000896;
+        width: 100%;
+    }
+
+    .button-section {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // margin: 0 auto;
+        width: 60%;
+        height: 100%;
+    }
+
+
+    .btn-buy-ticket {
+        position: absolute;
+        top: 52%;
+        display: flex;
+        gap: 5px;
+        background-color: #000;
+        border: 1px solid #fff;
+        padding: 2px 4px;
+        border-radius: 20px;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        font-size: 11px;
+    }
+
+    .arrow-section {
+        margin-top: 15px;
+        position: absolute;
+        right: 22px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .details-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 9px;
+    }
+
+    .bar {
+        display: block;
+        border: 2px solid #fff;
+        width: 4rem;
+        padding: 2px;
+        background-color: white;
+        border-radius: 20px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .third-card-complete {
+        margin-top: 93px;
+    }
+
+    .third-card-complete span {
+        font-size: 12px;
+    }
+
+    .ticket-winner-container {
+        display: flex;
+        gap: 30px;
+        padding: 1px 40px 50px;
+    }
+
+    .ticket-button {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+    }
+
+    .ticket-date {
+        font-size: 12px;
+        font-weight: var(--fw-400);
+        color: #9D9D9D;
+    }
+
+    .ticket-name {
+        font-size: 14px;
+        font-weight: var(--fw-400);
+        color: #262626;
+    }
+
+    .ticket-won {
+        font-size: 12px;
+        font-weight: var(--fw-400);
+        display: flex;
+        gap: 5px;
+    }
+
+    .ticket-table {
+        border: 1px solid #D9D9D9;
+        width: 650px;
+        padding: 15px;
+        border-radius: 4px;
+    }
+
+    .winner-button {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .winner-table-body {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 14px;
+        font-size: 14px;
+    }
+
+
+}
+
+@media (max-width: 1090px) {
+    .card-container {
+        display: flex;
+        gap: 10px;
+    }
+
+    .first-card {
+        background-color: #000;
+        width: 320px;
+        height: 70vh;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+
+    .first-card-prize-amount {
+        font-weight: var(--fw-500);
+        font-family: var(--cta-alt);
+        font-size: 18px;
+        // font-size: var(--fs-32);
+    }
+
+    .first-card-balance-amount {
+        font-weight: var(--fw-500);
+        font-family: var(--cta-alt);
+        font-size: 14px;
+    }
+
+    .first-card-prize-text {
+        font-family: var(--cta-alt);
+        font-weight: var(--fw-400);
+        color: #C4C4C4;
+        font-size: 14px;
+    }
+
+    .first-card-balance-text {
+        font-weight: var(--fw-400);
+        font-family: var(--cta-alt);
+        font-size: 12px;
+        color: #C4C4C4;
+    }
+
+    .second {
+        display: none;
+    }
+
+    .third {
+        display: none;
+    }
+
+    .last {
+        display: none;
+    }
+
+    .first-card-prize-sign {
+        font-size: 18px;
+        color: #FFB951;
+        font-weight: var(--fw-700);
+        font-family: var(--cta-alt);
+    }
+
+
+
+    .second-card-right {
+        background-color: #000;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        // width: 190px;
+        width: 275px;
+
+    }
+
+    .second-card-game-text {
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .second-card-jolly-text {
+        color: #FF9B0F;
+        font-size: 16px;
+        margin: 0;
+        font-weight: var(--fw-700);
+    }
+
+    .second-card-text div {
+        color: #D9D9D9;
+        font-family: var(--fw-400);
+        font-size: 12px;
+    }
+
+    .btn-buy-ticket {
+        position: absolute;
+        top: 53%;
+        display: flex;
+        gap: 5px;
+        background-color: #000;
+        border: 1px solid #fff;
+        padding: 4px 9px;
+        border-radius: 20px;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+
+    .second-card-prize-text {
+        position: relative;
+        display: flex;
+        // padding: 20px;
+        // width: 387px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        // border-top-right-radius: 8px;
+        // border-bottom-right-radius: 8px;
+    }
+
+    .second-card-prize {
+        position: relative;
+        display: flex;
+        padding: 20px;
+        // width: 416px;
+        width: 630px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+    }
+
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        // width: 416px;
+        width: 630px;
+    }
+
+    .profile-pic {
+        width: 20px;
+    }
+
+    .location-pic {
+        width: 20px;
+    }
+
+    .nin-pic {
+        width: 20px;
+    }
+
+    .third-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1228C1;
+        color: #fff;
+        width: 250px;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    .third-card-response {
+        display: none;
+    }
+
+    .third-card-profile-text {
+        font-family: var(--cta-alt);
+        font-weight: var(--fw-400);
+        font-size: 11px;
+    }
+
+    .third-card-progress-bar {
+        border: 2px solid #fff;
+        border-radius: 10px;
+        width: 50%;
+    }
+
+    .third-card-progress {
+        border: 1px solid #000896;
+        border-radius: 10px;
+        background-color: #000896;
+        width: 100%;
+    }
+
+    .button-section {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // margin: 0 auto;
+        width: 60%;
+        height: 100%;
+    }
+
+
+    .btn-buy-ticket {
+        position: absolute;
+        top: 52%;
+        display: flex;
+        gap: 5px;
+        background-color: #000;
+        border: 1px solid #fff;
+        padding: 2px 4px;
+        border-radius: 20px;
+        color: #fff;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        font-size: 11px;
+    }
+
+    .arrow-section {
+        margin-top: 15px;
+        position: absolute;
+        right: 22px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .details-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 9px;
+    }
+
+    .bar {
+        display: block;
+        border: 2px solid #fff;
+        width: 4rem;
+        padding: 2px;
+        background-color: white;
+        border-radius: 20px;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .third-card-complete {
+        margin-top: 93px;
+    }
+
+    .third-card-complete span {
+        font-size: 12px;
+    }
+
+    .ticket-winner-container {
+        display: flex;
+        gap: 30px;
+        padding: 1px 40px 50px;
+    }
+
+    .ticket-button {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+    }
+
+    .ticket-date {
+        font-size: 10px;
+        font-weight: var(--fw-400);
+        color: #9D9D9D;
+    }
+
+    .ticket-name {
+        font-size: 12px;
+        font-weight: var(--fw-400);
+        color: #262626;
+    }
+
+    .ticket-won {
+        font-size: 9px;
+        font-weight: var(--fw-400);
+        display: flex;
+        gap: 5px;
+    }
+
+    .ticket-table {
+        border: 1px solid #D9D9D9;
+        width: 650px;
+        padding: 15px;
+        border-radius: 4px;
+    }
+
+    .winner-button {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+
+    .winner-table-head {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #E9E9E9;
+        background-color: #EEF8FF;
+        font-size: 12px;
+        width: 100%;
+        padding: 5px 20px;
+    }
+
+    .winner-table-body {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 14px;
+        font-size: 12px;
+    }
+
+
+
+
+}
+
+@media (max-width: 1000px) {
+    .secord-card-gift-icon {
+        display: block;
+        position: absolute;
+        top: 14px;
+        left: -20px;
+        width: 10%;
+    }
+
+    .second-card-jolly-text {
+        color: #FF9B0F;
+        font-size: 16px;
+        margin-left: 30px;
+        font-weight: var(--fw-700);
+    }
+
+    .card-container {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 20px;
+        // gap: 10px;
+    }
+
+    .mobile-only {
+        display: flex;
+    }
+
+    .first-card {
+        background-color: #000;
+        width: auto;
+        height: auto;
+        color: #fff;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+    .second {
+        display: block;
+    }
+
+    .third {
+        display: block;
+    }
+
+    .first-card-prize {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        /* gap: 80px; */
+        border: 2px solid #434343;
+        margin: 0;
+        border-radius: 2px;
+        padding: 20px 73px 20px 20px;
+        display: none;
+    }
+
+    .first-card-prize-respon {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        /* gap: 80px; */
+        border: 2px solid #434343;
+        margin: 0;
+        border-radius: 2px;
+        padding: 20px 73px 20px 20px;
+    }
+
+    .first-card-prize-empty-respon {
+        border: 2px solid #434343;
+        border-radius: 2px;
+        padding: 20px;
+        display: flex;
+        // flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .first-card-prize-empty-respon-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .first-card-prize-empty-respon-text :last-child {
+        font-weight: 100;
+        // font-size: 12px;
+    }
+
+    .first-card-prize-empty {
+        border: 2px solid #434343;
+        border-radius: 2px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        width: 90%;
+        position: absolute;
+        bottom: 100px;
+        display: none;
+    }
+
+    // .first-card-prize-empty {
+    //     border: 2px solid #434343;
+    //     margin-top: 170px;
+    //     border-radius: 2px;
+    //     padding: 20px;
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    //     gap: 12px;
+    // }
+
+    .first-card-prize-img {
+        display: none;
+    }
+
+    .first-card-prize-respon-img {
+        display: flex;
+        gap: 0;
+        width: 30px;
+    }
+
+    .clickable-arrow {
+        position: absolute;
+        top: 7px;
+        right: 17px;
+    }
+
+    .first-card-text {
+        display: none;
+    }
+
+    .second-card-text,
+    .button-section,
+    .second-card-prize-text,
+    .arrow-section {
+        display: none;
+    }
+
+    .second-card {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+    }
+
+    .second-card-right {
+        background-color: #000;
+        padding: 10px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+        width: auto;
+    }
+
+    .second-card-prize {
+        position: relative;
+        display: flex;
+        padding: 20px;
+        width: auto;
+        height: 43vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: #fff;
+        border-bottom-right-radius: 8px;
+        border-bottom-left-radius: 8px;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
+
+    .third-card-profile {
+        display: none;
+    }
+
+    .empty-state-prizes {
+        // background-image: url(../../../assets/empty-state-prize.svg);
+        background-size: cover;
+        // background-position: center;
+        background-repeat: no-repeat;
+        height: 43vh;
+        width: auto;
+    }
+
+    .progress-bar span:last-child {
+        display: none;
+    }
+
+    .third-card {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1228C1;
+        color: #fff;
+        width: auto;
+        padding: 20px;
+        border-radius: 8px;
+        display: none;
+    }
+
+    .third-card-response {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1228C1;
+        color: #fff;
+        width: auto;
+        // margin: 0 auto;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 10px 20px 100px;
+        display: none;
+
+    }
+
+    .ticket-winner-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 1px 20px 50px;
+    }
+
+    .ticket-table {
+        border: 1px solid #D9D9D9;
+        width: auto;
+        padding: 15px;
+        border-radius: 4px;
+    }
+
+    .winner-table {
+        border: 1px solid #D9D9D9;
+        width: auto;
+        border-radius: 4px;
+    }
+
+
+
+
+
+}

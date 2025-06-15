@@ -1,0 +1,471 @@
+<div class="current-route-container">
+  <img (click)="goBack()" *ngIf="showBackBtn" src="../../../assets/go-back.svg" alt=""><h1 class="current-route-header"> {{currentRoute}} </h1>
+  <button  class="admin-btn" *ngIf="showAdminBtn" (click)="addAdminBtn()">ADD USERS</button>
+
+</div>
+
+<div class="parent-container">
+  <!-- this will handle the view for the first level of view -->
+  <ng-container *ngIf="!showBackBtn">
+    <div class="tab-container">
+      <!-- the class active-tab will add dynamic class features to the tab -->
+      <div class="tab" [ngClass]="primaryTabs == 'all-users-container' ? 'active-tab' : '' ">
+        <p (click)="switchprimaryTabs('all-users-container')"> All Users <span class="rounded-border-items"> {{numberOfUsers}} </span> </p>
+        <!-- add or remove based on the active tab -->
+        <div  class="border-bottom"></div>
+      </div>
+      <div class="tab" [ngClass]="primaryTabs == 'all-agents-container' ? 'active-tab' : '' ">
+        <p (click)="switchprimaryTabs('all-agents-container')"> Agents <span class="rounded-border-items"> {{numberOfVendors}} </span> </p>
+        <div  class="border-bottom"></div>
+      </div>
+      <div class="tab" [ngClass]="primaryTabs == 'all-admin-container' ? 'active-tab' : '' ">
+        <p (click)="switchprimaryTabs('all-admin-container')"> Admin User <span class="rounded-border-items"> {{numberOfVendors}} </span> </p>
+        <div  class="border-bottom"></div>
+      </div>
+    </div>
+  
+    <div [ngSwitch]="primaryTabs" class="tab-content">
+      <div *ngSwitchCase="'all-users-container'"  class="all-users-container">
+        <!-- collection of user cards -->
+          <div  class="user-details" (click)="getUserById(user.userId)" *ngFor="let user of paginatedUser">
+            <div class="name-thumbnail">
+              <img src="../../../assets/user-1.svg" alt="">
+              <div class="name">
+                <h2> {{user.firstName}} {{user.lastName}} </h2>
+                <p> Mobile User </p>
+              </div>
+            </div>
+            <div class="contact-info">
+              <p> {{user.phoneNumber}} </p>
+              <p> {{user.email}} </p>
+            </div>
+            <div class="contact-info">
+              <p style="color: #9D9D9D;"> Date Registered </p>
+              <p> {{user.registeredOn.split('T')[0]}} </p>
+            </div>
+            <button class="status-btn"[ngClass]="getBtnColor('active')">
+              <div class="dot">
+                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
+                fill="none">
+                <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
+                </svg>
+              </div> 
+              {{status !== null ? status : 'Not Available'}}
+            </button>
+    
+            <img (click)="getUserById(user.userId)" src="../../../assets/view-more-icon.svg" alt="">
+          </div>
+      </div>
+  
+      <div *ngSwitchCase="'all-agents-container'"  class="all-agents-container">
+        <!-- collection of agent cards -->
+        <div (click)="detailsPage('agent')" class="user-details" *ngFor="let vendor of paginatedVendor">
+          <div class="name-thumbnail">
+            <img src="../../../assets/user-1.svg" alt="">
+            <div class="name">
+              <h2> {{vendor.firstName}} {{vendor.lastName}} </h2>
+              <p>{{vendor.branch === null ? 'Not Entered yet?' : vendor.branch}}</p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <p> {{vendor.phoneNumber	}} </p>
+            <p>{{vendor.email}}</p>
+          </div>
+          <div class="contact-info">
+            <p> Sold </p>
+            <p> {{vendor.ticketsSold}} </p>
+          </div>
+          <div class="contact-info">
+            <p> Oweing  </p>
+            <p> {{vendor.owing}} </p>
+          </div>
+          <button class="status-btn"[ngClass]="getBtnColor('active')">
+            <div class="dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
+              fill="none">
+              <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
+              </svg>
+            </div> 
+            {{status !== null ? status : 'Not Available'}}
+          </button>
+          <button>
+
+          </button>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'all-admin-container'"  class="all-agents-container">
+        <!-- collection of agent cards -->
+        <div (click)="detailsPage('agent')" class="user-details" *ngFor="let vendor of paginatedVendor">
+          <div class="name-thumbnail">
+            <img src="../../../assets/user-1.svg" alt="">
+            <div class="name">
+              <h2> {{vendor.firstName}} {{vendor.lastName}} </h2>
+              <p>{{vendor.branch === null ? 'Not Entered yet?' : vendor.branch}}</p>
+            </div>
+          </div>
+          <div class="contact-info">
+            <p> {{vendor.phoneNumber	}} </p>
+            <p>{{vendor.email}}</p>
+          </div>
+          <div class="contact-info">
+            <p> Sold </p>
+            <p> {{vendor.ticketsSold}} </p>
+          </div>
+          <div class="contact-info">
+            <p> Oweing  </p>
+            <p> {{vendor.owing}} </p>
+          </div>
+          <button class="status-btn"[ngClass]="getBtnColor('active')">
+            <div class="dot">
+              <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
+              fill="none">
+              <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
+              </svg>
+            </div> 
+            {{status !== null ? status : 'Not Available'}}
+          </button>
+          <button>
+
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <div *ngIf="loading" class="loader">
+    <app-loader-admin/>
+  </div>
+
+  <ng-container *ngIf="showBackBtn">
+    <div class="tab-container">
+      <!-- the class active-tab will add dynamic class features to the tab -->
+      <div class="tab" [ngClass]="tabs == 'personal-information' ? 'active-tab' : '' ">
+        <p (click)="switchTab('personal-information')"> Personal Information </p>
+        <!-- add or remove based on the active tab -->
+        <div  class="border-bottom"></div>
+      </div>
+
+      <div *ngIf="currentRoute == 'User Details'" class="tab" [ngClass]="tabs == 'ticket-history' ? 'active-tab' : '' ">
+        <p (click)="switchTab('ticket-history')"> Ticket History </p>
+        <!-- add or remove based on the active tab -->
+        <div  class="border-bottom"></div>
+      </div>
+
+      <div *ngIf="currentRoute == 'Agent Details'" class="tab" [ngClass]="tabs == 'tickets-sold' ? 'active-tab' : '' ">
+        <p (click)="switchTab('tickets-sold')"> Tickets Sold </p>
+        <!-- add or remove based on the active tab -->
+        <div  class="border-bottom"></div>
+      </div>
+
+      <div *ngIf="currentRoute == 'Agent Details'" class="tab" [ngClass]="tabs == 'commission' ? 'active-tab' : '' ">
+        <p class="unique-problem" (click)="switchTab('commission')"> Commission Earned <span class="rounded-border-items"> ₦ {{commissionEarned}} </span> </p>
+        <!-- add or remove based on the active tab -->
+        <div class="border-bottom"></div>
+      </div>
+
+    </div>
+
+    <div [ngSwitch]="tabs" class="tab-content"> 
+      <div  class=" add-flex-gap" *ngSwitchCase="'personal-information'"> 
+        <div class="person-profile-blue-bg">
+          <img src="../../../assets/personal-details-headshot.svg" alt="">
+          <div class="personal-details">
+            <h2> {{userDetails.firstName}} {{userDetails.lastName}} </h2>
+            <div class="collection">
+              <span class="status-btn"[ngClass]="getBtnColor('active')">
+                <div class="dot">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"
+                  fill="none">
+                  <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor('active')" />
+                  </svg>
+                </div> 
+                {{status !== null ? status : 'Not Available'}}
+              </span>
+
+              <span class="rounded-border-items"> Mobile User </span>
+              <span class="rounded-border-items with-icon"> <img src="../../../assets/jolly-points-icon.png" alt=""> {{userDetails.jollyPoints}} Jolly Points </span>
+              <span class="rounded-border-items">{{userDetails.email}}</span>
+              <span class="rounded-border-items">{{userDetails.registeredOn.split('T')[0]}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="more-details-collection">
+          <div class="table">
+            <div class="table-items">
+              <p>Tickets Bought</p>
+              <p>{{userDetails.totalTicketsBought}}</p>
+            </div>
+            <div class="table-items tickets">
+              <p>Tickets Amount</p>
+              <p>₦ {{userDetails.totalTicketsBoughtAmount}}</p>
+            </div>
+            <div class="table-items">
+              <p>Prizes Won</p>
+              <p>{{userDetails.jollyPoints}}</p>
+            </div>
+            <div class="table-items">
+              <p>Prizes Value</p>
+              <p>₦ {{userDetails.totalPrizeValueAmount}}</p>
+            </div>
+          </div>
+          <div class="table">
+            <div class="table-items">
+              <p>Phone Number</p>
+              <p>{{userDetails.phoneNumber}}</p>
+            </div>
+            <div class="table-items">
+              <div class="file-container">
+                <img src="../../../assets/pdf-icon.png" alt="">
+                <p> Christiana - NIN </p>
+                <img src="../../../assets/download-03.svg" alt="">
+              </div>
+            </div>
+            <div class="table-items address">
+              <p>Address</p>
+              <p>{{userDetails.address === null ? 'User has not inputted address yet' : userDetails.address}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-history-container" *ngSwitchCase="'ticket-history'">
+        <div class="all-tickets">
+          <div class="ticket-details" *ngFor="let ticketDetails of ticketHistory">
+            <div class="left">
+              <img  class="ticket-image" [src]="ticketDetails.ticketImage" alt="">
+              <div class="ticket-details-all">
+                <div class="left-side">
+                  <span class="ticket-date">{{ticketDetails.created.split('T')[0]}}</span>
+                  <span class="ticket-name">{{ticketDetails.drawName}}</span>
+                  <span class="ticket-won">
+                      <span>{{ticketDetails.numberOfTickets}} Ticket(s)</span>
+                      <span>₦ {{ticketDetails.amount}}</span>
+                      <span>{{ticketDetails.tierOnePrize}}, {{ticketDetails.tierTwoPrize}}, {{ticketDetails.tierThreePrize}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="prize-table">
+          <div class="prize-image-container">
+            
+            <div class="prize-image">
+              <div class="ticket-id">
+                <h3> Ticket ID </h3>
+                <p> WAP-90876-XYZ </p>
+              </div>
+            </div>
+          </div>
+          <div class="top">
+            <div class="prize-table-items border-right">
+              <p>Prizes Value</p>
+              <p>₦ 312,000</p>
+            </div>
+            <div class="prize-table-items">
+              <p>Prizes Value</p>
+              <p>₦ 312,000</p>
+            </div>
+          </div>
+          <div class="prize-table-items border-top">
+            <p>Prizes Value</p>
+            <p>₦ 312,000</p>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'tickets-sold'" > <p> tickets sold </p> </div>
+      <div *ngSwitchCase="'commission'" > 
+        <div class="transaction-table">
+          <div class="filter">
+            <div class="input-container">
+              <input type="search" placeholder="Search using keyword">
+              <img class="search-icon" src="../../../assets/search-icon.svg" alt="">
+            </div>
+      
+            <div class="filter-container">
+              <img src="../../../assets/filter-icon.svg" alt="">
+              <p> Filter </p>
+            </div>
+          </div>
+       
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  <div class="table-heading"> <input type="checkbox"/>  </div>
+                </th>
+                <th>
+                  <div class="table-heading"> Amount Earned </div>
+                </th>
+                <th>
+                  <div class="table-heading"> Tickets sold </div>
+                </th>
+                <th>
+                  <div class="table-heading"> Channel </div>
+                </th>
+                <th>
+                  <div class="table-heading"> Status </div>
+                </th>
+                <th>
+                  <div class="table-heading">  Customer Name </div>
+                </th>
+                <th>
+                  <div class="table-heading"> Date Bought </div>
+                </th>
+               
+                <th> <img src="../../../assets/table-columns-icon.svg" alt=""> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> <input type="checkbox" /> </td>
+                <td class="amount-earned"> ₦ 1,000 </td>
+                <td> 12 tickets </td>
+                <td> Web App </td>
+                <td>
+                  <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
+                    <div class="dot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
+                      </svg>
+                    </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
+                  </button>
+                </td>
+                <td> Bala Muhammed </td>
+                <td> 10th July, 2024 </td>
+                <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
+              </tr>
+              <tr>
+                <td> <input type="checkbox" /> </td>
+                <td class="amount-earned"> ₦ 1,000 </td>
+                <td> 12 tickets </td>
+                <td> Web App </td>
+                <td>
+                  <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
+                    <div class="dot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
+                      </svg>
+                    </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
+                  </button>
+                </td>
+                <td> Bala Muhammed </td>
+                <td> 10th July, 2024 </td>
+                <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
+              </tr>
+              <tr>
+                <td> <input type="checkbox" /> </td>
+                <td class="amount-earned"> ₦ 1,000 </td>
+                <td> 12 tickets </td>
+                <td> Web App </td>
+                <td>
+                  <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
+                    <div class="dot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
+                      </svg>
+                    </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
+                  </button>
+                </td>
+                <td> Bala Muhammed </td>
+                <td> 10th July, 2024 </td>
+                <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
+              </tr>
+              <tr>
+                <td> <input type="checkbox" /> </td>
+                <td class="amount-earned"> ₦ 1,000 </td>
+                <td> 12 tickets </td>
+                <td> Web App </td>
+                <td>
+                  <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
+                    <div class="dot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
+                      </svg>
+                    </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
+                  </button>
+                </td>
+                <td> Bala Muhammed </td>
+                <td> 10th July, 2024 </td>
+                <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
+              </tr>
+              <tr>
+                <td> <input type="checkbox" /> </td>
+                <td class="amount-earned"> ₦ 1,000 </td>
+                <td> 12 tickets </td>
+                <td> Web App </td>
+                <td>
+                  <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
+                    <div class="dot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
+                      </svg>
+                    </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
+                  </button>
+                </td>
+                <td> Bala Muhammed </td>
+                <td> 10th July, 2024 </td>
+                <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
+              </tr>
+              <tr>
+                <td> <input type="checkbox" /> </td>
+                <td class="amount-earned"> ₦ 1,000 </td>
+                <td> 12 tickets </td>
+                <td> Web App </td>
+                <td>
+                  <button class="status-btn" [ngClass]="getBtnColor(transactionStatus)">
+                    <div class="dot">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                        <circle cx="4" cy="4" r="3" [attr.fill]="getFillColor(transactionStatus)" />
+                      </svg>
+                    </div> {{transactionStatus !== null ? transactionStatus : 'Not Available'}}
+                  </button>
+                </td>
+                <td> Bala Muhammed </td>
+                <td> 10th July, 2024 </td>
+                <td> <img src="../../../assets/vertical-dots-icon.svg" alt=""> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  
+</div>
+
+<div class="pagination" *ngIf="showUserPagination" >
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+    « Prev
+  </button>
+
+  <button
+    *ngFor="let page of totalPagesUser"
+    (click)="changePage(page)"
+    [class.active]="page === currentPage">
+    {{ page }}
+  </button>
+
+  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPagesUser.length">
+    Next »
+  </button>
+</div>
+<div class="pagination" *ngIf="showAgentPagination" >
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+    « Previous
+  </button>
+
+  <button
+    *ngFor="let page of totalPagesVendor"
+    (click)="changePage(page)"
+    [class.active]="page === currentPage">
+    {{ page }}
+  </button>
+
+  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPagesVendor.length">
+    Next »
+  </button>
+</div>

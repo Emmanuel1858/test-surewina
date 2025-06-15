@@ -1,0 +1,122 @@
+<div class="header-mobile mobile-only-top" *ngIf="mobileVisibility">
+  <div (click)="closeWinner()">
+    <img src="../../../assets/go-back.svg" alt="">
+  </div>
+  <div>Winner Board</div>
+  <div><img src="../../../assets/menu.svg" alt=""></div>
+</div>
+
+
+
+<div class="container">
+  <!-- <div class="ticket-body">
+        <div class="header">
+            <div class="header-tickets">
+                <span class="header-tickets-text-active">Sure Jackpot</span>
+                <span class="header-tickets-number-active">32</span>
+            </div>
+            <div class="header-tickets">
+                <span class="header-tickets-text">Sure Jumbo</span>
+                <span class="header-tickets-number">32</span>
+            </div>
+            <div class="header-tickets">
+                <span class="header-tickets-text">Sure Boom</span>
+                <span class="header-tickets-number">32</span>
+            </div>
+            <div class="header-tickets">
+                <span class="header-tickets-text">Sure Geluu</span>
+                <span class="header-tickets-number">32</span>
+            </div>
+        </div>
+
+        <div>
+            <div class="ticket-details" *ngFor="let name of ticketName; let i = index" (click)="selectTicket(i)">
+                <div class="ticket-details-img">
+                    <img src="../../../assets/keke-without-label.svg" alt="">
+                </div>
+                <div class="ticket-details-all">
+                    <span class="ticket-date">{{name.drawDate.split('T')[0]}}</span>
+                    <span class="ticket-name">{{name.drawDescription}}</span>
+                    <span class="ticket-won">
+                        <span>Jolly Jackpot Lottery</span>
+                        <span>{{name.totalWinners}}</span>
+
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div> -->
+  <div class="ticket-body">
+    <div class="ticket-body-inner">
+      <!-- HEADER SECTION -->
+      <div class="header" *ngIf="showMonth">
+        <div *ngFor="let draw of drawResults; let drawIndex = index">
+          <div class="header-tickets" [ngClass]="tabs == 'tab' + drawIndex ? 'active-tab' : ''">
+            <span (click)="switchTab('tab' + drawIndex)" [ngClass]="tabs == 'tab' + drawIndex ? 'header-tickets-text-active' : 'header-tickets-text'">
+              {{ draw.drawDescription || 'No Description' }}
+            </span>
+            <span class="header-tickets-number-active"
+              [ngClass]="tabs == 'tab' + drawIndex ? 'active-tab-number' : 'inactive-tab-number'">{{ draw.totalWinners
+              }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BODY SECTION -->
+      <div [ngSwitch]="tabs" *ngFor="let draw of drawResults; let drawIndex = index">
+        <div *ngSwitchCase="'tab' + drawIndex">
+          <div class="ticket-details-con">
+            <div class="ticket-details" *ngFor="let item of draw.winners.items; let i = index"
+              (click)="showListWinners(draw.drawId)">
+              <div class="ticket-details-img">
+                <img *ngIf="draw.prizes?.[0]?.image" [src]="draw.prizes[0].image" alt="" />
+              </div>
+              <div class="ticket-details-all">
+                <!-- <span class="ticket-date">
+                  {{ draw.drawDate?.split('T')[0] || 'No Date' }}
+                </span>
+                <span class="ticket-name">
+                  {{ item.ticketRefNo || 'No Name' }}
+                </span> -->
+                <span class="ticket-won">
+                  <span> Won {{ item.prize }}</span>
+                  <span>Played ₦ {{ item.totalAmount }} per ticket</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="empty-state-winner" *ngIf="showEmptyStateWinner">
+      <img src="../../../assets/empty-state-winner.svg" alt="">
+    </div>
+  </div>
+  <div class="winner-container laptop-only" *ngIf="selectedTicketIndex !== null">
+    <div *ngFor="let winner of ticketName[selectedTicketIndex]?.winners.items">
+      <span>{{ winner.name }}</span>
+      <span>{{ winner.location }}</span>
+      <span>{{ winner.totalAmount }}</span>
+      <span>{{ winner.prize }}</span>
+    </div>
+  </div>
+
+
+
+</div>
+
+<div class="loader" *ngIf="showLoader">
+  <app-loader />
+</div>
+
+<div class="mobile-only" *ngIf="mobileVisibility">
+  <div class="winner-container" *ngIf="selectedTicketIndex !== null">
+    <div *ngFor="let winner of ticketName[selectedTicketIndex]?.winners.items">
+      <span>{{ winner.name }}</span>
+      <span>{{ winner.location }}</span>
+      <span>{{ winner.totalAmount }}</span>
+      <span>{{ winner.prize }}</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="solar:square-transfer-horizontal-linear" clip-path="url(#clip0_2588_235)">
+<g id="Group">
+<path id="Vector" d="M1.33301 7.99992C1.33301 4.85725 1.33301 3.28592 2.30901 2.30925C3.28634 1.33325 4.85701 1.33325 7.99967 1.33325C11.1423 1.33325 12.7137 1.33325 13.6897 2.30925C14.6663 3.28659 14.6663 4.85725 14.6663 7.99992C14.6663 11.1426 14.6663 12.7139 13.6897 13.6899C12.7143 14.6666 11.1423 14.6666 7.99967 14.6666C4.85701 14.6666 3.28567 14.6666 2.30901 13.6899C1.33301 12.7146 1.33301 11.1426 1.33301 7.99992Z" stroke="#7B7B7B" stroke-width="1.4"/>
+<path id="Vector_2" d="M11.3327 6.6665H4.66602L6.95802 4.6665M4.66602 9.33317H11.3327L9.04135 11.3332" stroke="#7B7B7B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_2588_235">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>

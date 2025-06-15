@@ -1,0 +1,366 @@
+<div class="header-mobile mobile-only-top" *ngIf="mobileVisibility">
+    <div >
+        <img *ngIf="showWinnerList" (click)="showTheMonth()" src="../../../assets/go-back.svg" alt="">
+        <img (click)="closeWinner()" *ngIf="showMonth" src="../../../assets/sure-wina-without-text.svg" alt="">
+    </div>
+    <div>Winner Board</div>
+    <div (click)="openMenu()"><img src="../../../assets/menu.svg" alt=""></div>
+</div>
+
+<div class="menu-container" *ngIf="showMenu">
+    <div class="menu-header">
+        <h1>Menu</h1>
+        <img (click)="closeMenu()" src="../../../assets/Frame 1000003973.svg" alt="">
+    </div>
+    <div class="menu-options">
+        <div class="all-options" (click)="showDashboard()">
+            <img src="../../../assets/dashboard-mobile.svg" alt="">
+            <span>Dashboard</span>
+        </div>
+        <div class="all-options" (click)="showWinner()">
+            <img src="../../../assets/analytics-mobile.svg" alt="">
+            <span>Winner Board</span>
+        </div>
+        <div class="all-options" (click)="showTicket()">
+            <img src="../../../assets/ticket-mobile.svg" alt="">
+            <span>Ticket History</span>
+        </div>
+        <div class="all-options" (click)="navigateToProfile()">
+            <img src="../../../assets/user-account-mobile.svg" alt="">
+            <span>Your Profile</span>
+        </div>
+        <div class="logout-container" (click)="logout()">
+            <img src="../../../assets/logout-03.svg" alt="">
+            <span>Logout</span>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container">
+    
+    <div class="ticket-body" *ngIf="showMonth">
+            <div class="header">
+                <div class="header-tickets" [ngClass]="tabs == 'jan' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('jan')" class="header-tickets-text-active">January</span>
+                    <span class="header-tickets-number-active">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'feb' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('feb')" class="header-tickets-text">February</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'mar' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('mar')" class="header-tickets-text">March</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'apr' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('apr')" class="header-tickets-text">April</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'may' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('may')" class="header-tickets-text">May</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'jun' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('jun')" class="header-tickets-text">June</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'jul' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('jul')" class="header-tickets-text">July</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'aug' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('aug')" class="header-tickets-text">August</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'sept' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('sept')" class="header-tickets-text">September</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'oct' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('oct')" class="header-tickets-text">October</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'nov' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('nov')" class="header-tickets-text">November</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+                <div class="header-tickets" [ngClass]="tabs == 'dec' ? 'active-tab' : '' ">
+                    <span (click)="switchTab('dec')" class="header-tickets-text">December</span>
+                    <span class="header-tickets-number">32</span>
+                </div>
+            </div>
+        <div [ngSwitch]="tabs" >
+            <div *ngSwitchCase="'jan'">
+                <div class="ticket-details-con">
+                    {{noData}}
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'feb'">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'mar'">
+                <div class="ticket-details-con">
+                    {{noData}}
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'apr'">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'may'">
+                <div class="ticket-details-con">
+                    {{noData}}
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'jun'">
+                <div class="ticket-details-con">
+                    {{noData}}
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'jul'">
+            
+                <div class="ticket-details-con">
+                    {{noData}}
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'aug'">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'sept'">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'oct'">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'nov'">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="'dec'">
+                <div class="ticket-details-con">
+                    <div class="ticket-details" *ngFor="let draw of allDrawsByMonth; let i = index" (click)="showListWinners(draw.drawId)">
+                        <div class="ticket-details-img">
+                            <img [src]="draw.prizes[0].image" alt="">
+                        </div>
+                        <div class="ticket-details-all">
+                            <span class="ticket-date">{{draw.drawDate.split('T')[0]}}</span>
+                            <span class="ticket-name">{{draw.prizes[0].name}}, {{draw.prizes[1].name}}, {{draw.prizes[2].name}}</span>
+                            <span class="ticket-won">
+                                <span>{{draw.drawDescription}}</span>
+                                <span>{{draw.totalWinners}} winners</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="winner-container laptop-only" *ngIf="selectedTicketIndex !== null">
+        <div *ngFor="let winner of ticketName[selectedTicketIndex]?.winners.items">
+            <span>{{ winner.name }}</span>
+            <span>{{ winner.location }}</span>
+            <span>{{ winner.totalAmount }}</span>
+            <span>{{ winner.prize }}</span>
+        </div>
+    </div> -->
+
+    <div class="container-list-winners" *ngIf="showWinnerList">
+        <div class="prizes-won" [ngStyle]="{'background-image': currentPrize ? 'url(' + currentPrize.image + ')' : ''}">
+            <button>Prize Won</button>
+            <span>{{ currentPrize?.name || 'No Prize' }}</span>
+        </div>
+        <div class="arrows">
+            <span><img (click)="showPreviousPrize()" src="../../../assets/left-arrow-winner.svg" alt="Previous"></span>
+            <span><img (click)="showNextPrize()" src="../../../assets/right-arrow-winner.svg" alt="Previous"></span>
+        </div>
+        <div class="winners-info" *ngFor="let list of listOfWinners">
+            <span class="winners-info-initials">O</span>
+            <span class="winners-info-name">{{list.name}}</span>
+            <span class="winners-info-address">{{list.location}}</span>
+            <span class="winners-info-address">Bought {{list.ticketNumber}} tickets</span>
+        </div>
+    </div>
+
+ 
+
+</div>
+
+<div class="loader" *ngIf="showLoader">
+    <app-loader/>
+</div>
+
+
+
+<!-- <div class="mobile-only">
+    <div class="winner-container">
+        <div>
+            <span> winner.name</span>
+            <span> winner.location</span>
+            <span> winner.totalAmount</span>
+            <span> winner.prize</span>
+        </div>
+    </div>
+</div> -->
+
+
+<!-- <div class="mobile-only" *ngIf="mobileVisibility">
+    <div class="winner-container" *ngIf="selectedTicketIndex !== null">
+        <div *ngFor="let winner of ticketName[selectedTicketIndex]?.winners.items">
+            <span>{{ winner.name }}</span>
+            <span>{{ winner.location }}</span>
+            <span>{{ winner.totalAmount }}</span>
+            <span>{{ winner.prize }}</span>
+        </div>
+    </div>
+</div> -->
+
